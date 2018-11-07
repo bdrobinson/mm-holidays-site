@@ -1,0 +1,4 @@
+{
+  "presets": ["babel-preset-gatsby", "@babel/preset-flow"],
+  "plugins": ["babel-plugin-styled-components"]
+}

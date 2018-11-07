@@ -1,33 +1,67 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
+// @flow
 
-const Main = styled.div`
-  background-color: palevioletred;
+import React from "react"
+import { StaticQuery, graphql, Link } from "gatsby"
+import styled from "styled-components"
+import Img from "gatsby-image"
+
+import PageGutter from "./PageGutter"
+
+const Main = styled.header`
   margin-bottom: 1.45rem;
 `
 
 const Inner = styled.div`
-  margin: 0 auto;
-  max-width: 960px;
-  padding: 1.45rem 1.0875rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
 `
 
-const Header = ({ siteTitle }) => (
+const NavLink = styled(Link)`
+  font-family: sans-serif;
+  margin-left: 0.8em;
+`
+
+// const Logo = styled.img.attrs({ src: logo })`
+//   width: 10rem;
+// `
+
+type Props = {|
+  siteTitle: string,
+|}
+
+const Header = ({ siteTitle }: Props) => (
   <Main>
-    <Inner>
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: "white",
-            textDecoration: "none",
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </Inner>
+    <PageGutter>
+      <Inner>
+        <h1 style={{ margin: 0 }}>
+          <Link to="/">
+            <StaticQuery
+              query={graphql`
+                query {
+                  placeholderImage: file(relativePath: { eq: "logo.jpg" }) {
+                    childImageSharp {
+                      fixed(width: 250) {
+                        ...GatsbyImageSharpFixed
+                      }
+                    }
+                  }
+                }
+              `}
+              render={data => {
+                return (
+                  <Img fixed={data.placeholderImage.childImageSharp.fixed} />
+                )
+              }}
+            />
+          </Link>
+        </h1>
+        <nav>
+          <NavLink to="/about">About</NavLink>
+        </nav>
+      </Inner>
+    </PageGutter>
   </Main>
 )
 

@@ -1,12 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+// @flow
 
-import Header from './header'
-import './layout.css'
+import React, { type Node } from "react"
+import PropTypes from "prop-types"
+import Helmet from "react-helmet"
+import { StaticQuery, graphql } from "gatsby"
+import "normalize.css"
 
-const Layout = ({ children }) => (
+import GlobalStyles from "./GlobalStyles"
+import Header from "./Header"
+import Footer from "./Footer"
+import PageGutter from "./PageGutter"
+
+type Props = {|
+  children: Node,
+  applyGutter?: boolean,
+|}
+
+const Layout = ({ children, applyGutter = true }: Props) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -19,26 +29,23 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
+        <GlobalStyles />
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
+            { name: "description", content: "Sample" },
+            { name: "keywords", content: "sample, something" },
           ]}
         >
           <html lang="en" />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: 960,
-            padding: '0px 1.0875rem 1.45rem',
-            paddingTop: 0,
-          }}
-        >
-          {children}
-        </div>
+        {applyGutter ? (
+          <PageGutter>{children}</PageGutter>
+        ) : (
+          <div>{children}</div>
+        )}
+        <Footer />
       </>
     )}
   />
