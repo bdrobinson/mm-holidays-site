@@ -9,23 +9,48 @@ import PageGutter from "./PageGutter"
 
 const Main = styled.header`
   margin-bottom: 1.45rem;
+  margin-top: 1rem;
 `
 
 const Inner = styled.div`
+  width: 100%;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
+  overflow-x: auto;
+`
+
+const Nav = styled.nav`
+  flex-shrink: 1;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  overflow-x: auto;
 `
 
 const NavLink = styled(Link)`
-  font-family: sans-serif;
   margin-left: 0.8em;
+  padding: 1em;
+  color: currentColor;
+  text-decoration: none;
+  text-align: center;
+  flex-shrink: 1;
+  flex-grow: 0;
+  @media (hover: hover), (-moz-touch-enabled: 0) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `
 
-// const Logo = styled.img.attrs({ src: logo })`
-//   width: 10rem;
-// `
+const LogoContainer = styled.div`
+  width: 240px;
+  @media (max-width: 800px) {
+    width: 150px;
+  }
+`
 
 type Props = {|
   siteTitle: string,
@@ -35,15 +60,15 @@ const Header = ({ siteTitle }: Props) => (
   <Main>
     <PageGutter>
       <Inner>
-        <h1 style={{ margin: 0 }}>
-          <Link to="/">
+        <Link to="/">
+          <LogoContainer>
             <StaticQuery
               query={graphql`
                 query {
                   placeholderImage: file(relativePath: { eq: "logo.jpg" }) {
                     childImageSharp {
-                      fixed(width: 250) {
-                        ...GatsbyImageSharpFixed
+                      fluid(maxWidth: 240) {
+                        ...GatsbyImageSharpFluid_tracedSVG
                       }
                     }
                   }
@@ -51,15 +76,19 @@ const Header = ({ siteTitle }: Props) => (
               `}
               render={data => {
                 return (
-                  <Img fixed={data.placeholderImage.childImageSharp.fixed} />
+                  <Img fluid={data.placeholderImage.childImageSharp.fluid} />
                 )
               }}
             />
-          </Link>
-        </h1>
-        <nav>
-          <NavLink to="/about">About</NavLink>
-        </nav>
+          </LogoContainer>
+        </Link>
+        <Nav>
+          <NavLink to="/about">About us</NavLink>
+          <NavLink to="/max">Max</NavLink>
+          <NavLink to="/madness">Madness</NavLink>
+          <NavLink to="/mayhem">Mayhem</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
+        </Nav>
       </Inner>
     </PageGutter>
   </Main>

@@ -13,7 +13,7 @@ const Content = styled.div`
   flex-shrink: 1;
   flex-grow: 0;
   flex-basis: 1000px;
-  padding: 1.45rem 1.0875rem;
+  padding: 0 1.45rem;
 `
 
 type Props = {|

@@ -26,5 +26,13 @@ module.exports = {
       },
     },
     "gatsby-plugin-styled-components",
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/md`,
+      },
+    },
+    "gatsby-transformer-remark",
   ],
 }
