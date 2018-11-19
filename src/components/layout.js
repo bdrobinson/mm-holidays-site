@@ -42,6 +42,10 @@ const Layout = ({ children, applyGutter = true, title }: Props) => (
           ]}
         >
           <html lang="en" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Raleway:300,400"
+            rel="stylesheet"
+          />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         {applyGutter ? (

@@ -2,19 +2,15 @@
 
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
 
 import Layout from "../components/Layout"
 
 const IndexPage = ({ data }) => (
-  <Layout title={null}>
-    <h1>The best week of the year</h1>
+  <Layout title="About">
     {data.allMarkdownRemark.edges.map(edge => {
-      console.log(edge.node.frontmatter.image.childImageSharp)
       return (
-        <section key={edge.node.id}>
-          <h2>{edge.node.frontmatter.title}</h2>
-          <Img fluid={edge.node.frontmatter.image.childImageSharp.fluid} />
+        <section>
+          <h1>{edge.node.frontmatter.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: edge.node.html }} />
         </section>
       )
@@ -25,22 +21,14 @@ const IndexPage = ({ data }) => (
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "//home//" } }
+      filter: { fileAbsolutePath: { regex: "//about//" } }
       sort: { fields: [frontmatter___order], order: ASC }
     ) {
       edges {
         node {
-          id
           frontmatter {
             title
             order
-            image {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
-              }
-            }
           }
           html
         }

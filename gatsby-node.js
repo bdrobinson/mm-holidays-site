@@ -3,11 +3,11 @@ const path = require("path")
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const blogPostTemplate = path.resolve(`src/templates/page.js`)
+  const blogPostTemplate = path.resolve(`src/pages/page.js`)
 
   const result = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(filter: { frontmatter: { path: { ne: null } } }) {
         edges {
           node {
             frontmatter {

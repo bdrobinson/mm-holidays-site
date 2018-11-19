@@ -9,7 +9,7 @@ import PageGutter from "./PageGutter"
 
 const Main = styled.header`
   margin-bottom: 1.45rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 `
 
 const Inner = styled.div`
@@ -46,9 +46,9 @@ const NavLink = styled(Link)`
 `
 
 const LogoContainer = styled.div`
-  width: 240px;
+  width: 150px;
   @media (max-width: 800px) {
-    width: 150px;
+    width: 100px;
   }
 `
 
@@ -67,7 +67,7 @@ const Header = ({ siteTitle }: Props) => (
                 query {
                   placeholderImage: file(relativePath: { eq: "logo.jpg" }) {
                     childImageSharp {
-                      fluid(maxWidth: 240) {
+                      fluid(maxWidth: 150) {
                         ...GatsbyImageSharpFluid_tracedSVG
                       }
                     }
