@@ -43,7 +43,7 @@ const Layout = ({ children, applyGutter = true, title }: Props) => (
         >
           <html lang="en" />
           <link
-            href="https://fonts.googleapis.com/css?family=Raleway:300,400"
+            href="https://fonts.googleapis.com/css?family=Raleway:300,400,700"
             rel="stylesheet"
           />
         </Helmet>

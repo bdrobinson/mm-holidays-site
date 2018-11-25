@@ -14,7 +14,7 @@ const Main = styled.div`
 const Content = styled.div`
   flex-shrink: 1;
   flex-grow: 0;
-  flex-basis: 900px;
+  flex-basis: 1100px;
   padding: 0 1.45rem;
   @media (max-width: ${MOBILE_WIDTH}px) {
     padding: 0 2rem;

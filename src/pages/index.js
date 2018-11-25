@@ -5,18 +5,21 @@ import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import Layout from "../components/Layout"
+import HomepageFeature from "../components/HomepageFeature"
 
 const IndexPage = ({ data }) => (
-  <Layout title={null}>
+  <Layout title={null} applyGutter={false}>
     <h1>The best week of the year</h1>
     {data.allMarkdownRemark.edges.map(edge => {
-      console.log(edge.node.frontmatter.image.childImageSharp)
+      const frontmatter = edge.node.frontmatter
       return (
-        <section key={edge.node.id}>
-          <h2>{edge.node.frontmatter.title}</h2>
-          <Img fluid={edge.node.frontmatter.image.childImageSharp.fluid} />
-          <div dangerouslySetInnerHTML={{ __html: edge.node.html }} />
-        </section>
+        <HomepageFeature
+          key={edge.node.id}
+          imageFluid={frontmatter.image.childImageSharp.fluid}
+          imageAltText={frontmatter.imageAltText}
+          title={frontmatter.title}
+          descriptionHtml={edge.node.html}
+        />
       )
     })}
   </Layout>
@@ -34,10 +37,11 @@ export const pageQuery = graphql`
           frontmatter {
             title
             order
+            imageAltText
             image {
               childImageSharp {
                 fluid {
-                  ...GatsbyImageSharpFluid_tracedSVG
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

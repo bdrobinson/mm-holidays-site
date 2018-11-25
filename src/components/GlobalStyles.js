@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
     html {
         font-size: 16px;
         @media (max-width: ${MOBILE_WIDTH}px) {
-            font-size: 13px;
+            font-size: 12px;
         }
     }
     body {
