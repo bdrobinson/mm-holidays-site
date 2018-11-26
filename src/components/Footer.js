@@ -33,7 +33,11 @@ const Footer = () => (
         render={data => {
           return data.allMarkdownRemark.edges.map(edge => {
             const { path, title } = edge.node.frontmatter
-            return <Link to={`${path}`}>{title}</Link>
+            return (
+              <Link to={`${path}`} key={path}>
+                {title}
+              </Link>
+            )
           })
         }}
       />

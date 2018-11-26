@@ -22,7 +22,7 @@ const GlobalStyles = createGlobalStyle`
         line-height: 1.5;
     }
     h1 {
-        font-size: 3rem;
+        font-size: 3.5rem;
         margin-top: 2rem;
         margin-bottom: 0.8rem;
     }

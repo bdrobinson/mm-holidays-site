@@ -3,13 +3,83 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
+import styled from "styled-components"
 
 import Layout from "../components/Layout"
 import HomepageFeature from "../components/HomepageFeature"
+import PageGutter from "../components/PageGutter"
+
+const HeroContainer = styled.div`
+  position: relative;
+`
+
+const VIDEO_ID = "d24Pm3NxFVA"
+
+const HeroFooter = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+`
+
+const IntroSection = styled.section``
+
+const PromoVideoContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  margin-bottom: 4em;
+`
+
+const PromoVideo = styled.iframe`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`
 
 const IndexPage = ({ data }) => (
-  <Layout title={null} applyGutter={false}>
-    <h1>The best week of the year</h1>
+  <Layout
+    title={null}
+    applyGutter={false}
+    hero={
+      <HeroContainer>
+        <Img
+          fluid={data.hero0.childImageSharp.fluid}
+          style={{ maxHeight: "800px" }}
+          imgStyle={{ objectPosition: "top" }}
+        />
+        <HeroFooter>
+          <PageGutter>
+            <h1>The best week of the year</h1>
+          </PageGutter>
+        </HeroFooter>
+      </HeroContainer>
+    }
+  >
+    <IntroSection>
+      <PageGutter>
+        <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />
+        <PromoVideoContainer>
+          <PromoVideo
+            width="560"
+            height="315"
+            src={`https://www.youtube.com/embed/${VIDEO_ID}?&autoplay=1&rel=0&mute=1&modestbranding=1&loop=1&playlist=${VIDEO_ID}&fs=1`}
+            frameborder="0"
+            allow="fullscreen;"
+          />
+        </PromoVideoContainer>
+      </PageGutter>
+    </IntroSection>
     {data.allMarkdownRemark.edges.map(edge => {
       const frontmatter = edge.node.frontmatter
       return (
@@ -28,7 +98,7 @@ const IndexPage = ({ data }) => (
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "//home//" } }
+      filter: { fileAbsolutePath: { regex: "//home/sections//" } }
       sort: { fields: [frontmatter___order], order: ASC }
     ) {
       edges {
@@ -49,6 +119,16 @@ export const pageQuery = graphql`
           html
         }
       }
+    }
+    hero0: file(relativePath: { eq: "hero0.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    intro: markdownRemark(fileAbsolutePath: { regex: "/home/intro/" }) {
+      html
     }
   }
 `

@@ -1,14 +1,20 @@
 // @flow
 
-import React from "react"
+import React, { type Node } from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
 
 import PageGutter from "./PageGutter"
 
-const Main = styled.header`
-  margin-bottom: 1.45rem;
+const Main = styled.div`
+  position: relative;
+`
+
+const TopBar = styled.header`
+  position: ${props => (props.drawUnder ? "absolute" : "relative")};
+  top: 0;
+  width: 100%;
   margin-top: 0.5rem;
 `
 
@@ -34,6 +40,7 @@ const NavLink = styled(Link)`
   margin-left: 0.8em;
   padding: 1em;
   color: currentColor;
+  font-weight: bold;
   text-decoration: none;
   text-align: center;
   flex-shrink: 1;
@@ -54,43 +61,49 @@ const LogoContainer = styled.div`
 
 type Props = {|
   siteTitle: string,
+  hero?: ?Node,
 |}
 
-const Header = ({ siteTitle }: Props) => (
+const Header = ({ siteTitle, hero }: Props) => (
   <Main>
-    <PageGutter>
-      <Inner>
-        <Link to="/">
-          <LogoContainer>
-            <StaticQuery
-              query={graphql`
-                query {
-                  placeholderImage: file(relativePath: { eq: "logo.jpg" }) {
-                    childImageSharp {
-                      fluid(maxWidth: 150) {
-                        ...GatsbyImageSharpFluid_tracedSVG
+    {hero != null && hero}
+    <TopBar drawUnder={hero != null}>
+      <PageGutter>
+        <Inner>
+          <Link to="/">
+            <LogoContainer>
+              <StaticQuery
+                query={graphql`
+                  query {
+                    placeholderImage: file(
+                      relativePath: { eq: "logo_black.png" }
+                    ) {
+                      childImageSharp {
+                        fluid(maxWidth: 150) {
+                          ...GatsbyImageSharpFluid_tracedSVG
+                        }
                       }
                     }
                   }
-                }
-              `}
-              render={data => {
-                return (
-                  <Img fluid={data.placeholderImage.childImageSharp.fluid} />
-                )
-              }}
-            />
-          </LogoContainer>
-        </Link>
-        <Nav>
-          <NavLink to="/about">About us</NavLink>
-          <NavLink to="/max">Max</NavLink>
-          <NavLink to="/madness">Madness</NavLink>
-          <NavLink to="/mayhem">Mayhem</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
-        </Nav>
-      </Inner>
-    </PageGutter>
+                `}
+                render={data => {
+                  return (
+                    <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+                  )
+                }}
+              />
+            </LogoContainer>
+          </Link>
+          <Nav>
+            <NavLink to="/about">About us</NavLink>
+            <NavLink to="/max">Max</NavLink>
+            <NavLink to="/madness">Madness</NavLink>
+            <NavLink to="/mayhem">Mayhem</NavLink>
+            <NavLink to="/contact">Contact</NavLink>
+          </Nav>
+        </Inner>
+      </PageGutter>
+    </TopBar>
   </Main>
 )
 
