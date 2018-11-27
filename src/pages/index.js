@@ -50,12 +50,12 @@ const PromoVideo = styled.iframe`
 const IndexPage = ({ data }) => (
   <Layout
     title={null}
-    theme="dark"
+    theme="light"
     applyGutter={false}
     hero={
       <HeroContainer>
         <Img
-          fluid={data.hero0.childImageSharp.fluid}
+          fluid={data.hero1.childImageSharp.fluid}
           style={{ maxHeight: "800px" }}
           imgStyle={{ objectPosition: "top" }}
         />
@@ -75,7 +75,7 @@ const IndexPage = ({ data }) => (
             width="560"
             height="315"
             src={`https://www.youtube.com/embed/${VIDEO_ID}?&autoplay=1&rel=0&mute=1&modestbranding=1&loop=1&playlist=${VIDEO_ID}&fs=1`}
-            frameborder="0"
+            frameBorder="0"
             allow="fullscreen;"
           />
         </PromoVideoContainer>
