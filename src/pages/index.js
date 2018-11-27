@@ -50,6 +50,7 @@ const PromoVideo = styled.iframe`
 const IndexPage = ({ data }) => (
   <Layout
     title={null}
+    theme="dark"
     applyGutter={false}
     hero={
       <HeroContainer>
@@ -121,6 +122,27 @@ export const pageQuery = graphql`
       }
     }
     hero0: file(relativePath: { eq: "hero0.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    hero1: file(relativePath: { eq: "inflatables.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    hero2: file(relativePath: { eq: "sunset.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    hero3: file(relativePath: { eq: "tires.jpg" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid

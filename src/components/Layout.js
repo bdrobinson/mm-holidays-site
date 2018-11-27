@@ -15,9 +15,16 @@ type Props = {|
   applyGutter?: boolean,
   title: ?string,
   hero?: ?Node,
+  theme?: "light" | "dark",
 |}
 
-const Layout = ({ children, applyGutter = true, title, hero }: Props) => (
+const Layout = ({
+  children,
+  applyGutter = true,
+  title,
+  hero,
+  theme,
+}: Props) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -48,7 +55,11 @@ const Layout = ({ children, applyGutter = true, title, hero }: Props) => (
             rel="stylesheet"
           />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} hero={hero} />
+        <Header
+          siteTitle={data.site.siteMetadata.title}
+          hero={hero}
+          theme={theme}
+        />
         {applyGutter ? (
           <PageGutter>{children}</PageGutter>
         ) : (

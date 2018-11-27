@@ -9,13 +9,18 @@ import PageGutter from "./PageGutter"
 
 const Main = styled.div`
   position: relative;
+  color: ${props => (props.theme === "dark" ? "#333" : "white")};
 `
 
 const TopBar = styled.header`
   position: ${props => (props.drawUnder ? "absolute" : "relative")};
   top: 0;
   width: 100%;
-  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  background: ${props =>
+    props.shadow
+      ? "linear-gradient(to top,rgba(0,0,0,0),rgba(0,0,0,0.1))"
+      : "none"};
 `
 
 const Inner = styled.div`
@@ -34,6 +39,8 @@ const Nav = styled.nav`
   justify-content: flex-end;
   align-items: center;
   overflow-x: auto;
+  text-shadow: ${props =>
+    props.shadow ? "0 0 30px rgba(0, 0, 0, 0.5)" : "none"};
 `
 
 const NavLink = styled(Link)`
@@ -62,12 +69,13 @@ const LogoContainer = styled.div`
 type Props = {|
   siteTitle: string,
   hero?: ?Node,
+  theme?: "light" | "dark",
 |}
 
-const Header = ({ siteTitle, hero }: Props) => (
-  <Main>
+const Header = ({ siteTitle, hero, theme = "dark" }: Props) => (
+  <Main theme={theme}>
     {hero != null && hero}
-    <TopBar drawUnder={hero != null}>
+    <TopBar drawUnder={hero != null} shadow={hero != null}>
       <PageGutter>
         <Inner>
           <Link to="/">
@@ -75,11 +83,16 @@ const Header = ({ siteTitle, hero }: Props) => (
               <StaticQuery
                 query={graphql`
                   query {
-                    placeholderImage: file(
-                      relativePath: { eq: "logo_black.png" }
-                    ) {
+                    light: file(relativePath: { eq: "logo_white.png" }) {
                       childImageSharp {
-                        fluid(maxWidth: 150) {
+                        fluid(maxWidth: 150, traceSVG: { color: "white" }) {
+                          ...GatsbyImageSharpFluid_tracedSVG
+                        }
+                      }
+                    }
+                    dark: file(relativePath: { eq: "logo_black.png" }) {
+                      childImageSharp {
+                        fluid(maxWidth: 150, traceSVG: { color: "black" }) {
                           ...GatsbyImageSharpFluid_tracedSVG
                         }
                       }
@@ -87,14 +100,16 @@ const Header = ({ siteTitle, hero }: Props) => (
                   }
                 `}
                 render={data => {
-                  return (
-                    <Img fluid={data.placeholderImage.childImageSharp.fluid} />
-                  )
+                  const image =
+                    theme === "light"
+                      ? data.light.childImageSharp.fluid
+                      : data.dark.childImageSharp.fluid
+                  return <Img fluid={image} />
                 }}
               />
             </LogoContainer>
           </Link>
-          <Nav>
+          <Nav shadows={hero != null}>
             <NavLink to="/about">About us</NavLink>
             <NavLink to="/max">Max</NavLink>
             <NavLink to="/madness">Madness</NavLink>
