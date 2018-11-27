@@ -33,7 +33,7 @@ const Title = styled.h2`
   margin-bottom: 0px;
 `
 
-const Description = styled.p`
+const Description = styled.div`
   color: white;
 `
 
