@@ -3,7 +3,7 @@ const path = require("path")
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const blogPostTemplate = path.resolve(`src/pages/page.js`)
+  const blogPostTemplate = path.resolve(`src/templates/page.js`)
 
   const result = await graphql(`
     {
@@ -26,7 +26,6 @@ exports.createPages = async ({ actions, graphql }) => {
     createPage({
       path: node.frontmatter.path,
       component: blogPostTemplate,
-      context: {}, // additional data can be passed via context
     })
   })
 }
