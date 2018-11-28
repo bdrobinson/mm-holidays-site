@@ -19,17 +19,23 @@ const HeroContainer = styled.div`
 
 const VIDEO_ID = "d24Pm3NxFVA"
 
-const HeroFooter = styled.div`
+const HeroLabelContainer = styled.div`
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
   color: white;
   text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   text-align: center;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
 `
+
+const HeroLabel = styled.div``
 
 const IntroSection = styled.section``
 
@@ -65,11 +71,13 @@ const IndexPage = ({ data }: Props) => (
           style={{ maxHeight: "800px" }}
           imgStyle={{ objectPosition: "top" }}
         />
-        <HeroFooter>
-          <PageGutter>
-            <h1>The best week of the year</h1>
-          </PageGutter>
-        </HeroFooter>
+        <HeroLabelContainer>
+          <HeroLabel>
+            <PageGutter>
+              <h1>The best week of the year</h1>
+            </PageGutter>
+          </HeroLabel>
+        </HeroLabelContainer>
       </HeroContainer>
     }
   >
