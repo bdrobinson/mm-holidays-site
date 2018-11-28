@@ -4,10 +4,14 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import { setConfig } from "react-hot-loader"
 
 import Layout from "../components/Layout"
 import HomepageFeature from "../components/HomepageFeature"
 import PageGutter from "../components/PageGutter"
+
+// Needed to make react hooks work with HMR
+setConfig({ pureSFC: true })
 
 const HeroContainer = styled.div`
   position: relative;

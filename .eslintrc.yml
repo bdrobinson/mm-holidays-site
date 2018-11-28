@@ -1,0 +1,34 @@
+parser: babel-eslint
+env:
+  browser: true
+  node: true
+  es6: true
+  jest: true
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+  - plugin:flowtype/recommended
+  - prettier
+  - prettier/flowtype
+  - prettier/react
+plugins:
+  - react
+  - flowtype
+  - react-hooks
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+    modules: true
+rules:
+  react-hooks/rules-of-hooks: 2
+  react/no-unused-prop-types: 2
+  no-undef: 0 # flow handles this and eslint can't handle optional chaining
+  new-cap: 0
+  no-console: warn
+  no-unused-vars:
+    - 2
+    - args: none
+settings:
+  react:
+    version: "16.7"
+    flowVersion: "0.87"
