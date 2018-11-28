@@ -57,7 +57,7 @@ const HomepageFeature = ({
           fluid={imageFluid}
           alt={imageAltText}
           imgStyle={{
-            height: IMAGE_HEIGHT,
+            maxHeight: IMAGE_HEIGHT,
           }}
         />
         <ImageExtras>
