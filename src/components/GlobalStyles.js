@@ -10,10 +10,18 @@ const GlobalStyles = createGlobalStyle`
         @media (max-width: ${MOBILE_WIDTH}px) {
             font-size: 12px;
         }
+        height: 100%;
     }
     body {
         font-family: 'Raleway', sans-serif;
         font-size: 1rem;
+        height: 100%;
+    }
+    #___gatsby {
+        height: 100%;
+    }
+    #___gatsby>div {
+        height: 100%;
     }
 
     p {

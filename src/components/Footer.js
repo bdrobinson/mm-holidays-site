@@ -5,15 +5,19 @@ import styled from "styled-components"
 import { graphql, StaticQuery, Link } from "gatsby"
 
 import PageGutter from "./PageGutter"
+import { FOOTER_BG, FOOTER_TEXT } from "../constants"
 
 const FooterMain = styled.footer`
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+  background-color: ${FOOTER_BG};
+  color: ${FOOTER_TEXT};
+  padding: 2rem 0;
+  text-align: center;
 `
 
 const Footer = () => (
   <FooterMain>
     <PageGutter>
+      <h2>M+M Holidays</h2>
       <span>&copy; M+M Holidays 2018</span>
       <StaticQuery
         query={graphql`

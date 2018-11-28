@@ -3,12 +3,23 @@
 import React, { type Node } from "react"
 import Helmet from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
 import "normalize.css"
 
 import GlobalStyles from "./GlobalStyles"
 import Header from "./Header"
 import Footer from "./Footer"
 import PageGutter from "./PageGutter"
+
+const Main = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`
+
+const Content = styled.div`
+  flex-grow: 1;
+`
 
 type Props = {|
   children: Node,
@@ -36,7 +47,7 @@ const Layout = ({
       }
     `}
     render={data => (
-      <>
+      <Main>
         <GlobalStyles />
         <Helmet
           title={
@@ -60,13 +71,15 @@ const Layout = ({
           hero={hero}
           theme={theme}
         />
-        {applyGutter ? (
-          <PageGutter>{children}</PageGutter>
-        ) : (
-          <div>{children}</div>
-        )}
+        <Content>
+          {applyGutter ? (
+            <PageGutter>{children}</PageGutter>
+          ) : (
+            <div>{children}</div>
+          )}
+        </Content>
         <Footer />
-      </>
+      </Main>
     )}
   />
 )

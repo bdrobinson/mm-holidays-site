@@ -35,7 +35,7 @@ const Inner = styled.div`
 const Nav = styled.nav`
   flex-shrink: 1;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: flex-end;
   align-items: center;
   overflow-x: auto;
