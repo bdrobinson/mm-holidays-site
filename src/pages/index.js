@@ -9,6 +9,7 @@ import { setConfig } from "react-hot-loader"
 import Layout from "../components/Layout"
 import HomepageFeature from "../components/HomepageFeature"
 import PageGutter from "../components/PageGutter"
+import ImageCrossfade from "../components/ImageCrossfade"
 
 // Needed to make react hooks work with HMR
 setConfig({ pureSFC: true })
@@ -66,10 +67,22 @@ const IndexPage = ({ data }: Props) => (
     applyGutter={false}
     hero={
       <HeroContainer>
-        <Img
-          fluid={data.hero1.childImageSharp.fluid}
-          style={{ maxHeight: "800px" }}
-          imgStyle={{ objectPosition: "top" }}
+        <ImageCrossfade
+          fluids={[
+            data.hero0.childImageSharp.fluid,
+            data.hero1.childImageSharp.fluid,
+            data.hero2.childImageSharp.fluid,
+            data.hero3.childImageSharp.fluid,
+          ]}
+          renderImage={fluid => {
+            return (
+              <Img
+                fluid={fluid}
+                style={{ maxHeight: "800px" }}
+                imgStyle={{ objectPosition: "top" }}
+              />
+            )
+          }}
         />
         <HeroLabelContainer>
           <HeroLabel>
