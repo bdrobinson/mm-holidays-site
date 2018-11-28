@@ -1,7 +1,7 @@
 // @flow
 
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import { setConfig } from "react-hot-loader"
@@ -51,7 +51,9 @@ const PromoVideo = styled.iframe`
   height: 100%;
 `
 
-const IndexPage = ({ data }) => (
+type Props = {| data: Object |}
+
+const IndexPage = ({ data }: Props) => (
   <Layout
     title={null}
     theme="light"

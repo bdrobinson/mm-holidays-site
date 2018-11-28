@@ -5,7 +5,11 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 
-export default function Template({ data }) {
+type Props = {|
+  data: Object,
+|}
+
+export default function Template({ data }: Props) {
   const title = data.markdownRemark.frontmatter.title
   return (
     <Layout title={title}>
