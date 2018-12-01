@@ -10,6 +10,7 @@ import Layout from "../components/Layout"
 import HomepageFeature from "../components/HomepageFeature"
 import PageGutter from "../components/PageGutter"
 import ImageCrossfade from "../components/ImageCrossfade"
+import { SMALLSCREEN_WIDTH } from "../constants"
 
 // Needed to make react hooks work with HMR
 setConfig({ pureSFC: true })
@@ -29,11 +30,17 @@ const HeroLabelContainer = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
+  text-align: center;
+`
+
+const Tagline = styled.h1`
   color: white;
   text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  text-align: center;
+  @media (max-width: ${SMALLSCREEN_WIDTH}px) {
+    font-size: 2.5rem;
+  }
 `
 
 const HeroLabel = styled.div``
@@ -87,7 +94,7 @@ const IndexPage = ({ data }: Props) => (
         <HeroLabelContainer>
           <HeroLabel>
             <PageGutter>
-              <h1>The best week of the year</h1>
+              <Tagline>The best week of the year</Tagline>
             </PageGutter>
           </HeroLabel>
         </HeroLabelContainer>
