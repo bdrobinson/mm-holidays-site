@@ -34,6 +34,16 @@ module.exports = {
         path: `${__dirname}/src/content`,
       },
     },
-    "gatsby-transformer-remark",
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: "gatsby-remark-external-links",
+          },
+        ],
+      },
+    },
+    "gatsby-plugin-catch-links",
   ],
 }

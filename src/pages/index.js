@@ -112,7 +112,6 @@ const IndexPage = ({ data }: Props) => (
       <HeroContainer>
         <ImageCrossfade
           fluids={[
-            data.hero0.childImageSharp.fluid,
             data.hero1.childImageSharp.fluid,
             data.hero2.childImageSharp.fluid,
             data.hero3.childImageSharp.fluid,
@@ -203,13 +202,6 @@ export const pageQuery = graphql`
             }
           }
           html
-        }
-      }
-    }
-    hero0: file(relativePath: { eq: "hero0.jpg" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
         }
       }
     }
