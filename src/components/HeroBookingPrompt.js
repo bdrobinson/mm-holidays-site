@@ -43,27 +43,30 @@ const BookingNoticeLink = styled.a`
   color: #203641;
   text-decoration: none;
   font-weight: bold;
-  transition: background-color 400ms, color 400ms;
+  transition: background-color 400ms, color 400ms, box-shadow 200ms;
   font-size: 1.2em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   &:hover {
     background-color: #c4e6f7;
   }
+  &:active {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
 `
 
-const BookingNoticeRow = styled.p`
+const BookingNoticeRow = styled.div`
+  display: flex;
+  flex-flow: row wrap;
   margin: 0.4em 0;
   font-size: 1.2em;
+  @media (max-width: ${TINY_WIDTH}px) {
+    flex-flow: column nowrap;
+  }
 `
 
 const BookingNoticeLabel = styled.span`
   font-weight: bold;
   margin-right: 0.8em;
-`
-
-const OptionalLineBreak = styled.span.attrs({ children: <br /> })`
-  @media (min-width: ${TINY_WIDTH}px) {
-    display: none;
-  }
 `
 
 type Props = {||}
@@ -74,16 +77,14 @@ const HeroBookingPrompt = (props: Props) => (
     <Content>
       <BookingNoticeText>
         <BookingNoticeRow>
-          <BookingNoticeLabel>M+M week 1</BookingNoticeLabel>
-          <OptionalLineBreak />
+          <BookingNoticeLabel>M+M 1</BookingNoticeLabel>
           <span>
             Sat 27
             <sup>th</sup> July &ndash; Sat 3<sup>rd</sup> August
           </span>
         </BookingNoticeRow>
         <BookingNoticeRow>
-          <BookingNoticeLabel>M+M week 2</BookingNoticeLabel>
-          <OptionalLineBreak />
+          <BookingNoticeLabel>M+M 2</BookingNoticeLabel>
           <span>
             Sat 3<sup>rd</sup> &ndash; Sat 10
             <sup>th</sup> August

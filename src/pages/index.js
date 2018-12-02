@@ -65,18 +65,15 @@ const PromoVideo = styled.iframe`
 const HeroBookingNoticeContainer = styled.div`
   position: absolute;
   bottom: 0;
-  left: 0;
   right: 0;
   padding-bottom: 1em;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   font-size: 0.8rem;
+  width: 600px;
   @media (max-width: ${SMALLSCREEN_WIDTH}px) {
     display: none;
-  }
-  & > * {
-    min-width: ${0.7 * SMALLSCREEN_WIDTH}px;
   }
 `
 
@@ -86,8 +83,9 @@ const BodyBookingNoticeContainer = styled.div`
   justify-content: center;
   width: 100%;
   margin-top: 1em;
+  font-size: 0.9rem;
   & > * {
-    max-width: 70%;
+    width: 70%;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
     @media (max-width: ${MOBILE_WIDTH}px) {
       width: 100%;
