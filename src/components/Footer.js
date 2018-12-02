@@ -10,7 +10,7 @@ const FooterMain = styled.footer`
   background-color: ${FOOTER_BG};
   color: ${FOOTER_TEXT};
   padding: 2rem 0;
-  text-align: center;
+  text-align: left;
 `
 
 const Footer = () => (

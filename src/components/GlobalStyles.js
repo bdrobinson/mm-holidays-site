@@ -37,6 +37,10 @@ const GlobalStyles = createGlobalStyle`
 
     footer {
     }
+
+    a {
+        color: currentColor;
+    }
 `
 
 export default GlobalStyles

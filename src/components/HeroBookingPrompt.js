@@ -4,6 +4,7 @@ import styled from "styled-components"
 import React from "react"
 
 import { TINY_WIDTH } from "../constants"
+import BookButton from "./BookButton"
 
 const Main = styled.div`
   background-color: white;
@@ -30,28 +31,6 @@ const BookingNoticeText = styled.p`
   padding-right: 1em;
   margin: 0;
   font-size: 1em;
-`
-
-const BookingNoticeLink = styled.a`
-  padding: 1em;
-  background-color: #74c3ed;
-  border-radius: 3em;
-  overflow: hidden;
-  text-align: center;
-  white-space: nowrap;
-  min-width: 6em;
-  color: #203641;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 400ms, color 400ms, box-shadow 200ms;
-  font-size: 1.2em;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  &:hover {
-    background-color: #c4e6f7;
-  }
-  &:active {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
 `
 
 const BookingNoticeRow = styled.div`
@@ -91,7 +70,7 @@ const HeroBookingPrompt = (props: Props) => (
           </span>
         </BookingNoticeRow>
       </BookingNoticeText>
-      <BookingNoticeLink href="https://google.com">Book now</BookingNoticeLink>
+      <BookButton>Book now</BookButton>
     </Content>
   </Main>
 )

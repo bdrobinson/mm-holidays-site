@@ -12,6 +12,7 @@ import PageGutter from "../components/PageGutter"
 import ImageCrossfade from "../components/ImageCrossfade"
 import { SMALLSCREEN_WIDTH, MOBILE_WIDTH } from "../constants"
 import HeroBookingPrompt from "../components/HeroBookingPrompt"
+import FooterBookingPrompt from "../components/FooterBookingPrompt"
 
 // Needed to make react hooks work with HMR
 setConfig({ pureSFC: true })
@@ -174,6 +175,9 @@ const IndexPage = ({ data }: Props) => (
         />
       )
     })}
+    <section>
+      <FooterBookingPrompt />
+    </section>
   </Layout>
 )
 
