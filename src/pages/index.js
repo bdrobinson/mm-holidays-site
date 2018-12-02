@@ -10,7 +10,8 @@ import Layout from "../components/Layout"
 import HomepageFeature from "../components/HomepageFeature"
 import PageGutter from "../components/PageGutter"
 import ImageCrossfade from "../components/ImageCrossfade"
-import { SMALLSCREEN_WIDTH } from "../constants"
+import { SMALLSCREEN_WIDTH, MOBILE_WIDTH } from "../constants"
+import HeroBookingPrompt from "../components/HeroBookingPrompt"
 
 // Needed to make react hooks work with HMR
 setConfig({ pureSFC: true })
@@ -43,10 +44,6 @@ const Tagline = styled.h1`
   }
 `
 
-const HeroLabel = styled.div``
-
-const IntroSection = styled.section``
-
 const PromoVideoContainer = styled.div`
   position: relative;
   overflow: hidden;
@@ -63,6 +60,46 @@ const PromoVideo = styled.iframe`
   left: 0;
   width: 100%;
   height: 100%;
+`
+
+const HeroBookingNoticeContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 1em;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  font-size: 0.8rem;
+  @media (max-width: ${SMALLSCREEN_WIDTH}px) {
+    display: none;
+  }
+  & > * {
+    min-width: ${0.7 * SMALLSCREEN_WIDTH}px;
+  }
+`
+
+const BodyBookingNoticeContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1em;
+  & > * {
+    max-width: 70%;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    @media (max-width: ${MOBILE_WIDTH}px) {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+`
+
+const BookingNoticeSection = styled.section`
+  @media (min-width: ${SMALLSCREEN_WIDTH}px) {
+    display: none;
+  }
 `
 
 type Props = {| data: Object |}
@@ -86,22 +123,34 @@ const IndexPage = ({ data }: Props) => (
               <Img
                 fluid={fluid}
                 style={{ maxHeight: "800px" }}
-                imgStyle={{ objectPosition: "top" }}
+                imgStyle={{ objectPosition: "center" }}
               />
             )
           }}
         />
         <HeroLabelContainer>
-          <HeroLabel>
+          <div>
             <PageGutter>
               <Tagline>The best week of the year</Tagline>
             </PageGutter>
-          </HeroLabel>
+          </div>
         </HeroLabelContainer>
+        <HeroBookingNoticeContainer>
+          <PageGutter>
+            <HeroBookingPrompt />
+          </PageGutter>
+        </HeroBookingNoticeContainer>
       </HeroContainer>
     }
   >
-    <IntroSection>
+    <BookingNoticeSection>
+      <PageGutter>
+        <BodyBookingNoticeContainer>
+          <HeroBookingPrompt />
+        </BodyBookingNoticeContainer>{" "}
+      </PageGutter>
+    </BookingNoticeSection>
+    <section>
       <PageGutter>
         <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />
         <PromoVideoContainer>
@@ -114,7 +163,7 @@ const IndexPage = ({ data }: Props) => (
           />
         </PromoVideoContainer>
       </PageGutter>
-    </IntroSection>
+    </section>
     {data.allMarkdownRemark.edges.map(edge => {
       const frontmatter = edge.node.frontmatter
       return (
