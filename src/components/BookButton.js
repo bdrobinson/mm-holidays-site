@@ -18,7 +18,6 @@ const BookingNoticeLink: ReactComponentStyled<Props> = styled.a.attrs({
 })`
   padding: 1em ${({ paddingHorizontal = "1em" }: Props) => paddingHorizontal};
   background-color: ${PRIMARY_COLOUR};
-  border-radius: 3em;
   overflow: hidden;
   text-align: center;
   white-space: nowrap;

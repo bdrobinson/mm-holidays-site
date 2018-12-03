@@ -65,14 +65,17 @@ const PromoVideo = styled.iframe`
 
 const HeroBookingNoticeContainer = styled.div`
   position: absolute;
-  bottom: 0;
-  right: 0;
-  padding-bottom: 1em;
+  bottom: 1em;
+  right: 1em;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   font-size: 0.8rem;
-  width: 600px;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-width: 6px;
+  border-color: white;
+  border-style: solid;
   @media (max-width: ${SMALLSCREEN_WIDTH}px) {
     display: none;
   }
@@ -87,7 +90,6 @@ const BodyBookingNoticeContainer = styled.div`
   font-size: 0.9rem;
   & > * {
     width: 70%;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
     @media (max-width: ${MOBILE_WIDTH}px) {
       width: 100%;
       max-width: 100%;
@@ -134,9 +136,7 @@ const IndexPage = ({ data }: Props) => (
           </div>
         </HeroLabelContainer>
         <HeroBookingNoticeContainer>
-          <PageGutter>
-            <HeroBookingPrompt />
-          </PageGutter>
+          <HeroBookingPrompt />
         </HeroBookingNoticeContainer>
       </HeroContainer>
     }

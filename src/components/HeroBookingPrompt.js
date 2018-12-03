@@ -7,10 +7,8 @@ import { TINY_WIDTH } from "../constants"
 import BookButton from "./BookButton"
 
 const Main = styled.div`
-  background-color: white;
   overflow: auto;
   padding: 1.8em;
-  color: #333;
 `
 
 const Content = styled.div`
