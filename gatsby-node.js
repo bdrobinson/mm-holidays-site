@@ -4,28 +4,41 @@ exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
   const blogPostTemplate = path.resolve(`src/templates/page.js`)
+  const campProfileTemplate = path.resolve(`src/templates/camp.js`)
 
-  const result = await graphql(`
-    {
+  const pages = await graphql(`
+    query MyQuery {
       allMarkdownRemark(filter: { frontmatter: { path: { ne: null } } }) {
         edges {
           node {
             frontmatter {
               path
+              template
             }
           }
         }
       }
     }
   `)
-  if (result.errors) {
-    throw new Error(result.errors)
+
+  if (pages.errors) {
+    throw new Error(pages.errors)
   }
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    createPage({
-      path: node.frontmatter.path,
-      component: blogPostTemplate,
-    })
+  pages.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    switch (node.frontmatter.template) {
+      case "CAMP_PROFILE": {
+        createPage({
+          path: node.frontmatter.path,
+          component: campProfileTemplate,
+        })
+        return
+      }
+      default:
+        createPage({
+          path: node.frontmatter.path,
+          component: blogPostTemplate,
+        })
+    }
   })
 }

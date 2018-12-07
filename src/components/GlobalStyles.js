@@ -41,6 +41,10 @@ const GlobalStyles = createGlobalStyle`
     a {
         color: currentColor;
     }
+
+    strong {
+        font-weight: bold;
+    }
 `
 
 export default GlobalStyles

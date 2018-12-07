@@ -10,7 +10,11 @@ import Layout from "../components/Layout"
 import HomepageFeature from "../components/HomepageFeature"
 import PageGutter from "../components/PageGutter"
 import ImageCrossfade from "../components/ImageCrossfade"
-import { SMALLSCREEN_WIDTH, MOBILE_WIDTH } from "../constants"
+import {
+  SMALLSCREEN_WIDTH,
+  MOBILE_WIDTH,
+  HERO_IMAGE_MAX_HEIGHT,
+} from "../constants"
 import HeroBookingPrompt from "../components/HeroBookingPrompt"
 import FooterBookingPrompt from "../components/FooterBookingPrompt"
 
@@ -122,7 +126,7 @@ const IndexPage = ({ data }: Props) => (
             return (
               <Img
                 fluid={fluid}
-                style={{ maxHeight: "800px" }}
+                style={{ maxHeight: `${HERO_IMAGE_MAX_HEIGHT}px` }}
                 imgStyle={{ objectPosition: "center" }}
               />
             )
