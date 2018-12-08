@@ -4,7 +4,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import { setConfig } from "react-hot-loader"
 
 import Layout from "../components/Layout"
 import HomepageFeature from "../components/HomepageFeature"
@@ -17,9 +16,6 @@ import {
 } from "../constants"
 import HeroBookingPrompt from "../components/HeroBookingPrompt"
 import FooterBookingPrompt from "../components/FooterBookingPrompt"
-
-// Needed to make react hooks work with HMR
-setConfig({ pureSFC: true })
 
 const HeroContainer = styled.div`
   position: relative;

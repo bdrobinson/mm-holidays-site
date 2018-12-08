@@ -4,4 +4,14 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-// You can delete this file if you're not using it
+import { setConfig } from "react-hot-loader"
+
+export const onClientEntry = () => {
+  // Needed to make react hooks work with HMR
+  setConfig({ pureSFC: true })
+
+  if (typeof window.IntersectionObserver === `undefined`) {
+    // Needed to make gatsby-image blur-up effect work on safari etc
+    import("intersection-observer")
+  }
+}
