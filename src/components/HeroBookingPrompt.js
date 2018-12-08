@@ -23,7 +23,7 @@ const Title = styled.h2`
   margin-top: 0;
 `
 
-const BookingNoticeText = styled.p`
+const BookingNoticeText = styled.div`
   flex-grow: 1;
   flex-shrink: 1;
   padding-right: 1em;
@@ -34,7 +34,7 @@ const BookingNoticeText = styled.p`
 const BookingNoticeRow = styled.div`
   display: flex;
   flex-flow: row wrap;
-  margin: 0.4em 0;
+  margin: 0.8em 0;
   font-size: 1.2em;
   @media (max-width: ${TINY_WIDTH}px) {
     flex-flow: column nowrap;
