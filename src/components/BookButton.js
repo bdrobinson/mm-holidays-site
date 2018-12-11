@@ -16,6 +16,7 @@ type Props = {
 const BookingNoticeLink: ReactComponentStyled<Props> = styled.a.attrs({
   href: "https://google.com",
 })`
+  display: inline-block;
   padding: 1em ${({ paddingHorizontal = "1em" }: Props) => paddingHorizontal};
   background-color: ${PRIMARY_COLOUR};
   overflow: hidden;

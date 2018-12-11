@@ -89,6 +89,9 @@ const BodyBookingNoticeContainer = styled.div`
   margin-top: 1em;
   font-size: 0.9rem;
   & > * {
+    border-width: 4px;
+    border-style: solid;
+    border-color: currentColor;
     width: 70%;
     @media (max-width: ${MOBILE_WIDTH}px) {
       width: 100%;
