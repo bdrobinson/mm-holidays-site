@@ -2,33 +2,13 @@
 
 import React from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 import styled from "styled-components"
 
 import Layout from "../components/Layout"
 import CampDatesCTA from "../components/CampDatesCTA"
 import PageGutter from "../components/PageGutter"
-import {
-  HERO_IMAGE_MAX_HEIGHT,
-  SMALLSCREEN_WIDTH,
-  TINY_WIDTH,
-} from "../constants"
-
-const HeroContainer = styled.div`
-  position: relative;
-`
-
-const HeroOverlay = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-`
+import HeroImage from "../components/HeroImage"
+import { SMALLSCREEN_WIDTH } from "../constants"
 
 const HeroCampDates = styled.div`
   position: absolute;
@@ -52,24 +32,6 @@ const BodyCampDates = styled.section`
   }
 `
 
-const HeroTitle = styled.h1`
-  font-size: 7rem;
-  text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-  margin-bottom: 0;
-  @media (max-width: ${TINY_WIDTH}px) {
-    font-size: 4rem;
-  }
-`
-
-const HeroSubtitle = styled.span`
-  font-size: 3rem;
-  text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-  font-weight: 600;
-  @media (max-width: ${TINY_WIDTH}px) {
-    font-size: 2rem;
-  }
-`
-
 type Props = {|
   data: Object,
 |}
@@ -81,22 +43,17 @@ const Camp = ({ data }: Props) => {
       title={meta.title}
       theme="light"
       hero={
-        <HeroContainer>
-          <Img
-            fluid={meta.hero.childImageSharp.fluid}
-            style={{ maxHeight: `${HERO_IMAGE_MAX_HEIGHT}px` }}
-            imgStyle={{ objectPosition: "center" }}
-          />
-          <HeroOverlay>
-            <HeroTitle>{meta.title}</HeroTitle>
-            <HeroSubtitle>Age {meta.ages}</HeroSubtitle>
-          </HeroOverlay>
+        <HeroImage
+          fluid={meta.hero.childImageSharp.fluid}
+          title={meta.title}
+          subtitle={`Age ${meta.ages}`}
+        >
           <HeroCampDates>
             <PageGutter>
               <CampDatesCTA shadows={true} campName={meta.title} />
             </PageGutter>
           </HeroCampDates>
-        </HeroContainer>
+        </HeroImage>
       }
     >
       <BodyCampDates>
