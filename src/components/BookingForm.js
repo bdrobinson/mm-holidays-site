@@ -211,3 +211,5 @@ const BookingForm = () => {
     </Formik>
   )
 }
+
+export default BookingForm
