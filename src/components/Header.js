@@ -72,54 +72,56 @@ type Props = {|
   theme?: "light" | "dark",
 |}
 
-const Header = ({ siteTitle, hero, theme = "dark" }: Props) => (
-  <Main theme={theme}>
-    {hero != null && hero}
-    <TopBar drawUnder={hero != null} shadow={hero != null}>
-      <PageGutter>
-        <Inner>
-          <Link to="/">
-            <LogoContainer>
-              <StaticQuery
-                query={graphql`
-                  query {
-                    light: file(relativePath: { eq: "logo_white.png" }) {
-                      childImageSharp {
-                        fluid(maxWidth: 150, traceSVG: { color: "white" }) {
-                          ...GatsbyImageSharpFluid_tracedSVG
+const Header = ({ siteTitle, hero, theme = "dark" }: Props) => {
+  return (
+    <Main theme={theme}>
+      {hero != null && hero}
+      <TopBar drawUnder={hero != null} shadow={hero != null}>
+        <PageGutter>
+          <Inner>
+            <Link to="/">
+              <LogoContainer>
+                <StaticQuery
+                  query={graphql`
+                    query {
+                      light: file(relativePath: { eq: "logo_white.png" }) {
+                        childImageSharp {
+                          fluid(maxWidth: 150, traceSVG: { color: "white" }) {
+                            ...GatsbyImageSharpFluid_tracedSVG
+                          }
+                        }
+                      }
+                      dark: file(relativePath: { eq: "logo_black.png" }) {
+                        childImageSharp {
+                          fluid(maxWidth: 150, traceSVG: { color: "black" }) {
+                            ...GatsbyImageSharpFluid_tracedSVG
+                          }
                         }
                       }
                     }
-                    dark: file(relativePath: { eq: "logo_black.png" }) {
-                      childImageSharp {
-                        fluid(maxWidth: 150, traceSVG: { color: "black" }) {
-                          ...GatsbyImageSharpFluid_tracedSVG
-                        }
-                      }
-                    }
-                  }
-                `}
-                render={data => {
-                  const image =
-                    theme === "light"
-                      ? data.light.childImageSharp.fluid
-                      : data.dark.childImageSharp.fluid
-                  return <Img fluid={image} />
-                }}
-              />
-            </LogoContainer>
-          </Link>
-          <Nav shadows={hero != null}>
-            <NavLink to="/about">About us</NavLink>
-            <NavLink to="/max">Max</NavLink>
-            <NavLink to="/madness">Madness</NavLink>
-            <NavLink to="/mayhem">Mayhem</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
-          </Nav>
-        </Inner>
-      </PageGutter>
-    </TopBar>
-  </Main>
-)
+                  `}
+                  render={data => {
+                    const image =
+                      theme === "light"
+                        ? data.light.childImageSharp.fluid
+                        : data.dark.childImageSharp.fluid
+                    return <Img fluid={image} />
+                  }}
+                />
+              </LogoContainer>
+            </Link>
+            <Nav shadows={hero != null}>
+              <NavLink to="/about">About us</NavLink>
+              <NavLink to="/max">Max</NavLink>
+              <NavLink to="/madness">Madness</NavLink>
+              <NavLink to="/mayhem">Mayhem</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
+            </Nav>
+          </Inner>
+        </PageGutter>
+      </TopBar>
+    </Main>
+  )
+}
 
 export default Header
