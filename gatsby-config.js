@@ -25,7 +25,6 @@ module.exports = {
         icon: "src/images/logo_black_square.png",
       },
     },
-    "gatsby-plugin-offline",
     "gatsby-plugin-styled-components",
     {
       resolve: `gatsby-source-filesystem`,
