@@ -1,19 +1,18 @@
 // @flow
 
-import React, { type Node } from "react"
+import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
 
 import PageGutter from "./PageGutter"
+import { MOBILE_WIDTH } from "../constants"
 
 const Main = styled.div`
-  position: relative;
   color: ${props => (props.theme === "dark" ? "#333" : "white")};
 `
 
 const TopBar = styled.header`
-  position: ${props => (props.drawUnder ? "absolute" : "relative")};
   top: 0;
   width: 100%;
   padding-top: 0.5rem;
@@ -41,6 +40,21 @@ const Nav = styled.nav`
   overflow-x: auto;
   text-shadow: ${props =>
     props.shadow ? "0 0 30px rgba(0, 0, 0, 0.5)" : "none"};
+  @media (max-width: ${MOBILE_WIDTH}px) {
+    display: none;
+  }
+`
+
+const MenuButton = styled.button.attrs({ children: "Menu" })`
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-weight: 500;
+  @media (min-width: ${MOBILE_WIDTH}px) {
+    display: none;
+  }
 `
 
 const NavLink = styled(Link)`
@@ -68,15 +82,22 @@ const LogoContainer = styled.div`
 
 type Props = {|
   siteTitle: string,
-  hero?: ?Node,
   theme?: "light" | "dark",
+  menuExpanded: boolean,
+  setMenuExpanded: boolean => void,
+  displayShadows: boolean,
 |}
 
-const Header = ({ siteTitle, hero, theme = "dark" }: Props) => {
+const Header = ({
+  siteTitle,
+  theme = "dark",
+  menuExpanded,
+  setMenuExpanded,
+  displayShadows,
+}: Props) => {
   return (
     <Main theme={theme}>
-      {hero != null && hero}
-      <TopBar drawUnder={hero != null} shadow={hero != null}>
+      <TopBar shadow={displayShadows}>
         <PageGutter>
           <Inner>
             <Link to="/">
@@ -110,13 +131,18 @@ const Header = ({ siteTitle, hero, theme = "dark" }: Props) => {
                 />
               </LogoContainer>
             </Link>
-            <Nav shadows={hero != null}>
+            <Nav shadows={displayShadows}>
               <NavLink to="/about">About us</NavLink>
               <NavLink to="/max">Max</NavLink>
               <NavLink to="/madness">Madness</NavLink>
               <NavLink to="/mayhem">Mayhem</NavLink>
               <NavLink to="/contact">Contact</NavLink>
             </Nav>
+            <MenuButton
+              onClick={() => {
+                setMenuExpanded(!menuExpanded)
+              }}
+            />
           </Inner>
         </PageGutter>
       </TopBar>
