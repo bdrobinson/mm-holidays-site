@@ -1,6 +1,6 @@
 ---
 order: 0
-title: This is the first thing
+title: Three holidays, two weeks
 image: "../../../images/lads.jpg"
 imageAltText: M+M campers and leaders enjoying the last night party.
 ---

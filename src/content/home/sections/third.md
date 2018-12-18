@@ -1,6 +1,6 @@
 ---
 order: 2
-title: The third thing
+title: Faith
 image: ../../../images/canoe.jpg
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
