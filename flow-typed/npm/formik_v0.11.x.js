@@ -3,12 +3,12 @@
 
 declare module "formik" {
   declare export type FormikErrors<Values> = {
-    [field: $Keys<Values>]: ?string
-  };
+    [field: $Keys<Values>]: ?string,
+  }
 
   declare export type FormikTouched<Values> = {
-    [field: $Keys<Values>]: boolean
-  };
+    [field: $Keys<Values>]: boolean,
+  }
 
   /**
    * Using interface here because interfaces support overloaded method signatures
@@ -38,7 +38,7 @@ declare module "formik" {
       // value: $ElementType<Values, FieldName>. But apparently this
       // doesn't work.
       value: $Call<() => $ElementType<Values, FieldName>>,
-      shouldValidate?: boolean
+      shouldValidate?: boolean,
     ): void;
     /** Set error message of a form field directly */
     setFieldError(field: $Keys<Values>, message: string): void;
@@ -46,7 +46,7 @@ declare module "formik" {
     setFieldTouched(
       field: $Keys<Values>,
       isTouched?: boolean,
-      shouldValidate?: boolean
+      shouldValidate?: boolean,
     ): void;
     /** Validate form values */
     validateForm(values?: any): void;
@@ -58,9 +58,9 @@ declare module "formik" {
     setFormikState(
       f: (
         prevState: $ReadOnly<FormikState<Values>>,
-        props: any
+        props: any,
       ) => $Shape<FormikState<Values>>,
-      callback?: () => any
+      callback?: () => any,
     ): void;
   }
 
@@ -72,8 +72,8 @@ declare module "formik" {
     /** Tell Formik if initial form values are valid or not on first render */
     isInitialValid?: boolean | ((props: {}) => boolean | void),
     /** Should Formik reset the form when new initialValues change */
-    enableReinitialize?: boolean
-  };
+    enableReinitialize?: boolean,
+  }
 
   declare export type FormikConfig<Values: Object> = FormikSharedConfig & {
     /**
@@ -115,8 +115,8 @@ declare module "formik" {
     /**
      * React children or child render callback
      */
-    children?: ((props: FormikProps<Values>) => React$Node) | React$Node
-  };
+    children?: ((props: FormikProps<Values>) => React$Node) | React$Node,
+  }
 
   /**
    * Formik state tree
@@ -138,8 +138,8 @@ declare module "formik" {
     /** Top level status state, in case you need it */
     status?: any,
     /** Number of times user tried to submit the form */
-    submitCount: number
-  };
+    submitCount: number,
+  }
 
   /**
    * Formik computed properties. These are read-only.
@@ -150,8 +150,8 @@ declare module "formik" {
     /** Result of isInitiallyValid on mount, then whether true values pass validation. */
     +isValid: boolean,
     /** initialValues */
-    +initialValues: Values
-  };
+    +initialValues: Values,
+  }
 
   /**
    * Formik form event handlers
@@ -164,19 +164,20 @@ declare module "formik" {
     /** Classic React blur handler */
     handleBlur: (e: any) => void,
     /** Reset form event handler  */
-    handleReset: () => void
-  };
+    handleReset: () => void,
+  }
 
   declare export type FormikProps<Values> = FormikState<Values> &
     FormikActions<Values> &
     FormikHandlers &
-    FormikComputedProps<Values>;
+    FormikComputedProps<Values>
 
   declare export class Formik<
     Values: Object,
     Props: FormikConfig<Values>,
-
   > extends React$Component<Props> {}
+
+  declare export class ErrorMessage extends React$Component<Object> {}
 
   /**
    * Note: These typings could be more restrictive, but then it would limit the
@@ -208,10 +209,10 @@ declare module "formik" {
       /** Value of the input */
       value: any,
       /* name of the input */
-      name: string
+      name: string,
     },
-    form: FormikProps<any>
-  };
+    form: FormikProps<any>,
+  }
 
   /*
   import * as React from 'react';
@@ -232,22 +233,19 @@ declare module "formik" {
   export default enhancer(MyFormikHoc);
    */
 
-  declare export var Field: React$StatelessFunctionalComponent<any>;
+  declare export var Field: React$StatelessFunctionalComponent<any>
 
-  declare export var Form: React$StatelessFunctionalComponent<any>;
+  declare export var Form: React$StatelessFunctionalComponent<any>
 
   /**
    * Formik actions + { props }
    */
-  declare export type FormikBag<P, V> = { props: P } & FormikActions<V>;
+  declare export type FormikBag<P, V> = { props: P } & FormikActions<V>
 
   /**
    * withFormik() configuration options. Backwards compatible.
    */
-  declare export type WithFormikConfig<
-    Props,
-    Values,
-  > = FormikSharedConfig & {
+  declare export type WithFormikConfig<Props, Values> = FormikSharedConfig & {
     /**
      * Set the display name of the component. Useful for React DevTools.
      */
@@ -275,12 +273,13 @@ declare module "formik" {
     validate?: (values: Values) => void | FormikErrors<Values> | Promise<any>,
   }
 
-  declare type TypeOrVoid = <V>(V) => (V | void)
+  declare type TypeOrVoid = <V>(V) => V | void
 
-  declare export function withFormik<
-    Props,
-    Values,
-  >(WithFormikConfig<Props, Values>): (
-    Component: React$ComponentType<Props>
-  ) => React$ComponentType<$Diff<Props, $ObjMap<FormikProps<Values>, TypeOrVoid>>>;
+  declare export function withFormik<Props, Values>(
+    WithFormikConfig<Props, Values>,
+  ): (
+    Component: React$ComponentType<Props>,
+  ) => React$ComponentType<
+    $Diff<Props, $ObjMap<FormikProps<Values>, TypeOrVoid>>,
+  >
 }
