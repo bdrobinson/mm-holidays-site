@@ -13,6 +13,7 @@ import {
   SMALLSCREEN_WIDTH,
   MOBILE_WIDTH,
   HERO_IMAGE_MAX_HEIGHT,
+  PRIMARY_COLOUR_DARK,
 } from "../constants"
 import HeroBookingPrompt from "../components/HeroBookingPrompt"
 import FooterBookingPrompt from "../components/FooterBookingPrompt"
@@ -86,12 +87,10 @@ const BodyBookingNoticeContainer = styled.div`
   flex-flow: row nowrap;
   justify-content: center;
   width: 100%;
-  margin-top: 1em;
   font-size: 0.9rem;
+  background-color: ${PRIMARY_COLOUR_DARK};
+  color: white;
   & > * {
-    border-width: 4px;
-    border-style: solid;
-    border-color: currentColor;
     width: 70%;
     @media (max-width: ${MOBILE_WIDTH}px) {
       width: 100%;
@@ -145,11 +144,11 @@ const IndexPage = ({ data }: Props) => (
     }
   >
     <BookingNoticeSection>
-      <PageGutter>
-        <BodyBookingNoticeContainer>
+      <BodyBookingNoticeContainer>
+        <PageGutter>
           <HeroBookingPrompt />
-        </BodyBookingNoticeContainer>{" "}
-      </PageGutter>
+        </PageGutter>
+      </BodyBookingNoticeContainer>
     </BookingNoticeSection>
     <section>
       <PageGutter>
