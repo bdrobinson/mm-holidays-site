@@ -4,10 +4,11 @@ import React from "react"
 import { Formik, type FormikErrors, Field, ErrorMessage } from "formik"
 
 import TextField from "./TextField"
+import { type Params } from "../../functions/book"
 
 type FormState = {|
   // section 1
-  campChoice: ?("mm1" | "mm2"),
+  campChoice: "1" | "2",
   // section 2
   childFirstName: string,
   childLastName: string,
@@ -18,7 +19,7 @@ type FormState = {|
   childDobYear: string,
   childDobMonth: string,
   childDobDay: string,
-  gender: ?("male" | "female"),
+  gender: "male" | "female",
   youthGroup: string,
   friendsWith: string,
   // section 3
@@ -47,8 +48,8 @@ type FormState = {|
   heardFriend: boolean,
   heardOther: string,
   // section 7
-  paymentMethod: ?("bankTransfer" | "cheque" | "cash"),
-  paymentAmount: ?("full" | "deposit"),
+  paymentMethod: "bankTransfer" | "cheque" | "cash",
+  paymentAmount: "full" | "deposit",
   // section 8
   otherInfo: string,
   // section 9
@@ -56,14 +57,6 @@ type FormState = {|
   // section 10
   parentConfirmation: boolean,
 |}
-
-const NON_NULL_FIELDS: { [$Keys<FormState>]: string } = {
-  campChoice: "Please choose a camp",
-  gender: "Please specify",
-  photoPermission: "Please specify",
-  paymentMethod: "Please specify",
-  paymentAmount: "Please specify",
-}
 
 const NON_EMPTY_STRINGS: Array<$Keys<FormState>> = [
   "childFirstName",
@@ -82,7 +75,7 @@ const MUST_BE_TRUE: Array<$Keys<FormState>> = [
 
 const getInitialState = (): FormState => ({
   // section 1
-  campChoice: null,
+  campChoice: "1",
   // section 2
   childFirstName: "",
   childLastName: "",
@@ -93,7 +86,7 @@ const getInitialState = (): FormState => ({
   childDobYear: "",
   childDobMonth: "",
   childDobDay: "",
-  gender: null,
+  gender: "male",
   youthGroup: "",
   friendsWith: "",
   // section 3
@@ -122,25 +115,19 @@ const getInitialState = (): FormState => ({
   heardFriend: false,
   heardOther: "",
   // section 7
-  paymentMethod: null,
-  paymentAmount: null,
+  paymentMethod: "bankTransfer",
+  paymentAmount: "full",
   // section 8
   otherInfo: "",
   // section 9
-  childConfirmation: false,
+  childConfirmation: true,
   // section 10
-  parentConfirmation: false,
+  parentConfirmation: true,
 })
 
 const validateForm = (formState: FormState): FormikErrors<FormState> => {
   const errors = {}
   Object.keys(formState).map(key => {
-    if (Object.keys(NON_NULL_FIELDS).includes(key)) {
-      if (formState[key] == null) {
-        errors[key] = NON_NULL_FIELDS[key]
-      }
-    }
-
     if (NON_EMPTY_STRINGS.includes(key)) {
       // $FlowFixMe
       if (formState[key].trim() === "") {
@@ -157,13 +144,62 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
   return errors
 }
 
+const createRequestParams = (values: FormState): Params => {
+  return {
+    campChoice: values.campChoice,
+    childFirstName: values.childFirstName,
+    childLastName: values.childLastName,
+    childAddress: values.childAddress,
+    childPostcode: values.childPostcode,
+    childPhoneNumber: values.childPhoneNumber,
+    childEmail: values.childEmail,
+    childDobYear: values.childDobYear,
+    childDobMonth: values.childDobMonth,
+    childDobDay: values.childDobDay,
+    gender: values.gender,
+    youthGroup: values.youthGroup,
+    friendsWith: values.friendsWith,
+    title: values.title,
+    parentFirstName: values.parentFirstName,
+    parentLastName: values.parentLastName,
+    parentAddress: values.parentAddress,
+    parentPostcode: values.parentPostcode,
+    parentPhone: values.parentPhone,
+    parentEmail: values.parentEmail,
+    siblingNames: values.siblingNames,
+    contactByEmail: values.contactByEmail,
+    contactByPhone: values.contactByPhone,
+    contactByPost: values.contactByPost,
+    acceptRecordKeeping: values.acceptRecordKeeping,
+    photoPermission: values.photoPermission === "yes",
+    heardUrbanSaintsMailing: values.heardUrbanSaintsMailing,
+    heardUrbanSaintsWebsite: values.heardUrbanSaintsWebsite,
+    heardBeenBefore: values.heardBeenBefore,
+    heardFamilyMember: values.heardFamilyMember,
+    heardChurch: values.heardChurch,
+    heardScriptureUnion: values.heardScriptureUnion,
+    heardFriend: values.heardFriend,
+    heardOther: values.heardOther,
+    paymentMethod: values.paymentMethod,
+    paymentAmount: values.paymentAmount,
+    otherInfo: values.otherInfo,
+    childConfirmation: values.childConfirmation,
+    parentConfirmation: values.parentConfirmation,
+  }
+}
+
 const BookingForm = () => {
   return (
     <Formik
       initialValues={getInitialState()}
       validate={validateForm}
-      onSubmit={() => {
-        //
+      onSubmit={async (values, bag) => {
+        bag.setSubmitting(true)
+        await fetch("/.netlify/functions/book", {
+          method: "POST",
+          body: JSON.stringify(createRequestParams(values)),
+        })
+        bag.setSubmitting(false)
       }}
     >
       {({ values, submitForm, handleChange, handleBlur }) => {
@@ -177,13 +213,13 @@ const BookingForm = () => {
             <section>
               <p>
                 <label>
-                  <Field type="radio" name="campChoice" value="mm1" />
+                  <Field type="radio" name="campChoice" value="1" />
                   M+M 1
                 </label>
               </p>
               <p>
                 <label>
-                  <Field type="radio" name="campChoice" value="mm2" />
+                  <Field type="radio" name="campChoice" value="2" />
                   M+M 2
                 </label>
                 <ErrorMessage name="campChoice" />
