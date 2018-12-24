@@ -56,7 +56,11 @@ export type Params = {|
   paymentMethod: "bankTransfer" | "cheque" | "cash",
   paymentAmount: "full" | "deposit",
   // section 8
-  otherInfo: string,
+  dietaryNeeds: string,
+  medicalIssues: string,
+  behaviouralNeeds: string,
+  englishNotFirstLanguage: string,
+  anythingElse: string,
   // section 9
   childConfirmation: boolean,
   // section 10

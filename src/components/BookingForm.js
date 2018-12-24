@@ -57,7 +57,11 @@ type FormState = {|
   paymentMethod: "bankTransfer" | "cheque" | "cash",
   paymentAmount: "full" | "deposit",
   // section 8
-  otherInfo: string,
+  dietaryNeeds: string,
+  medicalIssues: string,
+  behaviouralNeeds: string,
+  englishNotFirstLanguage: string,
+  anythingElse: string,
   // section 9
   childConfirmation: boolean,
   // section 10
@@ -133,7 +137,11 @@ const getInitialState = (): FormState => ({
   paymentMethod: "bankTransfer",
   paymentAmount: "full",
   // section 8
-  otherInfo: "",
+  dietaryNeeds: "",
+  medicalIssues: "",
+  behaviouralNeeds: "",
+  englishNotFirstLanguage: "",
+  anythingElse: "",
   // section 9
   childConfirmation: false,
   // section 10
@@ -207,7 +215,11 @@ const createRequestParams = (values: FormState): Params => {
     heardOther: values.heardOther,
     paymentMethod: values.paymentMethod,
     paymentAmount: values.paymentAmount,
-    otherInfo: values.otherInfo,
+    dietaryNeeds: values.dietaryNeeds,
+    medicalIssues: values.medicalIssues,
+    behaviouralNeeds: values.behaviouralNeeds,
+    englishNotFirstLanguage: values.englishNotFirstLanguage,
+    anythingElse: values.anythingElse,
     childConfirmation: values.childConfirmation,
     parentConfirmation: values.parentConfirmation,
   }
@@ -524,11 +536,50 @@ const BookingForm = () => {
             </section>
             <section>
               <label>
-                <p>Other info</p>
+                <p>Dietary needs</p>
                 <textarea
-                  label="Other info"
-                  name="otherInfo"
-                  value={values.otherInfo}
+                  name="dietaryNeeds"
+                  value={values.dietaryNeeds}
+                  onChange={handleChange}
+                />
+              </label>
+            </section>
+            <section>
+              <label>
+                <p>Medical issues</p>
+                <textarea
+                  name="medicalIssues"
+                  value={values.medicalIssues}
+                  onChange={handleChange}
+                />
+              </label>
+            </section>
+            <section>
+              <label>
+                <p>Behavioural needs</p>
+                <textarea
+                  name="behaviouralNeeds"
+                  value={values.behaviouralNeeds}
+                  onChange={handleChange}
+                />
+              </label>
+            </section>
+            <section>
+              <label>
+                <p>English not first language</p>
+                <textarea
+                  name="englishNotFirstLanguage"
+                  value={values.englishNotFirstLanguage}
+                  onChange={handleChange}
+                />
+              </label>
+            </section>
+            <section>
+              <label>
+                <p>Anything else</p>
+                <textarea
+                  name="anythingElse"
+                  value={values.anythingElse}
                   onChange={handleChange}
                 />
               </label>
