@@ -1,7 +1,6 @@
 // @flow
 
 import sendgrid from "@sendgrid/mail"
-import Joi from "joi"
 import dotenv from "dotenv"
 
 dotenv.config()
@@ -12,7 +11,10 @@ export type Params = {|
   // section 2
   childFirstName: string,
   childLastName: string,
-  childAddress: string,
+  childAddressLine1: string,
+  childAddressLine2: string,
+  childAddressCity: string,
+  childAddressCounty: string,
   childPostcode: string,
   childPhoneNumber: string,
   childEmail: string,
@@ -26,7 +28,10 @@ export type Params = {|
   title: string,
   parentFirstName: string,
   parentLastName: string,
-  parentAddress: string,
+  parentAddressLine1: string,
+  parentAddressLine2: string,
+  parentAddressCity: string,
+  parentAddressCounty: string,
   parentPostcode: string,
   parentPhone: string,
   parentEmail: string,
@@ -58,59 +63,7 @@ export type Params = {|
   parentConfirmation: boolean,
 |}
 
-const schema = Joi.object().keys({
-  // section 1
-  campChoice: Joi.string().required(),
-  // section 2
-  childFirstName: Joi.string().required(),
-  childLastName: Joi.string().required(),
-  childAddress: Joi.string().required(),
-  childPostcode: Joi.string().required(),
-  childPhoneNumber: Joi.string().required(),
-  childEmail: Joi.string().required(),
-  childDobYear: Joi.string().required(),
-  childDobMonth: Joi.string().required(),
-  childDobDay: Joi.string().required(),
-  gender: Joi.string().required(),
-  youthGroup: Joi.string().allow(""),
-  friendsWith: Joi.string().allow(""),
-  // section 3
-  title: Joi.string().allow(""),
-  parentFirstName: Joi.string().allow(""),
-  parentLastName: Joi.string().allow(""),
-  parentAddress: Joi.string().allow(""),
-  parentPostcode: Joi.string().allow(""),
-  parentPhone: Joi.string().allow(""),
-  parentEmail: Joi.string().allow(""),
-  siblingNames: Joi.string().allow(""),
-  // section 4
-  contactByEmail: Joi.boolean(),
-  contactByPhone: Joi.boolean(),
-  contactByPost: Joi.boolean(),
-  acceptRecordKeeping: Joi.boolean().required(),
-  // section 5
-  photoPermission: Joi.boolean(),
-  // section 6
-  heardUrbanSaintsMailing: Joi.boolean(),
-  heardUrbanSaintsWebsite: Joi.boolean(),
-  heardBeenBefore: Joi.boolean(),
-  heardFamilyMember: Joi.boolean(),
-  heardChurch: Joi.boolean(),
-  heardScriptureUnion: Joi.boolean(),
-  heardFriend: Joi.boolean(),
-  heardOther: Joi.string().allow(""),
-  // section 7
-  paymentMethod: Joi.string().required(),
-  paymentAmount: Joi.string().required(),
-  // section 8
-  otherInfo: Joi.string().allow(""),
-  // section 9
-  childConfirmation: Joi.boolean().required(),
-  // section 10
-  parentConfirmation: Joi.boolean().required(),
-})
-
-export const handler = (event, context, callback) => {
+export const handler = (event: Object, context: Object, callback: Function) => {
   console.log("handling event", event.params)
   handleAsync(event, context, callback).catch(err => {
     console.log("got error", err)
@@ -121,12 +74,14 @@ export const handler = (event, context, callback) => {
   })
 }
 
-export const handleAsync = async (event, context, callback) => {
-  console.log(process.env.SENDGRID_API_KEY)
+export const handleAsync = async (
+  event: Object,
+  context: Object,
+  callback: Function,
+) => {
   sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
 
   const params: Params = JSON.parse(event.body)
-  Joi.validate(params, schema)
 
   if (params.acceptRecordKeeping === false) {
     callback(null, {

@@ -12,7 +12,10 @@ type FormState = {|
   // section 2
   childFirstName: string,
   childLastName: string,
-  childAddress: string,
+  childAddressLine1: string,
+  childAddressLine2: string,
+  childAddressCity: string,
+  childAddressCounty: string,
   childPostcode: string,
   childPhoneNumber: string,
   childEmail: string,
@@ -26,7 +29,10 @@ type FormState = {|
   title: string,
   parentFirstName: string,
   parentLastName: string,
-  parentAddress: string,
+  parentAddressLine1: string,
+  parentAddressLine2: string,
+  parentAddressCity: string,
+  parentAddressCounty: string,
   parentPostcode: string,
   parentPhone: string,
   parentEmail: string,
@@ -61,10 +67,13 @@ type FormState = {|
 const NON_EMPTY_STRINGS: Array<$Keys<FormState>> = [
   "childFirstName",
   "childLastName",
-  "childAddress",
+  "childAddressLine1",
+  "childAddressCity",
+  "childAddressCounty",
   "childPostcode",
   "childPhoneNumber",
   "childEmail",
+  "parentEmail",
 ]
 
 const MUST_BE_TRUE: Array<$Keys<FormState>> = [
@@ -79,7 +88,10 @@ const getInitialState = (): FormState => ({
   // section 2
   childFirstName: "",
   childLastName: "",
-  childAddress: "",
+  childAddressLine1: "",
+  childAddressLine2: "",
+  childAddressCity: "",
+  childAddressCounty: "",
   childPostcode: "",
   childPhoneNumber: "",
   childEmail: "",
@@ -93,7 +105,10 @@ const getInitialState = (): FormState => ({
   title: "",
   parentFirstName: "",
   parentLastName: "",
-  parentAddress: "",
+  parentAddressLine1: "",
+  parentAddressLine2: "",
+  parentAddressCity: "",
+  parentAddressCounty: "",
   parentPostcode: "",
   parentPhone: "",
   parentEmail: "",
@@ -153,7 +168,10 @@ const createRequestParams = (values: FormState): Params => {
     campChoice: values.campChoice,
     childFirstName: values.childFirstName,
     childLastName: values.childLastName,
-    childAddress: values.childAddress,
+    childAddressLine1: values.childAddressLine1,
+    childAddressLine2: values.childAddressLine2,
+    childAddressCity: values.childAddressCity,
+    childAddressCounty: values.childAddressCounty,
     childPostcode: values.childPostcode,
     childPhoneNumber: values.childPhoneNumber,
     childEmail: values.childEmail,
@@ -166,7 +184,10 @@ const createRequestParams = (values: FormState): Params => {
     title: values.title,
     parentFirstName: values.parentFirstName,
     parentLastName: values.parentLastName,
-    parentAddress: values.parentAddress,
+    parentAddressLine1: values.parentAddressLine1,
+    parentAddressLine2: values.parentAddressLine2,
+    parentAddressCity: values.parentAddressCity,
+    parentAddressCounty: values.parentAddressCounty,
     parentPostcode: values.parentPostcode,
     parentPhone: values.parentPhone,
     parentEmail: values.parentEmail,
@@ -243,7 +264,10 @@ const BookingForm = () => {
               <h2>Young person</h2>
               <TextField label="First name" name="childFirstName" />
               <TextField label="Surname" name="childLastName" />
-              <TextField label="Address" name="childAddress" />
+              <TextField label="Address line 1" name="childAddressLine1" />
+              <TextField label="Address line 2" name="childAddressLine2" />
+              <TextField label="Town/City" name="childAddressCity" />
+              <TextField label="County" name="childAddressCounty" />
               <TextField label="Postcode" name="childPostcode" />
               <TextField
                 label="Contact phone"
@@ -296,6 +320,10 @@ const BookingForm = () => {
               <TextField label="First name" name="parentFirstName" />
               <TextField label="Surname" name="parentLastName" />
               <TextField label="Address" name="parentAddress" />
+              <TextField label="Address line 1" name="parentAddressLine1" />
+              <TextField label="Address line 2" name="parentAddressLine2" />
+              <TextField label="Town/city" name="parentAddressCity" />
+              <TextField label="County" name="parentAddressCounty" />
               <TextField label="Postcode" name="parentPostcode" />
               <TextField label="Contact phone" name="parentPhone" type="tel" />
               <TextField label="Email" name="parentEmail" type="email" />
