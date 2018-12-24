@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
     "formik": "^1.4.0",
     "gatsby": "^2.0.55",
     "gatsby-image": "^2.0.20",
@@ -16,6 +17,7 @@
     "gatsby-transformer-remark": "^2.1.12",
     "gatsby-transformer-sharp": "^2.1.8",
     "intersection-observer": "^0.5.1",
+    "joi": "^14.3.0",
     "normalize.css": "^8.0.1",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
@@ -37,6 +39,7 @@
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@babel/preset-flow": "^7.0.0",
     "babel-plugin-styled-components": "^1.9.1",
+    "dotenv": "^6.2.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-react-hooks": "^0.0.0",
     "flow-bin": "^0.87.0",

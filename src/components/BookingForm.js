@@ -120,9 +120,9 @@ const getInitialState = (): FormState => ({
   // section 8
   otherInfo: "",
   // section 9
-  childConfirmation: true,
+  childConfirmation: false,
   // section 10
-  parentConfirmation: true,
+  parentConfirmation: false,
 })
 
 const validateForm = (formState: FormState): FormikErrors<FormState> => {
@@ -141,6 +141,10 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
       }
     }
   })
+
+  if (formState.photoPermission == null) {
+    errors.photoPermission = "Required"
+  }
   return errors
 }
 
@@ -213,13 +217,23 @@ const BookingForm = () => {
             <section>
               <p>
                 <label>
-                  <Field type="radio" name="campChoice" value="1" />
+                  <Field
+                    type="radio"
+                    name="campChoice"
+                    value="1"
+                    checked={values.campChoice === "1"}
+                  />
                   M+M 1
                 </label>
               </p>
               <p>
                 <label>
-                  <Field type="radio" name="campChoice" value="2" />
+                  <Field
+                    type="radio"
+                    name="campChoice"
+                    value="2"
+                    checked={values.campChoice === "2"}
+                  />
                   M+M 2
                 </label>
                 <ErrorMessage name="campChoice" />
@@ -252,11 +266,21 @@ const BookingForm = () => {
               </div>
               <div>
                 <label>
-                  <Field type="radio" name="gender" value="male" />
+                  <Field
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    checked={values.gender === "male"}
+                  />
                   Male
                 </label>
                 <label>
-                  <Field type="radio" name="gender" value="female" />
+                  <Field
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    checked={values.gender === "female"}
+                  />
                   Female
                 </label>
                 <ErrorMessage name="gender" />
@@ -282,25 +306,41 @@ const BookingForm = () => {
               <p>
                 <label>
                   By email
-                  <Field type="checkbox" name="contactByEmail" />
+                  <Field
+                    type="checkbox"
+                    name="contactByEmail"
+                    checked={values.contactByEmail}
+                  />
                 </label>
               </p>
               <p>
                 <label>
                   By phone
-                  <Field type="checkbox" name="contactByPhone" />
+                  <Field
+                    type="checkbox"
+                    name="contactByPhone"
+                    checked={values.contactByPhone}
+                  />
                 </label>
               </p>
               <p>
                 <label>
                   By post
-                  <Field type="checkbox" name="contactByPost" />
+                  <Field
+                    type="checkbox"
+                    name="contactByPost"
+                    checked={values.contactByPost}
+                  />
                 </label>
               </p>
               <p>
                 <label>
                   Accept record keeping
-                  <Field type="checkbox" name="acceptRecordKeeping" />
+                  <Field
+                    type="checkbox"
+                    name="acceptRecordKeeping"
+                    checked={values.acceptRecordKeeping}
+                  />
                 </label>
               </p>
             </section>
@@ -309,11 +349,21 @@ const BookingForm = () => {
                 Photos
                 <label>
                   Yes
-                  <Field type="radio" name="photoPermission" value="yes" />
+                  <Field
+                    type="radio"
+                    name="photoPermission"
+                    value="yes"
+                    checked={values.photoPermission === "yes"}
+                  />
                 </label>
                 <label>
                   No
-                  <Field type="radio" name="photoPermission" value="no" />
+                  <Field
+                    type="radio"
+                    name="photoPermission"
+                    value="no"
+                    checked={values.photoPermission === "no"}
+                  />
                 </label>
               </p>
             </section>
@@ -322,43 +372,71 @@ const BookingForm = () => {
               <p>
                 <label>
                   Urban Saints mailing
-                  <Field type="checkbox" name="heardUrbanSaintsMailing" />
+                  <Field
+                    type="checkbox"
+                    name="heardUrbanSaintsMailing"
+                    value={values.heardUrbanSaintsMailing}
+                  />
                 </label>
               </p>
               <p>
                 <label>
                   Urban Saints website
-                  <Field type="checkbox" name="heardUrbanSaintsWebsite" />
+                  <Field
+                    type="checkbox"
+                    name="heardUrbanSaintsWebsite"
+                    value={values.heardUrbanSaintsWebsite}
+                  />
                 </label>
               </p>
               <p>
                 <label>
                   Been before
-                  <Field type="checkbox" name="heardBeenBefore" />
+                  <Field
+                    type="checkbox"
+                    name="heardBeenBefore"
+                    value={values.heardBeenBefore}
+                  />
                 </label>
               </p>
               <p>
                 <label>
                   Family member
-                  <Field type="checkbox" name="heardFamilyMember" />
+                  <Field
+                    type="checkbox"
+                    name="heardFamilyMember"
+                    value={values.heardFamilyMember}
+                  />
                 </label>
               </p>
               <p>
                 <label>
                   Church
-                  <Field type="checkbox" name="heardChurch" />
+                  <Field
+                    type="checkbox"
+                    name="heardChurch"
+                    value={values.heardChurch}
+                  />
                 </label>
               </p>
               <p>
                 <label>
                   Scripture Union
-                  <Field type="checkbox" name="heardScriptureUnion" />
+                  <Field
+                    type="checkbox"
+                    name="heardScriptureUnion"
+                    value={values.heardScriptureUnion}
+                  />
                 </label>
               </p>
               <p>
                 <label>
                   Friend
-                  <Field type="checkbox" name="heardFriend" />
+                  <Field
+                    type="checkbox"
+                    name="heardFriend"
+                    checked={values.heardFriend}
+                  />
                 </label>
               </p>
               <TextField name="heardOther" label="Other" />
@@ -371,25 +449,47 @@ const BookingForm = () => {
                     type="radio"
                     name="paymentMethod"
                     value="bankTransfer"
+                    checked={values.paymentMethod === "bankTransfer"}
                   />
                 </label>
                 <label>
                   Cheque
-                  <Field type="radio" name="paymentMethod" value="cheque" />
+                  <Field
+                    type="radio"
+                    name="paymentMethod"
+                    value="cheque"
+                    checked={values.paymentMethod === "cheque"}
+                  />
                 </label>
                 <label>
-                  Cash <Field type="radio" name="paymentMethod" value="cash" />
+                  Cash{" "}
+                  <Field
+                    type="radio"
+                    name="paymentMethod"
+                    value="cash"
+                    checked={values.paymentMethod === "cash"}
+                  />
                 </label>
                 <ErrorMessage name="paymentMethod" />
               </p>
               <p>
                 <label>
                   Full
-                  <Field type="radio" name="paymentAmount" value="full" />
+                  <Field
+                    type="radio"
+                    name="paymentAmount"
+                    value="full"
+                    checked={values.paymentAmount === "full"}
+                  />
                 </label>
                 <label>
                   Deposit
-                  <Field type="radio" name="paymentAmount" value="deposit" />
+                  <Field
+                    type="radio"
+                    name="paymentAmount"
+                    value="deposit"
+                    checked={values.paymentAmount === "deposit"}
+                  />
                 </label>
                 <ErrorMessage name="paymentAmount" />
               </p>
@@ -408,14 +508,22 @@ const BookingForm = () => {
             <section>
               <label>
                 <p>Child confirmation</p>
-                <Field type="checkbox" name="childConfirmation" />
+                <Field
+                  type="checkbox"
+                  name="childConfirmation"
+                  checked={values.childConfirmation}
+                />
                 <ErrorMessage name="childConfirmation" />
               </label>
             </section>
             <section>
               <label>
                 <p>Parent confirmation</p>
-                <Field type="checkbox" name="parentConfirmation" />
+                <Field
+                  type="checkbox"
+                  name="parentConfirmation"
+                  checked={values.parentConfirmation}
+                />
                 <ErrorMessage name="parentConfirmation" />
               </label>
             </section>
