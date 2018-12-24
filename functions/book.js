@@ -21,7 +21,7 @@ export type Params = {|
   childDobYear: string,
   childDobMonth: string,
   childDobDay: string,
-  gender: "male" | "female",
+  gender: "Male" | "Female",
   youthGroup: string,
   friendsWith: string,
   // section 3
@@ -53,8 +53,8 @@ export type Params = {|
   heardFriend: boolean,
   heardOther: string,
   // section 7
-  paymentMethod: "bankTransfer" | "cheque" | "cash",
-  paymentAmount: "full" | "deposit",
+  paymentMethod: "Bank transfer" | "Cheque" | "Cash",
+  paymentAmount: "Full" | "Deposit",
   // section 8
   dietaryNeeds: string,
   medicalIssues: string,

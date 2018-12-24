@@ -22,7 +22,7 @@ type FormState = {|
   childDobYear: string,
   childDobMonth: string,
   childDobDay: string,
-  gender: "male" | "female",
+  gender: "Male" | "Female",
   youthGroup: string,
   friendsWith: string,
   // section 3
@@ -54,8 +54,8 @@ type FormState = {|
   heardFriend: boolean,
   heardOther: string,
   // section 7
-  paymentMethod: "bankTransfer" | "cheque" | "cash",
-  paymentAmount: "full" | "deposit",
+  paymentMethod: "Bank transfer" | "Cheque" | "Cash",
+  paymentAmount: "Full" | "Deposit",
   // section 8
   dietaryNeeds: string,
   medicalIssues: string,
@@ -102,7 +102,7 @@ const getInitialState = (): FormState => ({
   childDobYear: "",
   childDobMonth: "",
   childDobDay: "",
-  gender: "male",
+  gender: "Male",
   youthGroup: "",
   friendsWith: "",
   // section 3
@@ -134,8 +134,8 @@ const getInitialState = (): FormState => ({
   heardFriend: false,
   heardOther: "",
   // section 7
-  paymentMethod: "bankTransfer",
-  paymentAmount: "full",
+  paymentMethod: "Bank transfer",
+  paymentAmount: "Full",
   // section 8
   dietaryNeeds: "",
   medicalIssues: "",
@@ -305,8 +305,8 @@ const BookingForm = () => {
                   <Field
                     type="radio"
                     name="gender"
-                    value="male"
-                    checked={values.gender === "male"}
+                    value="Male"
+                    checked={values.gender === "Male"}
                   />
                   Male
                 </label>
@@ -314,8 +314,8 @@ const BookingForm = () => {
                   <Field
                     type="radio"
                     name="gender"
-                    value="female"
-                    checked={values.gender === "female"}
+                    value="Female"
+                    checked={values.gender === "Female"}
                   />
                   Female
                 </label>
@@ -488,8 +488,8 @@ const BookingForm = () => {
                   <Field
                     type="radio"
                     name="paymentMethod"
-                    value="bankTransfer"
-                    checked={values.paymentMethod === "bankTransfer"}
+                    value="Bank transfer"
+                    checked={values.paymentMethod === "Bank transfer"}
                   />
                 </label>
                 <label>
@@ -497,8 +497,8 @@ const BookingForm = () => {
                   <Field
                     type="radio"
                     name="paymentMethod"
-                    value="cheque"
-                    checked={values.paymentMethod === "cheque"}
+                    value="Cheque"
+                    checked={values.paymentMethod === "Cheque"}
                   />
                 </label>
                 <label>
@@ -506,8 +506,8 @@ const BookingForm = () => {
                   <Field
                     type="radio"
                     name="paymentMethod"
-                    value="cash"
-                    checked={values.paymentMethod === "cash"}
+                    value="Cash"
+                    checked={values.paymentMethod === "Cash"}
                   />
                 </label>
                 <ErrorMessage name="paymentMethod" />
@@ -518,8 +518,8 @@ const BookingForm = () => {
                   <Field
                     type="radio"
                     name="paymentAmount"
-                    value="full"
-                    checked={values.paymentAmount === "full"}
+                    value="Full"
+                    checked={values.paymentAmount === "Full"}
                   />
                 </label>
                 <label>
@@ -527,8 +527,8 @@ const BookingForm = () => {
                   <Field
                     type="radio"
                     name="paymentAmount"
-                    value="deposit"
-                    checked={values.paymentAmount === "deposit"}
+                    value="Deposit"
+                    checked={values.paymentAmount === "Deposit"}
                   />
                 </label>
                 <ErrorMessage name="paymentAmount" />
