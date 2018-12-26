@@ -29,12 +29,15 @@ type FormState = {|
   title: string,
   parentFirstName: string,
   parentLastName: string,
+  parentRelationshipToChild: "Parent" | "Guardian" | "Leader",
   parentAddressLine1: string,
   parentAddressLine2: string,
   parentAddressCity: string,
   parentAddressCounty: string,
   parentPostcode: string,
-  parentPhone: string,
+  parentMobilePhone: string,
+  parentDaytimePhone: string,
+  parentEveningPhone: string,
   parentEmail: string,
   siblingNames: string,
   // section 4
@@ -109,12 +112,15 @@ const getInitialState = (): FormState => ({
   title: "",
   parentFirstName: "",
   parentLastName: "",
+  parentRelationshipToChild: "Parent",
   parentAddressLine1: "",
   parentAddressLine2: "",
   parentAddressCity: "",
   parentAddressCounty: "",
   parentPostcode: "",
-  parentPhone: "",
+  parentMobilePhone: "",
+  parentDaytimePhone: "",
+  parentEveningPhone: "",
   parentEmail: "",
   siblingNames: "",
   // section 4
@@ -181,7 +187,7 @@ const createRequestParams = (values: FormState): Params => {
     childAddressCity: values.childAddressCity,
     childAddressCounty: values.childAddressCounty,
     childPostcode: values.childPostcode,
-    childPhoneNumber: values.childPhoneNumber,
+    childPhone: values.childPhoneNumber,
     childEmail: values.childEmail,
     childDobYear: values.childDobYear,
     childDobMonth: values.childDobMonth,
@@ -192,12 +198,15 @@ const createRequestParams = (values: FormState): Params => {
     title: values.title,
     parentFirstName: values.parentFirstName,
     parentLastName: values.parentLastName,
+    parentRelationshipToChild: values.parentRelationshipToChild,
     parentAddressLine1: values.parentAddressLine1,
     parentAddressLine2: values.parentAddressLine2,
     parentAddressCity: values.parentAddressCity,
     parentAddressCounty: values.parentAddressCounty,
     parentPostcode: values.parentPostcode,
-    parentPhone: values.parentPhone,
+    parentMobile: values.parentMobilePhone,
+    parentDaytimePhone: values.parentDaytimePhone,
+    parentEveningPhone: values.parentEveningPhone,
     parentEmail: values.parentEmail,
     siblingNames: values.siblingNames,
     contactByEmail: values.contactByEmail,
@@ -331,6 +340,37 @@ const BookingForm = () => {
               <TextField label="Title" name="title" />
               <TextField label="First name" name="parentFirstName" />
               <TextField label="Surname" name="parentLastName" />
+              <p>Relationship to child</p>
+              <label>
+                <Field
+                  type="radio"
+                  name="parentRelationshipToChild"
+                  value="Parent"
+                  checked={values.parentRelationshipToChild === "Parent"}
+                />{" "}
+                Parent
+              </label>
+              <br />
+              <label>
+                <Field
+                  type="radio"
+                  name="parentRelationshipToChild"
+                  value="Guardian"
+                  checked={values.parentRelationshipToChild === "Guardian"}
+                />{" "}
+                Guardian
+              </label>
+              <br />
+              <label>
+                <Field
+                  type="radio"
+                  name="parentRelationshipToChild"
+                  value="Leader"
+                  checked={values.parentRelationshipToChild === "Leader"}
+                />{" "}
+                Leader
+              </label>
+              <br />
               <TextField label="Address" name="parentAddress" />
               <TextField label="Address line 1" name="parentAddressLine1" />
               <TextField label="Address line 2" name="parentAddressLine2" />
@@ -338,6 +378,21 @@ const BookingForm = () => {
               <TextField label="County" name="parentAddressCounty" />
               <TextField label="Postcode" name="parentPostcode" />
               <TextField label="Contact phone" name="parentPhone" type="tel" />
+              <TextField
+                label="Mobile phone"
+                name="parentMobilePhone"
+                type="tel"
+              />
+              <TextField
+                label="Daytime phone"
+                name="parentDaytimePhone"
+                type="tel"
+              />
+              <TextField
+                label="Evening phone"
+                name="parentEveningPhone"
+                type="tel"
+              />
               <TextField label="Email" name="parentEmail" type="email" />
               <TextField label="Sibling names" name="siblingNames" />
             </section>
