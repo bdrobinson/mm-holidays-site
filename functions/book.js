@@ -132,6 +132,17 @@ export const handleAsync = async (
     return
   }
 
+  const confirmationEmailAddress =
+    params.parentEmail !== ""
+      ? params.parentEmail
+      : params.childEmail !== ""
+        ? params.childEmail
+        : null
+  if (confirmationEmailAddress == null) {
+    callback(null, { statusCode: 400, body: "Please provide an email" })
+    return
+  }
+
   const columns = createColumns(params)
 
   try {
@@ -140,7 +151,7 @@ export const handleAsync = async (
     const camperEmail = {
       to: {
         name: `${params.parentFirstName} ${params.parentLastName}`,
-        email: params.parentEmail,
+        email: confirmationEmailAddress,
       },
       from: { name: "M+M Bookings", email: "info@madnessandmayhem.org.uk" },
       subject: "Thank you for applying for a place at M+M 2019",
