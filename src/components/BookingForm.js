@@ -437,6 +437,7 @@ const BookingForm = () => {
                     checked={values.acceptRecordKeeping}
                   />
                 </label>
+                <ErrorMessage name="acceptRecordKeeping" />
               </p>
             </section>
             <section>
@@ -460,6 +461,8 @@ const BookingForm = () => {
                     checked={values.photoPermission === "no"}
                   />
                 </label>
+                <br />
+                <ErrorMessage name="photoPermission" />
               </p>
             </section>
             <section>
