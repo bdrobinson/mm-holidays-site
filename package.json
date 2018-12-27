@@ -17,6 +17,7 @@
     "gatsby-source-filesystem": "^2.0.9",
     "gatsby-transformer-remark": "^2.1.12",
     "gatsby-transformer-sharp": "^2.1.8",
+    "googleapis": "^36.0.0",
     "intersection-observer": "^0.5.1",
     "joi": "^14.3.0",
     "normalize.css": "^8.0.1",

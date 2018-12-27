@@ -371,13 +371,11 @@ const BookingForm = () => {
                 Leader
               </label>
               <br />
-              <TextField label="Address" name="parentAddress" />
               <TextField label="Address line 1" name="parentAddressLine1" />
               <TextField label="Address line 2" name="parentAddressLine2" />
               <TextField label="Town/city" name="parentAddressCity" />
               <TextField label="County" name="parentAddressCounty" />
               <TextField label="Postcode" name="parentPostcode" />
-              <TextField label="Contact phone" name="parentPhone" type="tel" />
               <TextField
                 label="Mobile phone"
                 name="parentMobilePhone"

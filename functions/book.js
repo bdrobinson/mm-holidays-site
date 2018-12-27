@@ -7,6 +7,7 @@ import dotenv from "dotenv"
 
 import { CamperEmail, CampLeaderEmail } from "./results/email"
 import { createColumns } from "./results/dataColumns"
+import { appendRow } from "./results/sheets"
 
 dotenv.config()
 
@@ -102,8 +103,10 @@ export const handleAsync = async (
 ) => {
   const SENDGRID_API_KEY = getEnv("SENDGRID_API_KEY")
   const CONFIRMATION_EMAIL_RECIPIENT = getEnv("CONFIRMATION_EMAIL_RECIPIENT")
+  const GOOGLE_SPREADSHEET_ID = getEnv("GOOGLE_SPREADSHEET_ID")
+  const GOOGLE_CLIENT_EMAIL = getEnv("GOOGLE_CLIENT_EMAIL")
+  const GOOGLE_PRIVATE_KEY = getEnv("GOOGLE_PRIVATE_KEY")
 
-  console.log(SENDGRID_API_KEY)
   sendgrid.setApiKey(SENDGRID_API_KEY)
 
   const params: Params = JSON.parse(event.body)
@@ -144,6 +147,19 @@ export const handleAsync = async (
   }
 
   const columns = createColumns(params)
+
+  try {
+    console.log("appending row to google sheet")
+    await appendRow({
+      spreadsheetId: GOOGLE_SPREADSHEET_ID,
+      row: columns.map(c => c.value),
+      googleAuthClientEmail: GOOGLE_CLIENT_EMAIL,
+      googlePrivateKey: GOOGLE_PRIVATE_KEY,
+    })
+  } catch (err) {
+    console.log("failed to append row to google sheet")
+    console.log(err)
+  }
 
   try {
     console.log("sending camper confirmation email")
