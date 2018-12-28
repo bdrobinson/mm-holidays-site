@@ -4,9 +4,7 @@ title: MAX
 template: CAMP_PROFILE
 ages: 9-11
 price: £230
-sections:
-    - ./max/p1.md
-    - ./max/p2.md
+sections: []
 hero: ../images/canoe.jpg
 ---
 

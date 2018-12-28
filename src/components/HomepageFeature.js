@@ -33,11 +33,12 @@ const Title = styled.h2`
   margin-bottom: 0px;
 `
 
-const Description = styled.div`
+const Subtitle = styled.p`
+  margin-top: 0;
   color: white;
 `
 
-const MainText = styled.p`
+const Description = styled.div`
   padding-top: 1em;
   padding-bottom: 2em;
 `
@@ -46,12 +47,14 @@ type Props = {|
   imageFluid: Object,
   imageAltText: ?string,
   title: string,
+  subtitle: string,
   descriptionHtml: string,
 |}
 
 const HomepageFeature = ({
   imageFluid,
   title,
+  subtitle,
   descriptionHtml,
   imageAltText,
 }: Props) => {
@@ -68,24 +71,14 @@ const HomepageFeature = ({
         <ImageExtras>
           <PageGutter>
             <Title>{title}</Title>
-            <Description
-              dangerouslySetInnerHTML={{
-                __html: descriptionHtml,
-              }}
-            />
+            <Subtitle>{subtitle}</Subtitle>
           </PageGutter>
         </ImageExtras>
       </ImageContainer>
       <PageGutter>
-        <MainText>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </MainText>
+        <Description>
+          <div dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
+        </Description>
       </PageGutter>
     </Main>
   )

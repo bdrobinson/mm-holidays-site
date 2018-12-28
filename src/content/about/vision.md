@@ -1,8 +1,19 @@
 ---
-order: 3
-title: Vision
+order: 1
+title: Our vision
 ---
 
-At M+M Holidays (MAX, Madness + Mayhem) our aim is to lay on a superb, unforgettable experience (activities, fun and friendship) together with clear and faithful Bible teaching — equally unforgettable. In an unpressured way we want to present children and young people with the person of the risen Jesus Christ and encourage them to follow Him.
+At M+M Holidays (Max, Madness and Mayhem) our aim is to run an
+unforgettable week of activities, fun and friendship, with clear and faithful
+teaching from the Bible. We want to present Jesus Christ to the children and
+young people and to encourage them to follow Him, without any pressure or
+jargon.
 
-We’re a part of [Urban Saints](http://www.urbansaints.org/holidays/) Holidays, an inter-denominational Christian youth organisation aiming to reach children and young people with the good news of Jesus Christ (Urban Saints was formerly known as ‘Crusaders’).
+M+M Holidays has been running since 2001. We’re a part of [Urban Saints](http://www.urbansaints.org/holidays/)
+Holidays, an inter-denominational Christian youth organisation aiming to reach
+children and young people with the good news of Jesus Christ.
+
+You can read the basis of faith of Urban Saints [here](http://www.urbansaints.org/faith).
+
+The team members who teach at M+M also sign up to the [UCCF doctrinal
+basis](http://www.uccf.org.uk/about-us/doctrinal-basis.htm).

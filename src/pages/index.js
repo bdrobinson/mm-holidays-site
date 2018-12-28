@@ -40,7 +40,6 @@ const Tagline = styled.h1`
   color: white;
   text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   letter-spacing: 1.5px;
-  text-transform: uppercase;
   @media (max-width: ${SMALLSCREEN_WIDTH}px) {
     font-size: 2.5rem;
   }
@@ -133,7 +132,7 @@ const IndexPage = ({ data }: Props) => (
         <HeroLabelContainer>
           <div>
             <PageGutter>
-              <Tagline>The best week of the year</Tagline>
+              <Tagline>Get ready for the best week of the year...</Tagline>
             </PageGutter>
           </div>
         </HeroLabelContainer>
@@ -172,6 +171,7 @@ const IndexPage = ({ data }: Props) => (
           imageFluid={frontmatter.image.childImageSharp.fluid}
           imageAltText={frontmatter.imageAltText}
           title={frontmatter.title}
+          subtitle={frontmatter.subtitle}
           descriptionHtml={edge.node.html}
         />
       )
@@ -193,6 +193,7 @@ export const pageQuery = graphql`
           id
           frontmatter {
             title
+            subtitle
             order
             imageAltText
             image {
