@@ -16,7 +16,7 @@ const getEnv = (name: string): string => {
   if (val == null) {
     throw new Error(`Could not get envvar ${name}`)
   }
-  return val
+  return val.replace("\\n", "\n")
 }
 
 export type Params = {|
