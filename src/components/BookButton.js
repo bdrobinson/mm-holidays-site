@@ -1,6 +1,7 @@
 // @flow
 
 import styled, { type ReactComponentStyled } from "styled-components"
+import { Link } from "gatsby"
 
 import {
   PRIMARY_COLOUR,
@@ -13,8 +14,8 @@ type Props = {
   paddingHorizontal?: string,
 }
 
-const BookingNoticeLink: ReactComponentStyled<Props> = styled.a.attrs({
-  href: "https://google.com",
+const BookingNoticeLink: ReactComponentStyled<Props> = styled(Link).attrs({
+  to: "/booking",
 })`
   display: inline-block;
   padding: 1em ${({ paddingHorizontal = "1em" }: Props) => paddingHorizontal};
