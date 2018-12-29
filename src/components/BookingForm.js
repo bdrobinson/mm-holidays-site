@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { Formik, type FormikErrors, Field } from "formik"
 import styled from "styled-components"
 import { parse, isValid, differenceInYears } from "date-fns"
+import * as Sentry from "@sentry/browser"
 
 import TextField from "./TextField"
 import { type Params } from "../../functions/book"
@@ -322,20 +323,29 @@ const BookingForm = () => {
       initialValues={getInitialState()}
       validate={validateForm}
       onSubmit={async (values, bag) => {
+        Sentry.addBreadcrumb({
+          category: "booking",
+          message: `Submitted form ${JSON.stringify(values)}`,
+          level: "info",
+        })
         bag.setSubmitting(true)
         try {
-          await fetch("/.netlify/functions/book", {
+          const response = await fetch("/.netlify/functions/book", {
             method: "POST",
             body: JSON.stringify(createRequestParams(values)),
           })
+          if (response.status !== 200) {
+            throw new Error(await response.text())
+          }
           setNetworkSubmitState({ type: "success" })
         } catch (err) {
           setNetworkSubmitState({ type: "error", message: err.message })
+          Sentry.captureException(err)
         }
         bag.setSubmitting(false)
       }}
     >
-      {({ values, submitForm, handleChange, handleBlur }) => {
+      {({ values, errors, submitForm, handleChange, handleBlur }) => {
         if (networkSubmitState.type === "success") {
           return <BookingSuccessPage />
         }
@@ -719,6 +729,9 @@ const BookingForm = () => {
               <div>
                 <SubmitButton type="submit">Submit</SubmitButton>
               </div>
+              {Object.keys(errors).length > 0 && (
+                <p style={{ color: "red" }}>Some fields are invalid.</p>
+              )}
               {networkSubmitState.type === "error" && (
                 <p style={{ color: "red" }}>
                   {networkSubmitState.message}
