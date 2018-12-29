@@ -3,6 +3,7 @@
 import React from "react"
 import { Formik, type FormikErrors, Field, ErrorMessage } from "formik"
 import styled from "styled-components"
+import { parse, isValid, differenceInYears } from "date-fns"
 
 import TextField from "./TextField"
 import { type Params } from "../../functions/book"
@@ -262,6 +263,21 @@ const DobField = styled(Field)`
   margin-right: 10px;
 `
 
+const newDate = (year: string, month: string, day: string): ?Date => {
+  if (
+    yearRegex.test(year) === false ||
+    monthRegex.test(month) === false ||
+    dayRegex.test(day) === false
+  ) {
+    return null
+  }
+  const dob = parse(`${year}-${month}-${day}`)
+  if (isValid(dob) === false) {
+    return null
+  }
+  return dob
+}
+
 const BookingForm = () => {
   return (
     <Formik
@@ -277,6 +293,13 @@ const BookingForm = () => {
       }}
     >
       {({ values, submitForm, handleChange, handleBlur }) => {
+        const dob = newDate(
+          values.childDobYear,
+          values.childDobMonth,
+          values.childDobDay,
+        )
+        const age = dob != null ? differenceInYears(new Date(), dob) : null
+        const displayParentSection = age != null && age < 18
         return (
           <form
             onSubmit={e => {
@@ -360,67 +383,69 @@ const BookingForm = () => {
               />
               <TextField label="Friends with" name="friendsWith" />
             </section>
-            <section>
-              <h2>
-                Parent/guardian details (required if applicant is under 18)
-              </h2>
-              <TextField label="Title" name="title" />
-              <TextField label="First name" name="parentFirstName" />
-              <TextField label="Surname" name="parentLastName" />
-              <p>Relationship to child</p>
-              <label>
-                <Field
-                  type="radio"
-                  name="parentRelationshipToChild"
-                  value="Parent"
-                  checked={values.parentRelationshipToChild === "Parent"}
-                />{" "}
-                Parent
-              </label>
-              <br />
-              <label>
-                <Field
-                  type="radio"
-                  name="parentRelationshipToChild"
-                  value="Guardian"
-                  checked={values.parentRelationshipToChild === "Guardian"}
-                />{" "}
-                Guardian
-              </label>
-              <br />
-              <label>
-                <Field
-                  type="radio"
-                  name="parentRelationshipToChild"
-                  value="Leader"
-                  checked={values.parentRelationshipToChild === "Leader"}
-                />{" "}
-                Leader
-              </label>
-              <br />
-              <TextField label="Address line 1" name="parentAddressLine1" />
-              <TextField label="Address line 2" name="parentAddressLine2" />
-              <TextField label="Town/city" name="parentAddressCity" />
-              <TextField label="County" name="parentAddressCounty" />
-              <TextField label="Postcode" name="parentPostcode" />
-              <TextField
-                label="Mobile phone"
-                name="parentMobilePhone"
-                type="tel"
-              />
-              <TextField
-                label="Daytime phone"
-                name="parentDaytimePhone"
-                type="tel"
-              />
-              <TextField
-                label="Evening phone"
-                name="parentEveningPhone"
-                type="tel"
-              />
-              <TextField label="Email" name="parentEmail" type="email" />
-              <TextField label="Sibling names" name="siblingNames" />
-            </section>
+            {displayParentSection && (
+              <section>
+                <h2>
+                  Parent/guardian details (required if applicant is under 18)
+                </h2>
+                <TextField label="Title" name="title" />
+                <TextField label="First name" name="parentFirstName" />
+                <TextField label="Surname" name="parentLastName" />
+                <p>Relationship to child</p>
+                <label>
+                  <Field
+                    type="radio"
+                    name="parentRelationshipToChild"
+                    value="Parent"
+                    checked={values.parentRelationshipToChild === "Parent"}
+                  />{" "}
+                  Parent
+                </label>
+                <br />
+                <label>
+                  <Field
+                    type="radio"
+                    name="parentRelationshipToChild"
+                    value="Guardian"
+                    checked={values.parentRelationshipToChild === "Guardian"}
+                  />{" "}
+                  Guardian
+                </label>
+                <br />
+                <label>
+                  <Field
+                    type="radio"
+                    name="parentRelationshipToChild"
+                    value="Leader"
+                    checked={values.parentRelationshipToChild === "Leader"}
+                  />{" "}
+                  Leader
+                </label>
+                <br />
+                <TextField label="Address line 1" name="parentAddressLine1" />
+                <TextField label="Address line 2" name="parentAddressLine2" />
+                <TextField label="Town/city" name="parentAddressCity" />
+                <TextField label="County" name="parentAddressCounty" />
+                <TextField label="Postcode" name="parentPostcode" />
+                <TextField
+                  label="Mobile phone"
+                  name="parentMobilePhone"
+                  type="tel"
+                />
+                <TextField
+                  label="Daytime phone"
+                  name="parentDaytimePhone"
+                  type="tel"
+                />
+                <TextField
+                  label="Evening phone"
+                  name="parentEveningPhone"
+                  type="tel"
+                />
+                <TextField label="Email" name="parentEmail" type="email" />
+                <TextField label="Sibling names" name="siblingNames" />
+              </section>
+            )}
             <section>
               <h2>Contact permission</h2>
               <p>
