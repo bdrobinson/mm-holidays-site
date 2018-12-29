@@ -490,14 +490,14 @@ const BookingForm = () => {
             )}
             <section>
               <h2>Contact permission</h2>
-              <Copy>
+              <p>
                 We would like to stay in touch and keep you up to date with
                 future Camps and Urban Saints activities. We will respect how
                 often we contact you, and you can change this at any time by
                 emailing{" "}
                 <a href="mailto:email@urbansaints.org">email@urbansaints.org</a>
                 .
-              </Copy>
+              </p>
               <FieldCheckbox
                 label="Email"
                 checked={values.contactByEmail}
@@ -525,11 +525,11 @@ const BookingForm = () => {
                   www.urbansaints.org/privacypolicy
                 </a>
               </Copy>
-              <Copy>
+              <p>
                 I understand that Urban Saints will keep a record of my child’s
                 name, address, medical records and attendance at this event to
                 comply with safeguarding requirements
-              </Copy>
+              </p>
               <FieldCheckbox
                 fieldName="acceptRecordKeeping"
                 checked={values.acceptRecordKeeping}
@@ -538,7 +538,7 @@ const BookingForm = () => {
             </section>
             <section>
               <h2>Photo (etc) permission</h2>
-              <Copy>
+              <p>
                 During the course of the Camp, we plan to be taking videos and
                 photographs for creating memories of Camp activities, for use in
                 our publicity and or other material produced by Urban Saints.
@@ -550,13 +550,13 @@ const BookingForm = () => {
                 whether they are happy to give Urban Saints permission to
                 include them in any photographs or videos taken and complete the
                 consent box below as appropriate.
-              </Copy>
-              <Copy>
+              </p>
+              <p>
                 I am happy for Urban Saints to include my child in group videos
                 and photographs of M+M Holiday activities and these may be used
                 in future publicity, or other material produced by Urban Saints.
                 I have consulted with my child who also gives permission.
-              </Copy>
+              </p>
               <RadioChoices
                 fieldName="photoPermission"
                 value={values.photoPermission}
@@ -638,13 +638,13 @@ const BookingForm = () => {
             </section>
             <section>
               <h2>Other information</h2>
-              <Copy>
+              <p>
                 A medical form will be sent shortly before the holiday commences
                 and it is essential that it is completed and returned by a
                 parent/guardian immediately. However, in the meantime please let
                 us have any information which would be helpful to the M+M
                 Leaders in planning the holiday.
-              </Copy>
+              </p>
               <label>
                 <p>Dietary needs</p>
                 <TextArea

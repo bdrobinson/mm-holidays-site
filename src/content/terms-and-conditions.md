@@ -2,21 +2,21 @@
 path: "/terms-and-conditions/"
 title: Terms and Conditions
 ---
-## 1. How do I book A PLACE AT MAX, MADNESS OR MAYHEM?
+## 1. How do I book a place at MAX, Madness or Mayhem?
 
-Complete all sections of the Application Form (page 1-2) and send it to the Booking Secretary (contact details on booking form and below). The completed application must be accompanied by a non-returnable deposit of £40 – cheques should be payable to ‘M&M Holidays fees account’. Applications will be dealt with on a date-received priority basis, and you will receive a letter or email of confirmation regarding your booking once it has been processed. Holiday places are limited so please book early.
+Complete all sections of the [Application Form](M+M_Application_Form.pdf) (page 1-2) and send it to the Booking Secretary (contact details on booking form and below) or [book online](/booking). The completed application must be accompanied by a non-returnable deposit of £40 – cheques should be payable to ‘M&M Holidays fees account’. Applications will be dealt with on a date-received priority basis, and you will receive a letter or email of confirmation regarding your booking once it has been processed. Holiday places are limited so please book early.
 
 ## 2. What about payment?
 
-Cheques for holiday fees should be made payable to ‘M&M Holidays fees account’. The balance of the holiday fees is due by 31st May 2019. You will not receive a reminder of the balance due. If payment is not received by this date, we reserve the right to advise you of cancellation of your booking and the loss of your deposit. If you book within eight weeks of the start of a holiday, full fees are due with the application. In cases of financial hardship, Urban Saints may be able to help you access charitable funding to subsidise the cost of the holiday. Wherever possible please make us aware of any need at the time of booking. 
+Cheques for holiday fees should be made payable to ‘M&M Holidays fees account’. The balance of the holiday fees is due by 31st May 2019. You will not receive a reminder of the balance due. If payment is not received by this date, we reserve the right to advise you of cancellation of your booking and the loss of your deposit. If you book within eight weeks of the start of a holiday, full fees are due with the application. In cases of financial hardship, Urban Saints may be able to help you access charitable funding to subsidise the cost of the holiday. Wherever possible please make us aware of any need at the time of booking.
 
 ## 3. What is included in the cost of the holiday?
 
-The price includes full board and accommodation and a wide range of activities. The holiday publicity gives details of the type of accommodation (tents or dormitories), activities and any travel arrangements included in the published price. The cost of any optional additional activities and trips will be advised to you by the holiday leader or organiser. Pocket money is not included in the cost of the holiday. All meals on the holiday are included in the cost, from the midday meal on the day of arrival to breakfast on the day of departure. We are happy to provide for medical dietary needs and vegetarian diets if notified in advance.
+The price includes full board and accommodation and a wide range of activities. The holiday publicity gives details of the type of accommodation (tents or dormitories), activities and any travel arrangements included in the published price. The cost of any optional additional activities and trips will be advised to you by the holiday leader or organiser. Pocket money is not included in the cost of the holiday. All meals on the holiday are included in the cost, from the evening meal on the day of arrival to breakfast on the day of departure. We are happy to provide for medical dietary needs and vegetarian diets if notified in advance.
 
-## 4. SIBLING Discounts
+## 4. Sibling Discounts
 
-A sibling discount of £30 from the cost of the holiday is available for the second and subsequent children from the same family who are resident at the same address. Since this will be drawn from our charitable funds, please only make use of this where there is need. 
+A sibling discount of £30 from the cost of the holiday is available for the second and subsequent children from the same family who are resident at the same address. Since this will be drawn from our charitable donated funds, please only make use of this where there is need.
 
 ## 5. What about price increases?
 
@@ -54,7 +54,7 @@ It is expected that all participants at an Urban Saints Holiday will behave reas
 
 ## 12. Other stuff
 
-Urban Saints will treat the information given on the booking form in total confidence (except as required by law) and store it in full accordance with the Data Protection Act 1998. It will be kept so that we can provide you with the information and services that best match your requirements and preferences. We may take videos and photographs of holiday activities, and attendance at a holiday signifies agreement that these may appear in future publicity or other materials produced by Urban Saints, or materials produced by other organisations in sympathy with Urban Saints and to whom express permission to use the videos/photographs has been granted. Your details will only be made known to others outside of Urban Saints where we use, or collaborate with, other people or organisations to carry out work on our behalf. A duty of confidentiality will be imposed on such people and organisations.
+Urban Saints will treat the information given on the booking form in total confidence (except as required by law) and store it in full accordance with the Data Protection Act 1998. It will be kept so that we can provide you with the information and services that best match your requirements and preferences. We may take videos and photographs of holiday activities and, unless permission has been declined on the application form, these may appear in future publicity or other materials produced by Urban Saints, or materials produced by other organisations in sympathy with Urban Saints and to whom express permission to use the videos/photographs has been granted. Your details will only be made known to others outside of Urban Saints where we use, or collaborate with, other people or organisations to carry out work on our behalf. A duty of confidentiality will be imposed on such people and organisations.
 
 ## 13. Have a query? 
 
