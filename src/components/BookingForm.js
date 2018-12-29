@@ -2,9 +2,13 @@
 
 import React from "react"
 import { Formik, type FormikErrors, Field, ErrorMessage } from "formik"
+import styled from "styled-components"
 
 import TextField from "./TextField"
 import { type Params } from "../../functions/book"
+import RadioChoices from "./RadioChoices"
+import { GREY_BORDER_COLOUR } from "../constants"
+import FieldErrorMessage from "./FieldErrorMessage"
 
 type FormState = {|
   // section 1
@@ -154,6 +158,10 @@ const getInitialState = (): FormState => ({
   parentConfirmation: false,
 })
 
+const dayRegex = /^\d\d?$/
+const monthRegex = /^\d\d?$/
+const yearRegex = /^\d\d\d\d$/
+
 const validateForm = (formState: FormState): FormikErrors<FormState> => {
   const errors = {}
   Object.keys(formState).map(key => {
@@ -174,6 +182,17 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
   if (formState.photoPermission == null) {
     errors.photoPermission = "Required"
   }
+
+  if (dayRegex.test(formState.childDobDay) === false) {
+    errors.childDobDay = "Invalid day"
+  }
+  if (monthRegex.test(formState.childDobMonth) === false) {
+    errors.childDobMonth = "Invalid month"
+  }
+  if (yearRegex.test(formState.childDobYear) === false) {
+    errors.childDobYear = "Invalid year"
+  }
+
   return errors
 }
 
@@ -234,6 +253,15 @@ const createRequestParams = (values: FormState): Params => {
   }
 }
 
+const DobField = styled(Field)`
+  border-width: 1px;
+  border-radius: 0.3em;
+  padding: 0.5em;
+  border-style: solid;
+  border-color: ${GREY_BORDER_COLOUR};
+  margin-right: 10px;
+`
+
 const BookingForm = () => {
   return (
     <Formik
@@ -257,32 +285,26 @@ const BookingForm = () => {
             }}
           >
             <section>
-              <p>
-                <label>
-                  <Field
-                    type="radio"
-                    name="campChoice"
-                    value="1"
-                    checked={values.campChoice === "1"}
-                  />
-                  M+M 1
-                </label>
-              </p>
-              <p>
-                <label>
-                  <Field
-                    type="radio"
-                    name="campChoice"
-                    value="2"
-                    checked={values.campChoice === "2"}
-                  />
-                  M+M 2
-                </label>
-                <ErrorMessage name="campChoice" />
-              </p>
+              <h2>Select a week</h2>
+              <RadioChoices
+                fieldName="campChoice"
+                value={values.campChoice}
+                options={[
+                  {
+                    value: "1",
+                    label: "Week 1",
+                    subtitle: "26th July – 3rd August",
+                  },
+                  {
+                    value: "2",
+                    label: "Week 2",
+                    subtitle: "3rd–10th August",
+                  },
+                ]}
+              />
             </section>
             <section>
-              <h2>Young person</h2>
+              <h2>Young person&apos;s details</h2>
               <TextField label="First name" name="childFirstName" />
               <TextField label="Surname" name="childLastName" />
               <TextField label="Address line 1" name="childAddressLine1" />
@@ -298,39 +320,44 @@ const BookingForm = () => {
               <TextField label="Contact email" name="childEmail" type="email" />
               <div>
                 <label htmlFor="childDobDay">
-                  <p>Date of birth</p>
+                  <p style={{ marginBottom: 0 }}>Date of birth</p>
                 </label>
-                <Field
+                <DobField
                   id="childDobDay"
                   name="childDobDay"
                   type="text"
                   placeholder="dd"
+                  style={{ width: "3em" }}
                 />
-                <Field name="childDobMonth" type="text" placeholder="mm" />
-                <Field name="childDobYear" type="text" placeholder="yyyy" />
+                <DobField
+                  name="childDobMonth"
+                  type="text"
+                  placeholder="mm"
+                  style={{ width: "3em" }}
+                />
+                <DobField
+                  name="childDobYear"
+                  type="text"
+                  placeholder="yyyy"
+                  style={{ width: "6em" }}
+                />
               </div>
-              <div>
-                <label>
-                  <Field
-                    type="radio"
-                    name="gender"
-                    value="Male"
-                    checked={values.gender === "Male"}
-                  />
-                  Male
-                </label>
-                <label>
-                  <Field
-                    type="radio"
-                    name="gender"
-                    value="Female"
-                    checked={values.gender === "Female"}
-                  />
-                  Female
-                </label>
-                <ErrorMessage name="gender" />
-              </div>
-              <TextField label="Youth group" name="youthGroup" />
+              <FieldErrorMessage name="childDobDay" />
+              <FieldErrorMessage name="childDobMonth" />
+              <FieldErrorMessage name="childDobYear" />
+              <RadioChoices
+                title="Gender"
+                fieldName="gender"
+                value={values.gender}
+                options={[
+                  { label: "Male", value: "Male" },
+                  { label: "Female", value: "Female" },
+                ]}
+              />
+              <TextField
+                label="Urban Saints/Energize/Church group attended (if any)"
+                name="youthGroup"
+              />
               <TextField label="Friends with" name="friendsWith" />
             </section>
             <section>

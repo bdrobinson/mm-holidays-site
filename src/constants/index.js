@@ -10,5 +10,6 @@ export const FOOTER_TEXT = "#666"
 export const PRIMARY_COLOUR = "white"
 export const PRIMARY_COLOUR_DARK = "#333"
 export const PRIMARY_COLOUR_LIGHT = "#eee"
+export const GREY_BORDER_COLOUR = "#ddd"
 
 export const HERO_IMAGE_MAX_HEIGHT = 800
