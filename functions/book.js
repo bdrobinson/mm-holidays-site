@@ -107,10 +107,7 @@ export const handleAsync = async (
   const CONFIRMATION_EMAIL_RECIPIENT = getEnv("CONFIRMATION_EMAIL_RECIPIENT")
   const GOOGLE_SPREADSHEET_ID = getEnv("GOOGLE_SPREADSHEET_ID")
   const GOOGLE_CLIENT_EMAIL = getEnv("GOOGLE_CLIENT_EMAIL")
-  const GOOGLE_PRIVATE_KEY0 = getEnv("GOOGLE_PRIVATE_KEY")
-  console.log(GOOGLE_PRIVATE_KEY0)
-  const GOOGLE_PRIVATE_KEY = JSON.parse(GOOGLE_PRIVATE_KEY0)
-  console.log(GOOGLE_PRIVATE_KEY)
+  const GOOGLE_PRIVATE_KEY = JSON.parse(getEnv("GOOGLE_PRIVATE_KEY"))
   sendgrid.setApiKey(SENDGRID_API_KEY)
 
   const params: Params = JSON.parse(event.body)
