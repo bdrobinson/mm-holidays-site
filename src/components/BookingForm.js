@@ -406,19 +406,19 @@ const BookingForm = () => {
                 <DobField
                   id="childDobDay"
                   name="childDobDay"
-                  type="text"
+                  type="number"
                   placeholder="dd"
                   style={{ width: "3em" }}
                 />
                 <DobField
                   name="childDobMonth"
-                  type="text"
+                  type="number"
                   placeholder="mm"
                   style={{ width: "3em" }}
                 />
                 <DobField
                   name="childDobYear"
-                  type="text"
+                  type="number"
                   placeholder="yyyy"
                   style={{ width: "6em" }}
                 />
