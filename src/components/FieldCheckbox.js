@@ -12,10 +12,15 @@ type Props = {|
   label: string,
 |}
 
+const Main = styled.div`
+  color: inherit;
+`
+
 const Row = styled.label`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  margin-bottom: 0.3em;
 `
 
 const LabelText = styled.div`
@@ -24,15 +29,13 @@ const LabelText = styled.div`
 
 const FieldCheckbox = ({ fieldName, checked, label }: Props) => {
   return (
-    <div>
-      <p>
-        <Row>
-          <Field type="checkbox" name={fieldName} checked={checked} />
-          <LabelText>{label}</LabelText>
-        </Row>
-      </p>
+    <Main>
+      <Row>
+        <Field type="checkbox" name={fieldName} checked={checked} />
+        <LabelText>{label}</LabelText>
+      </Row>
       <FieldErrorMessage name={fieldName} />
-    </div>
+    </Main>
   )
 }
 

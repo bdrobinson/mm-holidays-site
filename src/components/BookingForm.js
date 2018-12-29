@@ -281,6 +281,14 @@ const TextArea = styled.textarea`
   }
 `
 
+const SubmitButton = styled.button`
+  padding: 1em;
+  background: none;
+  border-radius: 0.5em;
+  margin: 2em 0;
+  font-size: 1.2em;
+`
+
 const newDate = (year: string, month: string, day: string): ?Date => {
   if (
     yearRegex.test(year) === false ||
@@ -668,27 +676,25 @@ const BookingForm = () => {
               />
             </section>
             <section>
-              <label>
-                <h2>
-                  Parent/guardian declaration (or by young person if over 18)
-                </h2>
-                <p>
-                  I agree to the Booking Terms &amp; Conditions. I support and
-                  approve my son/daughter/ward taking part in this holiday. By
-                  submitting this, I apply for my child/ward to become a
-                  temporary member of Urban Saints and acknowledge that this
-                  will happen on acceptance of this application. I agree to pay
-                  any outstanding balance by 31st May 2019.
-                </p>
-                <FieldCheckbox
-                  fieldName="parentConfirmation"
-                  checked={values.parentConfirmation}
-                  label="I agree"
-                />
-              </label>
+              <h2>
+                Parent/guardian declaration (or by young person if over 18)
+              </h2>
+              <p>
+                I agree to the Booking Terms &amp; Conditions. I support and
+                approve my son/daughter/ward taking part in this holiday. By
+                submitting this, I apply for my child/ward to become a temporary
+                member of Urban Saints and acknowledge that this will happen on
+                acceptance of this application. I agree to pay any outstanding
+                balance by 31st May 2019.
+              </p>
+              <FieldCheckbox
+                fieldName="parentConfirmation"
+                checked={values.parentConfirmation}
+                label="I agree"
+              />
             </section>
             <section>
-              <button type="submit">Submit</button>
+              <SubmitButton type="submit">Submit</SubmitButton>
             </section>
           </form>
         )
