@@ -1,6 +1,6 @@
 // @flow
 
-import React from "react"
+import React, { useState } from "react"
 import { Formik, type FormikErrors, Field } from "formik"
 import styled from "styled-components"
 import { parse, isValid, differenceInYears } from "date-fns"
@@ -11,6 +11,7 @@ import RadioChoices from "./RadioChoices"
 import { GREY_BORDER_COLOUR, MOBILE_WIDTH } from "../constants"
 import FieldErrorMessage from "./FieldErrorMessage"
 import FieldCheckbox from "./FieldCheckbox"
+import BookingSuccessPage from "./BookingSuccessPage"
 
 type FormState = {|
   // section 1
@@ -285,7 +286,7 @@ const SubmitButton = styled.button`
   padding: 1em;
   background: none;
   border-radius: 0.5em;
-  margin: 2em 0;
+  margin-top: 2em;
   font-size: 1.2em;
 `
 
@@ -304,21 +305,41 @@ const newDate = (year: string, month: string, day: string): ?Date => {
   return dob
 }
 
+type SubmitState =
+  | { type: "ready" }
+  | { type: "success" }
+  | { type: "error", message: string }
+
 const BookingForm = () => {
+  const initialSubmitState: SubmitState = {
+    type: "ready",
+  }
+  const [networkSubmitState, setNetworkSubmitState] = useState(
+    initialSubmitState,
+  )
   return (
     <Formik
       initialValues={getInitialState()}
       validate={validateForm}
       onSubmit={async (values, bag) => {
         bag.setSubmitting(true)
-        await fetch("/.netlify/functions/book", {
-          method: "POST",
-          body: JSON.stringify(createRequestParams(values)),
-        })
+        try {
+          await fetch("/.netlify/functions/book", {
+            method: "POST",
+            body: JSON.stringify(createRequestParams(values)),
+          })
+          setNetworkSubmitState({ type: "success" })
+        } catch (err) {
+          setNetworkSubmitState({ type: "error", message: err.message })
+        }
         bag.setSubmitting(false)
       }}
     >
       {({ values, submitForm, handleChange, handleBlur }) => {
+        if (networkSubmitState.type === "success") {
+          return <BookingSuccessPage />
+        }
+
         const dob = newDate(
           values.childDobYear,
           values.childDobMonth,
@@ -328,6 +349,7 @@ const BookingForm = () => {
         const displayParentSection = age != null && age < 18
         return (
           <form
+            style={{ marginBottom: "1em" }}
             onSubmit={e => {
               e.preventDefault()
               submitForm()
@@ -694,7 +716,20 @@ const BookingForm = () => {
               />
             </section>
             <section>
-              <SubmitButton type="submit">Submit</SubmitButton>
+              <div>
+                <SubmitButton type="submit">Submit</SubmitButton>
+              </div>
+              {networkSubmitState.type === "error" && (
+                <p style={{ color: "red" }}>
+                  {networkSubmitState.message}
+                  <br />
+                  Could not submit form. Please try again or contact{" "}
+                  <a href="mailto:info@madnessandmayhem.org.uk">
+                    info@madnessandmayhem.org.uk
+                  </a>
+                  .
+                </p>
+              )}
             </section>
           </form>
         )
