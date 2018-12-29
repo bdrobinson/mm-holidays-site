@@ -4,7 +4,7 @@ import React from "react"
 import { renderToStaticMarkup } from "react-dom/server"
 import sendgrid from "@sendgrid/mail"
 import dotenv from "dotenv"
-
+import * as Sentry from "@sentry/node"
 import { CamperEmail, CampLeaderEmail } from "./results/email"
 import { createColumns } from "./results/dataColumns"
 import { appendRow } from "./results/sheets"
@@ -85,10 +85,12 @@ export type Params = {|
 |}
 
 export const handler = (event: Object, context: Object, callback: Function) => {
+  Sentry.init({ dsn: getEnv("SENTRY_DSN_BACKEND") })
   console.log(new Date().toISOString())
   console.log("handling event", event.body)
   handleAsync(event, context, callback).catch(err => {
     console.log("got error", err)
+    Sentry.captureException(err)
     callback(null, {
       statusCode: 500,
       body: "Error",
@@ -106,7 +108,7 @@ export const handleAsync = async (
   const GOOGLE_SPREADSHEET_ID = getEnv("GOOGLE_SPREADSHEET_ID")
   const GOOGLE_CLIENT_EMAIL = getEnv("GOOGLE_CLIENT_EMAIL")
   const GOOGLE_PRIVATE_KEY = getEnv("GOOGLE_PRIVATE_KEY")
-
+  throw new Error("oh no")
   sendgrid.setApiKey(SENDGRID_API_KEY)
 
   const params: Params = JSON.parse(event.body)
@@ -159,6 +161,7 @@ export const handleAsync = async (
   } catch (err) {
     console.log("failed to append row to google sheet")
     console.log(err)
+    Sentry.captureException(err)
   }
 
   try {
@@ -178,6 +181,7 @@ export const handleAsync = async (
   } catch (err) {
     console.log(err.response.body)
     console.log("failed to send camper confirmation email", err.message)
+    Sentry.captureException(err)
   }
 
   try {
@@ -197,6 +201,7 @@ export const handleAsync = async (
   } catch (err) {
     console.log(err)
     console.log("failed to send camp leader notification email")
+    Sentry.captureException(err)
   }
   console.log("emails sent successfully!")
   callback(null, {

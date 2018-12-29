@@ -823,6 +823,21 @@
     "@sentry/types" "4.4.2"
     tslib "^1.9.3"
 
+"@sentry/node@4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@sentry/node/-/node-4.4.2.tgz#549921d2df3cbf58ebcfb525c3005c3fec4739a3"
+  dependencies:
+    "@sentry/core" "4.4.2"
+    "@sentry/hub" "4.4.2"
+    "@sentry/types" "4.4.2"
+    "@sentry/utils" "4.4.2"
+    "@types/stack-trace" "0.0.29"
+    cookie "0.3.1"
+    https-proxy-agent "^2.2.1"
+    lsmod "1.0.0"
+    stack-trace "0.0.10"
+    tslib "^1.9.3"
+
 "@sentry/types@4.4.2":
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-4.4.2.tgz#f38dd3bc671cd2f5983a85553aebeac9c2286b17"
@@ -914,6 +929,10 @@
     "@types/form-data" "*"
     "@types/node" "*"
     "@types/tough-cookie" "*"
+
+"@types/stack-trace@0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/stack-trace/-/stack-trace-0.0.29.tgz#eb7a7c60098edb35630ed900742a5ecb20cfcb4d"
 
 "@types/tmp@^0.0.32":
   version "0.0.32"
@@ -7165,6 +7184,10 @@ lru-cache@^5.0.0:
   dependencies:
     yallist "^3.0.2"
 
+lsmod@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/lsmod/-/lsmod-1.0.0.tgz#9a00f76dca36eb23fa05350afe1b585d4299e64b"
+
 ltcdr@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/ltcdr/-/ltcdr-2.2.1.tgz#5ab87ad1d4c1dab8e8c08bbf037ee0c1902287cf"
@@ -10135,7 +10158,7 @@ stable@~0.1.6:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/stable/-/stable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"
 
-stack-trace@^0.0.10:
+stack-trace@0.0.10, stack-trace@^0.0.10:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/stack-trace/-/stack-trace-0.0.10.tgz#547c70b347e8d32b4e108ea1a2a159e5fdde19c0"
 
