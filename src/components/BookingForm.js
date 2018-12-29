@@ -345,7 +345,14 @@ const BookingForm = () => {
         bag.setSubmitting(false)
       }}
     >
-      {({ values, errors, submitForm, handleChange, handleBlur }) => {
+      {({
+        values,
+        errors,
+        submitForm,
+        handleChange,
+        handleBlur,
+        submitCount,
+      }) => {
         if (networkSubmitState.type === "success") {
           return <BookingSuccessPage />
         }
@@ -729,9 +736,13 @@ const BookingForm = () => {
               <div>
                 <SubmitButton type="submit">Submit</SubmitButton>
               </div>
-              {Object.keys(errors).length > 0 && (
-                <p style={{ color: "red" }}>Some fields are invalid.</p>
-              )}
+              {Object.keys(errors).length > 0 &&
+                submitCount > 0 && (
+                  <p style={{ color: "red" }}>
+                    Some fields are invalid. Please review the form and then
+                    re-submit.
+                  </p>
+                )}
               {networkSubmitState.type === "error" && (
                 <p style={{ color: "red" }}>
                   {networkSubmitState.message}
