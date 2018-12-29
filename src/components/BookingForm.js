@@ -1,15 +1,16 @@
 // @flow
 
 import React from "react"
-import { Formik, type FormikErrors, Field, ErrorMessage } from "formik"
+import { Formik, type FormikErrors, Field } from "formik"
 import styled from "styled-components"
 import { parse, isValid, differenceInYears } from "date-fns"
 
 import TextField from "./TextField"
 import { type Params } from "../../functions/book"
 import RadioChoices from "./RadioChoices"
-import { GREY_BORDER_COLOUR } from "../constants"
+import { GREY_BORDER_COLOUR, MOBILE_WIDTH } from "../constants"
 import FieldErrorMessage from "./FieldErrorMessage"
+import FieldCheckbox from "./FieldCheckbox"
 
 type FormState = {|
   // section 1
@@ -85,7 +86,6 @@ const NON_EMPTY_STRINGS: Array<$Keys<FormState>> = [
   "childPostcode",
   "childPhoneNumber",
   "childEmail",
-  "parentEmail",
 ]
 
 const MUST_BE_TRUE: Array<$Keys<FormState>> = [
@@ -263,6 +263,24 @@ const DobField = styled(Field)`
   margin-right: 10px;
 `
 
+const Copy = styled.p`
+  font-size: 0.9em;
+`
+
+const TextArea = styled.textarea`
+  padding: 0.7em;
+  width: ${MOBILE_WIDTH - 100}px;
+  height: 5em;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: ${GREY_BORDER_COLOUR};
+  @media (max-width: ${MOBILE_WIDTH}px) {
+    width: 100%;
+  }
+`
+
 const newDate = (year: string, month: string, day: string): ?Date => {
   if (
     yearRegex.test(year) === false ||
@@ -391,36 +409,16 @@ const BookingForm = () => {
                 <TextField label="Title" name="title" />
                 <TextField label="First name" name="parentFirstName" />
                 <TextField label="Surname" name="parentLastName" />
-                <p>Relationship to child</p>
-                <label>
-                  <Field
-                    type="radio"
-                    name="parentRelationshipToChild"
-                    value="Parent"
-                    checked={values.parentRelationshipToChild === "Parent"}
-                  />{" "}
-                  Parent
-                </label>
-                <br />
-                <label>
-                  <Field
-                    type="radio"
-                    name="parentRelationshipToChild"
-                    value="Guardian"
-                    checked={values.parentRelationshipToChild === "Guardian"}
-                  />{" "}
-                  Guardian
-                </label>
-                <br />
-                <label>
-                  <Field
-                    type="radio"
-                    name="parentRelationshipToChild"
-                    value="Leader"
-                    checked={values.parentRelationshipToChild === "Leader"}
-                  />{" "}
-                  Leader
-                </label>
+                <RadioChoices
+                  title="Relationship to child"
+                  options={[
+                    { label: "Parent", value: "Parent" },
+                    { label: "Guardian", value: "Guardian" },
+                    { label: "Leader", value: "Leader" },
+                  ]}
+                  value={values.parentRelationshipToChild}
+                  fieldName="parentRelationshipToChild"
+                />
                 <br />
                 <TextField label="Address line 1" name="parentAddressLine1" />
                 <TextField label="Address line 2" name="parentAddressLine2" />
@@ -443,209 +441,173 @@ const BookingForm = () => {
                   type="tel"
                 />
                 <TextField label="Email" name="parentEmail" type="email" />
-                <TextField label="Sibling names" name="siblingNames" />
+                <TextField
+                  label="Sibling names"
+                  subtitle="If applying for sibling discount"
+                  name="siblingNames"
+                />
               </section>
             )}
             <section>
               <h2>Contact permission</h2>
-              <p>
-                <label>
-                  By email
-                  <Field
-                    type="checkbox"
-                    name="contactByEmail"
-                    checked={values.contactByEmail}
-                  />
-                </label>
-              </p>
-              <p>
-                <label>
-                  By phone
-                  <Field
-                    type="checkbox"
-                    name="contactByPhone"
-                    checked={values.contactByPhone}
-                  />
-                </label>
-              </p>
-              <p>
-                <label>
-                  By post
-                  <Field
-                    type="checkbox"
-                    name="contactByPost"
-                    checked={values.contactByPost}
-                  />
-                </label>
-              </p>
-              <p>
-                <label>
-                  Accept record keeping
-                  <Field
-                    type="checkbox"
-                    name="acceptRecordKeeping"
-                    checked={values.acceptRecordKeeping}
-                  />
-                </label>
-                <ErrorMessage name="acceptRecordKeeping" />
-              </p>
+              <Copy>
+                We would like to stay in touch and keep you up to date with
+                future Camps and Urban Saints activities. We will respect how
+                often we contact you, and you can change this at any time by
+                emailing{" "}
+                <a href="mailto:email@urbansaints.org">email@urbansaints.org</a>
+                .
+              </Copy>
+              <FieldCheckbox
+                label="Email"
+                checked={values.contactByEmail}
+                fieldName="contactByEmail"
+              />
+              <FieldCheckbox
+                label="Phone"
+                fieldName="contactByPhone"
+                checked={values.contactByPhone}
+              />
+              <FieldCheckbox
+                label="Post"
+                fieldName="contactByPost"
+                checked={values.contactByPost}
+              />
+              <Copy>
+                We will never sell or swap your data with another organisation
+                and will store your details securely, respecting your trust and
+                privacy. For our full privacy policy, see{" "}
+                <a
+                  href="https://www.urbansaints.org/privacypolicy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  www.urbansaints.org/privacypolicy
+                </a>
+              </Copy>
+              <Copy>
+                I understand that Urban Saints will keep a record of my child’s
+                name, address, medical records and attendance at this event to
+                comply with safeguarding requirements
+              </Copy>
+              <FieldCheckbox
+                fieldName="acceptRecordKeeping"
+                checked={values.acceptRecordKeeping}
+                label="I agree"
+              />
             </section>
             <section>
-              <p>
-                Photos
-                <label>
-                  Yes
-                  <Field
-                    type="radio"
-                    name="photoPermission"
-                    value="yes"
-                    checked={values.photoPermission === "yes"}
-                  />
-                </label>
-                <label>
-                  No
-                  <Field
-                    type="radio"
-                    name="photoPermission"
-                    value="no"
-                    checked={values.photoPermission === "no"}
-                  />
-                </label>
-                <br />
-                <ErrorMessage name="photoPermission" />
-              </p>
+              <h2>Photo (etc) permission</h2>
+              <Copy>
+                During the course of the Camp, we plan to be taking videos and
+                photographs for creating memories of Camp activities, for use in
+                our publicity and or other material produced by Urban Saints.
+                This may include publishing on websites and social media (see
+                T&Cs section 12). Due to recent legislation changes, it is
+                important that we seek permission from yourself and your child
+                (over the age of 13) to take and use these images for these
+                stated purposes. Please could you discuss with your child
+                whether they are happy to give Urban Saints permission to
+                include them in any photographs or videos taken and complete the
+                consent box below as appropriate.
+              </Copy>
+              <Copy>
+                I am happy for Urban Saints to include my child in group videos
+                and photographs of M+M Holiday activities and these may be used
+                in future publicity, or other material produced by Urban Saints.
+                I have consulted with my child who also gives permission.
+              </Copy>
+              <RadioChoices
+                fieldName="photoPermission"
+                value={values.photoPermission}
+                options={[
+                  { label: "Yes", value: "yes" },
+                  { label: "No", value: "no" },
+                ]}
+              />
             </section>
             <section>
               <h2>How did you hear about M+M?</h2>
-              <p>
-                <label>
-                  Urban Saints mailing
-                  <Field
-                    type="checkbox"
-                    name="heardUrbanSaintsMailing"
-                    value={values.heardUrbanSaintsMailing}
-                  />
-                </label>
-              </p>
-              <p>
-                <label>
-                  Urban Saints website
-                  <Field
-                    type="checkbox"
-                    name="heardUrbanSaintsWebsite"
-                    value={values.heardUrbanSaintsWebsite}
-                  />
-                </label>
-              </p>
-              <p>
-                <label>
-                  Been before
-                  <Field
-                    type="checkbox"
-                    name="heardBeenBefore"
-                    value={values.heardBeenBefore}
-                  />
-                </label>
-              </p>
-              <p>
-                <label>
-                  Family member
-                  <Field
-                    type="checkbox"
-                    name="heardFamilyMember"
-                    value={values.heardFamilyMember}
-                  />
-                </label>
-              </p>
-              <p>
-                <label>
-                  Church
-                  <Field
-                    type="checkbox"
-                    name="heardChurch"
-                    value={values.heardChurch}
-                  />
-                </label>
-              </p>
-              <p>
-                <label>
-                  Scripture Union
-                  <Field
-                    type="checkbox"
-                    name="heardScriptureUnion"
-                    value={values.heardScriptureUnion}
-                  />
-                </label>
-              </p>
-              <p>
-                <label>
-                  Friend
-                  <Field
-                    type="checkbox"
-                    name="heardFriend"
-                    checked={values.heardFriend}
-                  />
-                </label>
-              </p>
+              <FieldCheckbox
+                fieldName="heardUrbanSaintsMailing"
+                checked={values.heardUrbanSaintsMailing}
+                label="Urban Saints mailing"
+              />
+              <FieldCheckbox
+                fieldName="heardUrbanSaintsWebsite"
+                checked={values.heardUrbanSaintsWebsite}
+                label="Urban Saints website"
+              />
+              <FieldCheckbox
+                fieldName="heardBeenBefore"
+                checked={values.heardBeenBefore}
+                label="Been before"
+              />
+              <FieldCheckbox
+                fieldName="heardFamilyMember"
+                checked={values.heardFamilyMember}
+                label="Family member"
+              />
+              <FieldCheckbox
+                fieldName="heardChurch"
+                checked={values.heardChurch}
+                label="Church"
+              />
+              <FieldCheckbox
+                fieldName="heardScriptureUnion"
+                checked={values.heardScriptureUnion}
+                label="Scripture Union"
+              />
+              <FieldCheckbox
+                fieldName="heardFriend"
+                checked={values.heardFriend}
+                label="Friend"
+              />
               <TextField name="heardOther" label="Other" />
             </section>
             <section>
-              <p>
-                <label>
-                  Bank transfer
-                  <Field
-                    type="radio"
-                    name="paymentMethod"
-                    value="Bank transfer"
-                    checked={values.paymentMethod === "Bank transfer"}
-                  />
-                </label>
-                <label>
-                  Cheque
-                  <Field
-                    type="radio"
-                    name="paymentMethod"
-                    value="Cheque"
-                    checked={values.paymentMethod === "Cheque"}
-                  />
-                </label>
-                <label>
-                  Cash{" "}
-                  <Field
-                    type="radio"
-                    name="paymentMethod"
-                    value="Cash"
-                    checked={values.paymentMethod === "Cash"}
-                  />
-                </label>
-                <ErrorMessage name="paymentMethod" />
-              </p>
-              <p>
-                <label>
-                  Full
-                  <Field
-                    type="radio"
-                    name="paymentAmount"
-                    value="Full"
-                    checked={values.paymentAmount === "Full"}
-                  />
-                </label>
-                <label>
-                  Deposit
-                  <Field
-                    type="radio"
-                    name="paymentAmount"
-                    value="Deposit"
-                    checked={values.paymentAmount === "Deposit"}
-                  />
-                </label>
-                <ErrorMessage name="paymentAmount" />
-              </p>
+              <h2>Payment information</h2>
+              <RadioChoices
+                title="Payment method"
+                options={[
+                  { label: "Bank transfer", value: "Bank transfer" },
+                  { label: "Cheque", value: "Cheque" },
+                  { label: "Cash", value: "Cash" },
+                ]}
+                fieldName="paymentMethod"
+                value={values.paymentMethod}
+              />
+              <RadioChoices
+                title="Payment amount"
+                options={[
+                  { label: "Full (£239)", value: "Full" },
+                  { label: "Deposit (£40)", value: "Deposit" },
+                ]}
+                fieldName="paymentAmount"
+                value={values.paymentAmount}
+              />
+              <Copy>
+                <strong>Bank name:</strong> Natwest, M&M Holidays fees account
+                <br />
+                <strong>Sort code:</strong> 60-13-23
+                <br />
+                <strong>Account number:</strong> 47430702
+                <br />
+                <strong>Ref:</strong> Your child’s name
+              </Copy>
             </section>
             <section>
+              <h2>Other information</h2>
+              <Copy>
+                A medical form will be sent shortly before the holiday commences
+                and it is essential that it is completed and returned by a
+                parent/guardian immediately. However, in the meantime please let
+                us have any information which would be helpful to the M+M
+                Leaders in planning the holiday.
+              </Copy>
               <label>
                 <p>Dietary needs</p>
-                <textarea
+                <TextArea
                   name="dietaryNeeds"
                   value={values.dietaryNeeds}
                   onChange={handleChange}
@@ -654,8 +616,8 @@ const BookingForm = () => {
             </section>
             <section>
               <label>
-                <p>Medical issues</p>
-                <textarea
+                <p>Medical issues or disabilities</p>
+                <TextArea
                   name="medicalIssues"
                   value={values.medicalIssues}
                   onChange={handleChange}
@@ -664,8 +626,8 @@ const BookingForm = () => {
             </section>
             <section>
               <label>
-                <p>Behavioural needs</p>
-                <textarea
+                <p>Behavioural/social needs</p>
+                <TextArea
                   name="behaviouralNeeds"
                   value={values.behaviouralNeeds}
                   onChange={handleChange}
@@ -674,8 +636,8 @@ const BookingForm = () => {
             </section>
             <section>
               <label>
-                <p>English not first language</p>
-                <textarea
+                <p>If English is not your child&apos;s first language</p>
+                <TextArea
                   name="englishNotFirstLanguage"
                   value={values.englishNotFirstLanguage}
                   onChange={handleChange}
@@ -685,7 +647,7 @@ const BookingForm = () => {
             <section>
               <label>
                 <p>Anything else</p>
-                <textarea
+                <TextArea
                   name="anythingElse"
                   value={values.anythingElse}
                   onChange={handleChange}
@@ -693,25 +655,36 @@ const BookingForm = () => {
               </label>
             </section>
             <section>
-              <label>
-                <p>Child confirmation</p>
-                <Field
-                  type="checkbox"
-                  name="childConfirmation"
-                  checked={values.childConfirmation}
-                />
-                <ErrorMessage name="childConfirmation" />
-              </label>
+              <h2>Young person declaration</h2>
+              <p>
+                I understand that there will be Christian teaching on the
+                holiday. I agree to give my full support and co-operation to the
+                Holiday Leader. I will behave appropriately at all times.
+              </p>
+              <FieldCheckbox
+                fieldName="childConfirmation"
+                checked={values.childConfirmation}
+                label="I agree"
+              />
             </section>
             <section>
               <label>
-                <p>Parent confirmation</p>
-                <Field
-                  type="checkbox"
-                  name="parentConfirmation"
+                <h2>
+                  Parent/guardian declaration (or by young person if over 18)
+                </h2>
+                <p>
+                  I agree to the Booking Terms &amp; Conditions. I support and
+                  approve my son/daughter/ward taking part in this holiday. By
+                  submitting this, I apply for my child/ward to become a
+                  temporary member of Urban Saints and acknowledge that this
+                  will happen on acceptance of this application. I agree to pay
+                  any outstanding balance by 31st May 2019.
+                </p>
+                <FieldCheckbox
+                  fieldName="parentConfirmation"
                   checked={values.parentConfirmation}
+                  label="I agree"
                 />
-                <ErrorMessage name="parentConfirmation" />
               </label>
             </section>
             <section>

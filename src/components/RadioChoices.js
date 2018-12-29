@@ -2,7 +2,9 @@
 
 import React from "react"
 import styled from "styled-components"
-import { Field, ErrorMessage } from "formik"
+import { Field } from "formik"
+
+import FieldErrorMessage from "./FieldErrorMessage"
 
 const Main = styled.div`
   display: flex;
@@ -36,7 +38,7 @@ const Choice = styled.div`
 type Props = {|
   title?: ?string,
   fieldName: string,
-  value: string,
+  value: ?string,
   options: Array<{ value: string, label: string, subtitle?: ?string }>,
 |}
 
@@ -64,8 +66,8 @@ const RadioChoices = ({ options, value, fieldName, title }: Props) => {
             </label>
           )
         })}
-        <ErrorMessage name={fieldName} />
       </Main>
+      <FieldErrorMessage name={fieldName} />
     </div>
   )
 }
