@@ -10,6 +10,7 @@ import GlobalStyles from "./GlobalStyles"
 import Header from "./Header"
 import Footer from "./Footer"
 import PageGutter from "./PageGutter"
+import { MOBILE_WIDTH } from "../constants"
 
 const Main = styled.div`
   height: 100%;
@@ -19,16 +20,21 @@ const Main = styled.div`
 `
 
 const Content = styled.div`
+  position: relative;
   flex-grow: 1;
+  z-index: -1;
 `
 
-const MobileNavMenu = styled.div`
-  position: fixed;
+const ContentBlur = styled.div`
+  position: absolute;
+  top: 0;
   left: 0;
   right: 0;
-  top: 0;
   bottom: 0;
-  /*background-color: rgba(255, 255, 255, 0.7);*/
+  background-color: rgba(0, 0, 0, 0.4);
+  @media (min-width: ${MOBILE_WIDTH}px) {
+    display: none;
+  }
 `
 
 const HeaderAndHeroContainer = styled.div`
@@ -91,7 +97,12 @@ const Layout = ({
             />
           </Helmet>
           <HeaderAndHeroContainer theme={theme}>
-            {hero != null && hero}
+            {hero != null && (
+              <div style={{ position: "relative" }}>
+                {hero}
+                {mobileNavMenuExpanded && <ContentBlur />}
+              </div>
+            )}
             <HeaderContainer overHero={hero != null}>
               <Header
                 siteTitle={data.site.siteMetadata.title}
@@ -108,9 +119,9 @@ const Layout = ({
             ) : (
               <div>{children}</div>
             )}
+            {mobileNavMenuExpanded && <ContentBlur />}
           </Content>
           <Footer />
-          {mobileNavMenuExpanded && <MobileNavMenu />}
         </Main>
       )}
     />

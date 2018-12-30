@@ -32,9 +32,7 @@ const FooterBookingPrompt = () => (
     <PageGutter>
       <Title>Bookings for 2019 are now open!</Title>
       <BookButtonContainer>
-        <BookButton fontSize="1.5rem" paddingHorizontal="4em">
-          Book now
-        </BookButton>
+        <BookButton fontSize="1.5rem">Book now</BookButton>
       </BookButtonContainer>
       <p>
         Got questions? You can read more about <Link to="/max/">Max</Link>,{" "}

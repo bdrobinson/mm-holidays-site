@@ -6,10 +6,25 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 
 import PageGutter from "./PageGutter"
-import { MOBILE_WIDTH } from "../constants"
+import { MOBILE_WIDTH, PRIMARY_COLOUR_DARK } from "../constants"
+
+const LOGO_ASPECT_RATIO = 1.076
+const LOGO_WIDTH_DESKTOP = 150
+const LOGO_WIDTH_MOBILE = 100
+const LOGO_HEIGHT_DESKTOP = LOGO_WIDTH_DESKTOP / LOGO_ASPECT_RATIO
+const LOGO_HEIGHT_MOBILE = LOGO_WIDTH_MOBILE / LOGO_ASPECT_RATIO
+
+const LINKS: Array<{ link: string, label: string }> = [
+  { link: "/about", label: "About us" },
+  { link: "/max", label: "Max" },
+  { link: "/madness", label: "Madness" },
+  { link: "/mayhem", label: "Mayhem" },
+  { link: "/contact", label: "Contact" },
+]
 
 const Main = styled.div`
-  color: ${props => (props.theme === "dark" ? "#333" : "white")};
+  position: relative;
+  color: ${props => (props.theme === "dark" ? PRIMARY_COLOUR_DARK : "white")};
 `
 
 const TopBar = styled.header`
@@ -29,6 +44,7 @@ const Inner = styled.div`
   align-items: center;
   justify-content: space-between;
   overflow-x: auto;
+  position: relative;
 `
 
 const Nav = styled.nav`
@@ -80,6 +96,43 @@ const LogoContainer = styled.div`
   }
 `
 
+const MobileNavMenu = styled.div`
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-top: ${LOGO_HEIGHT_DESKTOP}px;
+  @media (max-width: ${MOBILE_WIDTH}px) {
+    padding-top: ${LOGO_HEIGHT_MOBILE}px;
+  }
+  @media (min-width: ${MOBILE_WIDTH}px) {
+    display: none;
+  }
+`
+
+const MobileNavLinksContainer = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 1em 0;
+`
+
+const MobileNavLink = styled(Link)`
+  flex-grow: 0;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 2em;
+  padding: 0.5em;
+  text-decoration: none;
+  @media (hover: hover), (-moz-touch-enabled: 0) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
 type Props = {|
   siteTitle: string,
   theme?: "light" | "dark",
@@ -95,8 +148,22 @@ const Header = ({
   setMenuExpanded,
   displayShadows,
 }: Props) => {
+  const themeToUse = menuExpanded ? "dark" : theme
   return (
-    <Main theme={theme}>
+    <Main theme={themeToUse}>
+      {menuExpanded && (
+        <MobileNavMenu>
+          <PageGutter>
+            <MobileNavLinksContainer>
+              {LINKS.map(({ link, label }) => (
+                <MobileNavLink key={link} to={link}>
+                  {label}
+                </MobileNavLink>
+              ))}
+            </MobileNavLinksContainer>
+          </PageGutter>
+        </MobileNavMenu>
+      )}
       <TopBar shadow={displayShadows}>
         <PageGutter>
           <Inner>
@@ -123,7 +190,7 @@ const Header = ({
                   `}
                   render={data => {
                     const image =
-                      theme === "light"
+                      themeToUse === "light"
                         ? data.light.childImageSharp.fluid
                         : data.dark.childImageSharp.fluid
                     return <Img fluid={image} />
@@ -132,11 +199,11 @@ const Header = ({
               </LogoContainer>
             </Link>
             <Nav shadows={displayShadows}>
-              <NavLink to="/about">About us</NavLink>
-              <NavLink to="/max">Max</NavLink>
-              <NavLink to="/madness">Madness</NavLink>
-              <NavLink to="/mayhem">Mayhem</NavLink>
-              <NavLink to="/contact">Contact</NavLink>
+              {LINKS.map(({ link, label }) => (
+                <NavLink key={link} to={link}>
+                  {label}
+                </NavLink>
+              ))}
             </Nav>
             <MenuButton
               onClick={() => {
