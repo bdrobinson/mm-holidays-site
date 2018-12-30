@@ -2,6 +2,9 @@
 path: "/contact"
 title: "Contact"
 ---
+
+Want to book your place for 2019? You can apply online using our [booking form](/booking).
+
 For general info and enquiries contact us at <info@madnessandmayhem.org.uk>
 
 For information regarding MAX, please email <philandruthselby@gmail.com>

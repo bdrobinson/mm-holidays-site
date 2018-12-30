@@ -13,7 +13,12 @@ const Booking = ({ data }: Props) => {
   return (
     <Layout
       title="Book"
-      hero={<HeroImage fluid={data.hero.childImageSharp.fluid} title="Book" />}
+      hero={
+        <HeroImage
+          fluid={data.hero.childImageSharp.fluid}
+          title="Book your place"
+        />
+      }
       theme="light"
     >
       <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
