@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 
 import { HERO_IMAGE_MAX_HEIGHT, TINY_WIDTH } from "../constants"
+import PageGutter from "./PageGutter"
 
 const Main = styled.div`
   position: relative;
@@ -32,10 +33,11 @@ const Title = styled.h1`
   }
 `
 
-const Subtitle = styled.span`
+const Subtitle = styled.div`
   font-size: 3rem;
   text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   font-weight: 600;
+  text-align: center;
   @media (max-width: ${TINY_WIDTH}px) {
     font-size: 2rem;
   }
@@ -57,8 +59,10 @@ const HeroImage = ({ fluid, title, subtitle, children }: Props) => {
         imgStyle={{ objectPosition: "center" }}
       />
       <Overlay>
-        <Title>{title}</Title>
-        {subtitle != null && <Subtitle>{subtitle}</Subtitle>}
+        <PageGutter>
+          <Title>{title}</Title>
+          {subtitle != null && <Subtitle>{subtitle}</Subtitle>}
+        </PageGutter>
       </Overlay>
       {children != null && children}
     </Main>
