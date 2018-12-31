@@ -311,7 +311,7 @@ export const createColumns = (params: Params): Array<Column> => {
     {
       id: "formSubmissionDate",
       name: "Form submission date",
-      value: format(now, "YYYY/MM/DD"),
+      value: format(now, "DD/MM/YYYY"),
     },
   ]
 }
