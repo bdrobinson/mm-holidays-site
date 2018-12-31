@@ -3,6 +3,8 @@ const proxy = require("http-proxy-middleware")
 module.exports = {
   siteMetadata: {
     title: "M+M Holidays",
+    seoDescription:
+      "M+M is an action-packed holiday week for young people aged 9 to 17. It’s seven days of fun, friends and exploring big ideas from the Christian faith.",
   },
   developMiddleware: app => {
     app.use(

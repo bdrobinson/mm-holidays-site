@@ -111,7 +111,7 @@ const IndexPage = ({ data }: Props) => (
     title={null}
     theme="light"
     applyGutter={false}
-    seoDescription={data.intro.frontmatter.summary}
+    seoDescription={data.site.siteMetadata.seoDescription}
     hero={
       <HeroContainer>
         <ImageCrossfade
@@ -185,6 +185,11 @@ const IndexPage = ({ data }: Props) => (
 
 export const pageQuery = graphql`
   {
+    site {
+      siteMetadata {
+        seoDescription
+      }
+    }
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "//home/sections//" } }
       sort: { fields: [frontmatter___order], order: ASC }
@@ -231,9 +236,6 @@ export const pageQuery = graphql`
       }
     }
     intro: markdownRemark(fileAbsolutePath: { regex: "/home/intro/" }) {
-      frontmatter {
-        summary
-      }
       html
     }
   }

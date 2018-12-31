@@ -135,7 +135,6 @@ const MobileNavLink = styled(Link)`
 `
 
 type Props = {|
-  siteTitle: string,
   theme?: "light" | "dark",
   menuExpanded: boolean,
   setMenuExpanded: boolean => void,
@@ -143,7 +142,6 @@ type Props = {|
 |}
 
 const Header = ({
-  siteTitle,
   theme = "dark",
   menuExpanded,
   setMenuExpanded,
