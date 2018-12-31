@@ -16,6 +16,7 @@ const IndexPage = ({ data }: Props) => (
       <HeroImage fluid={data.hero.childImageSharp.fluid} title="About us" />
     }
     theme="light"
+    seoDescription="The history of M+M and general information about camp."
   >
     {data.allMarkdownRemark.edges.map(edge => {
       const fluid: ?Object = edge.node.frontmatter.image?.childImageSharp.fluid

@@ -111,6 +111,7 @@ const IndexPage = ({ data }: Props) => (
     title={null}
     theme="light"
     applyGutter={false}
+    seoDescription={data.intro.frontmatter.summary}
     hero={
       <HeroContainer>
         <ImageCrossfade
@@ -230,6 +231,9 @@ export const pageQuery = graphql`
       }
     }
     intro: markdownRemark(fileAbsolutePath: { regex: "/home/intro/" }) {
+      frontmatter {
+        summary
+      }
       html
     }
   }

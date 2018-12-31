@@ -1,6 +1,7 @@
 ---
 path: "/terms-and-conditions/"
 title: Terms and Conditions
+description: "All the T&Cs for booking onto M+M Holidays."
 ---
 ## 1. How do I book a place at MAX, Madness or Mayhem?
 

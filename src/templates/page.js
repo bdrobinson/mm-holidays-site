@@ -11,8 +11,9 @@ type Props = {|
 
 export default function Template({ data }: Props) {
   const title = data.markdownRemark.frontmatter.title
+  const description = data.markdownRemark.frontmatter.description
   return (
-    <Layout title={title}>
+    <Layout title={title} seoDescription={description}>
       <section>
         <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
@@ -28,6 +29,7 @@ export const pageQuery = graphql`
       frontmatter {
         path
         title
+        description
       }
     }
   }

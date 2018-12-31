@@ -42,6 +42,7 @@ const Camp = ({ data }: Props) => {
     <Layout
       title={meta.title}
       theme="light"
+      seoDescription={meta.description}
       hero={
         <HeroImage
           fluid={meta.hero.childImageSharp.fluid}
@@ -83,6 +84,7 @@ export const pageQuery = graphql`
       frontmatter {
         price
         title
+        description
         ages
         sections {
           id

@@ -20,6 +20,7 @@ const Booking = ({ data }: Props) => {
         />
       }
       theme="light"
+      seoDescription={data.markdownRemark.frontmatter.description}
     >
       <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
       <BookingForm />
@@ -30,6 +31,9 @@ const Booking = ({ data }: Props) => {
 export const pageQuery = graphql`
   {
     markdownRemark(fileAbsolutePath: { regex: "//booking/intro.md/" }) {
+      frontmatter {
+        description
+      }
       html
     }
     hero: file(relativePath: { eq: "inflatables.jpg" }) {

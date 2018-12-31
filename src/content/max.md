@@ -1,6 +1,7 @@
 ---
 path: /max
 title: MAX
+description: "MAX runs for 9-11 year olds and is a safe, fun and action packed holiday."
 template: CAMP_PROFILE
 ages: 9-11
 price: £230
