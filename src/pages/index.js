@@ -109,6 +109,7 @@ type Props = {| data: Object |}
 const IndexPage = ({ data }: Props) => (
   <Layout
     title={null}
+    path="/"
     theme="light"
     applyGutter={false}
     seoDescription={data.site.siteMetadata.seoDescription}

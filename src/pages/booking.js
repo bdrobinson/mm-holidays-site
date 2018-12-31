@@ -12,6 +12,7 @@ type Props = {| data: Object |}
 const Booking = ({ data }: Props) => {
   return (
     <Layout
+      path={data.markdownRemark.frontmatter.path}
       title="Book"
       hero={
         <HeroImage
@@ -33,6 +34,7 @@ export const pageQuery = graphql`
     markdownRemark(fileAbsolutePath: { regex: "//booking/intro.md/" }) {
       frontmatter {
         description
+        path
       }
       html
     }

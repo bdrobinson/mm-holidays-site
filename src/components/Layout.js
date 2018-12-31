@@ -56,6 +56,7 @@ type Props = {|
   hero?: ?Node,
   theme?: "light" | "dark",
   seoDescription: ?string,
+  path: ?string,
 |}
 
 const Layout = ({
@@ -65,6 +66,7 @@ const Layout = ({
   hero,
   theme,
   seoDescription,
+  path,
 }: Props) => {
   const [mobileNavMenuExpanded, setMobileNavMenu] = useState(false)
   return (
@@ -100,6 +102,9 @@ const Layout = ({
         const pageImage = `${data.site.siteMetadata.baseUrl}${
           data.defaultImage.childImageSharp.fixed.src
         }`
+
+        const pageUrl =
+          path != null ? `${data.site.siteMetadata.baseUrl}${path}` : null
         return (
           <Main>
             {mobileNavMenuExpanded && <ContentBlur />}
@@ -117,6 +122,7 @@ const Layout = ({
               <meta property="og:type" content="website" />
               <meta property="og:description" content={pageDescription} />
               <meta property="og:image" content={pageImage} />
+              {pageUrl != null && <meta property="og:url" content={pageUrl} />}
 
               <meta name="twitter:card" content="summary_large_image" />
               <meta name="twitter:site" content="@madnesandmayhem" />

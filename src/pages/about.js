@@ -11,6 +11,7 @@ type Props = {| data: Object |}
 
 const IndexPage = ({ data }: Props) => (
   <Layout
+    path="/about"
     title="About"
     hero={
       <HeroImage fluid={data.hero.childImageSharp.fluid} title="About us" />

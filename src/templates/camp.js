@@ -40,6 +40,7 @@ const Camp = ({ data }: Props) => {
   const meta = data.markdownRemark.frontmatter
   return (
     <Layout
+      path={meta.path}
       title={meta.title}
       theme="light"
       seoDescription={meta.description}
@@ -82,6 +83,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
+        path
         price
         title
         description
