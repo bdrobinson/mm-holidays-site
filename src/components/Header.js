@@ -25,6 +25,7 @@ const LINKS: Array<{ link: string, label: string }> = [
 const Main = styled.div`
   position: relative;
   color: ${props => (props.theme === "dark" ? PRIMARY_COLOUR_DARK : "white")};
+  z-index: 1; /* urghh */
 `
 
 const TopBar = styled.header`

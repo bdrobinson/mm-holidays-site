@@ -22,7 +22,6 @@ const Main = styled.div`
 const Content = styled.div`
   position: relative;
   flex-grow: 1;
-  z-index: -1;
 `
 
 const ContentBlur = styled.div`
