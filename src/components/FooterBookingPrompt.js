@@ -18,13 +18,12 @@ const Title = styled.h2`
   letter-spacing: 0.7px;
   font-size: 2rem;
   margin-top: 1em;
-  margin-bottom: 2em;
 `
 
 const BookButtonContainer = styled.div`
   text-align: center;
   width: 100%;
-  margin: 5em 0;
+  margin: 1em 0;
 `
 
 const FooterBookingPrompt = () => (
