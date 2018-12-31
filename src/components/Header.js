@@ -67,8 +67,8 @@ const MenuButton = styled.button.attrs({ children: "Menu" })`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 1.5em;
-  font-weight: 500;
+  font-size: 1.2em;
+  font-weight: 600;
   @media (min-width: ${MOBILE_WIDTH}px) {
     display: none;
   }

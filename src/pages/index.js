@@ -41,7 +41,7 @@ const Tagline = styled.h1`
   text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   letter-spacing: 1.5px;
   @media (max-width: ${SMALLSCREEN_WIDTH}px) {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 `
 

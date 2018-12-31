@@ -1,5 +1,7 @@
 const proxy = require("http-proxy-middleware")
 
+const { PRIMARY_COLOUR, PRIMARY_COLOUR_DARK } = require("./constants")
+
 module.exports = {
   siteMetadata: {
     title: "M+M Holidays",
@@ -32,8 +34,8 @@ module.exports = {
         name: "M+M Holidays",
         short_name: "M+M Holidays",
         start_url: "/",
-        background_color: "#663399",
-        theme_color: "#663399",
+        background_color: PRIMARY_COLOUR,
+        theme_color: PRIMARY_COLOUR_DARK,
         display: "browser",
         icon: "src/images/logo_black_square.png",
       },
