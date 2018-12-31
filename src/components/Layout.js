@@ -76,8 +76,6 @@ const Layout = ({
               title
               seoDescription
             }
-            host
-            port
           }
           defaultImage: file(relativePath: { eq: "hero0.jpg" }) {
             childImageSharp {
@@ -98,9 +96,7 @@ const Layout = ({
             ? seoDescription
             : data.site.siteMetadata.seoDescription
 
-        const pageImage = `https://${data.site.host}:${data.site.port}${
-          data.defaultImage.childImageSharp.fixed.src
-        }`
+        const pageImage = data.defaultImage.childImageSharp.fixed.src
         return (
           <Main>
             {mobileNavMenuExpanded && <ContentBlur />}
