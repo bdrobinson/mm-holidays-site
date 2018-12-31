@@ -43,10 +43,9 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: "M+M Holidays",
-        short_name: "M+M Holidays",
         start_url: "/",
         background_color: "#fff",
-        theme_color: "#333",
+        theme_color: "#fff",
         display: "browser",
         icon: "src/images/logo_black_square.png",
       },
