@@ -40,9 +40,7 @@ export const pageQuery = graphql`
     }
     hero: file(relativePath: { eq: "inflatables.jpg" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        ...FluidHeroImage
       }
     }
   }

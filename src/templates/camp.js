@@ -96,9 +96,7 @@ export const pageQuery = graphql`
         }
         hero {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            ...FluidHeroImage
           }
         }
       }

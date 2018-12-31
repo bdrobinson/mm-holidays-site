@@ -205,9 +205,7 @@ export const pageQuery = graphql`
             imageAltText
             image {
               childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
+                ...FluidHeroImage
               }
             }
           }
@@ -217,23 +215,17 @@ export const pageQuery = graphql`
     }
     hero1: file(relativePath: { eq: "inflatables.jpg" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        ...FluidHeroImage
       }
     }
     hero2: file(relativePath: { eq: "sunset.jpg" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        ...FluidHeroImage
       }
     }
     hero3: file(relativePath: { eq: "tires.jpg" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        ...FluidHeroImage
       }
     }
     intro: markdownRemark(fileAbsolutePath: { regex: "/home/intro/" }) {

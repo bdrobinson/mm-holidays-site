@@ -46,9 +46,7 @@ export const pageQuery = graphql`
             order
             image {
               childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
+                ...FluidHeroImage
               }
             }
           }
@@ -58,9 +56,7 @@ export const pageQuery = graphql`
     }
     hero: file(relativePath: { eq: "inflatables.jpg" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        ...FluidHeroImage
       }
     }
   }

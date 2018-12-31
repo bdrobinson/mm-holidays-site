@@ -3,6 +3,7 @@
 import React, { type Node } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import { graphql } from "gatsby"
 
 import { HERO_IMAGE_MAX_HEIGHT, TINY_WIDTH } from "../constants"
 import PageGutter from "./PageGutter"
@@ -70,3 +71,11 @@ const HeroImage = ({ fluid, title, subtitle, children }: Props) => {
 }
 
 export default HeroImage
+
+export const FluidHeroImage = graphql`
+  fragment FluidHeroImage on ImageSharp {
+    fluid(maxWidth: 1920, srcSetBreakpoints: [400, 600, 960, 1280, 1920]) {
+      ...GatsbyImageSharpFluid
+    }
+  }
+`
