@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
         height: 100%;
     }
     body {
+        font-display: swap;
         font-family: 'Raleway', sans-serif;
         font-size: 1rem;
         height: 100%;
