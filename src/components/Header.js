@@ -6,7 +6,7 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 
 import PageGutter from "./PageGutter"
-import { MOBILE_WIDTH, PRIMARY_COLOUR_DARK } from "../constants"
+import { MOBILE_WIDTH, PRIMARY_COLOUR_DARK, Z_INDICES } from "../constants"
 
 const LOGO_ASPECT_RATIO = 1.076
 const LOGO_WIDTH_DESKTOP = 150
@@ -25,7 +25,7 @@ const LINKS: Array<{ link: string, label: string }> = [
 const Main = styled.div`
   position: relative;
   color: ${props => (props.theme === "dark" ? PRIMARY_COLOUR_DARK : "white")};
-  z-index: 1; /* urghh */
+  z-index: ${Z_INDICES.nav}; /* urghh */
 `
 
 const TopBar = styled.header`

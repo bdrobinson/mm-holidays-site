@@ -10,7 +10,7 @@ import GlobalStyles from "./GlobalStyles"
 import Header from "./Header"
 import Footer from "./Footer"
 import PageGutter from "./PageGutter"
-import { MOBILE_WIDTH } from "../constants"
+import { MOBILE_WIDTH, Z_INDICES } from "../constants"
 
 const Main = styled.div`
   height: 100%;
@@ -25,7 +25,8 @@ const Content = styled.div`
 `
 
 const ContentBlur = styled.div`
-  position: absolute;
+  position: fixed;
+  z-index: ${Z_INDICES.blur};
   top: 0;
   left: 0;
   right: 0;
@@ -77,6 +78,7 @@ const Layout = ({
       `}
       render={data => (
         <Main>
+          {mobileNavMenuExpanded && <ContentBlur />}
           <GlobalStyles />
           <Helmet
             title={
@@ -96,12 +98,7 @@ const Layout = ({
             />
           </Helmet>
           <HeaderAndHeroContainer theme={theme}>
-            {hero != null && (
-              <div style={{ position: "relative" }}>
-                {hero}
-                {mobileNavMenuExpanded && <ContentBlur />}
-              </div>
-            )}
+            {hero != null && hero}
             <HeaderContainer overHero={hero != null}>
               <Header
                 siteTitle={data.site.siteMetadata.title}
@@ -112,13 +109,12 @@ const Layout = ({
               />
             </HeaderContainer>
           </HeaderAndHeroContainer>
-          <Content blurred={mobileNavMenuExpanded}>
+          <Content>
             {applyGutter ? (
               <PageGutter>{children}</PageGutter>
             ) : (
               <div>{children}</div>
             )}
-            {mobileNavMenuExpanded && <ContentBlur />}
           </Content>
           <Footer />
         </Main>
