@@ -38,7 +38,7 @@ export const pageQuery = graphql`
       }
       html
     }
-    hero: file(relativePath: { eq: "inflatables.jpg" }) {
+    hero: file(relativePath: { eq: "eating_pancakes.jpg" }) {
       childImageSharp {
         ...FluidHeroImage
       }

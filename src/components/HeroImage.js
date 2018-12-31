@@ -26,7 +26,7 @@ const Overlay = styled.div`
 
 const Title = styled.h1`
   font-size: 6rem;
-  text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
   margin-bottom: 0;
   text-align: center;
   @media (max-width: ${TINY_WIDTH}px) {
@@ -74,7 +74,10 @@ export default HeroImage
 
 export const FluidHeroImage = graphql`
   fragment FluidHeroImage on ImageSharp {
-    fluid(maxWidth: 1920, srcSetBreakpoints: [400, 600, 960, 1280, 1920]) {
+    fluid(
+      maxWidth: 1920
+      srcSetBreakpoints: [400, 600, 960, 1280, 1600, 1920]
+    ) {
       ...GatsbyImageSharpFluid
     }
   }
