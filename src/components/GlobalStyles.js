@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
     html {
         font-size: 16px;
         @media (max-width: ${MOBILE_WIDTH}px) {
-            font-size: 12px;
+            font-size: 14px;
         }
         height: 100%;
     }
@@ -27,6 +27,9 @@ const GlobalStyles = createGlobalStyle`
     p {
         font-size: 1.3rem;
         font-weight: 300;
+        @media (max-width: ${MOBILE_WIDTH}px) {
+            font-weight: 400;
+        }
         line-height: 1.5;
     }
     h1 {
