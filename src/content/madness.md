@@ -4,7 +4,7 @@ title: "Madness"
 description: "Madness runs for 12-14 year olds and offers fun, new friends, and time to consider the claims of Jesus Christ."
 template: CAMP_PROFILE
 ages: 12-14
-price: £230
+price: £239
 sections:
     - ./madness/p1.md
 hero: ../images/lads.jpg
