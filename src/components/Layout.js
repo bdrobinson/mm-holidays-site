@@ -75,6 +75,7 @@ const Layout = ({
             siteMetadata {
               title
               seoDescription
+              baseUrl
             }
           }
           defaultImage: file(relativePath: { eq: "hero0.jpg" }) {
@@ -96,7 +97,9 @@ const Layout = ({
             ? seoDescription
             : data.site.siteMetadata.seoDescription
 
-        const pageImage = data.defaultImage.childImageSharp.fixed.src
+        const pageImage = `${data.site.siteMetadata.baseUrl}${
+          data.defaultImage.childImageSharp.fixed.src
+        }`
         return (
           <Main>
             {mobileNavMenuExpanded && <ContentBlur />}
