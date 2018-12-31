@@ -87,8 +87,11 @@ const Layout = ({
                 : data.site.siteMetadata.title
             }
             meta={[
-              { name: "description", content: "Sample" },
-              { name: "keywords", content: "sample, something" },
+              {
+                name: "description",
+                content:
+                  "M+M is an action-packed holiday week for young people aged 9 to 17 from across the country. It’s seven days of fun, friends and exploring big ideas from the Christian faith.",
+              },
             ]}
           >
             <html lang="en" />
