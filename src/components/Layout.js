@@ -134,6 +134,10 @@ const Layout = ({
                 name="twitter:image:alt"
                 content="M+M campers with the site in the background"
               />
+              <meta
+                name="og:image:alt"
+                content="M+M campers with the site in the background"
+              />
             </Helmet>
             <HeaderAndHeroContainer theme={theme}>
               {hero != null && hero}
