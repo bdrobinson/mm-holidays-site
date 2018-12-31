@@ -55,7 +55,7 @@ const PromoVideoContainer = styled.div`
   margin-bottom: 4em;
 `
 
-const PromoVideo = styled.iframe`
+const PromoVideo = styled.iframe.attrs({ title: "Promo Video" })`
   position: absolute;
   top: 0;
   left: 0;
