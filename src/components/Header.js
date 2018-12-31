@@ -34,7 +34,7 @@ const TopBar = styled.header`
   padding-top: 0.5rem;
   background: ${props =>
     props.shadow
-      ? "linear-gradient(to top,rgba(0,0,0,0),rgba(0,0,0,0.1))"
+      ? "linear-gradient(to top,rgba(0,0,0,0),rgba(0,0,0,0.2))"
       : "none"};
 `
 
@@ -56,7 +56,7 @@ const Nav = styled.nav`
   align-items: center;
   overflow-x: auto;
   text-shadow: ${props =>
-    props.shadow ? "0 0 30px rgba(0, 0, 0, 0.5)" : "none"};
+    props.shadow ? "0 0 8px rgba(0, 0, 0, 0.3)" : "none"};
   @media (max-width: ${MOBILE_WIDTH}px) {
     display: none;
   }
@@ -197,7 +197,7 @@ const Header = ({
                 />
               </LogoContainer>
             </Link>
-            <Nav shadows={displayShadows}>
+            <Nav shadow={displayShadows}>
               {LINKS.map(({ link, label }) => (
                 <NavLink key={link} to={link}>
                   {label}
