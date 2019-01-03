@@ -1,6 +1,6 @@
 // @flow
 
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 
 import BookingForm from "../components/BookingForm"
@@ -10,6 +10,7 @@ import HeroImage from "../components/HeroImage"
 type Props = {| data: Object |}
 
 const Booking = ({ data }: Props) => {
+  const [booked, setBooked] = useState(false)
   return (
     <Layout
       path={data.markdownRemark.frontmatter.path}
@@ -23,8 +24,22 @@ const Booking = ({ data }: Props) => {
       theme="light"
       seoDescription={data.markdownRemark.frontmatter.description}
     >
-      <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
-      <BookingForm />
+      {booked && (
+        <p>
+          Thank you for applying to M+M 2019! We&apos;ve received your
+          application. Please check your inbox for a confirmation email.
+        </p>
+      )}
+      {booked === false && (
+        <>
+          <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+          <BookingForm
+            onComplete={() => {
+              setBooked(true)
+            }}
+          />
+        </>
+      )}
     </Layout>
   )
 }

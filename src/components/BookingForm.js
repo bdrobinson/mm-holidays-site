@@ -12,7 +12,6 @@ import RadioChoices from "./RadioChoices"
 import { GREY_BORDER_COLOUR, MOBILE_WIDTH } from "../constants"
 import FieldErrorMessage from "./FieldErrorMessage"
 import FieldCheckbox from "./FieldCheckbox"
-import BookingSuccessPage from "./BookingSuccessPage"
 
 type FormState = {|
   // section 1
@@ -311,7 +310,11 @@ type SubmitState =
   | { type: "success" }
   | { type: "error", message: string }
 
-const BookingForm = () => {
+type Props = {|
+  onComplete: () => void,
+|}
+
+const BookingForm = ({ onComplete }: Props) => {
   const initialSubmitState: SubmitState = {
     type: "ready",
   }
@@ -338,6 +341,7 @@ const BookingForm = () => {
             throw new Error(await response.text())
           }
           setNetworkSubmitState({ type: "success" })
+          onComplete()
         } catch (err) {
           setNetworkSubmitState({ type: "error", message: err.message })
           Sentry.captureException(err)
@@ -353,10 +357,6 @@ const BookingForm = () => {
         handleBlur,
         submitCount,
       }) => {
-        if (networkSubmitState.type === "success") {
-          return <BookingSuccessPage />
-        }
-
         const dob = newDate(
           values.childDobYear,
           values.childDobMonth,
