@@ -33,6 +33,10 @@ const BookButtonContainer = styled.div`
   }
 `
 
+const CampName = styled.span`
+  margin-right: 1em;
+`
+
 type Props = {|
   campName: string,
   shadows: boolean,
@@ -42,12 +46,11 @@ const CampDatesCTA = ({ campName, shadows }: Props) => (
   <HeroDetailsContent>
     <div>
       <HeroDetailsRow shadows={shadows}>
-        {campName} 1: 26
-        <sup>th</sup> July &ndash; 3<sup>rd</sup> August 2019
+        <CampName>{campName} 1:</CampName>
+        26 July &ndash; 3 August 2019
       </HeroDetailsRow>
       <HeroDetailsRow shadows={shadows}>
-        {campName} 2: 3<sup>rd</sup> &ndash; 10
-        <sup>th</sup> August 2019
+        <CampName>{campName} 2:</CampName>3 &ndash; 10 August 2019
       </HeroDetailsRow>
     </div>
     <BookButtonContainer>

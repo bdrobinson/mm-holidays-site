@@ -71,7 +71,7 @@ const HeroBookingNoticeContainer = styled.div`
   flex-flow: row nowrap;
   justify-content: center;
   font-size: 0.8rem;
-  width: 400px;
+  width: 500px;
   background-color: rgba(0, 0, 0, 0.3);
   border-width: 6px;
   border-color: white;

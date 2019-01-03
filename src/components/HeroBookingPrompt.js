@@ -55,17 +55,11 @@ const HeroBookingPrompt = (props: Props) => (
       <BookingNoticeText>
         <BookingNoticeRow>
           <BookingNoticeLabel>M+M 1</BookingNoticeLabel>
-          <span>
-            Sat 27
-            <sup>th</sup> July &ndash; Sat 3<sup>rd</sup> August
-          </span>
+          <span>Sat 27 July &ndash; Sat 3 August</span>
         </BookingNoticeRow>
         <BookingNoticeRow>
           <BookingNoticeLabel>M+M 2</BookingNoticeLabel>
-          <span>
-            Sat 3<sup>rd</sup> &ndash; Sat 10
-            <sup>th</sup> August
-          </span>
+          <span>Sat 3 &ndash; Sat 10 August</span>
         </BookingNoticeRow>
       </BookingNoticeText>
       <BookButton>Book now</BookButton>
