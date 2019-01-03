@@ -14,12 +14,13 @@ const LOGO_WIDTH_MOBILE = 100
 const LOGO_HEIGHT_DESKTOP = LOGO_WIDTH_DESKTOP / LOGO_ASPECT_RATIO
 const LOGO_HEIGHT_MOBILE = LOGO_WIDTH_MOBILE / LOGO_ASPECT_RATIO
 
-const LINKS: Array<{ link: string, label: string }> = [
+const LINKS: Array<{ link: string, label: string, accent?: boolean }> = [
   { link: "/about", label: "About us" },
   { link: "/max", label: "Max" },
   { link: "/madness", label: "Madness" },
   { link: "/mayhem", label: "Mayhem" },
   { link: "/contact", label: "Contact" },
+  { link: "/booking", label: "Book", accent: true },
 ]
 
 const Main = styled.div`
@@ -44,7 +45,7 @@ const Inner = styled.div`
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
-  overflow-x: auto;
+  overflow-x: visible;
   position: relative;
 `
 
@@ -54,7 +55,7 @@ const Nav = styled.nav`
   flex-flow: row wrap;
   justify-content: flex-end;
   align-items: center;
-  overflow-x: auto;
+  overflow-x: visible;
   text-shadow: ${props =>
     props.shadow ? "0 0 8px rgba(0, 0, 0, 0.3)" : "none"};
   @media (max-width: ${MOBILE_WIDTH}px) {
@@ -88,6 +89,16 @@ const NavLink = styled(Link)`
       text-decoration: underline;
     }
   }
+`
+
+const AccentNavLink = styled(NavLink)`
+  background-color: white;
+  color: #333;
+  padding: 0.7em 1em;
+  border-radius: 1.3em;
+  text-shadow: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  margin-left: 1.2em;
 `
 
 const LogoContainer = styled.div`
@@ -198,11 +209,20 @@ const Header = ({
               </LogoContainer>
             </Link>
             <Nav shadow={displayShadows}>
-              {LINKS.map(({ link, label }) => (
-                <NavLink key={link} to={link}>
-                  {label}
-                </NavLink>
-              ))}
+              {LINKS.map(({ link, label, accent }) => {
+                if (accent) {
+                  return (
+                    <AccentNavLink key={link} to={link} accent={accent}>
+                      {label}
+                    </AccentNavLink>
+                  )
+                }
+                return (
+                  <NavLink key={link} to={link} accent={accent}>
+                    {label}
+                  </NavLink>
+                )
+              })}
             </Nav>
             <MenuButton
               onClick={() => {
