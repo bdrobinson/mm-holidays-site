@@ -640,7 +640,7 @@ const BookingForm = () => {
                 <br />
                 <strong>Account number:</strong> 47430702
                 <br />
-                <strong>Ref:</strong> Your child’s name
+                <strong>Ref:</strong> MM1 or MM2 and your child&apos;s name
               </Copy>
             </section>
             <section>

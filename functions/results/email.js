@@ -37,6 +37,9 @@ export const CamperEmail = () => {
         <strong>Account number:</strong> 47430702
       </p>
       <p>
+        <strong>Ref:</strong> MM1 or MM2 and your child&apos;s name
+      </p>
+      <p>
         We will continue to send important information via email, particularly
         near the holiday.
       </p>
