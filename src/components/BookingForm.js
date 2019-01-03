@@ -288,6 +288,7 @@ const SubmitButton = styled.button`
   border-radius: 0.5em;
   margin-top: 2em;
   font-size: 1.2em;
+  opacity: ${props => (props.disabled ? 0.6 : 1)};
 `
 
 const newDate = (year: string, month: string, day: string): ?Date => {
@@ -356,6 +357,7 @@ const BookingForm = ({ onComplete }: Props) => {
         handleChange,
         handleBlur,
         submitCount,
+        isSubmitting,
       }) => {
         const dob = newDate(
           values.childDobYear,
@@ -734,7 +736,9 @@ const BookingForm = ({ onComplete }: Props) => {
             </section>
             <section>
               <div>
-                <SubmitButton type="submit">Submit</SubmitButton>
+                <SubmitButton type="submit" disabled={isSubmitting}>
+                  Submit
+                </SubmitButton>
               </div>
               {Object.keys(errors).length > 0 &&
                 submitCount > 0 && (
