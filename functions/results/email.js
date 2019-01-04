@@ -26,18 +26,16 @@ export const CamperEmail = () => {
         <strong>Who are you paying?</strong> M&M Holidays fees
       </p>
       <p>
-        <strong>Your reference:</strong> Child&apos;s surname and then first
-        name (as much as you can fit in - or initials if you are paying for more
-        than one child) For example - Webster James or Webster J, F & B
+        <strong>Your reference:</strong> MM1 or MM2, followed by child&apos;s
+        surname and then first name (as much as you can fit in - or initials if
+        you are paying for more than one child) For example - MM1 Webster James
+        or MM2 Webster J, F & B
       </p>
       <p>
         <strong>Sort code:</strong> 60-13-23
       </p>
       <p>
         <strong>Account number:</strong> 47430702
-      </p>
-      <p>
-        <strong>Ref:</strong> MM1 or MM2 and your child&apos;s name
       </p>
       <p>
         We will continue to send important information via email, particularly
