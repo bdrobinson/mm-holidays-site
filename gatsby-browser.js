@@ -6,6 +6,7 @@
 
 import { setConfig } from "react-hot-loader"
 import * as Sentry from "@sentry/browser"
+import "unfetch/polyfill"
 
 export const onClientEntry = () => {
   // Needed to make react hooks work with HMR
