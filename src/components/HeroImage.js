@@ -55,6 +55,7 @@ const HeroImage = ({ fluid, title, subtitle, children }: Props) => {
   return (
     <Main>
       <Img
+        critical={true}
         fluid={fluid}
         style={{ maxHeight: `${HERO_IMAGE_MAX_HEIGHT}px` }}
         imgStyle={{ objectPosition: "center" }}
