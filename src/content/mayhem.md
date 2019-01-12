@@ -5,8 +5,15 @@ description: "Mayhem runs for 15-18 year olds. Mayhem provides time and space fo
 template: CAMP_PROFILE
 ages: 15-18
 price: £239
-sections:
-  - ./mayhem/p1.md
+sections: []
 hero: ../images/lads.jpg
 ---
-Mayhem runs for 15-18 year olds. Mayhem provides time and space for older teenagers to enjoy a chilled but simply brilliant holiday with their friends. It’s a great opportunity to meet new people and enjoy a fantastic variety of activities including some brilliant optional extras. There are plenty of options for everyone with our excellent onsite facilities as well as free time to chat, make craft or even just enjoy the great space of our fantastic new site.
+If you’re 15 to 18 years old, Mayhem is for you.
+
+Mayhem is a chance to hang out with friends, meet new people and try a whole range of activities. There’s a friendly, relaxed atmosphere and you’ll have plenty of free time to chat and unwind throughout the week.
+
+It’s also an opportunity to take some time out and think about life’s big questions. We’ll be exploring the claims of the Bible together and discussing whether Jesus is relevant to life today.
+
+Mayhem books up fast, so invite all your friends and start reserving your spaces. We’re looking forward to seeing you there.
+
+For more information email <mayhem@madnessandmahem.org.uk>

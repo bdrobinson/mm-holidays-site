@@ -9,6 +9,13 @@ sections: []
 hero: ../images/canoe.jpg
 ---
 
-MAX is a safe, fun and action packed holiday for 9-11 year olds. We provide a wide variety of activities both onsite and offsite as well as faithful and age appropriate Bible teaching. Our leadership team boasts a wealth of experience working with this age group. Our leaders will help them settle in and care for them throughout the week to ensure they have a great time away. You do not need to be a Christian or know anything about the Bible to come and enjoy a fantastic holiday. Why not bring a friend with you?
+If you’re 9 to 11 years old, Max is the holiday for you.
 
-For more information email <max@madnessandmayhem.org.uk>.
+Max is a week of fantastic activities and great teaching from the Bible. You’ll get to try games, crafts and challenges, and take exciting day trips with all your new friends. We’ll learn more about the awesome God who made the universe and find out the answers to some of life’s biggest questions.
+
+When you arrive, our experienced team of leaders will help you settle in. They’ll look after you throughout the week and make sure that you have a brilliant holiday.
+
+Tell all your friends and get ready for the best week of the year. It’s going to be
+epic...
+
+For more information email <max@madnessandmayhem.org.uk>
