@@ -383,7 +383,7 @@ const BookingForm = ({ onComplete }: Props) => {
                   {
                     value: "1",
                     label: "Week 1",
-                    subtitle: "26th July – 3rd August",
+                    subtitle: "27th July – 3rd August",
                   },
                   {
                     value: "2",
