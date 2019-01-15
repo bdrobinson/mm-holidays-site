@@ -1,7 +1,7 @@
 ---
 path: "/madness"
 title: "Madness"
-description: "Madness runs for 12-14 year olds and offers fun, new friends, and time to consider the claims of Jesus Christ."
+description: If you’re 12 to 14 years old and you’re ready for the best week of the year, come and join us on Madness.
 template: CAMP_PROFILE
 ages: 12-14
 price: £239

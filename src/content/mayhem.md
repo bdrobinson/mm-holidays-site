@@ -1,7 +1,7 @@
 ---
 path: "/mayhem"
 title: "Mayhem"
-description: "Mayhem runs for 15-18 year olds. Mayhem provides time and space for older teenagers to enjoy a chilled but brilliant holiday with their friends."
+description: "If you’re 15 to 18 years old, Mayhem is for you. Mayhem is a chance to hang out with friends, meet new people and try a whole range of activities."
 template: CAMP_PROFILE
 ages: 15-18
 price: £239

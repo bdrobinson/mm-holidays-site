@@ -1,7 +1,7 @@
 ---
 path: /max
 title: MAX
-description: "MAX runs for 9-11 year olds and is a safe, fun and action packed holiday."
+description: If you’re 9 to 11 years old, Max is the holiday for you. It's a week of fantastic activities and great teaching from the Bible.
 template: CAMP_PROFILE
 ages: 9-11
 price: £239
