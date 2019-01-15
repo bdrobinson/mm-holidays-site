@@ -5,7 +5,11 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 import { graphql } from "gatsby"
 
-import { HERO_IMAGE_MAX_HEIGHT, TINY_WIDTH } from "../constants"
+import {
+  HERO_IMAGE_MAX_HEIGHT,
+  HERO_IMAGE_MIN_HEIGHT,
+  TINY_WIDTH,
+} from "../constants"
 import PageGutter from "./PageGutter"
 
 const Main = styled.div`
@@ -44,6 +48,11 @@ const Subtitle = styled.div`
   }
 `
 
+const Image = styled(Img)`
+  max-height: ${HERO_IMAGE_MAX_HEIGHT}px;
+  min-height: ${HERO_IMAGE_MIN_HEIGHT}px;
+`
+
 type Props = {|
   fluid: Object,
   title: string,
@@ -54,11 +63,7 @@ type Props = {|
 const HeroImage = ({ fluid, title, subtitle, children }: Props) => {
   return (
     <Main>
-      <Img
-        fluid={fluid}
-        style={{ maxHeight: `${HERO_IMAGE_MAX_HEIGHT}px` }}
-        imgStyle={{ objectPosition: "center" }}
-      />
+      <Image fluid={fluid} imgStyle={{ objectPosition: "center" }} />
       <Overlay>
         <PageGutter>
           <Title>{title}</Title>

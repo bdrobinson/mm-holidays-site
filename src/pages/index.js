@@ -13,6 +13,7 @@ import {
   SMALLSCREEN_WIDTH,
   MOBILE_WIDTH,
   HERO_IMAGE_MAX_HEIGHT,
+  HERO_IMAGE_MIN_HEIGHT,
   PRIMARY_COLOUR_DARK,
 } from "../constants"
 import HeroBookingPrompt from "../components/HeroBookingPrompt"
@@ -125,7 +126,10 @@ const IndexPage = ({ data }: Props) => (
             return (
               <Img
                 fluid={fluid}
-                style={{ maxHeight: `${HERO_IMAGE_MAX_HEIGHT}px` }}
+                style={{
+                  maxHeight: `${HERO_IMAGE_MAX_HEIGHT}px`,
+                  minHeight: `${HERO_IMAGE_MIN_HEIGHT}px`,
+                }}
                 imgStyle={{ objectPosition: "center" }}
               />
             )

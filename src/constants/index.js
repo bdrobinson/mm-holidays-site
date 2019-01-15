@@ -13,6 +13,7 @@ export const PRIMARY_COLOUR_LIGHT = "#eee"
 export const GREY_BORDER_COLOUR = "#ddd"
 
 export const HERO_IMAGE_MAX_HEIGHT = 800
+export const HERO_IMAGE_MIN_HEIGHT = TINY_WIDTH
 
 export const Z_INDICES = {
   nav: 5,

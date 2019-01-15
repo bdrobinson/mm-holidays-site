@@ -16,4 +16,4 @@ It’s also an opportunity to take some time out and think about life’s big qu
 
 Mayhem books up fast, so invite all your friends and start reserving your spaces. We’re looking forward to seeing you there.
 
-For more information email <mayhem@madnessandmahem.org.uk>
+For more information email <mayhem@madnessandmayhem.org.uk>

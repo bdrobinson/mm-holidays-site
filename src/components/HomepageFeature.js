@@ -6,15 +6,20 @@ import Img from "gatsby-image"
 
 import PageGutter from "./PageGutter"
 
+const IMAGE_MAX_HEIGHT = 600
+const IMAGE_MIN_HEIGHT = 400
+
 const Main = styled.section``
 
-const Image = styled(Img)``
-
-const IMAGE_HEIGHT = 600
+const Image = styled(Img)`
+  max-height: ${IMAGE_MAX_HEIGHT}px;
+  min-height: ${IMAGE_MIN_HEIGHT}px;
+`
 
 const ImageContainer = styled.div`
   position: relative;
-  max-height: ${IMAGE_HEIGHT}px;
+  max-height: ${IMAGE_MAX_HEIGHT}px;
+  min-height: ${IMAGE_MIN_HEIGHT}px;
   overflow: hidden;
 `
 
@@ -65,7 +70,7 @@ const HomepageFeature = ({
           fluid={imageFluid}
           alt={imageAltText}
           imgStyle={{
-            maxHeight: IMAGE_HEIGHT,
+            objectPosition: "center",
           }}
         />
         <ImageExtras>
