@@ -395,8 +395,8 @@ const BookingForm = ({ onComplete }: Props) => {
             </section>
             <section>
               <h2>Young person&apos;s details</h2>
-              <TextField label="First name" name="childFirstName" />
-              <TextField label="Surname" name="childLastName" />
+              <TextField label="Child's first name" name="childFirstName" />
+              <TextField label="Child's surname" name="childLastName" />
               <TextField label="Address line 1" name="childAddressLine1" />
               <TextField label="Address line 2" name="childAddressLine2" />
               <TextField label="Town/City" name="childAddressCity" />
