@@ -62,16 +62,6 @@ const Camp = ({ data }: Props) => {
         <CampDatesCTA shadows={false} campName={meta.title} />
       </BodyCampDates>
       <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
-      {meta.sections.map(section => {
-        return (
-          <div
-            key={section.id}
-            dangerouslySetInnerHTML={{
-              __html: section.childMarkdownRemark.html,
-            }}
-          />
-        )
-      })}
     </Layout>
   )
 }
@@ -88,12 +78,6 @@ export const pageQuery = graphql`
         title
         description
         ages
-        sections {
-          id
-          childMarkdownRemark {
-            html
-          }
-        }
         hero {
           childImageSharp {
             ...FluidHeroImage
