@@ -17,7 +17,7 @@ const Content = styled.div`
   flex-basis: 1100px;
   padding: 0 1.45rem;
   @media (max-width: ${MOBILE_WIDTH}px) {
-    padding: 0 2rem;
+    padding: 0 1rem;
   }
 `
 
