@@ -3,6 +3,7 @@ order: 1
 title: Activities
 subtitle: It’s time for some serious fun...
 image: ../../../images/blackslide.jpg
+imageAltText: A camper enjoying the water games, sliding down a hill.
 ---
 We’ve got some brilliant activities planned for this summer at M+M.
 

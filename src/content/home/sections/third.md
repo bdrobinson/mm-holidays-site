@@ -3,6 +3,7 @@ order: 2
 title: Time to think
 subtitle: Explore big ideas and find out what the Bible has to say
 image: ../../../images/meeting.jpg
+imageAltText: A room of campers at the day's main meeting.
 ---
 At M+M we want to give young people a chance to think about what they believe and discover more of what the Bible says about Jesus. Everyone is welcome, whatever their beliefs or background.
 

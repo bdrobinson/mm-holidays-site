@@ -203,7 +203,7 @@ const Header = ({
                       themeToUse === "light"
                         ? data.light.childImageSharp.fluid
                         : data.dark.childImageSharp.fluid
-                    return <Img fluid={image} />
+                    return <Img fluid={image} alt="The M+M logo" />
                   }}
                 />
               </LogoContainer>
