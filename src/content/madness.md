@@ -7,6 +7,7 @@ ages: 12-14
 price: £239
 sections: []
 hero: ../images/blackslide.jpg
+heroAltText: A camper enjoying water games.
 ---
 If you’re 12 to 14 years old and you’re ready for the best week of the year, come and join us on Madness.
 

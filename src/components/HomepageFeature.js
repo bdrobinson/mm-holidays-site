@@ -50,7 +50,7 @@ const Description = styled.div`
 
 type Props = {|
   imageFluid: Object,
-  imageAltText: ?string,
+  imageAltText: string,
   title: string,
   subtitle: string,
   descriptionHtml: string,

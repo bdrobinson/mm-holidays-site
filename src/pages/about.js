@@ -14,7 +14,11 @@ const IndexPage = ({ data }: Props) => (
     path="/about"
     title="About"
     hero={
-      <HeroImage fluid={data.hero.childImageSharp.fluid} title="About us" />
+      <HeroImage
+        imageAltText="Campers playing laser tag in the woods on site."
+        fluid={data.hero.childImageSharp.fluid}
+        title="About us"
+      />
     }
     theme="light"
     seoDescription="The history of M+M and general information about camp."

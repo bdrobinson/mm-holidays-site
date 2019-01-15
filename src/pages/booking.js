@@ -17,6 +17,7 @@ const Booking = ({ data }: Props) => {
       title="Book"
       hero={
         <HeroImage
+          imageAltText="Max campers at the last night party."
           fluid={data.hero.childImageSharp.fluid}
           title="Book your place"
         />

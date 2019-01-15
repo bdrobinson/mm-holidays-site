@@ -49,6 +49,7 @@ const Camp = ({ data }: Props) => {
           fluid={meta.hero.childImageSharp.fluid}
           title={meta.title}
           subtitle={`Age ${meta.ages}`}
+          imageAltText={meta.heroAltText}
         >
           <HeroCampDates>
             <PageGutter>
@@ -83,6 +84,7 @@ export const pageQuery = graphql`
             ...FluidHeroImage
           }
         }
+        heroAltText
       }
     }
   }

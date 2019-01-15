@@ -7,6 +7,7 @@ ages: 15-18
 price: £239
 sections: []
 hero: ../images/lads.jpg
+heroAltText: Mayhem campers and leaders at the last night party.
 ---
 If you’re 15 to 18 years old, Mayhem is for you.
 

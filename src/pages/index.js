@@ -131,6 +131,7 @@ const IndexPage = ({ data }: Props) => (
                   minHeight: `${HERO_IMAGE_MIN_HEIGHT}px`,
                 }}
                 imgStyle={{ objectPosition: "center" }}
+                alt="The M+M site and available activities."
               />
             )
           }}

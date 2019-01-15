@@ -7,6 +7,7 @@ ages: 9-11
 price: £239
 sections: []
 hero: ../images/canoe.jpg
+heroAltText: Max campers canoeing on the on-site lake.
 ---
 
 If you’re 9 to 11 years old, Max is the holiday for you.

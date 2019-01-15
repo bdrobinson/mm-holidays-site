@@ -55,15 +55,26 @@ const Image = styled(Img)`
 
 type Props = {|
   fluid: Object,
+  imageAltText: string,
   title: string,
   subtitle?: ?string,
   children?: Node,
 |}
 
-const HeroImage = ({ fluid, title, subtitle, children }: Props) => {
+const HeroImage = ({
+  fluid,
+  title,
+  subtitle,
+  children,
+  imageAltText,
+}: Props) => {
   return (
     <Main>
-      <Image fluid={fluid} imgStyle={{ objectPosition: "center" }} />
+      <Image
+        fluid={fluid}
+        imgStyle={{ objectPosition: "center" }}
+        alt={imageAltText}
+      />
       <Overlay>
         <PageGutter>
           <Title>{title}</Title>
