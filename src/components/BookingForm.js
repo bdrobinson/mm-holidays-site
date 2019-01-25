@@ -166,8 +166,31 @@ const yearRegex = /^\d\d\d\d$/
 
 const validateForm = (formState: FormState): FormikErrors<FormState> => {
   const errors = {}
+  const age = calculateAge(
+    formState.childDobYear,
+    formState.childDobMonth,
+    formState.childDobDay,
+    new Date(),
+  )
   Object.keys(formState).map(key => {
-    if (NON_EMPTY_STRINGS.includes(key)) {
+    const nonEmptyStrings = [
+      ...NON_EMPTY_STRINGS,
+      ...(age != null && age >= 18
+        ? []
+        : [
+            "parentFirstName",
+            "parentLastName",
+            "parentAddressLine1",
+            "parentAddressCity",
+            "parentAddressCounty",
+            "parentPostcode",
+            "parentMobilePhone",
+            "parentDaytimePhone",
+            "parentEveningPhone",
+            "parentEmail",
+          ]),
+    ]
+    if (nonEmptyStrings.includes(key)) {
       // $FlowFixMe
       if (formState[key].trim() === "") {
         errors[key] = "This cannot be empty"
@@ -306,6 +329,17 @@ const newDate = (year: string, month: string, day: string): ?Date => {
   return dob
 }
 
+const calculateAge = (
+  year: string,
+  month: string,
+  day: string,
+  now: Date,
+): ?number => {
+  const dob = newDate(year, month, day)
+  const age = dob != null ? differenceInYears(now, dob) : null
+  return age
+}
+
 type SubmitState =
   | { type: "ready" }
   | { type: "success" }
@@ -359,13 +393,14 @@ const BookingForm = ({ onComplete }: Props) => {
         submitCount,
         isSubmitting,
       }) => {
-        const dob = newDate(
+        const age = calculateAge(
           values.childDobYear,
           values.childDobMonth,
           values.childDobDay,
+          new Date(),
         )
-        const age = dob != null ? differenceInYears(new Date(), dob) : null
-        const displayParentSection = age != null && age < 18
+        const hideParentSection = age != null && age >= 18
+        const displayParentSection = !hideParentSection
         return (
           <form
             style={{ marginBottom: "1em" }}
