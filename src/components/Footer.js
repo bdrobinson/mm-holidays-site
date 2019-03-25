@@ -16,7 +16,7 @@ const FooterMain = styled.footer`
 const Footer = () => (
   <FooterMain>
     <PageGutter>
-      <span>&copy; M+M Holidays 2018</span>
+      <span>&copy; M+M Holidays 2019</span>
     </PageGutter>
   </FooterMain>
 )
