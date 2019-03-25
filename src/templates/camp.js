@@ -53,14 +53,22 @@ const Camp = ({ data }: Props) => {
         >
           <HeroCampDates>
             <PageGutter>
-              <CampDatesCTA shadows={true} campName={meta.title} />
+              <CampDatesCTA
+                shadows={true}
+                campName={meta.title}
+                price={meta.price}
+              />
             </PageGutter>
           </HeroCampDates>
         </HeroImage>
       }
     >
       <BodyCampDates>
-        <CampDatesCTA shadows={false} campName={meta.title} />
+        <CampDatesCTA
+          shadows={false}
+          campName={meta.title}
+          price={meta.price}
+        />
       </BodyCampDates>
       <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
     </Layout>

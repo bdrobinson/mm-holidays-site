@@ -37,12 +37,18 @@ const CampName = styled.span`
   margin-right: 1em;
 `
 
+const PriceText = styled.div`
+  font-size: 0.8em;
+  font-weight: 500;
+`
+
 type Props = {|
   campName: string,
   shadows: boolean,
+  price: string,
 |}
 
-const CampDatesCTA = ({ campName, shadows }: Props) => (
+const CampDatesCTA = ({ campName, shadows, price }: Props) => (
   <HeroDetailsContent>
     <div>
       <HeroDetailsRow shadows={shadows}>
@@ -54,7 +60,10 @@ const CampDatesCTA = ({ campName, shadows }: Props) => (
       </HeroDetailsRow>
     </div>
     <BookButtonContainer>
-      <BookButton>Book now</BookButton>
+      <BookButton paddingHorizontal="0.3em">
+        <div>Book now</div>
+        <PriceText>{price}</PriceText>
+      </BookButton>
     </BookButtonContainer>
   </HeroDetailsContent>
 )

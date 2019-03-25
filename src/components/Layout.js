@@ -113,7 +113,7 @@ const Layout = ({
               <html lang="en" />
               <title>{pageTitle}</title>
               <link
-                href="https://fonts.googleapis.com/css?family=Raleway:300,400,700"
+                href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700"
                 rel="stylesheet"
               />
               <meta name="description" content={pageDescription} />
