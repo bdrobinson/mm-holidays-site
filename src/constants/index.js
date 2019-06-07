@@ -11,6 +11,7 @@ export const PRIMARY_COLOUR = "white"
 export const PRIMARY_COLOUR_DARK = "#333"
 export const PRIMARY_COLOUR_LIGHT = "#eee"
 export const GREY_BORDER_COLOUR = "#ddd"
+export const GREEN = "#2abd2a"
 
 export const HERO_IMAGE_MAX_HEIGHT = 800
 export const HERO_IMAGE_MIN_HEIGHT = TINY_WIDTH

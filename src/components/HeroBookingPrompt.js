@@ -3,7 +3,8 @@
 import styled from "styled-components"
 import React from "react"
 
-import { TINY_WIDTH } from "../constants"
+import { TINY_WIDTH, GREEN } from "../constants"
+import Pill from "./Pill"
 import BookButton from "./BookButton"
 
 const Main = styled.div`
@@ -39,6 +40,7 @@ const BookingNoticeRow = styled.div`
   @media (max-width: ${TINY_WIDTH}px) {
     flex-flow: column nowrap;
   }
+  align-items: center;
 `
 
 const BookingNoticeLabel = styled.span`
@@ -46,11 +48,29 @@ const BookingNoticeLabel = styled.span`
   margin-right: 0.8em;
 `
 
+const PillContainer = styled.div`
+  font-size: 0.8em;
+  padding-left: 0.8em;
+  text-align: center;
+  @media (min-width: ${TINY_WIDTH}px) {
+    max-width: 5em;
+  }
+`
+
+const Paragraph = styled.p`
+  font-size: 1.2em;
+  margin: 0.2em 0;
+`
+
 type Props = {||}
 
 const HeroBookingPrompt = (props: Props) => (
   <Main>
-    <Title>Bookings for 2019 are now open!</Title>
+    <Title>M+M 1 is now fully booked!</Title>
+    <Paragraph>
+      But don&apos;t worry as there are still a few places available on
+      M+M&nbsp;2. Snap them up before they go!
+    </Paragraph>
     <Content>
       <BookingNoticeText>
         <BookingNoticeRow>
@@ -59,11 +79,21 @@ const HeroBookingPrompt = (props: Props) => (
         </BookingNoticeRow>
         <BookingNoticeRow>
           <BookingNoticeLabel>M+M 2</BookingNoticeLabel>
-          <span>Sat 3 &ndash; Sat 10 August</span>
+          <div css="display: flex; flex-flow: row nowrap; align-items: center;">
+            <span>Sat 3 &ndash; Sat 10 August</span>
+            <PillContainer>
+              <Pill text="Available" bgColour={GREEN} colour="white" />
+            </PillContainer>
+          </div>
         </BookingNoticeRow>
       </BookingNoticeText>
       <BookButton>Book now</BookButton>
     </Content>
+    <Paragraph css="font-size: 1em; font-style: italic;">
+      If you can only make the M+M 1 dates,{" "}
+      <a href="mailto:info@madnessandmayhem.org.uk">get in contact</a> as there
+      may be 1 or 2 spaces in some age groups.
+    </Paragraph>
   </Main>
 )
 
