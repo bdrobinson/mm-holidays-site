@@ -73,11 +73,12 @@ const HeroBookingNoticeContainer = styled.div`
   justify-content: center;
   font-size: 0.8rem;
   width: 500px;
-  background-color: #333;
+  background-color: white;
+  color: #333;
   border-radius: 1em;
   border-width: 6px;
   border-color: white;
-  border-style: solid;
+  border-style: none;
   @media (max-width: ${SMALLSCREEN_WIDTH}px) {
     display: none;
   }
