@@ -98,7 +98,7 @@ const MUST_BE_TRUE: Array<$Keys<FormState>> = [
 
 const getInitialState = (): FormState => ({
   // section 1
-  campChoice: "1",
+  campChoice: "2",
   // section 2
   childFirstName: "",
   childLastName: "",
@@ -420,11 +420,13 @@ const BookingForm = ({ onComplete }: Props) => {
                     value: "1",
                     label: "Week 1",
                     subtitle: "27th July – 3rd August",
+                    disabled: true,
                   },
                   {
                     value: "2",
                     label: "Week 2",
                     subtitle: "3rd–10th August",
+                    disabled: false,
                   },
                 ]}
               />

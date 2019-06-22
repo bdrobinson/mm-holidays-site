@@ -32,14 +32,18 @@ const Choice = styled.div`
   border-color: #ddd;
   border-style: solid;
   border-width: 1px;
-  cursor: pointer;
 `
 
 type Props = {|
   title?: ?string,
   fieldName: string,
   value: ?string,
-  options: Array<{ value: string, label: string, subtitle?: ?string }>,
+  options: Array<{|
+    value: string,
+    label: string,
+    subtitle?: ?string,
+    disabled?: ?boolean,
+  |}>,
 |}
 
 const RadioChoices = ({ options, value, fieldName, title }: Props) => {
@@ -50,7 +54,12 @@ const RadioChoices = ({ options, value, fieldName, title }: Props) => {
         {options.map(option => {
           return (
             <label key={option.value}>
-              <Choice>
+              <Choice
+                style={{
+                  cursor: option.disabled ? "not-allowed" : "pointer",
+                  opacity: option.disabled ? 0.5 : 1,
+                }}
+              >
                 <LabelText>{option.label}</LabelText>
                 {option.subtitle != null && (
                   <LabelSubtitle>{option.subtitle}</LabelSubtitle>
@@ -60,7 +69,11 @@ const RadioChoices = ({ options, value, fieldName, title }: Props) => {
                   name={fieldName}
                   value={option.value}
                   checked={option.value === value}
-                  style={{ cursor: "pointer" }}
+                  style={{
+                    cursor: option.disabled ? "not-allowed" : "pointer",
+                    opacity: 1,
+                  }}
+                  disabled={option.disabled}
                 />
               </Choice>
             </label>
