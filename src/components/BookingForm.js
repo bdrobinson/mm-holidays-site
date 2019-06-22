@@ -652,6 +652,14 @@ const BookingForm = ({ onComplete }: Props) => {
             </section>
             <section>
               <h2>Payment information</h2>
+              <p>
+                If you would find it difficult to pay the full fee of £239,
+                please get in touch by emailing{" "}
+                <a href="mailto:info@madnessandmayhem.org.uk">
+                  info@madnessandmayhem.org.uk
+                </a>
+                , as there are bursaries available to support.
+              </p>
               <RadioChoices
                 title="Payment method"
                 options={[
