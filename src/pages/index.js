@@ -3,7 +3,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 
 import Layout from "../components/Layout"
 import HomepageFeature from "../components/HomepageFeature"
@@ -24,6 +24,18 @@ const HeroContainer = styled.div`
 `
 
 const VIDEO_ID = "d24Pm3NxFVA"
+
+const anim = keyframes`
+  from {
+    opacity : 0;
+  transform: translateY(50%);
+  }
+
+  to {
+    transform: translateY(0%);
+    opacity:1;
+  }
+`
 
 const HeroLabelContainer = styled.div`
   position: absolute;
@@ -82,6 +94,9 @@ const HeroBookingNoticeContainer = styled.div`
   @media (max-width: ${SMALLSCREEN_WIDTH}px) {
     display: none;
   }
+  animation: ${anim} 0.5s cubic-bezier(0, 0, 0.06, 1.01);
+  animation-delay: 0.3s;
+  animation-fill-mode: both;
 `
 
 const BodyBookingNoticeContainer = styled.div`
