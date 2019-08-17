@@ -6,7 +6,12 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 
 import PageGutter from "./PageGutter"
-import { MOBILE_WIDTH, PRIMARY_COLOUR_DARK, Z_INDICES } from "../constants"
+import {
+  MOBILE_WIDTH,
+  PRIMARY_COLOUR_DARK,
+  Z_INDICES,
+  ENABLE_BOOKING,
+} from "../constants"
 
 const LOGO_ASPECT_RATIO = 1.076
 const LOGO_WIDTH_DESKTOP = 150
@@ -20,7 +25,9 @@ const LINKS: Array<{ link: string, label: string, accent?: boolean }> = [
   { link: "/madness", label: "Madness" },
   { link: "/mayhem", label: "Mayhem" },
   { link: "/contact", label: "Contact" },
-  { link: "/booking", label: "Book", accent: true },
+  ...(ENABLE_BOOKING
+    ? [{ link: "/booking", label: "Book", accent: true }]
+    : []),
 ]
 
 const Main = styled.div`

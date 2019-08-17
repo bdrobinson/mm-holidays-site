@@ -16,6 +16,8 @@ export const GREEN = "#2abd2a"
 export const HERO_IMAGE_MAX_HEIGHT = 800
 export const HERO_IMAGE_MIN_HEIGHT = TINY_WIDTH
 
+export const ENABLE_BOOKING = false
+
 export const Z_INDICES = {
   nav: 5,
   blur: 3,

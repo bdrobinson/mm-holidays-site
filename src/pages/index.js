@@ -15,6 +15,7 @@ import {
   HERO_IMAGE_MAX_HEIGHT,
   HERO_IMAGE_MIN_HEIGHT,
   PRIMARY_COLOUR_DARK,
+  ENABLE_BOOKING,
 } from "../constants"
 import HeroBookingPrompt from "../components/HeroBookingPrompt"
 import FooterBookingPrompt from "../components/FooterBookingPrompt"
@@ -160,19 +161,23 @@ const IndexPage = ({ data }: Props) => (
             </PageGutter>
           </div>
         </HeroLabelContainer>
-        <HeroBookingNoticeContainer>
-          <HeroBookingPrompt />
-        </HeroBookingNoticeContainer>
+        {ENABLE_BOOKING && (
+          <HeroBookingNoticeContainer>
+            <HeroBookingPrompt />
+          </HeroBookingNoticeContainer>
+        )}
       </HeroContainer>
     }
   >
-    <BookingNoticeSection>
-      <BodyBookingNoticeContainer>
-        <PageGutter>
-          <HeroBookingPrompt />
-        </PageGutter>
-      </BodyBookingNoticeContainer>
-    </BookingNoticeSection>
+    {ENABLE_BOOKING && (
+      <BookingNoticeSection>
+        <BodyBookingNoticeContainer>
+          <PageGutter>
+            <HeroBookingPrompt />
+          </PageGutter>
+        </BodyBookingNoticeContainer>
+      </BookingNoticeSection>
+    )}
     <section>
       <PageGutter>
         <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />
@@ -200,9 +205,11 @@ const IndexPage = ({ data }: Props) => (
         />
       )
     })}
-    <section>
-      <FooterBookingPrompt />
-    </section>
+    {ENABLE_BOOKING && (
+      <section>
+        <FooterBookingPrompt />
+      </section>
+    )}
   </Layout>
 )
 
