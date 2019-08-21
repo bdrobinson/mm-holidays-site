@@ -7,7 +7,7 @@ import { type Column } from "./dataColumns"
 export const CamperEmail = () => {
   return (
     <body>
-      <p>We&apos;re delighted you have applied to come to M+M Holidays 2019.</p>
+      <p>We&apos;re delighted you have applied to come to M+M Holidays 2020.</p>
       <p>Your application will now be processed.</p>
       <p>
         Confirmation of a place/s will only be sent (via email) from the Booking

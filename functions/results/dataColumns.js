@@ -14,9 +14,9 @@ const parseDate = (year: string, month: string, day: string) => {
 
 const campStartDate = (params: Params) => {
   if (params.campChoice === "1") {
-    return new Date("2019/07/27")
+    return new Date("2020/07/25")
   } else {
-    return new Date("2019/08/03")
+    return new Date("2020/08/01")
   }
 }
 

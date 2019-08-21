@@ -161,11 +161,9 @@ const IndexPage = ({ data }: Props) => (
             </PageGutter>
           </div>
         </HeroLabelContainer>
-        {ENABLE_BOOKING && (
-          <HeroBookingNoticeContainer>
-            <HeroBookingPrompt />
-          </HeroBookingNoticeContainer>
-        )}
+        <HeroBookingNoticeContainer>
+          <HeroBookingPrompt />
+        </HeroBookingNoticeContainer>
       </HeroContainer>
     }
   >

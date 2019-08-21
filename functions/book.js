@@ -172,7 +172,7 @@ export const handleAsync = async (
         email: confirmationEmailAddress,
       },
       from: { name: "M+M Bookings", email: "info@madnessandmayhem.org.uk" },
-      subject: "Thank you for applying for a place at M+M 2019",
+      subject: "Thank you for applying for a place at M+M 2020",
       text: html,
       html,
     }

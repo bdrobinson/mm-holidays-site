@@ -4,7 +4,7 @@ import React from "react"
 import styled from "styled-components"
 
 import BookButton from "./BookButton"
-import { MOBILE_WIDTH } from "../constants"
+import { MOBILE_WIDTH, ENABLE_BOOKING } from "../constants"
 
 const HeroDetailsContent = styled.div`
   display: flex;
@@ -53,18 +53,20 @@ const CampDatesCTA = ({ campName, shadows, price }: Props) => (
     <div>
       <HeroDetailsRow shadows={shadows}>
         <CampName>{campName} 1:</CampName>
-        25 July &ndash; 1 August 2019
+        25 July &ndash; 1 August 2020
       </HeroDetailsRow>
       <HeroDetailsRow shadows={shadows}>
-        <CampName>{campName} 2:</CampName>1 &ndash; 8 August 2019
+        <CampName>{campName} 2:</CampName>1 &ndash; 8 August 2020
       </HeroDetailsRow>
     </div>
-    <BookButtonContainer>
-      <BookButton paddingHorizontal="0.3em">
-        <div>Book now</div>
-        <PriceText>{price}</PriceText>
-      </BookButton>
-    </BookButtonContainer>
+    {ENABLE_BOOKING && (
+      <BookButtonContainer>
+        <BookButton paddingHorizontal="0.3em">
+          <div>Book now</div>
+          <PriceText>{price}</PriceText>
+        </BookButton>
+      </BookButtonContainer>
+    )}
   </HeroDetailsContent>
 )
 

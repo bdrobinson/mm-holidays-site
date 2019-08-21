@@ -3,8 +3,7 @@
 import styled from "styled-components"
 import React from "react"
 
-import { TINY_WIDTH, GREEN } from "../constants"
-import Pill from "./Pill"
+import { TINY_WIDTH, ENABLE_BOOKING } from "../constants"
 import BookButton from "./BookButton"
 
 const Main = styled.div`
@@ -48,14 +47,14 @@ const BookingNoticeLabel = styled.span`
   margin-right: 0.8em;
 `
 
-const PillContainer = styled.div`
-  font-size: 0.8em;
-  padding-left: 0.8em;
-  text-align: center;
-  @media (min-width: ${TINY_WIDTH}px) {
-    max-width: 5em;
-  }
-`
+// const PillContainer = styled.div`
+//   font-size: 0.8em;
+//   padding-left: 0.8em;
+//   text-align: center;
+//   @media (min-width: ${TINY_WIDTH}px) {
+//     max-width: 5em;
+//   }
+// `
 
 const Paragraph = styled.p`
   font-size: 1.2em;
@@ -66,34 +65,24 @@ type Props = {||}
 
 const HeroBookingPrompt = (props: Props) => (
   <Main>
-    <Title>M+M 1 is now fully booked!</Title>
+    <Title>Save the dates for 2020!</Title>
     <Paragraph>
-      But don&apos;t worry as there are still a few places available on
-      M+M&nbsp;2. Snap them up before they go!
+      M+M will return to the Frontier Centre in 2020. Block it out in your
+      calendar now!
     </Paragraph>
     <Content>
       <BookingNoticeText>
         <BookingNoticeRow>
           <BookingNoticeLabel>M+M 1</BookingNoticeLabel>
-          <span>Sat 25 July &ndash; Sat 1 August</span>
+          <span>Sat 25 July &ndash; Sat 1 August 2020</span>
         </BookingNoticeRow>
         <BookingNoticeRow>
           <BookingNoticeLabel>M+M 2</BookingNoticeLabel>
-          <div css="display: flex; flex-flow: row nowrap; align-items: center;">
-            <span>Sat 1 &ndash; Sat 8 August</span>
-            <PillContainer>
-              <Pill text="Available" bgColour={GREEN} colour="white" />
-            </PillContainer>
-          </div>
+          <span>Sat 1 &ndash; Sat 8 August 2020</span>
         </BookingNoticeRow>
       </BookingNoticeText>
-      <BookButton>Book now</BookButton>
+      {ENABLE_BOOKING && <BookButton>Book now</BookButton>}
     </Content>
-    <Paragraph css="font-size: 1em; font-style: italic;">
-      If you can only make the M+M 1 dates,{" "}
-      <a href="mailto:info@madnessandmayhem.org.uk">get in contact</a> as there
-      may be 1 or 2 spaces in some age groups.
-    </Paragraph>
   </Main>
 )
 

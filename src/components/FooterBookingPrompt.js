@@ -29,7 +29,7 @@ const BookButtonContainer = styled.div`
 const FooterBookingPrompt = () => (
   <Main>
     <PageGutter>
-      <Title>Bookings for 2019 are now open!</Title>
+      <Title>Bookings for 2020 are now open!</Title>
       <BookButtonContainer>
         <BookButton fontSize="1.5rem">Book now</BookButton>
       </BookButtonContainer>

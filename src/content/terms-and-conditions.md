@@ -9,7 +9,7 @@ Complete all sections of the [Application Form](M+M_Application_Form.pdf) (page 
 
 ## 2. What about payment?
 
-Cheques for holiday fees should be made payable to ‘M&M Holidays fees account’. The balance of the holiday fees is due by 31st May 2019. You will not receive a reminder of the balance due. If payment is not received by this date, we reserve the right to advise you of cancellation of your booking and the loss of your deposit. If you book within eight weeks of the start of a holiday, full fees are due with the application. In cases of financial hardship, Urban Saints may be able to help you access charitable funding to subsidise the cost of the holiday. Wherever possible please make us aware of any need at the time of booking.
+Cheques for holiday fees should be made payable to ‘M&M Holidays fees account’. The balance of the holiday fees is due by 31st May 2020. You will not receive a reminder of the balance due. If payment is not received by this date, we reserve the right to advise you of cancellation of your booking and the loss of your deposit. If you book within eight weeks of the start of a holiday, full fees are due with the application. In cases of financial hardship, Urban Saints may be able to help you access charitable funding to subsidise the cost of the holiday. Wherever possible please make us aware of any need at the time of booking.
 
 ## 3. What is included in the cost of the holiday?
 

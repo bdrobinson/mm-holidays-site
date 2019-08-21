@@ -33,7 +33,7 @@ const Booking = ({ data }: Props) => {
     >
       {booked && (
         <p>
-          Thank you for applying to M+M 2019! We&apos;ve received your
+          Thank you for applying to M+M 2020! We&apos;ve received your
           application. Please check your inbox for a confirmation email.
         </p>
       )}

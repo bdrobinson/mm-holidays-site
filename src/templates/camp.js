@@ -8,7 +8,7 @@ import Layout from "../components/Layout"
 import CampDatesCTA from "../components/CampDatesCTA"
 import PageGutter from "../components/PageGutter"
 import HeroImage from "../components/HeroImage"
-import { SMALLSCREEN_WIDTH, ENABLE_BOOKING } from "../constants"
+import { SMALLSCREEN_WIDTH } from "../constants"
 
 const HeroCampDates = styled.div`
   position: absolute;
@@ -51,29 +51,25 @@ const Camp = ({ data }: Props) => {
           subtitle={`Age ${meta.ages}`}
           imageAltText={meta.heroAltText}
         >
-          {ENABLE_BOOKING && (
-            <HeroCampDates>
-              <PageGutter>
-                <CampDatesCTA
-                  shadows={true}
-                  campName={meta.title}
-                  price={meta.price}
-                />
-              </PageGutter>
-            </HeroCampDates>
-          )}
+          <HeroCampDates>
+            <PageGutter>
+              <CampDatesCTA
+                shadows={true}
+                campName={meta.title}
+                price={meta.price}
+              />
+            </PageGutter>
+          </HeroCampDates>
         </HeroImage>
       }
     >
-      {ENABLE_BOOKING && (
-        <BodyCampDates>
-          <CampDatesCTA
-            shadows={false}
-            campName={meta.title}
-            price={meta.price}
-          />
-        </BodyCampDates>
-      )}
+      <BodyCampDates>
+        <CampDatesCTA
+          shadows={false}
+          campName={meta.title}
+          price={meta.price}
+        />
+      </BodyCampDates>
       <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
     </Layout>
   )
