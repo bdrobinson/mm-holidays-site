@@ -75,12 +75,12 @@ const HeroBookingPrompt = (props: Props) => (
       <BookingNoticeText>
         <BookingNoticeRow>
           <BookingNoticeLabel>M+M 1</BookingNoticeLabel>
-          <span>Sat 27 July &ndash; Sat 3 August</span>
+          <span>Sat 25 July &ndash; Sat 1 August</span>
         </BookingNoticeRow>
         <BookingNoticeRow>
           <BookingNoticeLabel>M+M 2</BookingNoticeLabel>
           <div css="display: flex; flex-flow: row nowrap; align-items: center;">
-            <span>Sat 3 &ndash; Sat 10 August</span>
+            <span>Sat 1 &ndash; Sat 8 August</span>
             <PillContainer>
               <Pill text="Available" bgColour={GREEN} colour="white" />
             </PillContainer>

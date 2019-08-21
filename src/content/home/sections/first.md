@@ -13,8 +13,8 @@ if you’re on Madness you’ll be spending most of the week with other 12 to 14
 year olds.
 
 This year we’re running M+M twice! This means there’s room for more of your
-friends to join in. Week 1 is from 27th July to 3rd August and Week 2 is from
-3rd to 10th August.
+friends to join in. Week 1 is from 25th July to 1st August and Week 2 is from
+1st to 8th August.
 
 Whether you choose Week 1 or Week 2, you’ll get the same great combination
 of fun, friends and Bible teaching.

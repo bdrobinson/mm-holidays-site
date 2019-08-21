@@ -53,10 +53,10 @@ const CampDatesCTA = ({ campName, shadows, price }: Props) => (
     <div>
       <HeroDetailsRow shadows={shadows}>
         <CampName>{campName} 1:</CampName>
-        27 July &ndash; 3 August 2019
+        25 July &ndash; 1 August 2019
       </HeroDetailsRow>
       <HeroDetailsRow shadows={shadows}>
-        <CampName>{campName} 2:</CampName>3 &ndash; 10 August 2019
+        <CampName>{campName} 2:</CampName>1 &ndash; 8 August 2019
       </HeroDetailsRow>
     </div>
     <BookButtonContainer>
