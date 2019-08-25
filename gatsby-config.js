@@ -10,6 +10,9 @@ const getEnv = name => {
   return value
 }
 
+// undefined | string
+const GA_ID = process.env["GOOGLE_ANALYTICS_ID"]
+
 module.exports = {
   siteMetadata: {
     title: "M+M Holidays",
@@ -50,6 +53,18 @@ module.exports = {
         icon: "src/images/logo_black_square.png",
       },
     },
+    ...(GA_ID != null
+      ? [
+          {
+            resolve: `gatsby-plugin-google-analytics`,
+            options: {
+              trackingId: GA_ID,
+              anonymize: true,
+              respectDNT: true,
+            },
+          },
+        ]
+      : []),
     "gatsby-plugin-styled-components",
     {
       resolve: `gatsby-source-filesystem`,
