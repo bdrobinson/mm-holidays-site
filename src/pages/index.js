@@ -24,7 +24,7 @@ const HeroContainer = styled.div`
   position: relative;
 `
 
-const VIDEO_ID = "d24Pm3NxFVA"
+const VIDEO_ID = "7RySP8tLL7U"
 
 const anim = keyframes`
   from {
