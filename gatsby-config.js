@@ -32,6 +32,7 @@ module.exports = {
     )
   },
   plugins: [
+    "gatsby-plugin-typescript",
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
