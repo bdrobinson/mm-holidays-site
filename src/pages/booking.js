@@ -7,16 +7,12 @@ import BookingForm from "../components/BookingForm"
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
 import Unknown404 from "./404"
-import { ENABLE_BOOKING } from "../constants"
 
 type Props = {| data: Object |}
 
 const Booking = ({ data }: Props) => {
   const [booked, setBooked] = useState(false)
 
-  if (ENABLE_BOOKING === false) {
-    return <Unknown404 />
-  }
   return (
     <Layout
       path={data.markdownRemark.frontmatter.path}
