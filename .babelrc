@@ -1,5 +1,5 @@
 {
-  "presets": ["babel-preset-gatsby", "@babel/preset-flow"],
+  "presets": ["babel-preset-gatsby", "@babel/preset-typescript"],
   "plugins": [
     "babel-plugin-styled-components",
     "@babel/plugin-proposal-optional-chaining"

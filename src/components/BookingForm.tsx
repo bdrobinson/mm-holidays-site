@@ -1,5 +1,5 @@
 import React, { useState, FC } from "react"
-import { Formik,  FormikErrors, Field } from "formik"
+import { Formik, FormikErrors, Field } from "formik"
 import styled from "styled-components"
 import { parse, isValid, differenceInYears } from "date-fns"
 import * as Sentry from "@sentry/browser"
@@ -14,67 +14,67 @@ import FieldCheckbox from "./FieldCheckbox"
 
 type FormState = {
   // section 1
-  campChoice: "1" | "2",
+  campChoice: "1" | "2"
   // section 2
-  childFirstName: string,
-  childLastName: string,
-  childAddressLine1: string,
-  childAddressLine2: string,
-  childAddressCity: string,
-  childAddressCounty: string,
-  childPostcode: string,
-  childPhoneNumber: string,
-  childEmail: string,
-  childDobYear: string,
-  childDobMonth: string,
-  childDobDay: string,
-  gender: "Male" | "Female",
-  youthGroup: string,
-  friendsWith: string,
+  childFirstName: string
+  childLastName: string
+  childAddressLine1: string
+  childAddressLine2: string
+  childAddressCity: string
+  childAddressCounty: string
+  childPostcode: string
+  childPhoneNumber: string
+  childEmail: string
+  childDobYear: string
+  childDobMonth: string
+  childDobDay: string
+  gender: "Male" | "Female"
+  youthGroup: string
+  friendsWith: string
   // section 3
-  title: string,
-  parentFirstName: string,
-  parentLastName: string,
-  parentRelationshipToChild: "Parent" | "Guardian" | "Leader",
-  parentAddressLine1: string,
-  parentAddressLine2: string,
-  parentAddressCity: string,
-  parentAddressCounty: string,
-  parentPostcode: string,
-  parentMobilePhone: string,
-  parentDaytimePhone: string,
-  parentEveningPhone: string,
-  parentEmail: string,
-  siblingNames: string,
+  title: string
+  parentFirstName: string
+  parentLastName: string
+  parentRelationshipToChild: "Parent" | "Guardian" | "Leader"
+  parentAddressLine1: string
+  parentAddressLine2: string
+  parentAddressCity: string
+  parentAddressCounty: string
+  parentPostcode: string
+  parentMobilePhone: string
+  parentDaytimePhone: string
+  parentEveningPhone: string
+  parentEmail: string
+  siblingNames: string
   // section 4
-  contactByEmail: boolean,
-  contactByPhone: boolean,
-  contactByPost: boolean,
-  acceptRecordKeeping: boolean,
+  contactByEmail: boolean
+  contactByPhone: boolean
+  contactByPost: boolean
+  acceptRecordKeeping: boolean
   // section 5
-  photoPermission: ("yes" | "no")| null,
+  photoPermission: ("yes" | "no") | null
   // section 6
-  heardUrbanSaintsMailing: boolean,
-  heardUrbanSaintsWebsite: boolean,
-  heardBeenBefore: boolean,
-  heardFamilyMember: boolean,
-  heardChurch: boolean,
-  heardScriptureUnion: boolean,
-  heardFriend: boolean,
-  heardOther: string,
+  heardUrbanSaintsMailing: boolean
+  heardUrbanSaintsWebsite: boolean
+  heardBeenBefore: boolean
+  heardFamilyMember: boolean
+  heardChurch: boolean
+  heardScriptureUnion: boolean
+  heardFriend: boolean
+  heardOther: string
   // section 7
-  paymentMethod: "Bank transfer" | "Cheque" | "Cash",
-  paymentAmount: "Full" | "Deposit",
+  paymentMethod: "Bank transfer" | "Cheque" | "Cash"
+  paymentAmount: "Full" | "Deposit"
   // section 8
-  dietaryNeeds: string,
-  medicalIssues: string,
-  behaviouralNeeds: string,
-  englishNotFirstLanguage: string,
-  anythingElse: string,
+  dietaryNeeds: string
+  medicalIssues: string
+  behaviouralNeeds: string
+  englishNotFirstLanguage: string
+  anythingElse: string
   // section 9
-  childConfirmation: boolean,
+  childConfirmation: boolean
   // section 10
-  parentConfirmation: boolean,
+  parentConfirmation: boolean
 }
 
 const NON_EMPTY_STRINGS: Array<keyof FormState> = [
@@ -174,7 +174,7 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
   Object.keys(formState).map(key => {
     const nonEmptyStrings = [
       ...NON_EMPTY_STRINGS,
-      ...(age != null && age >= 18
+      ...(age !== null && age >= 18
         ? []
         : [
             "parentFirstName",
@@ -305,7 +305,7 @@ const TextArea = styled.textarea`
   }
 `
 
-const SubmitButton = styled.button`
+const SubmitButton = styled.button<{ disabled: boolean }>`
   padding: 1em;
   background: none;
   border-radius: 0.5em;
@@ -314,7 +314,7 @@ const SubmitButton = styled.button`
   opacity: ${props => (props.disabled ? 0.6 : 1)};
 `
 
-const newDate = (year: string, month: string, day: string): ?Date => {
+const newDate = (year: string, month: string, day: string): Date | null => {
   if (
     yearRegex.test(year) === false ||
     monthRegex.test(month) === false ||
@@ -334,19 +334,19 @@ const calculateAge = (
   month: string,
   day: string,
   now: Date,
-): ?number => {
+): number | null => {
   const dob = newDate(year, month, day)
-  const age = dob != null ? differenceInYears(now, dob) : null
+  const age = dob !== null ? differenceInYears(now, dob) : null
   return age
 }
 
 type SubmitState =
   | { type: "ready" }
   | { type: "success" }
-  | { type: "error", message: string }
+  | { type: "error"; message: string }
 
 interface Props {
-  onComplete: () => void,
+  onComplete: () => void
 }
 
 const BookingForm: FC<Props> = ({ onComplete }) => {
@@ -389,7 +389,6 @@ const BookingForm: FC<Props> = ({ onComplete }) => {
         errors,
         submitForm,
         handleChange,
-        handleBlur,
         submitCount,
         isSubmitting,
       }) => {
@@ -399,7 +398,7 @@ const BookingForm: FC<Props> = ({ onComplete }) => {
           values.childDobDay,
           new Date(),
         )
-        const hideParentSection = age != null && age >= 18
+        const hideParentSection = age !== null && age >= 18
         const displayParentSection = !hideParentSection
         return (
           <form
