@@ -72,6 +72,7 @@ const HeroImage: FC<Props> = ({
         fluid={fluid}
         imgStyle={{ objectPosition: "center" }}
         alt={imageAltText}
+        loading="eager"
       />
       <Overlay>
         <PageGutter>
