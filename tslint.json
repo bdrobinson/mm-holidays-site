@@ -11,7 +11,7 @@
     "no-inferred-empty-object-type": true,
     "no-promise-as-boolean": true,
     "no-unbound-method": true,
-    "no-unsafe-any": true,
+    "no-unsafe-any": false,
     "strict-comparisons": true,
     "strict-type-predicates": true,
     "deprecation": true

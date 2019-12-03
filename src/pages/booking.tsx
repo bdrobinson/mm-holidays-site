@@ -7,7 +7,7 @@ import HeroImage from "../components/HeroImage"
 import Unknown404 from "./404"
 
 interface Props {
-  data: Object
+  data: any
 }
 
 const Booking: FC<Props> = ({ data }) => {

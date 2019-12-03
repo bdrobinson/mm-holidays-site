@@ -1,17 +1,17 @@
-import React from "react"
-import { renderToStaticMarkup } from "react-dom/server"
 import sendgrid from "@sendgrid/mail"
 import dotenv from "dotenv"
 import * as Sentry from "@sentry/node"
-import { CamperEmail, CampLeaderEmail } from "./results/email"
+// @ts-ignore
+import { renderCamperEmail, renderCampLeaderEmail } from "./results/email.tsx"
 import { createColumns } from "./results/dataColumns"
 import { appendRow } from "./results/sheets"
+import { APIGatewayEvent, Context, Callback } from "aws-lambda"
 
 dotenv.config()
 
 const getEnv = (name: string): string => {
   const val = process.env[name]
-  if (val == null) {
+  if (val === undefined) {
     throw new Error(`Could not get envvar ${name}`)
   }
   return val
@@ -82,7 +82,11 @@ export interface Params {
   parentConfirmation: boolean
 }
 
-export const handler = (event: Object, context: Object, callback: Function) => {
+export const handler = (
+  event: APIGatewayEvent,
+  context: Context,
+  callback: Callback,
+) => {
   Sentry.init({ dsn: getEnv("SENTRY_DSN_BACKEND") })
   console.log(new Date().toISOString())
   console.log("handling event", event.body)
@@ -97,9 +101,10 @@ export const handler = (event: Object, context: Object, callback: Function) => {
 }
 
 export const handleAsync = async (
-  event: Object,
-  context: Object,
-  callback: Function,
+  event: APIGatewayEvent,
+  // @ts-ignore
+  context: Context,
+  callback: Callback,
 ) => {
   const SENDGRID_API_KEY = getEnv("SENDGRID_API_KEY")
   const CONFIRMATION_EMAIL_RECIPIENT = getEnv("CONFIRMATION_EMAIL_RECIPIENT")
@@ -107,7 +112,9 @@ export const handleAsync = async (
   const GOOGLE_CLIENT_EMAIL = getEnv("GOOGLE_CLIENT_EMAIL")
   const GOOGLE_PRIVATE_KEY = JSON.parse(getEnv("GOOGLE_PRIVATE_KEY"))
   sendgrid.setApiKey(SENDGRID_API_KEY)
-
+  if (event.body === null) {
+    throw new Error("Event had empty body")
+  }
   const params: Params = JSON.parse(event.body)
 
   if (params.acceptRecordKeeping === false) {
@@ -140,6 +147,7 @@ export const handleAsync = async (
       : params.childEmail !== ""
         ? params.childEmail
         : null
+  // tslint:disable-next-line strict-type-predicates
   if (confirmationEmailAddress == null) {
     callback(null, { statusCode: 400, body: "Please provide an email" })
     return
@@ -163,7 +171,7 @@ export const handleAsync = async (
 
   try {
     console.log("sending camper confirmation email")
-    const html = renderToStaticMarkup(<CamperEmail />)
+    const html = renderCamperEmail()
     const camperEmail = {
       to: {
         name: `${params.parentFirstName} ${params.parentLastName}`,
@@ -183,7 +191,7 @@ export const handleAsync = async (
 
   try {
     console.log("sending camp leader notification email")
-    const html = renderToStaticMarkup(<CampLeaderEmail columns={columns} />)
+    const html = renderCampLeaderEmail(columns)
     const leaderEmail = {
       to: {
         name: `M+M Info`,

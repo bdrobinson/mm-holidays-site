@@ -1,10 +1,11 @@
 import React, { FC } from "react"
+import { renderToStaticMarkup } from "react-dom/server"
 
 import { Column } from "./dataColumns"
 
 interface Props {}
 
-export const CamperEmail: FC<Props> = () => {
+const CamperEmail: FC<Props> = () => {
   return (
     <body>
       <p>We&apos;re delighted you have applied to come to M+M Holidays 2020.</p>
@@ -45,7 +46,7 @@ export const CamperEmail: FC<Props> = () => {
   )
 }
 
-export const CampLeaderEmail = ({ columns }: { columns: Array<Column> }) => {
+const CampLeaderEmail: FC<{ columns: Array<Column> }> = ({ columns }) => {
   return (
     <body>
       {columns.map(column => (
@@ -61,3 +62,7 @@ export const CampLeaderEmail = ({ columns }: { columns: Array<Column> }) => {
     </body>
   )
 }
+
+export const renderCamperEmail = () => renderToStaticMarkup(<CamperEmail />)
+export const renderCampLeaderEmail = (columns: Array<Column>) =>
+  renderToStaticMarkup(<CampLeaderEmail columns={columns} />)

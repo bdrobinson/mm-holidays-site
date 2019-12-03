@@ -16,8 +16,8 @@ const Fader = styled.div<{ first: boolean; visible: boolean }>`
 `
 
 interface Props {
-  renderImage: (fluid: Object) => ReactNode
-  fluids: Array<Object>
+  renderImage: (fluid: any) => ReactNode
+  fluids: Array<any>
 }
 
 const useIncrement = () => {

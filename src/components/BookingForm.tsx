@@ -164,7 +164,7 @@ const monthRegex = /^\d\d?$/
 const yearRegex = /^\d\d\d\d$/
 
 const validateForm = (formState: FormState): FormikErrors<FormState> => {
-  const errors = {}
+  const errors: FormikErrors<FormState> = {}
   const age = calculateAge(
     formState.childDobYear,
     formState.childDobMonth,
@@ -190,21 +190,24 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
           ]),
     ]
     if (nonEmptyStrings.includes(key)) {
-      // $FlowFixMe
+      // @ts-ignore
       if (formState[key].trim() === "") {
+        // @ts-ignore
         errors[key] = "This cannot be empty"
       }
     }
 
     // @ts-ignore
     if (MUST_BE_TRUE.includes(key)) {
+      // @ts-ignore
       if (formState[key] !== true) {
+        // @ts-ignore
         errors[key] = "Required"
       }
     }
   })
 
-  if (formState.photoPermission == null) {
+  if (formState.photoPermission === null) {
     errors.photoPermission = "Required"
   }
 
@@ -364,7 +367,7 @@ const BookingForm: FC<Props> = ({ onComplete }) => {
         Sentry.addBreadcrumb({
           category: "booking",
           message: `Submitted form ${JSON.stringify(values)}`,
-          level: "info",
+          level: Sentry.Severity.Info,
         })
         bag.setSubmitting(true)
         try {

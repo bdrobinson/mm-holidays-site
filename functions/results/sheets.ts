@@ -11,7 +11,7 @@ export const appendRow = async (params: {
   // configure a JWT auth client
   const jwtClient = new google.auth.JWT(
     params.googleAuthClientEmail,
-    null,
+    undefined,
     params.googlePrivateKey,
     ["https://www.googleapis.com/auth/spreadsheets"],
   )
@@ -19,6 +19,7 @@ export const appendRow = async (params: {
   await jwtClient.authorize()
 
   const sheets = google.sheets({ version: "v4", auth: jwtClient })
+  // @ts-ignore
   await sheets.spreadsheets.values.append({
     spreadsheetId: params.spreadsheetId,
     range: "Sheet1",

@@ -31,7 +31,7 @@ const BodyCampDates = styled.section`
 `
 
 interface Props {
-  data: Object
+  data: any
 }
 
 const Camp: FC<Props> = ({ data }) => {

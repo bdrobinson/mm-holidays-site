@@ -122,7 +122,7 @@ const BookingNoticeSection = styled.section`
 `
 
 interface Props {
-  data: Object
+  data: any
 }
 
 const IndexPage: FC<Props> = ({ data }) => (
@@ -190,7 +190,7 @@ const IndexPage: FC<Props> = ({ data }) => (
         </PromoVideoContainer>
       </PageGutter>
     </section>
-    {data.allMarkdownRemark.edges.map(edge => {
+    {data.allMarkdownRemark.edges.map((edge: any) => {
       const frontmatter = edge.node.frontmatter
       return (
         <HomepageFeature

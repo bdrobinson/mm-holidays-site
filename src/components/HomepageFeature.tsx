@@ -47,7 +47,7 @@ const Description = styled.div`
 `
 
 interface Props {
-  imageFluid: Object
+  imageFluid: any
   imageAltText: string
   title: string
   subtitle: string

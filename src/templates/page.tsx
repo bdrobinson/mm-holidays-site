@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 
 interface Props {
-  data: Object
+  data: any
 }
 
 const Template: FC<Props> = ({ data }) => {

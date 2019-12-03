@@ -54,8 +54,8 @@ const RadioChoices: FC<Props> = ({ options, value, fieldName, title }) => {
             <label key={option.value}>
               <Choice
                 style={{
-                  cursor: option.disabled ? "not-allowed" : "pointer",
-                  opacity: option.disabled ? 0.5 : 1,
+                  cursor: option.disabled === true ? "not-allowed" : "pointer",
+                  opacity: option.disabled === true ? 0.5 : 1,
                 }}
               >
                 <LabelText>{option.label}</LabelText>
@@ -68,7 +68,8 @@ const RadioChoices: FC<Props> = ({ options, value, fieldName, title }) => {
                   value={option.value}
                   checked={option.value === value}
                   style={{
-                    cursor: option.disabled ? "not-allowed" : "pointer",
+                    cursor:
+                      option.disabled === true ? "not-allowed" : "pointer",
                     opacity: 1,
                   }}
                   disabled={option.disabled}

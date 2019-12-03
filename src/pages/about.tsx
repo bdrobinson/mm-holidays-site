@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
 
-interface Props { data: Object }
+interface Props { data: any }
 
 const IndexPage: FC<Props> = ({ data }) => (
   <Layout
@@ -22,8 +22,8 @@ const IndexPage: FC<Props> = ({ data }) => (
     theme="light"
     seoDescription="The history of M+M and general information about camp."
   >
-    {data.allMarkdownRemark.edges.map(edge => {
-      const fluid: Object | null = edge.node.frontmatter.image?.childImageSharp.fluid
+    {data.allMarkdownRemark.edges.map((edge: any) => {
+      const fluid: any | null = edge.node.frontmatter.image?.childImageSharp.fluid
       return (
         <section key={edge.node.id}>
           <h1>{edge.node.frontmatter.title}</h1>
