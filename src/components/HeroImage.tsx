@@ -65,7 +65,7 @@ const HeroImage: FC<Props> = ({
   subtitle,
   children,
   imageAltText,
-}) => {
+}: Props) => {
   return (
     <Main>
       <Image

@@ -125,7 +125,7 @@ interface Props {
   data: any
 }
 
-const IndexPage: FC<Props> = ({ data }) => (
+const IndexPage: FC<Props> = ({ data }: Props) => (
   <Layout
     title={null}
     path="/"

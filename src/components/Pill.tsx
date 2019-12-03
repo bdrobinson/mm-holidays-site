@@ -6,7 +6,7 @@ interface Props {
   text: string
 }
 
-const Pill: FC<Props> = ({ text, colour, bgColour }) => {
+const Pill: FC<Props> = ({ text, colour, bgColour }: Props) => {
   return (
     <div
       css={`

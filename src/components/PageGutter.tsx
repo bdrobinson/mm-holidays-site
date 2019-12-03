@@ -23,7 +23,7 @@ interface Props {
   children: ReactNode
 }
 
-const PageGutter: FC<Props> = ({ children }) => (
+const PageGutter: FC<Props> = ({ children }: Props) => (
   <Main>
     <Content>{children}</Content>
   </Main>

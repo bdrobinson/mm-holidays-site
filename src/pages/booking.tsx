@@ -10,7 +10,7 @@ interface Props {
   data: any
 }
 
-const Booking: FC<Props> = ({ data }) => {
+const Booking: FC<Props> = ({ data }: Props) => {
   const [booked, setBooked] = useState(false)
 
   return (

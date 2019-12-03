@@ -10,7 +10,7 @@ interface Props {
   name: string
 }
 
-const FieldErrorMessage: FC<Props> = ({ name }) => {
+const FieldErrorMessage: FC<Props> = ({ name }: Props) => {
   return (
     <ErrorMessage name={name}>{message => <Text>{message}</Text>}</ErrorMessage>
   )

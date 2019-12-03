@@ -34,7 +34,7 @@ interface Props {
   data: any
 }
 
-const Camp: FC<Props> = ({ data }) => {
+const Camp: FC<Props> = ({ data }: Props) => {
   const meta = data.markdownRemark.frontmatter
   return (
     <Layout

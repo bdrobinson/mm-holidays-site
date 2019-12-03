@@ -3,6 +3,12 @@
   "typescript.suggest.enabled": true,
   "typescript.suggest.paths": true,
   "typescript.suggestionActions.enabled": true,
-"typescript.validate.enable": true,
-"typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.validate.enable": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ]
 }

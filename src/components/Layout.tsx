@@ -65,7 +65,7 @@ const Layout: FC<Props> = ({
   theme,
   seoDescription,
   path,
-}) => {
+}: Props) => {
   const [mobileNavMenuExpanded, setMobileNavMenu] = useState(false)
   return (
     <StaticQuery

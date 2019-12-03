@@ -33,7 +33,7 @@ const useIncrement = () => {
   return count
 }
 
-const ImageCrossfade: FC<Props> = ({ renderImage, fluids }) => {
+const ImageCrossfade: FC<Props> = ({ renderImage, fluids }: Props) => {
   const count = useIncrement()
   const option = count % fluids.length
   return (

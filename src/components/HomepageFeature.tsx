@@ -60,7 +60,7 @@ const HomepageFeature: FC<Props> = ({
   subtitle,
   descriptionHtml,
   imageAltText,
-}) => {
+}: Props) => {
   return (
     <Main>
       <ImageContainer>

@@ -25,7 +25,7 @@ const LabelText = styled.div`
   margin-left: 0.5em;
 `
 
-const FieldCheckbox: FC<Props> = ({ fieldName, checked, label }) => {
+const FieldCheckbox: FC<Props> = ({ fieldName, checked, label }: Props) => {
   return (
     <Main>
       <Row>

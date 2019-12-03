@@ -43,7 +43,12 @@ const Input = styled(Field)`
   border-color: ${GREY_BORDER_COLOUR};
 `
 
-const TextField: FC<Props> = ({ name, label, type = "text", subtitle }) => {
+const TextField: FC<Props> = ({
+  name,
+  label,
+  type = "text",
+  subtitle,
+}: Props) => {
   return (
     <Main>
       <Label>{label}</Label>

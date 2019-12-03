@@ -352,7 +352,7 @@ interface Props {
   onComplete: () => void
 }
 
-const BookingForm: FC<Props> = ({ onComplete }) => {
+const BookingForm: FC<Props> = ({ onComplete }: Props) => {
   const initialSubmitState: SubmitState = {
     type: "ready",
   }

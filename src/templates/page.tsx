@@ -1,13 +1,12 @@
 import React, { FC } from "react"
 import { graphql } from "gatsby"
-
 import Layout from "../components/Layout"
 
 interface Props {
   data: any
 }
 
-const Template: FC<Props> = ({ data }) => {
+const Template: FC<Props> = ({ data }: Props) => {
   const title = data.markdownRemark.frontmatter.title
   const description = data.markdownRemark.frontmatter.description
   return (

@@ -8,7 +8,7 @@ import HeroImage from "../components/HeroImage"
 
 interface Props { data: any }
 
-const IndexPage: FC<Props> = ({ data }) => (
+const IndexPage: FC<Props> = ({ data }: Props) => (
   <Layout
     path="/about"
     title="About"

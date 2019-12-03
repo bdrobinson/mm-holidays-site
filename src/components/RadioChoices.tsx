@@ -44,7 +44,12 @@ interface Props {
   }>
 }
 
-const RadioChoices: FC<Props> = ({ options, value, fieldName, title }) => {
+const RadioChoices: FC<Props> = ({
+  options,
+  value,
+  fieldName,
+  title,
+}: Props) => {
   return (
     <div>
       {title != null && <Title>{title}</Title>}

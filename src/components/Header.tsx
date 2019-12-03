@@ -162,7 +162,7 @@ const Header: FC<Props> = ({
   menuExpanded,
   setMenuExpanded,
   displayShadows,
-}) => {
+}: Props) => {
   const themeToUse = menuExpanded ? "dark" : theme
   return (
     <Main theme={themeToUse}>

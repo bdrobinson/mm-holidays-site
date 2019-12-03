@@ -46,7 +46,7 @@ interface Props {
   price: string
 }
 
-const CampDatesCTA: FC<Props> = ({ campName, shadows, price }) => (
+const CampDatesCTA: FC<Props> = ({ campName, shadows, price }: Props) => (
   <HeroDetailsContent>
     <div>
       <HeroDetailsRow shadows={shadows}>
