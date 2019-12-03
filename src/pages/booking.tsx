@@ -4,7 +4,6 @@ import { graphql } from "gatsby"
 import BookingForm from "../components/BookingForm"
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
-import Unknown404 from "./404"
 
 interface Props {
   data: any
