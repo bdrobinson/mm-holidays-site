@@ -97,9 +97,7 @@ const Layout: FC<Props> = ({
             ? seoDescription
             : data.site.siteMetadata.seoDescription
 
-        const pageImage = `${data.site.siteMetadata.baseUrl}${
-          data.defaultImage.childImageSharp.fixed.src
-        }`
+        const pageImage = `${data.site.siteMetadata.baseUrl}${data.defaultImage.childImageSharp.fixed.src}`
 
         const pageUrl =
           path !== null ? `${data.site.siteMetadata.baseUrl}${path}` : null

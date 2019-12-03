@@ -1,4 +1,3 @@
-
 import React, { FC } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
@@ -6,7 +5,9 @@ import Img from "gatsby-image"
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
 
-interface Props { data: any }
+interface Props {
+  data: any
+}
 
 const IndexPage: FC<Props> = ({ data }: Props) => (
   <Layout
@@ -23,7 +24,8 @@ const IndexPage: FC<Props> = ({ data }: Props) => (
     seoDescription="The history of M+M and general information about camp."
   >
     {data.allMarkdownRemark.edges.map((edge: any) => {
-      const fluid: any | null = edge.node.frontmatter.image?.childImageSharp.fluid
+      const fluid: any | null =
+        edge.node.frontmatter.image?.childImageSharp.fluid
       return (
         <section key={edge.node.id}>
           <h1>{edge.node.frontmatter.title}</h1>

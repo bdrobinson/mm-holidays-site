@@ -57,9 +57,7 @@ export const createColumns = (params: Params): Array<Column> => {
     {
       id: "childDob",
       name: "DOB",
-      value: `${params.childDobDay}/${params.childDobMonth}/${
-        params.childDobYear
-      }`,
+      value: `${params.childDobDay}/${params.childDobMonth}/${params.childDobYear}`,
     },
     {
       id: "childYearsNow",
