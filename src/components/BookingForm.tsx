@@ -96,7 +96,7 @@ const MUST_BE_TRUE: Array<keyof FormState> = [
 
 const getInitialState = (): FormState => ({
   // section 1
-  campChoice: "2",
+  campChoice: "1",
   // section 2
   childFirstName: "",
   childLastName: "",
