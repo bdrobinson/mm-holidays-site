@@ -6,7 +6,7 @@
   "dependencies": {
     "@sendgrid/mail": "^6.4.0",
     "@sentry/browser": "^5.10.1",
-    "@sentry/node": "5.10.1",
+    "@sentry/node": "^5.10.1",
     "date-fns": "^1.30.1",
     "formik": "^1.5.7",
     "gatsby": "^2.18.7",
@@ -66,7 +66,7 @@
     "gatsby-plugin-styled-components": "^3.1.14",
     "gatsby-plugin-typescript": "^2.1.20",
     "gatsby-remark-copy-linked-files": "^2.1.31",
-    "netlify-lambda": "^1.6.3",
+    "netlify-lambda": "bdrobinson/netlify-lambda#07dbb3b",
     "prettier": "^1.19.1",
     "tslib": "^1.10.0",
     "tslint": "^5.20.1",

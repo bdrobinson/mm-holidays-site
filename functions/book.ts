@@ -1,8 +1,8 @@
 import sendgrid from "@sendgrid/mail"
 import dotenv from "dotenv"
 import * as Sentry from "@sentry/node"
-// @ts-ignore
-import { renderCamperEmail, renderCampLeaderEmail } from "./results/email.tsx"
+import * as Core from "@sentry/core"
+import { renderCamperEmail, renderCampLeaderEmail } from "./results/email"
 import { createColumns } from "./results/dataColumns"
 import { appendRow } from "./results/sheets"
 import { APIGatewayEvent, Context, Callback } from "aws-lambda"
