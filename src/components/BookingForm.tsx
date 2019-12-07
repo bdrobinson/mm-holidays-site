@@ -695,11 +695,11 @@ const BookingForm: FC<Props> = ({ onComplete }: Props) => {
             <section>
               <h2>Other information</h2>
               <p>
-                A medical form will be sent shortly before the holiday commences
-                and it is essential that it is completed and returned by a
-                parent/guardian immediately. However, in the meantime please let
-                us have any information which would be helpful to the M+M
-                Leaders in planning the holiday.
+                Please let us have any information now which would be helpful to
+                the M+M Leaders in planning the holiday. A medical form will be
+                sent shortly before the holiday commences and it is essential
+                that it is completed and returned by a parent/guardian
+                immediately.
               </p>
               <label>
                 <p>Dietary needs</p>
