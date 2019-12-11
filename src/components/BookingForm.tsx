@@ -8,7 +8,7 @@ import fetch from "unfetch"
 import TextField from "./TextField"
 import { Params } from "../../functions/book"
 import RadioChoices from "./RadioChoices"
-import { GREY_BORDER_COLOUR, MOBILE_WIDTH } from "../constants"
+import { GREY_BORDER_COLOUR, MOBILE_WIDTH, RED } from "../constants"
 import FieldErrorMessage from "./FieldErrorMessage"
 import FieldCheckbox from "./FieldCheckbox"
 
@@ -788,13 +788,13 @@ const BookingForm: FC<Props> = ({ onComplete }: Props) => {
                 </SubmitButton>
               </div>
               {Object.keys(errors).length > 0 && submitCount > 0 && (
-                <p style={{ color: "red" }}>
+                <p style={{ color: RED }}>
                   Some fields are invalid. Please review the form and then
                   re-submit.
                 </p>
               )}
               {networkSubmitState.type === "error" && (
-                <p style={{ color: "red" }}>
+                <p style={{ color: RED }}>
                   {networkSubmitState.message}
                   <br />
                   Could not submit form. Please try again or contact{" "}

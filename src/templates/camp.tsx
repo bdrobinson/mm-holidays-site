@@ -13,8 +13,8 @@ const HeroCampDates = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
-  padding-top: 4rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+  padding-top: 7rem;
   padding-bottom: 1rem;
   font-size: 1.6rem;
   @media (max-width: ${SMALLSCREEN_WIDTH}px) {

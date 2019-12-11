@@ -2,8 +2,10 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { ErrorMessage } from "formik"
 
+import { RED } from "../constants"
+
 const Text = styled.div`
-  color: red;
+  color: ${RED};
 `
 
 interface Props {

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 
-import { MOBILE_WIDTH } from "../constants"
+import { MOBILE_WIDTH, BODY_COLOUR, ACCENT_COLOUR } from "../constants"
 
 const GlobalStyles = createGlobalStyle`
     html {
@@ -13,7 +13,8 @@ const GlobalStyles = createGlobalStyle`
     body {
         font-family: 'Raleway', sans-serif;
         font-size: 1rem;
-        height: 100%;
+        height: 100%;  
+        color: ${BODY_COLOUR};       
     }
     #___gatsby {
         height: 100%;
@@ -40,7 +41,13 @@ const GlobalStyles = createGlobalStyle`
     }
 
     a {
-        color: currentColor;
+        color: ${ACCENT_COLOUR};
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    a:hover {
+        text-decoration: underline;
     }
 
     strong {
