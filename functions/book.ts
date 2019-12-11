@@ -192,10 +192,7 @@ export const handleAsync = async (
     console.log("sending camp leader notification email")
     const html = renderCampLeaderEmail(columns)
     const leaderEmail = {
-      to: {
-        name: `M+M Info`,
-        email: CONFIRMATION_EMAIL_RECIPIENT,
-      },
+      to: CONFIRMATION_EMAIL_RECIPIENT.split(","),
       from: { name: "M+M Bookings", email: "info@madnessandmayhem.org.uk" },
       subject: "New submission from booking form",
       text: html,
