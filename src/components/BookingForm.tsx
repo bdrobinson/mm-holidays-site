@@ -394,6 +394,7 @@ const BookingForm: FC<Props> = ({ onComplete }: Props) => {
         handleChange,
         submitCount,
         isSubmitting,
+        setValues,
       }) => {
         const age = calculateAge(
           values.childDobYear,
@@ -508,6 +509,33 @@ const BookingForm: FC<Props> = ({ onComplete }: Props) => {
                   fieldName="parentRelationshipToChild"
                 />
                 <br />
+                <p>
+                  <button
+                    type="button"
+                    css={`
+                      border: none;
+                      background: none;
+                      cursor: pointer;
+                      padding: 0.5em 1em;
+                      border-radius: 0.5em;
+                      border: 1px solid ${GREY_BORDER_COLOUR};
+                      font-size: 0.8em;
+                      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                    `}
+                    onClick={() => {
+                      setValues({
+                        ...values,
+                        parentAddressLine1: values.childAddressLine1,
+                        parentAddressLine2: values.childAddressLine2,
+                        parentAddressCity: values.childAddressCity,
+                        parentAddressCounty: values.childAddressCounty,
+                        parentPostcode: values.childPostcode,
+                      })
+                    }}
+                  >
+                    Copy address from child
+                  </button>
+                </p>
                 <TextField label="Address line 1" name="parentAddressLine1" />
                 <TextField label="Address line 2" name="parentAddressLine2" />
                 <TextField label="Town/city" name="parentAddressCity" />
