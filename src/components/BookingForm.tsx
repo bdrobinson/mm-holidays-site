@@ -11,8 +11,9 @@ import RadioChoices from "./RadioChoices"
 import { GREY_BORDER_COLOUR, MOBILE_WIDTH, RED } from "../constants"
 import FieldErrorMessage from "./FieldErrorMessage"
 import FieldCheckbox from "./FieldCheckbox"
+import Button from "./Button"
 
-type FormState = {
+export type FormState = {
   // section 1
   campChoice: "1" | "2"
   // section 2
@@ -349,10 +350,11 @@ type SubmitState =
   | { type: "error"; message: string }
 
 interface Props {
-  onComplete: () => void
+  onComplete: (formState: FormState) => void
+  initialState: Partial<FormState> | null
 }
 
-const BookingForm: FC<Props> = ({ onComplete }: Props) => {
+const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
   const initialSubmitState: SubmitState = {
     type: "ready",
   }
@@ -361,7 +363,7 @@ const BookingForm: FC<Props> = ({ onComplete }: Props) => {
   )
   return (
     <Formik
-      initialValues={getInitialState()}
+      initialValues={{ ...getInitialState(), ...(initialState ?? {}) }}
       validate={validateForm}
       onSubmit={async (values, bag) => {
         Sentry.addBreadcrumb({
@@ -379,7 +381,7 @@ const BookingForm: FC<Props> = ({ onComplete }: Props) => {
             throw new Error(await response.text())
           }
           setNetworkSubmitState({ type: "success" })
-          onComplete()
+          onComplete(values)
         } catch (err) {
           setNetworkSubmitState({ type: "error", message: err.message })
           Sentry.captureException(err)
@@ -510,18 +512,7 @@ const BookingForm: FC<Props> = ({ onComplete }: Props) => {
                 />
                 <br />
                 <p>
-                  <button
-                    type="button"
-                    css={`
-                      border: none;
-                      background: none;
-                      cursor: pointer;
-                      padding: 0.5em 1em;
-                      border-radius: 0.5em;
-                      border: 1px solid ${GREY_BORDER_COLOUR};
-                      font-size: 0.8em;
-                      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-                    `}
+                  <Button
                     onClick={() => {
                       setValues({
                         ...values,
@@ -534,7 +525,7 @@ const BookingForm: FC<Props> = ({ onComplete }: Props) => {
                     }}
                   >
                     Copy address from child
-                  </button>
+                  </Button>
                 </p>
                 <TextField label="Address line 1" name="parentAddressLine1" />
                 <TextField label="Address line 2" name="parentAddressLine2" />
