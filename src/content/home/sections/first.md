@@ -12,7 +12,7 @@ but they each have a separate programme throughout the week. For example,
 if you’re on Madness you’ll be spending most of the week with other 12 to 14
 year olds.
 
-This year we’re running M+M twice! This means there’s room for more of your
+M+M runs over two weeks! This means there’s room for more of your
 friends to join in. Week 1 is from 25th July to 1st August and Week 2 is from
 1st to 8th August.
 

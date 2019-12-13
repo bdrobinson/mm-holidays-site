@@ -7,10 +7,10 @@ heroAltText: Two smiling campers on an inflatable obstacle course
 theme: "light"
 ---
 
-**General info:** <info@madnessandmayhem.org.uk>
+<!--If you're looking to book onto M+M 2020, you can do that on our [booking page](/booking).-->
 
-**Week 1:** <mm1@madnessandmayhem.org.uk>
+For any general queries you can email <info@madnessandmayhem.org.uk>, or <mm1@madnessandmayhem.org.uk> and <mm2@madnessandmayhem.org.uk> for information about week 1 and week 2 respectively.
 
-**Week 2:** <mm2@madnessandmayhem.org.uk>
+You can contact the Madness and Mayhem Trust at <mmtrust@madnessandmayhem.org.uk>.
 
-**Madness and Mayhem Trust:** <mmtrust@madnessandmayhem.org.uk>
+For information about joining the M+M team or supporting our work financially, have a look at how to [get involved](/get_involved).

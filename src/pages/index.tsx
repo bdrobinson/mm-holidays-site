@@ -50,11 +50,13 @@ const HeroLabelContainer = styled.div`
 
 const Tagline = styled.h1`
   color: white;
-  text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-  letter-spacing: 1.5px;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.05em;
   @media (max-width: ${SMALLSCREEN_WIDTH}px) {
-    font-size: 2rem;
+    font-size: 3rem;
   }
+  opacity: 0.9;
+  padding-bottom: 2em;
 `
 
 const PromoVideoContainer = styled.div`
@@ -157,7 +159,15 @@ const IndexPage: FC<Props> = ({ data }: Props) => (
         <HeroLabelContainer>
           <div>
             <PageGutter>
-              <Tagline>Get ready for the best week of the year...</Tagline>
+              <Tagline>
+                <span css="text-transform: uppercase; font-size: 1.8em; letter-spacing: 0.05em;">
+                  Get ready
+                </span>
+                <br />
+                <span css="font-size: 0.9em;">
+                  for the best week of the year
+                </span>
+              </Tagline>
             </PageGutter>
           </div>
         </HeroLabelContainer>
