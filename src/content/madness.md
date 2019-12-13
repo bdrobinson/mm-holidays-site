@@ -15,8 +15,8 @@ Madness is an action-packed holiday for everyone aged 12 to 14. A typical day on
 
 It’s a great chance to make friends for life from across the country and explore what the Bible says about Jesus. There’s time to think things through, chat with friends and ask all your burning questions.
 
-Madness costs £239 for the week, but bursaries/extra funding are available if required. This year the price includes a trip to [Drayton Manor theme park](https://www.draytonmanor.co.uk/) and an extra activity choice of canoeing, King Swing, bushcraft, Search & Rescue or mountain biking.
+Madness costs £239 for the week, but bursaries/extra funding are available if required.
 
 Whether you’re new to Madness or you’ve been before, we can’t wait to see you there. Invite your friends and get packing for the best week of the year…
 
-For more information email <madness@madnessandmayhem.org.uk>
+For more information, please do [get in touch](/contact).

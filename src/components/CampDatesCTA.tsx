@@ -39,7 +39,8 @@ const CampName = styled.div`
   margin-right: 1em;
   text-transform: uppercase;
   font-size: 0.7em;
-  opacity: 0.7;
+  opacity: 0.9;
+  letter-spacing: 0.1em;
 `
 
 const PriceText = styled.div`

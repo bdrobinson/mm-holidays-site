@@ -21,4 +21,4 @@ Max costs £239 for the week, but bursaries/extra funding are available if requi
 Tell all your friends and get ready for the best week of the year. It’s going to be
 epic...
 
-For more information email <max@madnessandmayhem.org.uk>
+For more information, please do [get in touch](/contact).
