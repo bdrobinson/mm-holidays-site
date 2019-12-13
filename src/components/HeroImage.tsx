@@ -92,7 +92,7 @@ export const FluidHeroImage = graphql`
     fluid(
       maxWidth: 1920
       srcSetBreakpoints: [400, 600, 960, 1280, 1600, 1920]
-      quality: 80
+      quality: 90
     ) {
       ...GatsbyImageSharpFluid_withWebp
     }
