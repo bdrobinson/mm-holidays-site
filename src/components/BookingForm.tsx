@@ -413,6 +413,11 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               e.preventDefault()
               submitForm()
             }}
+            css={`
+              section h2 {
+                margin-top: 4em;
+              }
+            `}
           >
             <section>
               <h2>Select a week</h2>
@@ -802,7 +807,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 label="I agree"
               />
             </section>
-            <section>
+            <section css="margin-top: 3em;">
               <div>
                 <SubmitButton disabled={isSubmitting}>Submit</SubmitButton>
               </div>
