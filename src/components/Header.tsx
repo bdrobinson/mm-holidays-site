@@ -151,18 +151,20 @@ const MobileNavLink = styled(Link)`
 `
 
 interface Props {
-  theme?: "light" | "dark"
+  theme?: "light" | "dark" | null
   menuExpanded: boolean
   setMenuExpanded: (expanded: boolean) => void
   displayShadows: boolean
 }
 
 const Header: FC<Props> = ({
-  theme = "dark",
+  theme: themeOpt,
   menuExpanded,
   setMenuExpanded,
   displayShadows,
 }: Props) => {
+  const theme = themeOpt ?? "dark"
+
   const themeToUse = menuExpanded ? "dark" : theme
   return (
     <Main theme={themeToUse}>

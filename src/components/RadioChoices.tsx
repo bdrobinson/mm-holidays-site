@@ -68,6 +68,7 @@ const RadioChoices: FC<Props> = ({
                   type="radio"
                   name={fieldName}
                   value={option.value}
+                  // tslint:disable-next-line: strict-comparisons
                   checked={option.value === value}
                   style={{
                     cursor:

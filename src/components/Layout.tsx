@@ -52,7 +52,7 @@ interface Props {
   applyGutter?: boolean
   title: string | null
   hero?: ReactNode
-  theme?: "light" | "dark"
+  theme?: "light" | "dark" | null
   seoDescription: string | null
   path: string | null
 }

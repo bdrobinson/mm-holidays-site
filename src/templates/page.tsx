@@ -1,22 +1,36 @@
 import React, { FC } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
+import HeroImage from "../components/HeroImage"
 
 interface Props {
   data: any
 }
 
 const Template: FC<Props> = ({ data }: Props) => {
-  const title = data.markdownRemark.frontmatter.title
-  const description = data.markdownRemark.frontmatter.description
+  const frontmatter = data.markdownRemark.frontmatter
+  const title = frontmatter.title
+  const description = frontmatter.description
+  const hasHero = frontmatter.hero != null
+
   return (
     <Layout
       title={title}
       seoDescription={description}
-      path={data.markdownRemark.frontmatter.path}
+      path={frontmatter.path}
+      hero={
+        hasHero ? (
+          <HeroImage
+            imageAltText={frontmatter.heroAltText}
+            fluid={frontmatter.hero.childImageSharp.fluid}
+            title={title}
+          />
+        ) : null
+      }
+      theme={hasHero ? frontmatter.theme : null}
     >
       <section>
-        <h1>{title}</h1>
+        {hasHero === false && <h1>{title}</h1>}
         <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
       </section>
     </Layout>
@@ -33,6 +47,13 @@ export const pageQuery = graphql`
         path
         title
         description
+        hero {
+          childImageSharp {
+            ...FluidHeroImage
+          }
+        }
+        heroAltText
+        theme
       }
     }
   }

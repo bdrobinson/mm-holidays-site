@@ -53,29 +53,29 @@ const Booking: FC<Props> = ({ data }: Props) => {
           <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
           <BookingForm
             onComplete={formState => {
-              setPreviousState(
-                formState != null
-                  ? {
-                      title: formState.title,
-                      parentFirstName: formState.parentFirstName,
-                      parentLastName: formState.parentLastName,
-                      parentRelationshipToChild:
-                        formState.parentRelationshipToChild,
-                      parentAddressLine1: formState.parentAddressLine1,
-                      parentAddressLine2: formState.parentAddressLine2,
-                      parentAddressCity: formState.parentAddressCity,
-                      parentAddressCounty: formState.parentAddressCounty,
-                      parentPostcode: formState.parentPostcode,
-                      parentMobilePhone: formState.parentMobilePhone,
-                      parentDaytimePhone: formState.parentDaytimePhone,
-                      parentEveningPhone: formState.parentEveningPhone,
-                      parentEmail: formState.parentEmail,
-                    }
-                  : null,
-              )
+              setPreviousState(formState)
               setBooked(true)
             }}
-            initialState={previousState}
+            initialState={
+              previousState !== null
+                ? {
+                    title: previousState.title,
+                    parentFirstName: previousState.parentFirstName,
+                    parentLastName: previousState.parentLastName,
+                    parentRelationshipToChild:
+                      previousState.parentRelationshipToChild,
+                    parentAddressLine1: previousState.parentAddressLine1,
+                    parentAddressLine2: previousState.parentAddressLine2,
+                    parentAddressCity: previousState.parentAddressCity,
+                    parentAddressCounty: previousState.parentAddressCounty,
+                    parentPostcode: previousState.parentPostcode,
+                    parentMobilePhone: previousState.parentMobilePhone,
+                    parentDaytimePhone: previousState.parentDaytimePhone,
+                    parentEveningPhone: previousState.parentEveningPhone,
+                    parentEmail: previousState.parentEmail,
+                  }
+                : null
+            }
           />
         </>
       )}
