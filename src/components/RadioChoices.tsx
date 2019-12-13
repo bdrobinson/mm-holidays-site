@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Field } from "formik"
 
 import FieldErrorMessage from "./FieldErrorMessage"
+import FieldTitle from "./FieldTitle"
 
 const Main = styled.div`
   display: flex;
@@ -14,10 +15,6 @@ const LabelText = styled.div``
 const LabelSubtitle = styled.div`
   font-size: 0.7em;
   margin-bottom: 0.7em;
-`
-
-const Title = styled.p`
-  margin-bottom: 0.3em;
 `
 
 const Choice = styled.div`
@@ -52,7 +49,7 @@ const RadioChoices: FC<Props> = ({
 }: Props) => {
   return (
     <div>
-      {title != null && <Title>{title}</Title>}
+      {title != null && <FieldTitle>{title}</FieldTitle>}
       <Main>
         {options.map(option => {
           return (

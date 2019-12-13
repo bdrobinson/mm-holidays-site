@@ -12,6 +12,7 @@ import { GREY_BORDER_COLOUR, MOBILE_WIDTH, RED } from "../constants"
 import FieldErrorMessage from "./FieldErrorMessage"
 import FieldCheckbox from "./FieldCheckbox"
 import Button from "./Button"
+import FieldTitle from "./FieldTitle"
 
 export type FormState = {
   // section 1
@@ -309,13 +310,12 @@ const TextArea = styled.textarea`
   }
 `
 
-const SubmitButton = styled.button<{ disabled: boolean }>`
-  padding: 1em;
-  background: none;
-  border-radius: 0.5em;
-  margin-top: 2em;
-  font-size: 1.2em;
+const SubmitButton = styled(Button).attrs({ type: "submit" })<{
+  disabled: boolean
+}>`
   opacity: ${props => (props.disabled ? 0.6 : 1)};
+  font-size: 1.2em;
+  margin-top: 1em;
 `
 
 const newDate = (year: string, month: string, day: string): Date | null => {
@@ -452,7 +452,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <TextField label="Contact email" name="childEmail" type="email" />
               <div>
                 <label htmlFor="childDobDay">
-                  <p style={{ marginBottom: 0 }}>Date of birth</p>
+                  <FieldTitle>Date of birth</FieldTitle>
                 </label>
                 <DobField
                   id="childDobDay"
@@ -721,7 +721,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 immediately.
               </p>
               <label>
-                <p>Dietary needs</p>
+                <FieldTitle>Dietary needs</FieldTitle>
                 <TextArea
                   name="dietaryNeeds"
                   value={values.dietaryNeeds}
@@ -731,7 +731,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <label>
-                <p>Medical issues or disabilities</p>
+                <FieldTitle>Medical issues or disabilities</FieldTitle>
                 <TextArea
                   name="medicalIssues"
                   value={values.medicalIssues}
@@ -741,7 +741,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <label>
-                <p>Behavioural/social needs</p>
+                <FieldTitle>Behavioural/social needs</FieldTitle>
                 <TextArea
                   name="behaviouralNeeds"
                   value={values.behaviouralNeeds}
@@ -751,7 +751,9 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <label>
-                <p>If English is not your child&apos;s first language</p>
+                <FieldTitle>
+                  If English is not your child&apos;s first language
+                </FieldTitle>
                 <TextArea
                   name="englishNotFirstLanguage"
                   value={values.englishNotFirstLanguage}
@@ -761,7 +763,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <label>
-                <p>Anything else</p>
+                <FieldTitle>Anything else</FieldTitle>
                 <TextArea
                   name="anythingElse"
                   value={values.anythingElse}
@@ -802,9 +804,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <div>
-                <SubmitButton type="submit" disabled={isSubmitting}>
-                  Submit
-                </SubmitButton>
+                <SubmitButton disabled={isSubmitting}>Submit</SubmitButton>
               </div>
               {Object.keys(errors).length > 0 && submitCount > 0 && (
                 <p style={{ color: RED }}>

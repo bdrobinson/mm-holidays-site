@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 import { MOBILE_WIDTH, GREY_BORDER_COLOUR } from "../constants"
 import FieldErrorMessage from "./FieldErrorMessage"
+import FieldTitle from "./FieldTitle"
 
 interface Props {
   name: string
@@ -14,10 +15,10 @@ interface Props {
 
 const Main = styled.label`
   display: block;
-`
-
-const Label = styled.p`
-  margin-bottom: 0;
+  width: ${MOBILE_WIDTH - 100}px;
+  @media (max-width: ${MOBILE_WIDTH}px) {
+    width: 100%;
+  }
 `
 
 const Subtitle = styled.div`
@@ -27,10 +28,6 @@ const Subtitle = styled.div`
 
 const InputContainer = styled.div`
   margin-bottom: 0.4em;
-  width: ${MOBILE_WIDTH - 100}px;
-  @media (max-width: ${MOBILE_WIDTH}px) {
-    width: 100%;
-  }
 `
 
 const Input = styled(Field)`
@@ -51,7 +48,7 @@ const TextField: FC<Props> = ({
 }: Props) => {
   return (
     <Main>
-      <Label>{label}</Label>
+      <FieldTitle>{label}</FieldTitle>
       {subtitle != null && <Subtitle>{subtitle}</Subtitle>}
       <InputContainer>
         <Input name={name} type={type} />
