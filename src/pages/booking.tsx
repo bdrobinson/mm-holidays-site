@@ -5,6 +5,7 @@ import BookingForm, { FormState } from "../components/BookingForm"
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
 import Button from "../components/Button"
+import { MOBILE_WIDTH } from "../constants"
 
 interface Props {
   data: any
@@ -49,7 +50,16 @@ const Booking: FC<Props> = ({ data }: Props) => {
         </>
       )}
       {booked === false && (
-        <>
+        <div
+          css={`
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            & > * {
+              max-width: ${MOBILE_WIDTH}px;
+            }
+          `}
+        >
           <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
           <BookingForm
             onComplete={formState => {
@@ -77,7 +87,7 @@ const Booking: FC<Props> = ({ data }: Props) => {
                 : null
             }
           />
-        </>
+        </div>
       )}
     </Layout>
   )
