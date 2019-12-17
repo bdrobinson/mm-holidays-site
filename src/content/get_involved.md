@@ -19,7 +19,7 @@ For more information, email us at <info@madnessandmayhem.org.uk>.
 # 10:45 scheme
 *&ldquo;For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.&rdquo;* &mdash; Mark 10:45
 
-M+M is committed to training up the next generation of leaders who can faithfully pass on and live out the gospel message, both on summer camps and within their local churches. M+M provides the opportunity for 17-19 year old committed Christians to learn and put their faith into action by serving Christ and the work of the gospel on camp.
+M+M is committed to training up the next generation of leaders who can faithfully pass on and live out the gospel message, both on summer camps and within their local churches. M+M provides the opportunity for 18+ year old committed Christians to learn and put their faith into action by serving Christ and the work of the gospel on camp.
 
 On the M+M 10:45 scheme you will be expected to serve, carry out a range of ministry support tasks, assist in the pastoral care of a group of young people, be a member of the Holiday leadership team, benefit from your own tailored teaching, get tired and worn out (guaranteed), know that your work will make a difference for all eternity and put the Lord’s great commission into practice.
 
