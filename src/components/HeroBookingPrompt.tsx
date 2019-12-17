@@ -24,25 +24,27 @@ const Title = styled.h2`
 const BookingNoticeText = styled.div`
   flex-grow: 1;
   flex-shrink: 1;
-  padding-right: 1em;
+  padding-right: 1.5em;
   margin: 0;
   font-size: 1em;
 `
 
 const BookingNoticeRow = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   margin: 0.8em 0;
   font-size: 1.2em;
+  align-items: center;
   @media (max-width: ${TINY_WIDTH}px) {
     flex-flow: column nowrap;
+    align-items: flex-start;
   }
-  align-items: center;
 `
 
-const BookingNoticeLabel = styled.span`
+const BookingNoticeLabel = styled.div`
   font-weight: bold;
   margin-right: 0.8em;
+  flex: 0 0 auto;
 `
 
 // const PillContainer = styled.div`
@@ -57,17 +59,15 @@ const BookingNoticeLabel = styled.span`
 const Paragraph = styled.p`
   font-size: 1.2em;
   margin: 0.2em 0;
+  text-align: center;
 `
 
 interface Props {}
 
 const HeroBookingPrompt: FC<Props> = () => (
   <Main>
-    <Title>Save the dates for 2020!</Title>
-    <Paragraph>
-      M+M will return to the Frontier Centre in 2020. Block it out in your
-      calendar now!
-    </Paragraph>
+    <Title>Bookings for 2020 are now open!</Title>
+    <Paragraph>Don&apos;t miss out &ndash; book your place today!</Paragraph>
     <Content>
       <BookingNoticeText>
         <BookingNoticeRow>

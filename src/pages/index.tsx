@@ -106,8 +106,6 @@ const BodyBookingNoticeContainer = styled.div`
   justify-content: center;
   width: 100%;
   font-size: 0.9rem;
-  background-color: ${PRIMARY_COLOUR_DARK};
-  color: white;
   & > * {
     width: 70%;
     @media (max-width: ${MOBILE_WIDTH}px) {
@@ -118,6 +116,7 @@ const BodyBookingNoticeContainer = styled.div`
 `
 
 const BookingNoticeSection = styled.section`
+  margin-top: 1em;
   @media (min-width: ${SMALLSCREEN_WIDTH}px) {
     display: none;
   }
@@ -184,6 +183,18 @@ const IndexPage: FC<Props> = ({ data }: Props) => (
             <HeroBookingPrompt />
           </PageGutter>
         </BodyBookingNoticeContainer>
+        <div css="padding: 0 6em;">
+          <hr
+            css={`
+              border: none;
+              height: 2px;
+              width: 100%;
+              background-color: ${PRIMARY_COLOUR_DARK};
+              border-radius: 2px;
+              margin-bottom: 2em;
+            `}
+          />
+        </div>
       </BookingNoticeSection>
     )}
     <section>

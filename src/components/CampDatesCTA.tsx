@@ -8,11 +8,7 @@ const HeroDetailsContent = styled.div`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: space-between;
-  @media (max-width: ${MOBILE_WIDTH}px) {
-    flex-flow: column nowrap;
-    text-align: center;
-  }
+  justify-content: center;
 `
 
 const HeroDetailsRow = styled.div<{ shadows: boolean }>`
@@ -30,9 +26,6 @@ const HeroDetailsRow = styled.div<{ shadows: boolean }>`
 
 const BookButtonContainer = styled.div`
   font-size: 0.8em;
-  @media (max-width: ${MOBILE_WIDTH}px) {
-    margin-top: 0.8em;
-  }
 `
 
 const CampName = styled.div`
@@ -41,6 +34,14 @@ const CampName = styled.div`
   font-size: 0.7em;
   opacity: 0.9;
   letter-spacing: 0.1em;
+  flex: 0 0 auto;
+`
+
+const CampDate = styled.div`
+  text-align: right;
+  @media (max-width: ${MOBILE_WIDTH}px) {
+    font-size: 0.9em;
+  }
 `
 
 const PriceText = styled.div`
@@ -56,20 +57,26 @@ interface Props {
 
 const CampDatesCTA: FC<Props> = ({ campName, shadows, price }: Props) => (
   <HeroDetailsContent>
-    <div
-      css={`
-        padding-right: 1em;
-        border-right: 0.2em solid currentColor;
-      `}
-    >
+    <div>
       <HeroDetailsRow shadows={shadows}>
         <CampName>{campName} 1:</CampName>
-        25 July &ndash; 1 August 2020
+        <CampDate>25 July &ndash; 1 August 2020</CampDate>
       </HeroDetailsRow>
       <HeroDetailsRow shadows={shadows}>
-        <CampName>{campName} 2:</CampName>1 &ndash; 8 August 2020
+        <CampName>{campName} 2:</CampName>
+        <CampDate>1 &ndash; 8 August 2020</CampDate>
       </HeroDetailsRow>
     </div>
+    <div
+      aria-hidden={true}
+      css={`
+        background-color: currentColor;
+        width: 0.15em;
+        margin: 0 1.5em;
+        align-self: stretch;
+        border-radius: 0.1em;
+      `}
+    />
     {ENABLE_BOOKING && (
       <BookButtonContainer>
         <BookButton paddingHorizontal="0.3em">
