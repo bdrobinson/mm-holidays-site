@@ -22,6 +22,7 @@ const LINKS: Array<{ link: string; label: string; accent?: boolean }> = [
   { link: "/max", label: "Max" },
   { link: "/madness", label: "Madness" },
   { link: "/mayhem", label: "Mayhem" },
+  { link: "/get_involved", label: "Get involved" },
   { link: "/contact", label: "Contact" },
   ...(ENABLE_BOOKING
     ? [{ link: "/booking", label: "Book", accent: true }]
@@ -82,7 +83,7 @@ const MenuButton = styled.button.attrs({ children: "Menu" })`
 
 const NavLink = styled(Link)`
   margin-left: 0.8em;
-  padding: 1em;
+  padding: 1em 0.6em;
   color: currentColor;
   font-weight: bold;
   text-decoration: none;
