@@ -17,7 +17,7 @@ Our annual leaders weekend is an essential part of serving on M+M Holidays and w
 For more information, email us at <info@madnessandmayhem.org.uk>.
 
 # 10:45 scheme
-*&ldquo;For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.&rdquo;* &mdash; Mark 10:45
+> *&ldquo;For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.&rdquo;* &mdash; Mark 10:45
 
 M+M is committed to training up the next generation of leaders who can faithfully pass on and live out the gospel message, both on summer camps and within their local churches. M+M provides the opportunity for 18+ year old committed Christians to learn and put their faith into action by serving Christ and the work of the gospel on camp.
 

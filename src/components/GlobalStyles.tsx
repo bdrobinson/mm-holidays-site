@@ -1,6 +1,11 @@
 import { createGlobalStyle } from "styled-components"
 
-import { MOBILE_WIDTH, BODY_COLOUR, ACCENT_COLOUR } from "../constants"
+import {
+  MOBILE_WIDTH,
+  BODY_COLOUR,
+  ACCENT_COLOUR,
+  PRIMARY_COLOUR_DARK,
+} from "../constants"
 
 const GlobalStyles = createGlobalStyle`
     html {
@@ -30,11 +35,26 @@ const GlobalStyles = createGlobalStyle`
             font-weight: 400;
         }
         line-height: 1.5;
+        margin: 0.6em 0;
     }
     h1 {
         font-size: 3.5rem;
         margin-top: 2rem;
         margin-bottom: 0.8rem;
+    }
+
+    h2 {
+        margin-top: 1em;
+        margin-bottom: 0;
+    }
+
+    blockquote {
+        border-left: 2px solid ${PRIMARY_COLOUR_DARK};
+        margin: 0;
+        padding: 0.1em 2em;
+        background-color: hsla(0,0%,97%);
+        border-top-right-radius: 0.5em;
+        border-bottom-right-radius: 0.5em;
     }
 
     footer {

@@ -8,13 +8,13 @@ import { FOOTER_BG, FOOTER_TEXT, MOBILE_WIDTH } from "../constants"
 
 const links: Array<{ name: string; path: string }> = [
   { name: "Home", path: "/" },
-  { name: "About us", path: "/about" },
   { name: "Contact", path: "/contact" },
+  { name: "Book", path: "/booking" },
   { name: "Max", path: "/max" },
   { name: "Madness", path: "/madness" },
   { name: "Mayhem", path: "/mayhem" },
+  { name: "About us", path: "/about" },
   { name: "Get Involved", path: "/get_involved" },
-  { name: "Book", path: "/booking" },
   { name: "Booking T&Cs", path: "/terms-and-conditions" },
 ]
 
