@@ -9,6 +9,7 @@ import {
   PRIMARY_COLOUR_DARK,
   Z_INDICES,
   ENABLE_BOOKING,
+  SMALLSCREEN_WIDTH,
 } from "../constants"
 
 const LOGO_ASPECT_RATIO = 1.076
@@ -17,11 +18,16 @@ const LOGO_WIDTH_MOBILE = 100
 const LOGO_HEIGHT_DESKTOP = LOGO_WIDTH_DESKTOP / LOGO_ASPECT_RATIO
 const LOGO_HEIGHT_MOBILE = LOGO_WIDTH_MOBILE / LOGO_ASPECT_RATIO
 
-const LINKS: Array<{ link: string; label: string; accent?: boolean }> = [
+const LINKS: Array<{
+  link: string
+  label: string
+  sublabel?: string
+  accent?: boolean
+}> = [
   { link: "/about", label: "About us" },
-  { link: "/max", label: "Max" },
-  { link: "/madness", label: "Madness" },
-  { link: "/mayhem", label: "Mayhem" },
+  { link: "/max", label: "Max", sublabel: "9-11" },
+  { link: "/madness", label: "Madness", sublabel: "12-14" },
+  { link: "/mayhem", label: "Mayhem", sublabel: "15-18" },
   { link: "/get_involved", label: "Get involved" },
   { link: "/contact", label: "Contact" },
   ...(ENABLE_BOOKING
@@ -82,8 +88,9 @@ const MenuButton = styled.button.attrs({ children: "Menu" })`
 `
 
 const NavLink = styled(Link)`
+  display: block;
   margin-left: 0.8em;
-  padding: 1em 0.6em;
+  padding: 1em;
   color: currentColor;
   font-weight: bold;
   text-decoration: none;
@@ -95,12 +102,17 @@ const NavLink = styled(Link)`
       text-decoration: underline;
     }
   }
+  @media (max-width: ${SMALLSCREEN_WIDTH}px) {
+    margin-left: 0;
+    padding: 1em 0.7em;
+  }
 `
 
 const AccentNavLink = styled(NavLink)`
   background-color: white;
   color: #333;
-  padding: 0.7em 1em;
+  padding: 0.7em 1em !important;
+  margin-left: 0.8em !important;
   border-radius: 1.3em;
   text-shadow: none;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
@@ -109,7 +121,7 @@ const AccentNavLink = styled(NavLink)`
 
 const LogoContainer = styled.div`
   width: 150px;
-  @media (max-width: 800px) {
+  @media (max-width: ${SMALLSCREEN_WIDTH}px) {
     width: 100px;
   }
 `
@@ -138,6 +150,7 @@ const MobileNavLinksContainer = styled.div`
 `
 
 const MobileNavLink = styled(Link)`
+  display: block;
   flex-grow: 0;
   flex-shrink: 0;
   text-align: center;
@@ -173,9 +186,18 @@ const Header: FC<Props> = ({
         <MobileNavMenu>
           <PageGutter>
             <MobileNavLinksContainer>
-              {LINKS.map(({ link, label }) => (
+              {LINKS.map(({ link, label, sublabel }) => (
                 <MobileNavLink key={link} to={link}>
                   {label}
+                  {sublabel !== undefined && (
+                    <div
+                      css={`
+                        font-size: 0.7em;
+                      `}
+                    >
+                      Age {sublabel}
+                    </div>
+                  )}
                 </MobileNavLink>
               ))}
             </MobileNavLinksContainer>
@@ -217,7 +239,7 @@ const Header: FC<Props> = ({
               </LogoContainer>
             </Link>
             <Nav shadow={displayShadows}>
-              {LINKS.map(({ link, label, accent }) => {
+              {LINKS.map(({ link, label, accent, sublabel }) => {
                 if (accent === true) {
                   return (
                     <AccentNavLink key={link} to={link}>
@@ -227,7 +249,30 @@ const Header: FC<Props> = ({
                 }
                 return (
                   <NavLink key={link} to={link}>
-                    {label}
+                    <div
+                      css={`
+                        position: relative;
+                      `}
+                    >
+                      {label}
+                      {sublabel !== undefined && (
+                        <div
+                          css={`
+                            text-decoration: inherit;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            text-align: center;
+                            transform: translateY(100%);
+                            position: absolute;
+                            font-size: 0.8em;
+                            font-weight: 500;
+                          `}
+                        >
+                          {sublabel}
+                        </div>
+                      )}
+                    </div>
                   </NavLink>
                 )
               })}
