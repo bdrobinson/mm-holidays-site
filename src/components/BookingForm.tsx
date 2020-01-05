@@ -415,12 +415,12 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             }}
             css={`
               section h2 {
-                margin-top: 4em;
+                margin-top: 2em;
               }
             `}
           >
             <section>
-              <h2>Select a week</h2>
+              <h2 css="margin-top: 0 !important;">Select a week</h2>
               <RadioChoices
                 fieldName="campChoice"
                 value={values.campChoice}
@@ -441,7 +441,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               />
             </section>
             <section>
-              <h2>Young person&apos;s details</h2>
+              <h2>Child&apos;s details</h2>
               <TextField label="Child's first name" name="childFirstName" />
               <TextField label="Child's surname" name="childLastName" />
               <TextField label="Address line 1" name="childAddressLine1" />
