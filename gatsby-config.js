@@ -17,7 +17,7 @@ module.exports = {
   siteMetadata: {
     title: "M+M Holidays",
     seoDescription:
-      "M+M is an action-packed holiday week for young people aged 9 to 17. It’s seven days of fun, friends and exploring big ideas from the Christian faith.",
+      "M+M is an action-packed holiday week for young people aged 9 to 18. It’s seven days of fun, friends and exploring big ideas from the Christian faith.",
     baseUrl: getEnv("BASE_URL"),
   },
   developMiddleware: app => {

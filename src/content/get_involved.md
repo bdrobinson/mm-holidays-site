@@ -8,7 +8,7 @@ theme: "light"
 ---
 
 # Leading
-M+M Holidays are able to run due to a great team of leaders who are passionate about serving Christ through sharing the gospel with 9-17 year olds. Our leaders come from a range of different local churches across the country.
+M+M Holidays are able to run due to a great team of leaders who are passionate about serving Christ through sharing the gospel with 9-18 year olds. Our leaders come from a range of different local churches across the country.
 
 We are always looking for new leaders to come and serve with us. We promise you a fantastic, exhausting and worthwhile opportunity to share the gospel with many young people.
 
