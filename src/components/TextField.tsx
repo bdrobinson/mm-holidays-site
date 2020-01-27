@@ -11,6 +11,7 @@ interface Props {
   label: string
   subtitle?: string | null
   type?: string
+  allowAutocomplete?: boolean
 }
 
 const Main = styled.label`
@@ -45,13 +46,18 @@ const TextField: FC<Props> = ({
   label,
   type = "text",
   subtitle,
+  allowAutocomplete = true,
 }: Props) => {
   return (
     <Main>
       <FieldTitle>{label}</FieldTitle>
       {subtitle != null && <Subtitle>{subtitle}</Subtitle>}
       <InputContainer>
-        <Input name={name} type={type} />
+        <Input
+          name={name}
+          type={type}
+          autocomplete={allowAutocomplete ? undefined : "off"}
+        />
       </InputContainer>
       <FieldErrorMessage name={name} />
     </Main>

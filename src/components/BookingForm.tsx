@@ -442,8 +442,16 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <h2>Child&apos;s details</h2>
-              <TextField label="Child's first name" name="childFirstName" />
-              <TextField label="Child's surname" name="childLastName" />
+              <TextField
+                label="Child's first name"
+                name="childFirstName"
+                allowAutocomplete={false}
+              />
+              <TextField
+                label="Child's surname"
+                name="childLastName"
+                allowAutocomplete={false}
+              />
               <TextField label="Address line 1" name="childAddressLine1" />
               <TextField label="Address line 2" name="childAddressLine2" />
               <TextField label="Town/City" name="childAddressCity" />
