@@ -176,7 +176,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => (
       </HeroContainer>
     }
   >
-    {ENABLE_BOOKING && (
+    {
       <BookingNoticeSection>
         <BodyBookingNoticeContainer>
           <PageGutter>
@@ -196,7 +196,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => (
           />
         </div>
       </BookingNoticeSection>
-    )}
+    }
     <section>
       <PageGutter>
         <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />

@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
+import { graphql, useStaticQuery } from "gatsby"
 
 import BookButton from "./BookButton"
 import { MOBILE_WIDTH, ENABLE_BOOKING } from "../constants"
@@ -55,37 +56,55 @@ interface Props {
   price: string
 }
 
-const CampDatesCTA: FC<Props> = ({ campName, shadows, price }: Props) => (
-  <HeroDetailsContent>
-    <div>
-      <HeroDetailsRow shadows={shadows}>
-        <CampName>{campName} 1:</CampName>
-        <CampDate>25 July &ndash; 1 August 2020</CampDate>
-      </HeroDetailsRow>
-      <HeroDetailsRow shadows={shadows}>
-        <CampName>{campName} 2:</CampName>
-        <CampDate>1 &ndash; 8 August 2020</CampDate>
-      </HeroDetailsRow>
-    </div>
-    <div
-      aria-hidden={true}
-      css={`
-        background-color: currentColor;
-        width: 0.15em;
-        margin: 0 1.5em;
-        align-self: stretch;
-        border-radius: 0.1em;
-      `}
-    />
-    {ENABLE_BOOKING && (
-      <BookButtonContainer>
-        <BookButton paddingHorizontal="0.3em">
-          <div>Book now</div>
-          <PriceText>{price}</PriceText>
-        </BookButton>
-      </BookButtonContainer>
-    )}
-  </HeroDetailsContent>
-)
+const CampDatesCTA: FC<Props> = ({ campName, shadows, price }: Props) => {
+  const data = useStaticQuery(graphql`
+    query CampDatesCTA {
+      site {
+        siteMetadata {
+          campWeeks {
+            week
+            shortDates
+          }
+        }
+      }
+    }
+  `)
+  return (
+    <HeroDetailsContent>
+      <div>
+        {data.site.siteMetadata.campWeeks.map((week: any) => {
+          return (
+            <HeroDetailsRow key={week.week} shadows={shadows}>
+              <CampName>
+                {campName} {week.week}:
+              </CampName>
+              <CampDate>{week.shortDates}</CampDate>
+            </HeroDetailsRow>
+          )
+        })}
+      </div>
+      {ENABLE_BOOKING && (
+        <>
+          <div
+            aria-hidden={true}
+            css={`
+              background-color: currentColor;
+              width: 0.15em;
+              margin: 0 1.5em;
+              align-self: stretch;
+              border-radius: 0.1em;
+            `}
+          />
+          <BookButtonContainer>
+            <BookButton paddingHorizontal="0.3em">
+              <div>Book now</div>
+              <PriceText>{price}</PriceText>
+            </BookButton>
+          </BookButtonContainer>
+        </>
+      )}
+    </HeroDetailsContent>
+  )
+}
 
 export default CampDatesCTA

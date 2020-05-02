@@ -4,18 +4,27 @@ import Img from "gatsby-image"
 import Link from "gatsby-link"
 
 import PageGutter from "./PageGutter"
-import { FOOTER_BG, FOOTER_TEXT, MOBILE_WIDTH } from "../constants"
+import {
+  FOOTER_BG,
+  FOOTER_TEXT,
+  MOBILE_WIDTH,
+  ENABLE_BOOKING,
+} from "../constants"
 
 const links: Array<{ name: string; path: string }> = [
   { name: "Home", path: "/" },
   { name: "Contact", path: "/contact" },
-  { name: "Book", path: "/booking" },
+  { name: "About us", path: "/about" },
   { name: "Max", path: "/max" },
   { name: "Madness", path: "/madness" },
   { name: "Mayhem", path: "/mayhem" },
-  { name: "About us", path: "/about" },
   { name: "Get Involved", path: "/get_involved" },
-  { name: "Booking T&Cs", path: "/terms-and-conditions" },
+  ...(ENABLE_BOOKING
+    ? [
+        { name: "Book", path: "/booking" },
+        { name: "Booking T&Cs", path: "/terms-and-conditions" },
+      ]
+    : []),
 ]
 
 interface Props {}
@@ -23,7 +32,10 @@ interface Props {}
 const Footer: FC<Props> = () => {
   const data = useStaticQuery(
     graphql`
-      query {
+      query Footer {
+        site {
+          buildTime
+        }
         logo: file(relativePath: { eq: "logo_black.png" }) {
           childImageSharp {
             fluid(maxWidth: 150, traceSVG: { color: "black" }) {
@@ -123,7 +135,7 @@ const Footer: FC<Props> = () => {
           </div>
         </div>
         <div css="text-align: center; margin-top: 2em;">
-          &copy; M+M Holidays 2019
+          &copy; M+M Holidays {new Date(data.site.buildTime).getFullYear()}
         </div>
       </PageGutter>
     </footer>

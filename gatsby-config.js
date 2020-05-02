@@ -19,6 +19,18 @@ module.exports = {
     seoDescription:
       "M+M is an action-packed holiday week for young people aged 9 to 18. It’s seven days of fun, friends and exploring big ideas from the Christian faith.",
     baseUrl: getEnv("BASE_URL"),
+    campWeeks: [
+      {
+        week: 1,
+        shortDates: "24 – 31 July 2021",
+        longDates: "Sat 24 – Sat 31 July 2021",
+      },
+      {
+        week: 2,
+        shortDates: "31 July – 7 August 2021",
+        longDates: "Sat 31 July – Sat 7 August 2021",
+      },
+    ],
   },
   developMiddleware: app => {
     app.use(

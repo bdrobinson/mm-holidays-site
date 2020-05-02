@@ -3,6 +3,7 @@ import React, { FC } from "react"
 
 import { TINY_WIDTH, ENABLE_BOOKING } from "../constants"
 import BookButton from "./BookButton"
+import { graphql, useStaticQuery } from "gatsby"
 
 const Main = styled.div`
   overflow: auto;
@@ -64,24 +65,39 @@ const Paragraph = styled.p`
 
 interface Props {}
 
-const HeroBookingPrompt: FC<Props> = () => (
-  <Main>
-    <Title>Bookings for 2020 are now open!</Title>
-    <Paragraph>Don&apos;t miss out &ndash; book your place today!</Paragraph>
-    <Content>
-      <BookingNoticeText>
-        <BookingNoticeRow>
-          <BookingNoticeLabel>M+M 1</BookingNoticeLabel>
-          <span>Sat 25 July &ndash; Sat 1 August 2020</span>
-        </BookingNoticeRow>
-        <BookingNoticeRow>
-          <BookingNoticeLabel>M+M 2</BookingNoticeLabel>
-          <span>Sat 1 &ndash; Sat 8 August 2020</span>
-        </BookingNoticeRow>
-      </BookingNoticeText>
-      {ENABLE_BOOKING && <BookButton>Book now</BookButton>}
-    </Content>
-  </Main>
-)
+const HeroBookingPrompt: FC<Props> = () => {
+  const data = useStaticQuery(graphql`
+    query HeroBookingPrompt {
+      site {
+        siteMetadata {
+          seoDescription
+          campWeeks {
+            week
+            longDates
+          }
+        }
+      }
+    }
+  `)
+  return (
+    <Main>
+      <Title>M+M 2020 has been cancelled</Title>
+      <Paragraph>But we will be back in 2021. Save the dates now!</Paragraph>
+      <Content>
+        <BookingNoticeText>
+          {data.site.siteMetadata.campWeeks.map((week: any) => {
+            return (
+              <BookingNoticeRow key={week.week}>
+                <BookingNoticeLabel>M+M {week.week}</BookingNoticeLabel>
+                <span>{week.longDates}</span>
+              </BookingNoticeRow>
+            )
+          })}
+        </BookingNoticeText>
+        {ENABLE_BOOKING && <BookButton>Book now</BookButton>}
+      </Content>
+    </Main>
+  )
+}
 
 export default HeroBookingPrompt
