@@ -9,6 +9,7 @@ sections: []
 hero: ../images/blackslide.jpg
 heroAltText: A camper enjoying water games.
 ---
+
 If you’re 12 to 14 years old and you’re ready for the best week of the year, come and join us on Madness.
 
 Madness is an action-packed holiday for everyone aged 12 to 14. A typical day on Madness would start with an adventure on the high ropes, chill time with friends on the grass and then victory with your team in a nail-biting wide game. And that’s all before lunch.

@@ -3,6 +3,7 @@ path: "/terms-and-conditions/"
 title: Terms and Conditions
 description: "All the T&Cs for booking onto M+M Holidays."
 ---
+
 ## 1. How do I book a place at MAX, Madness or Mayhem?
 
 Complete all sections of the [Application Form](M+M_Application_Form.pdf) (page 1-2) and send it to the Booking Secretary (contact details on booking form and below) or [book online](/booking). The completed application must be accompanied by a non-returnable deposit of £40 – cheques should be payable to ‘M&M Holidays fees account’. Applications will be dealt with on a date-received priority basis, and you will receive a letter or email of confirmation regarding your booking once it has been processed. Holiday places are limited so please book early.

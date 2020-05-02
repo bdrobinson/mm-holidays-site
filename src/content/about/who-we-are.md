@@ -2,6 +2,7 @@
 title: Who we are
 order: 0
 ---
+
 M+M is run by a team of Christians from across the country.
 
 Our team is a wonderful mixture of people from different ages and stages,

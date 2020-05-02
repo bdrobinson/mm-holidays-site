@@ -5,6 +5,7 @@ subtitle: Three holidays for all ages and two weeks to choose from
 image: "../../../images/lads.jpg"
 imageAltText: M+M campers and leaders enjoying the last night party.
 ---
+
 M+M is three holidays in one. There’s Max (for ages 9 to 11), Madness (for ages 12 to 14) and Mayhem (for ages 15 to 18).
 
 All three holidays run at the same time on the same site in Northamptonshire,

@@ -2,6 +2,7 @@
 title: Finance
 order: 3
 ---
+
 We want to make M+M great value for money.
 
 We work hard to keep costs down and charge only what we need to for

@@ -9,6 +9,7 @@ sections: []
 hero: ../images/lads.jpg
 heroAltText: Mayhem campers and leaders at the last night party.
 ---
+
 If you’re 15 to 18 years old, Mayhem is for you.
 
 Mayhem is a chance to hang out with friends, meet new people and try a whole range of activities. There’s a friendly, relaxed atmosphere and you’ll have plenty of free time to chat and unwind throughout the week.
