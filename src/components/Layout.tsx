@@ -112,6 +112,7 @@ const Layout: FC<Props> = ({
                 href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700"
                 rel="stylesheet"
               />
+              <meta name="google-site-verification" content="0-r7dUs6bAexlQp3Uu5PN6SCyCqWpOdyuoABMYSkk8k" />
               <meta name="description" content={pageDescription} />
 
               <meta property="og:title" content={pageTitle} />
