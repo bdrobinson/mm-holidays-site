@@ -12,12 +12,6 @@ import {
   SMALLSCREEN_WIDTH,
 } from "../constants"
 
-const LOGO_ASPECT_RATIO = 1.076
-const LOGO_WIDTH_DESKTOP = 150
-const LOGO_WIDTH_MOBILE = 100
-const LOGO_HEIGHT_DESKTOP = LOGO_WIDTH_DESKTOP / LOGO_ASPECT_RATIO
-const LOGO_HEIGHT_MOBILE = LOGO_WIDTH_MOBILE / LOGO_ASPECT_RATIO
-
 const LINKS: Array<{
   link: string
   label: string
@@ -49,16 +43,6 @@ const TopBar = styled.header<{ shadow: boolean }>`
     props.shadow
       ? "linear-gradient(to top,rgba(0,0,0,0),rgba(0,0,0,0.2))"
       : "none"};
-`
-
-const Inner = styled.div`
-  width: 100%;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  overflow-x: visible;
-  position: relative;
 `
 
 const Nav = styled.nav<{ shadow: boolean }>`
@@ -119,23 +103,10 @@ const AccentNavLink = styled(NavLink)`
   margin-left: 1.2em;
 `
 
-const LogoContainer = styled.div`
-  width: 150px;
-  @media (max-width: ${SMALLSCREEN_WIDTH}px) {
-    width: 100px;
-  }
-`
-
 const MobileNavMenu = styled.div`
   background-color: white;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding-top: ${LOGO_HEIGHT_DESKTOP}px;
-  @media (max-width: ${MOBILE_WIDTH}px) {
-    padding-top: ${LOGO_HEIGHT_MOBILE}px;
-  }
+  width: 100%;
   @media (min-width: ${MOBILE_WIDTH}px) {
     display: none;
   }
@@ -181,47 +152,46 @@ const Header: FC<Props> = ({
 
   const themeToUse = menuExpanded ? "dark" : theme
   return (
-    <Main theme={themeToUse}>
-      {menuExpanded && (
-        <MobileNavMenu>
-          <PageGutter>
-            <MobileNavLinksContainer>
-              {LINKS.map(({ link, label, sublabel }) => (
-                <MobileNavLink key={link} to={link}>
-                  {label}
-                  {sublabel !== undefined && (
-                    <div
-                      css={`
-                        font-size: 0.7em;
-                      `}
-                    >
-                      Age {sublabel}
-                    </div>
-                  )}
-                </MobileNavLink>
-              ))}
-            </MobileNavLinksContainer>
-          </PageGutter>
-        </MobileNavMenu>
-      )}
-      <TopBar shadow={displayShadows}>
+    <Main
+      theme={themeToUse}
+      style={{ backgroundColor: menuExpanded ? "white" : undefined }}
+    >
+      <TopBar shadow={menuExpanded ? false : displayShadows}>
         <PageGutter>
-          <Inner>
+          <div
+            css={`
+              width: 100%;
+              display: flex;
+              flex-flow: row nowrap;
+              align-items: center;
+              justify-content: space-between;
+              overflow-x: visible;
+              position: relative;
+            `}
+          >
             <Link to="/">
-              <LogoContainer>
+              <div
+                css={`
+                  width: 130px;
+                  padding: 10px 0;
+                  @media (max-width: ${SMALLSCREEN_WIDTH}px) {
+                    width: 80px;
+                  }
+                `}
+              >
                 <StaticQuery
                   query={graphql`
                     query {
                       light: file(relativePath: { eq: "logo_white.png" }) {
                         childImageSharp {
-                          fluid(maxWidth: 150, traceSVG: { color: "white" }) {
+                          fluid(maxWidth: 130, traceSVG: { color: "white" }) {
                             ...GatsbyImageSharpFluid_tracedSVG
                           }
                         }
                       }
                       dark: file(relativePath: { eq: "logo_black.png" }) {
                         childImageSharp {
-                          fluid(maxWidth: 150, traceSVG: { color: "black" }) {
+                          fluid(maxWidth: 130, traceSVG: { color: "black" }) {
                             ...GatsbyImageSharpFluid_tracedSVG
                           }
                         }
@@ -236,7 +206,7 @@ const Header: FC<Props> = ({
                     return <Img fluid={image} alt="The M+M logo" />
                   }}
                 />
-              </LogoContainer>
+              </div>
             </Link>
             <Nav shadow={displayShadows}>
               {LINKS.map(({ link, label, accent, sublabel }) => {
@@ -282,9 +252,33 @@ const Header: FC<Props> = ({
                 setMenuExpanded(!menuExpanded)
               }}
             />
-          </Inner>
+          </div>
         </PageGutter>
       </TopBar>
+      <div>
+        {menuExpanded && (
+          <MobileNavMenu>
+            <PageGutter>
+              <MobileNavLinksContainer>
+                {LINKS.map(({ link, label, sublabel }) => (
+                  <MobileNavLink key={link} to={link}>
+                    {label}
+                    {sublabel !== undefined && (
+                      <div
+                        css={`
+                          font-size: 0.7em;
+                        `}
+                      >
+                        Age {sublabel}
+                      </div>
+                    )}
+                  </MobileNavLink>
+                ))}
+              </MobileNavLinksContainer>
+            </PageGutter>
+          </MobileNavMenu>
+        )}
+      </div>
     </Main>
   )
 }
