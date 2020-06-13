@@ -55,6 +55,7 @@ interface Props {
   theme?: "light" | "dark" | null
   seoDescription: string | null
   path: string | null
+  showNav?: boolean
 }
 
 const Layout: FC<Props> = ({
@@ -65,6 +66,7 @@ const Layout: FC<Props> = ({
   theme,
   seoDescription,
   path,
+  showNav = true,
 }: Props) => {
   const [mobileNavMenuExpanded, setMobileNavMenu] = useState(false)
   return (
@@ -112,6 +114,10 @@ const Layout: FC<Props> = ({
                 href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700"
                 rel="stylesheet"
               />
+              <link
+                href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap"
+                rel="stylesheet"
+              ></link>
               <meta
                 name="google-site-verification"
                 content="0-r7dUs6bAexlQp3Uu5PN6SCyCqWpOdyuoABMYSkk8k"
@@ -141,14 +147,16 @@ const Layout: FC<Props> = ({
             </Helmet>
             <HeaderAndHeroContainer theme={theme}>
               {hero != null && hero}
-              <HeaderContainer overHero={hero != null}>
-                <Header
-                  theme={theme}
-                  menuExpanded={mobileNavMenuExpanded}
-                  setMenuExpanded={setMobileNavMenu}
-                  displayShadows={hero != null}
-                />
-              </HeaderContainer>
+              {showNav && (
+                <HeaderContainer overHero={hero != null}>
+                  <Header
+                    theme={theme}
+                    menuExpanded={mobileNavMenuExpanded}
+                    setMenuExpanded={setMobileNavMenu}
+                    displayShadows={hero != null}
+                  />
+                </HeaderContainer>
+              )}
             </HeaderAndHeroContainer>
             <Content>
               {applyGutter ? (
