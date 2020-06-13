@@ -310,7 +310,7 @@ const TextArea = styled.textarea`
   }
 `
 
-const SubmitButton = styled(Button).attrs({ type: "submit" })<{
+const SubmitButton = styled(Button)<{
   disabled: boolean
 }>`
   opacity: ${props => (props.disabled ? 0.6 : 1)};
@@ -817,7 +817,9 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section css="margin-top: 3em;">
               <div>
-                <SubmitButton disabled={isSubmitting}>Submit</SubmitButton>
+                <SubmitButton disabled={isSubmitting} type="submit">
+                  Submit
+                </SubmitButton>
               </div>
               {Object.keys(errors).length > 0 && submitCount > 0 && (
                 <p style={{ color: RED }}>

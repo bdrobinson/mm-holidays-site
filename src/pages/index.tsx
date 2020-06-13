@@ -17,6 +17,9 @@ import {
 } from "../constants"
 import HeroBookingPrompt from "../components/HeroBookingPrompt"
 import FooterBookingPrompt from "../components/FooterBookingPrompt"
+import Stack from "../components/Stack"
+
+const SHOW_ONLINE_PROMO = true
 
 const HeroContainer = styled.div`
   position: relative;
@@ -126,111 +129,186 @@ interface Props {
   data: any
 }
 
-const IndexPage: FC<Props> = ({ data }: Props) => (
-  <Layout
-    title={null}
-    path="/"
-    theme="light"
-    applyGutter={false}
-    seoDescription={data.site.siteMetadata.seoDescription}
-    hero={
-      <HeroContainer>
-        <ImageCrossfade
-          fluids={[
-            data.hero1.childImageSharp.fluid,
-            data.hero2.childImageSharp.fluid,
-            data.hero3.childImageSharp.fluid,
-          ]}
-          renderImage={fluid => {
+const IndexPage: FC<Props> = ({ data }: Props) => {
+  return (
+    <Layout
+      showNav={!SHOW_ONLINE_PROMO}
+      title={null}
+      path="/"
+      theme="light"
+      applyGutter={false}
+      seoDescription={data.site.siteMetadata.seoDescription}
+      hero={
+        !SHOW_ONLINE_PROMO ? (
+          <HeroContainer>
+            <ImageCrossfade
+              fluids={[
+                data.hero1.childImageSharp.fluid,
+                data.hero2.childImageSharp.fluid,
+                data.hero3.childImageSharp.fluid,
+              ]}
+              renderImage={fluid => {
+                return (
+                  <Img
+                    fluid={fluid}
+                    style={{
+                      maxHeight: `${HERO_IMAGE_MAX_HEIGHT}px`,
+                      minHeight: `${HERO_IMAGE_MIN_HEIGHT}px`,
+                    }}
+                    imgStyle={{ objectPosition: "center" }}
+                    alt="The M+M site and available activities."
+                  />
+                )
+              }}
+            />
+            <HeroLabelContainer>
+              <div>
+                <PageGutter>
+                  <Tagline>
+                    <span css="text-transform: uppercase; font-size: 1.8em; letter-spacing: 0.05em;">
+                      Get ready
+                    </span>
+                    <br />
+                    <span css="font-size: 0.9em;">
+                      for the best week of the year
+                    </span>
+                  </Tagline>
+                </PageGutter>
+              </div>
+            </HeroLabelContainer>
+            <HeroBookingNoticeContainer>
+              <HeroBookingPrompt />
+            </HeroBookingNoticeContainer>
+          </HeroContainer>
+        ) : (
+          <div css="position: relative;">
+            <Img
+              fluid={data.onlineHero.childImageSharp.fluid}
+              alt="A camper going head-first down a water slide"
+              style={{
+                height: "100vh",
+                imgStyle: { objectPosition: "center" },
+              }}
+            />
+            <div
+              css={`
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+              `}
+            >
+              <Stack padding="3rem">
+                <Img
+                  css={`
+                    width: 100%;
+                    max-width: ${MOBILE_WIDTH * 0.7}px;
+                    @media (max-width: ${MOBILE_WIDTH}px) {
+                      max-width: 70%;
+                    }
+                  `}
+                  fluid={data.onlineLogo.childImageSharp.fluid}
+                  alt="M+M Online"
+                  imgStyle={{ objectFit: "contain" }}
+                />
+                <div>
+                  <div
+                    css={`
+                      font-size: 2.3rem;
+                    `}
+                  >
+                    Mon 3rd &ndash; Fri 7th August 2020
+                  </div>
+                  <div
+                    css={`
+                      font-family: "Changa One";
+                      font-size: 3.5rem;
+                      text-transform: uppercase;
+                    `}
+                  >
+                    New videos every day
+                  </div>
+                </div>
+              </Stack>
+            </div>
+          </div>
+        )
+      }
+    >
+      {!SHOW_ONLINE_PROMO && (
+        <>
+          <BookingNoticeSection>
+            <BodyBookingNoticeContainer>
+              <PageGutter>
+                <HeroBookingPrompt />
+              </PageGutter>
+            </BodyBookingNoticeContainer>
+            <div css="padding: 0 6em;">
+              <hr
+                css={`
+                  border: none;
+                  height: 2px;
+                  width: 100%;
+                  background-color: ${PRIMARY_COLOUR_DARK};
+                  border-radius: 2px;
+                  margin-bottom: 2em;
+                `}
+              />
+            </div>
+          </BookingNoticeSection>
+          <section>
+            <PageGutter>
+              <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />
+              <PromoVideoContainer>
+                <PromoVideo
+                  width="560"
+                  height="315"
+                  src={`https://www.youtube.com/embed/${VIDEO_ID}?&autoplay=1&rel=0&mute=1&modestbranding=1&loop=1&playlist=${VIDEO_ID}&fs=1`}
+                  frameBorder="0"
+                  allow="fullscreen;"
+                />
+              </PromoVideoContainer>
+            </PageGutter>
+          </section>
+          {data.allMarkdownRemark.edges.map((edge: any) => {
+            const frontmatter = edge.node.frontmatter
             return (
-              <Img
-                fluid={fluid}
-                style={{
-                  maxHeight: `${HERO_IMAGE_MAX_HEIGHT}px`,
-                  minHeight: `${HERO_IMAGE_MIN_HEIGHT}px`,
-                }}
-                imgStyle={{ objectPosition: "center" }}
-                alt="The M+M site and available activities."
+              <HomepageFeature
+                key={edge.node.id}
+                imageFluid={frontmatter.image.childImageSharp.fluid}
+                imageAltText={frontmatter.imageAltText}
+                title={frontmatter.title}
+                subtitle={frontmatter.subtitle}
+                descriptionHtml={edge.node.html}
               />
             )
-          }}
-        />
-        <HeroLabelContainer>
-          <div>
-            <PageGutter>
-              <Tagline>
-                <span css="text-transform: uppercase; font-size: 1.8em; letter-spacing: 0.05em;">
-                  Get ready
-                </span>
-                <br />
-                <span css="font-size: 0.9em;">
-                  for the best week of the year
-                </span>
-              </Tagline>
-            </PageGutter>
-          </div>
-        </HeroLabelContainer>
-        <HeroBookingNoticeContainer>
-          <HeroBookingPrompt />
-        </HeroBookingNoticeContainer>
-      </HeroContainer>
-    }
-  >
-    {
-      <BookingNoticeSection>
-        <BodyBookingNoticeContainer>
+          })}
+          {ENABLE_BOOKING && (
+            <section>
+              <FooterBookingPrompt />
+            </section>
+          )}
+        </>
+      )}
+      {SHOW_ONLINE_PROMO && (
+        <>
           <PageGutter>
-            <HeroBookingPrompt />
+            <section
+              dangerouslySetInnerHTML={{ __html: data.onlineCopy.html }}
+            />
           </PageGutter>
-        </BodyBookingNoticeContainer>
-        <div css="padding: 0 6em;">
-          <hr
-            css={`
-              border: none;
-              height: 2px;
-              width: 100%;
-              background-color: ${PRIMARY_COLOUR_DARK};
-              border-radius: 2px;
-              margin-bottom: 2em;
-            `}
-          />
-        </div>
-      </BookingNoticeSection>
-    }
-    <section>
-      <PageGutter>
-        <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />
-        <PromoVideoContainer>
-          <PromoVideo
-            width="560"
-            height="315"
-            src={`https://www.youtube.com/embed/${VIDEO_ID}?&autoplay=1&rel=0&mute=1&modestbranding=1&loop=1&playlist=${VIDEO_ID}&fs=1`}
-            frameBorder="0"
-            allow="fullscreen;"
-          />
-        </PromoVideoContainer>
-      </PageGutter>
-    </section>
-    {data.allMarkdownRemark.edges.map((edge: any) => {
-      const frontmatter = edge.node.frontmatter
-      return (
-        <HomepageFeature
-          key={edge.node.id}
-          imageFluid={frontmatter.image.childImageSharp.fluid}
-          imageAltText={frontmatter.imageAltText}
-          title={frontmatter.title}
-          subtitle={frontmatter.subtitle}
-          descriptionHtml={edge.node.html}
-        />
-      )
-    })}
-    {ENABLE_BOOKING && (
-      <section>
-        <FooterBookingPrompt />
-      </section>
-    )}
-  </Layout>
-)
+        </>
+      )}
+    </Layout>
+  )
+}
 
 export const pageQuery = graphql`
   {
@@ -261,6 +339,11 @@ export const pageQuery = graphql`
         }
       }
     }
+    onlineCopy: markdownRemark(
+      fileAbsolutePath: { regex: "//home/online.md/" }
+    ) {
+      html
+    }
     hero1: file(relativePath: { eq: "inflatables.jpg" }) {
       childImageSharp {
         ...FluidHeroImage
@@ -274,6 +357,26 @@ export const pageQuery = graphql`
     hero3: file(relativePath: { eq: "tires.jpg" }) {
       childImageSharp {
         ...FluidHeroImage
+      }
+    }
+    onlineHero: file(relativePath: { eq: "online_hero.jpg" }) {
+      childImageSharp {
+        fluid(
+          maxWidth: 1920
+          srcSetBreakpoints: [400, 600, 960, 1280, 1600, 1920]
+          quality: 90
+          duotone: { highlight: "#ff7bf4", shadow: "#002f8a" }
+          toFormat: PNG
+        ) {
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+        }
+      }
+    }
+    onlineLogo: file(relativePath: { eq: "mm-online-white.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+        }
       }
     }
     intro: markdownRemark(fileAbsolutePath: { regex: "/home/intro/" }) {
