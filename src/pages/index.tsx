@@ -277,7 +277,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                         background-color: #ff7bf4;
                         color: white;
                         font-weight: 700;
-                        padding: 1em;
+                        padding: 0.6em 1em;
                         font-size: 1rem;
                         cursor: pointer;
                         border-radius: 0.8rem;
