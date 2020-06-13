@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { useRef, FC } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled, { keyframes } from "styled-components"
@@ -18,6 +18,9 @@ import {
 import HeroBookingPrompt from "../components/HeroBookingPrompt"
 import FooterBookingPrompt from "../components/FooterBookingPrompt"
 import Stack from "../components/Stack"
+
+import instagram from "../images/instagram.svg"
+import email from "../images/email.svg"
 
 const SHOW_ONLINE_PROMO = true
 
@@ -130,6 +133,7 @@ interface Props {
 }
 
 const IndexPage: FC<Props> = ({ data }: Props) => {
+  const emailInputRef = useRef()
   return (
     <Layout
       showNav={!SHOW_ONLINE_PROMO}
@@ -236,6 +240,54 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                     New videos every day
                   </div>
                 </div>
+                <form
+                  css={`
+                    position: relative;
+                    align-self: stretch;
+                    display: flex;
+                    flex-flow: column nowrap;
+                    align-items: center;
+                  `}
+                  onSubmit={e => {
+                    e.preventDefault()
+                  }}
+                >
+                  <Stack padding="0.5rem">
+                    <input
+                      css={`
+                        display: block;
+                        border: none;
+                        padding: 0.7em;
+                        font-size: 1.4rem;
+                        border-radius: 0.6rem;
+                        width: 80%;
+                        max-width: ${MOBILE_WIDTH}px;
+                        box-sizing: border-box;
+                      `}
+                      type="email"
+                      placeholder="joebloggs@email.com"
+                      ref={emailInputRef}
+                      name="emailAddress"
+                    />
+                    <button
+                      type="submit"
+                      css={`
+                        font: inherit;
+                        border: none;
+                        background-color: #ff7bf4;
+                        color: white;
+                        font-weight: 700;
+                        padding: 1em;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        border-radius: 0.8rem;
+                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+                      `}
+                    >
+                      Give me email updates!
+                    </button>
+                  </Stack>
+                </form>
               </Stack>
             </div>
           </div>
@@ -303,6 +355,51 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
             <section
               dangerouslySetInnerHTML={{ __html: data.onlineCopy.html }}
             />
+            <section
+              css={`
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: center;
+                margin-bottom: 1rem;
+              `}
+            >
+              <div
+                css={`
+                  display: flex;
+                  flex-flow: column nowrap;
+                  align-items: flex-start;
+                `}
+              >
+                <a
+                  css="color: currentColor;"
+                  href="#"
+                  onClick={e => {
+                    e.preventDefault()
+                    if (emailInputRef.current) {
+                      emailInputRef.current.focus()
+                    }
+                  }}
+                >
+                  <CtaItem
+                    fontSize="1.5em"
+                    imgSrc={email}
+                    copy="Sign up for email updates"
+                  />
+                </a>
+                <a
+                  css="color: currentColor;"
+                  href="https://www.instagram.com/mandmholidays/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <CtaItem
+                    fontSize="1.5em"
+                    imgSrc={instagram}
+                    copy="Follow us on Instagram"
+                  />
+                </a>
+              </div>
+            </section>
           </PageGutter>
         </>
       )}
@@ -384,5 +481,34 @@ export const pageQuery = graphql`
     }
   }
 `
+
+interface CtaItemProps {
+  imgSrc: string
+  copy: string
+  fontSize: string
+}
+const CtaItem: React.FC<CtaItemProps> = ({ imgSrc, copy, fontSize }) => {
+  return (
+    <div
+      css={`
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        color: currentColor;
+      `}
+    >
+      <img
+        style={{
+          width: `calc(${fontSize} * 2.7)`,
+          paddingRight: `calc(${fontSize} * 0.8)`,
+        }}
+        src={imgSrc}
+      />
+      <div css="font-weight: 700;" style={{ fontSize }}>
+        {copy}
+      </div>
+    </div>
+  )
+}
 
 export default IndexPage
