@@ -1,5 +1,5 @@
 {
-  "include": ["src", "functions"],
+  "include": ["src", "functions", "types"],
   "exclude": ["node_modules/@types/react-native/globals.d.ts"],
   "compilerOptions": {
     "lib": ["dom", "esnext"],

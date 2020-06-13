@@ -1,7 +1,8 @@
-import React, { useRef, FC } from "react"
+import React, { useState, useRef, FC } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled, { keyframes } from "styled-components"
+import fetch from "unfetch"
 
 import Layout from "../components/Layout"
 import HomepageFeature from "../components/HomepageFeature"
@@ -23,6 +24,9 @@ import instagram from "../images/instagram.svg"
 import email from "../images/email.svg"
 
 const SHOW_ONLINE_PROMO = true
+
+const EMAIL_FORM_ID = "1FAIpQLSdywSmD23YgULovpndMVTWhAjRwv1Iw6xn2HI6wqZdNQpFLcg"
+const EMAIL_FIELD_ID = "entry.1117448688"
 
 const HeroContainer = styled.div`
   position: relative;
@@ -133,7 +137,8 @@ interface Props {
 }
 
 const IndexPage: FC<Props> = ({ data }: Props) => {
-  const emailInputRef = useRef()
+  const emailInputRef = useRef<HTMLInputElement>()
+  const [emailAdded, setEmailAdded] = useState(false)
   return (
     <Layout
       showNav={!SHOW_ONLINE_PROMO}
@@ -240,54 +245,73 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                     New videos every day
                   </div>
                 </div>
-                <form
-                  css={`
-                    position: relative;
-                    align-self: stretch;
-                    display: flex;
-                    flex-flow: column nowrap;
-                    align-items: center;
-                  `}
-                  onSubmit={e => {
-                    e.preventDefault()
-                  }}
-                >
-                  <Stack padding="0.5rem">
-                    <input
-                      css={`
-                        display: block;
-                        border: none;
-                        padding: 0.7em;
-                        font-size: 1.4rem;
-                        border-radius: 0.6rem;
-                        width: 80%;
-                        max-width: ${MOBILE_WIDTH}px;
-                        box-sizing: border-box;
-                      `}
-                      type="email"
-                      placeholder="joebloggs@email.com"
-                      ref={emailInputRef}
-                      name="emailAddress"
-                    />
-                    <button
-                      type="submit"
-                      css={`
-                        font: inherit;
-                        border: none;
-                        background-color: #ff7bf4;
-                        color: white;
-                        font-weight: 700;
-                        padding: 0.6em 1em;
-                        font-size: 1rem;
-                        cursor: pointer;
-                        border-radius: 0.8rem;
-                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-                      `}
-                    >
-                      Give me email updates!
-                    </button>
-                  </Stack>
-                </form>
+                {emailAdded ? (
+                  <div css="font-weight: 700; font-size: 2rem;">
+                    Thanks for subscribing!
+                  </div>
+                ) : (
+                  <form
+                    css={`
+                      position: relative;
+                      align-self: stretch;
+                      display: flex;
+                      flex-flow: column nowrap;
+                      align-items: center;
+                    `}
+                    onSubmit={async e => {
+                      e.preventDefault()
+                      const url = `https://docs.google.com/forms/d/e/${EMAIL_FORM_ID}/formResponse?submit=Submit&${EMAIL_FIELD_ID}=${encodeURIComponent(
+                        // @ts-ignore
+                        e.target.emailAddress.value,
+                      )}`
+                      try {
+                        await fetch(url, {
+                          method: "POST",
+                        })
+                      } catch (err) {
+                        //
+                      }
+                      setEmailAdded(true)
+                    }}
+                  >
+                    <Stack padding="0.5rem">
+                      <input
+                        css={`
+                          display: block;
+                          border: none;
+                          padding: 0.7em;
+                          font-size: 1.4rem;
+                          border-radius: 0.6rem;
+                          width: 80%;
+                          max-width: ${MOBILE_WIDTH}px;
+                          box-sizing: border-box;
+                        `}
+                        type="email"
+                        placeholder="joebloggs@email.com"
+                        // @ts-ignore
+                        ref={emailInputRef}
+                        name="emailAddress"
+                      />
+                      <button
+                        type="submit"
+                        css={`
+                          font: inherit;
+                          border: none;
+                          background-color: #ff7bf4;
+                          color: white;
+                          font-weight: 700;
+                          padding: 0.6em 1em;
+                          font-size: 1rem;
+                          cursor: pointer;
+                          border-radius: 0.8rem;
+                          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+                        `}
+                      >
+                        Give me email updates!
+                      </button>
+                    </Stack>
+                  </form>
+                )}
               </Stack>
             </div>
           </div>
@@ -375,7 +399,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                   href="#"
                   onClick={e => {
                     e.preventDefault()
-                    if (emailInputRef.current) {
+                    if (emailInputRef.current != null) {
                       emailInputRef.current.focus()
                     }
                   }}
@@ -487,7 +511,9 @@ interface CtaItemProps {
   copy: string
   fontSize: string
 }
+// eslint-disable-next-line react/prop-types
 const CtaItem: React.FC<CtaItemProps> = ({ imgSrc, copy, fontSize }) => {
+  const imgSize = `calc(${fontSize} * 2.7)`
   return (
     <div
       css={`
@@ -499,7 +525,7 @@ const CtaItem: React.FC<CtaItemProps> = ({ imgSrc, copy, fontSize }) => {
     >
       <img
         style={{
-          width: `calc(${fontSize} * 2.7)`,
+          width: imgSize,
           paddingRight: `calc(${fontSize} * 0.8)`,
         }}
         src={imgSrc}
