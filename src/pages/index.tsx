@@ -22,6 +22,7 @@ import Stack from "../components/Stack"
 
 import instagram from "../images/instagram.svg"
 import email from "../images/email.svg"
+import facebook from "../images/facebook.svg"
 
 const SHOW_ONLINE_PROMO = true
 
@@ -33,6 +34,7 @@ const HeroContainer = styled.div`
 `
 
 const VIDEO_ID = "7RySP8tLL7U"
+const ONLINE_VIDEO_ID = "NjV8FzZcad0"
 
 const anim = keyframes`
   from {
@@ -374,11 +376,31 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
         </>
       )}
       {SHOW_ONLINE_PROMO && (
-        <>
-          <PageGutter>
+        <PageGutter>
+          <Stack padding="2rem">
             <section
               dangerouslySetInnerHTML={{ __html: data.onlineCopy.html }}
             />
+            <section>
+              <div
+                css={`
+                  position: relative;
+                  overflow: hidden;
+                  max-width: 100%;
+                  width: 100%;
+                  padding-bottom: 56.25%;
+                  height: 0;
+                `}
+              >
+                <PromoVideo
+                  width="560"
+                  height="315"
+                  src={`https://www.youtube.com/embed/${ONLINE_VIDEO_ID}?&autoplay=1&rel=0&mute=1&modestbranding=1&loop=1&playlist=${ONLINE_VIDEO_ID}&fs=1`}
+                  frameBorder="0"
+                  allow="fullscreen;"
+                />
+              </div>
+            </section>
             <section
               css={`
                 display: flex;
@@ -422,10 +444,22 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                     copy="Follow us on Instagram"
                   />
                 </a>
+                <a
+                  css="color: currentColor;"
+                  href="https://www.facebook.com/Madnessandmayhemholidays/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <CtaItem
+                    fontSize="1.5em"
+                    imgSrc={facebook}
+                    copy="Follow us on Facebook"
+                  />
+                </a>
               </div>
             </section>
-          </PageGutter>
-        </>
+          </Stack>
+        </PageGutter>
       )}
     </Layout>
   )
