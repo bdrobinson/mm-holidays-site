@@ -19,6 +19,8 @@ import {
 import HeroBookingPrompt from "../components/HeroBookingPrompt"
 import FooterBookingPrompt from "../components/FooterBookingPrompt"
 import Stack from "../components/Stack"
+import WiggleBackground from "../components/WiggleBackground"
+import OnlineTextbox from "../components/OnlineTextbox"
 
 import instagram from "../images/instagram.svg"
 import email from "../images/email.svg"
@@ -35,6 +37,10 @@ const HeroContainer = styled.div`
 
 const VIDEO_ID = "7RySP8tLL7U"
 const ONLINE_VIDEO_ID = "NjV8FzZcad0"
+
+const THEME_WHITE = "#FFFCD4"
+const THEME_BLACK = "#3B3561"
+const THEME_BG_PRIMARY = "#58F2C8"
 
 const anim = keyframes`
   from {
@@ -193,14 +199,9 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
           </HeroContainer>
         ) : (
           <div css="position: relative;">
-            <Img
-              fluid={data.onlineHero.childImageSharp.fluid}
-              alt="A camper going head-first down a water slide"
-              style={{
-                height: "100vh",
-                imgStyle: { objectPosition: "center" },
-              }}
-            />
+            <div css="height: 100vh; overflow: hidden;">
+              <WiggleBackground />
+            </div>
             <div
               css={`
                 position: absolute;
@@ -216,7 +217,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                 text-align: center;
               `}
             >
-              <Stack padding="3rem">
+              <Stack padding="1rem">
                 <Img
                   css={`
                     width: 100%;
@@ -229,36 +230,10 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                   alt="M+M Online"
                   imgStyle={{ objectFit: "contain" }}
                 />
-                <div>
-                  <div
-                    css={`
-                      font-size: 2.3rem;
-                    `}
-                  >
-                    Mon 3rd &ndash; Fri 7th August 2020
-                  </div>
-                  <div
-                    css={`
-                      font-family: "Changa One";
-                      font-size: 3.5rem;
-                      text-transform: uppercase;
-                    `}
-                  >
-                    New videos every day
-                  </div>
-                </div>
-                {emailAdded ? (
-                  <div css="font-weight: 700; font-size: 2rem;">
-                    Thanks for subscribing!
-                  </div>
-                ) : (
+                <OnlineTextbox>
                   <form
                     css={`
-                      position: relative;
-                      align-self: stretch;
-                      display: flex;
-                      flex-flow: column nowrap;
-                      align-items: center;
+                      color: ${THEME_BLACK};
                     `}
                     onSubmit={async e => {
                       e.preventDefault()
@@ -276,44 +251,84 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                       setEmailAdded(true)
                     }}
                   >
-                    <Stack padding="0.5rem">
-                      <input
-                        css={`
-                          display: block;
-                          border: none;
-                          padding: 0.7em;
-                          font-size: 1.4rem;
-                          border-radius: 0.6rem;
-                          width: 80%;
-                          max-width: ${MOBILE_WIDTH}px;
-                          box-sizing: border-box;
-                        `}
-                        type="email"
-                        placeholder="joebloggs@email.com"
-                        // @ts-ignore
-                        ref={emailInputRef}
-                        name="emailAddress"
-                      />
-                      <button
-                        type="submit"
-                        css={`
-                          font: inherit;
-                          border: none;
-                          background-color: #ff7bf4;
-                          color: white;
-                          font-weight: 700;
-                          padding: 0.6em 1em;
-                          font-size: 1rem;
-                          cursor: pointer;
-                          border-radius: 0.8rem;
-                          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-                        `}
-                      >
-                        Send me email updates!
-                      </button>
+                    <Stack padding="1rem">
+                      <div>
+                        <div
+                          css={`
+                            font-size: 1.7rem;
+                            color: ${THEME_BLACK};
+                          `}
+                        >
+                          Mon 3rd &ndash; Fri 7th August 2020
+                        </div>
+                        <div
+                          css={`
+                            font-family: "Changa One";
+                            font-size: 3rem;
+                            text-transform: uppercase;
+                            color: ${THEME_BLACK};
+                          `}
+                        >
+                          New videos every day
+                        </div>
+                      </div>
+                      {emailAdded ? (
+                        <div css="font-weight: 700; font-size: 2rem;">
+                          Thanks for subscribing!
+                        </div>
+                      ) : (
+                        <div
+                          css={`
+                            position: relative;
+                            align-self: stretch;
+                            display: flex;
+                            flex-flow: column nowrap;
+                            align-items: center;
+                          `}
+                        >
+                          <Stack padding="1rem">
+                            <input
+                              css={`
+                                display: block;
+                                border: none;
+                                padding: 0.7em;
+                                font-size: 1.4rem;
+                                border-radius: 0.6rem;
+                                width: 80%;
+                                color: inherit;
+                                max-width: ${MOBILE_WIDTH}px;
+                                box-sizing: border-box;
+                                border: 2px solid ${THEME_BLACK};
+                              `}
+                              type="email"
+                              placeholder="joebloggs@email.com"
+                              // @ts-ignore
+                              ref={emailInputRef}
+                              name="emailAddress"
+                            />
+                            <button
+                              type="submit"
+                              css={`
+                                font: inherit;
+                                border: none;
+                                background-color: ${THEME_BG_PRIMARY};
+                                color: ${THEME_BLACK};
+                                font-weight: 700;
+                                padding: 0.6em 1em;
+                                font-size: 1rem;
+                                cursor: pointer;
+                                border-radius: 0.8rem;
+                                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+                              `}
+                            >
+                              Send me email updates!
+                            </button>
+                          </Stack>
+                        </div>
+                      )}
                     </Stack>
                   </form>
-                )}
+                </OnlineTextbox>
               </Stack>
             </div>
           </div>
@@ -527,7 +542,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    onlineLogo: file(relativePath: { eq: "mm-online-white.png" }) {
+    onlineLogo: file(
+      absolutePath: { regex: "madness_theme/mm_online_logo.png$/" }
+    ) {
       childImageSharp {
         fluid(maxWidth: 800) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
