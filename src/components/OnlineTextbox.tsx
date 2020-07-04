@@ -1,12 +1,13 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
+import { MOBILE_WIDTH } from "../constants"
+
 interface Props {
   children: React.ReactNode
-  padding: string | number
 }
 
-const OnlineTextbox = ({ children, padding }: Props) => {
+const OnlineTextbox = ({ children }: Props) => {
   const data = useStaticQuery(graphql`
     query OnlineTextboxQuery {
       onlineTextbox: file(absolutePath: { regex: "/online_textbox.png$/" }) {
@@ -22,8 +23,11 @@ const OnlineTextbox = ({ children, padding }: Props) => {
     <div
       css={`
         position: relative;
+        padding: 4rem;
+        @media (max-width: ${MOBILE_WIDTH}px) {
+          padding: 3rem 1rem;
+        }
       `}
-      style={{ padding }}
     >
       <img
         css={`

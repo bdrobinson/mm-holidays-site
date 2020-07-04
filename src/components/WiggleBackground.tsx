@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import { SMALLSCREEN_WIDTH } from "../constants"
+import { SMALLSCREEN_WIDTH, TINY_WIDTH } from "../constants"
 
 const random = (min: number, max: number) => {
   const scale = max - min
@@ -23,6 +23,9 @@ const ImgContainer = styled.div<{ scale: number }>`
   width: ${props => props.scale * 32}rem;
   @media (max-width: ${SMALLSCREEN_WIDTH}px) {
     width: ${props => props.scale * 25}rem;
+  }
+  @media (max-width: ${TINY_WIDTH}px) {
+    width: ${props => props.scale * 15}rem;
   }
   position: absolute;
 `

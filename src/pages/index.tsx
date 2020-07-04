@@ -230,7 +230,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                   alt="M+M Online"
                   imgStyle={{ objectFit: "contain" }}
                 />
-                <OnlineTextbox padding="4rem">
+                <OnlineTextbox>
                   <form
                     css={`
                       color: ${THEME_BLACK};
