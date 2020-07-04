@@ -255,7 +255,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                       <div>
                         <div
                           css={`
-                            font-size: 2.3rem;
+                            font-size: 1.7rem;
                             color: ${THEME_BLACK};
                           `}
                         >
@@ -264,7 +264,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                         <div
                           css={`
                             font-family: "Changa One";
-                            font-size: 3.5rem;
+                            font-size: 3rem;
                             text-transform: uppercase;
                             color: ${THEME_BLACK};
                           `}

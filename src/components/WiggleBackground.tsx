@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import { SMALLSCREEN_WIDTH } from "../constants"
 
 const random = (min: number, max: number) => {
   const scale = max - min
@@ -18,8 +19,11 @@ const clamp = (value: number, min: number, max: number) => {
   return value
 }
 
-const ImgContainer = styled.div`
-  width: 20%;
+const ImgContainer = styled.div<{ scale: number }>`
+  width: ${props => props.scale * 32}rem;
+  @media (max-width: ${SMALLSCREEN_WIDTH}px) {
+    width: ${props => props.scale * 25}rem;
+  }
   position: absolute;
 `
 
@@ -143,16 +147,24 @@ const WiggleBackground = () => {
         height: 100%;
       `}
     >
-      <ImgContainer css="top: 0; left: 0;" ref={useWiggle(30)}>
+      <ImgContainer css="top: -10%; left: 0;" ref={useWiggle(20)} scale={0.45}>
         <Img fluid={pineappleFluid} fadeIn={false} loading="eager" />
       </ImgContainer>
-      <ImgContainer css="top: 0; right: 0;" ref={useWiggle(-60)}>
+      <ImgContainer css="top: -2%; right: -2%;" ref={useWiggle(0)} scale={1}>
         <Img fluid={sunglassesFluid} fadeIn={false} loading="eager" />
       </ImgContainer>
-      <ImgContainer css="bottom: 0; left: 0;" ref={useWiggle(3)}>
+      <ImgContainer
+        css="bottom: -8%; left: -2%;"
+        ref={useWiggle(0)}
+        scale={0.7}
+      >
         <Img fluid={flipFlopsFluid} fadeIn={false} loading="eager" />
       </ImgContainer>
-      <ImgContainer css="bottom: 0; right: 0;" ref={useWiggle(15)}>
+      <ImgContainer
+        css="bottom: -10%; right: -2%;"
+        ref={useWiggle(0)}
+        scale={0.5}
+      >
         <Img fluid={iceCreamFluid} fadeIn={false} loading="eager" />
       </ImgContainer>
     </div>
