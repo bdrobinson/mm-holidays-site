@@ -45,17 +45,47 @@ const updateValue = (args: {
   return clamp(current + diff, offset - maxMagnitude, offset + maxMagnitude)
 }
 
+const useAnimationFrame = (
+  callback: (msTimeSinceLastFrame: number) => void,
+) => {
+  // Use useRef for mutable variables that we want to persist
+  // without triggering a re-render on their change
+  const requestRef = useRef<number | undefined>()
+  const previousTimeRef = useRef<number | undefined>()
+
+  const animate = (time: number) => {
+    if (previousTimeRef.current !== undefined) {
+      const deltaTime = time - previousTimeRef.current
+      callback(deltaTime)
+    }
+    previousTimeRef.current = time
+    requestRef.current = requestAnimationFrame(animate)
+  }
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(animate)
+    return () => {
+      if (requestRef.current !== undefined) {
+        cancelAnimationFrame(requestRef.current)
+      }
+    }
+  }, [])
+}
+
 const useWiggle = (initialDegrees: number) => {
   const elementRef = useRef<HTMLElement>()
   let currentRotationDegRef = useRef(initialDegrees)
   let currentTranslateXPercentRef = useRef(0)
   let currentTranslateYPercentRef = useRef(0)
-  useEffect(() => {
+  const accumTime = useRef(0)
+  useAnimationFrame(time => {
     const element = elementRef.current
     if (element === undefined) {
       return
     }
-    const id = setInterval(() => {
+    accumTime.current += time
+    if (accumTime.current > WIGGLE_INTERVAL) {
+      accumTime.current = 0
       currentRotationDegRef.current = updateValue({
         current: currentRotationDegRef.current,
         stepMagnitude: ROTATION_STEP_SIZE_DEGREES,
@@ -78,9 +108,6 @@ const useWiggle = (initialDegrees: number) => {
       const tx = currentTranslateXPercentRef.current
       const ty = currentTranslateYPercentRef.current
       element.style.transform = `translateX(${tx}%) translateY(${ty}%) rotateZ(${rot}deg)`
-    }, WIGGLE_INTERVAL)
-    return () => {
-      clearInterval(id)
     }
   })
 
