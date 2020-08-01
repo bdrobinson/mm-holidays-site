@@ -1,8 +1,7 @@
-import React, { useState, useRef, FC } from "react"
+import React, { FC } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled, { keyframes } from "styled-components"
-import fetch from "unfetch"
 
 import Layout from "../components/Layout"
 import HomepageFeature from "../components/HomepageFeature"
@@ -11,6 +10,7 @@ import ImageCrossfade from "../components/ImageCrossfade"
 import {
   SMALLSCREEN_WIDTH,
   MOBILE_WIDTH,
+  TINY_WIDTH,
   HERO_IMAGE_MAX_HEIGHT,
   HERO_IMAGE_MIN_HEIGHT,
   PRIMARY_COLOUR_DARK,
@@ -21,15 +21,12 @@ import FooterBookingPrompt from "../components/FooterBookingPrompt"
 import Stack from "../components/Stack"
 import WiggleBackground from "../components/WiggleBackground"
 import OnlineTextbox from "../components/OnlineTextbox"
+import CampVideos from "../components/CampVideos"
 
 import instagram from "../images/instagram.svg"
-import email from "../images/email.svg"
 import facebook from "../images/facebook.svg"
 
 const SHOW_ONLINE_PROMO = true
-
-const EMAIL_FORM_ID = "1FAIpQLSdywSmD23YgULovpndMVTWhAjRwv1Iw6xn2HI6wqZdNQpFLcg"
-const EMAIL_FIELD_ID = "entry.1117448688"
 
 const HeroContainer = styled.div`
   position: relative;
@@ -39,8 +36,10 @@ const VIDEO_ID = "7RySP8tLL7U"
 const ONLINE_VIDEO_ID = "NjV8FzZcad0"
 
 const THEME_WHITE = "#FFFCD4"
-const THEME_BLACK = "#3B3561"
-const THEME_BG_PRIMARY = "#58F2C8"
+const MADNESS_THEME_BLACK = "#3B3561"
+const MADNESS_THEME_BG_PRIMARY = "#58F2C8"
+const MAYHEM_THEME_BLACK = "#53295f"
+const MAYHEM_THEME_BG_PRIMARY = "#f2a578"
 
 const anim = keyframes`
   from {
@@ -140,13 +139,22 @@ const BookingNoticeSection = styled.section`
   }
 `
 
+const CampVideosContainer = styled.div`
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: ${TINY_WIDTH}px) {
+    margin-top: 0.5em;
+  }
+`
+
 interface Props {
   data: any
 }
 
 const IndexPage: FC<Props> = ({ data }: Props) => {
-  const emailInputRef = useRef<HTMLInputElement>()
-  const [emailAdded, setEmailAdded] = useState(false)
   return (
     <Layout
       showNav={!SHOW_ONLINE_PROMO}
@@ -231,103 +239,61 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                   imgStyle={{ objectFit: "contain" }}
                 />
                 <OnlineTextbox>
-                  <form
-                    css={`
-                      color: ${THEME_BLACK};
-                    `}
-                    onSubmit={async e => {
-                      e.preventDefault()
-                      const url = `https://docs.google.com/forms/d/e/${EMAIL_FORM_ID}/formResponse?submit=Submit&${EMAIL_FIELD_ID}=${encodeURIComponent(
-                        // @ts-ignore
-                        e.target.emailAddress.value,
-                      )}`
-                      try {
-                        await fetch(url, {
-                          method: "POST",
-                        })
-                      } catch (err) {
-                        //
-                      }
-                      setEmailAdded(true)
-                    }}
-                  >
-                    <Stack padding="1rem">
-                      <div>
-                        <div
-                          css={`
-                            font-size: 1.7rem;
-                            color: ${THEME_BLACK};
-                          `}
+                  <Stack padding="1rem">
+                    <div
+                      css={`
+                        font-size: 1.7rem;
+                        color: ${MADNESS_THEME_BLACK};
+                      `}
+                    >
+                      Mon 3rd &ndash; Fri 7th August 2020
+                    </div>
+                    <div
+                      css={`
+                        font-family: "Changa One";
+                        font-size: 3rem;
+                        text-transform: uppercase;
+                        color: ${MADNESS_THEME_BLACK};
+                      `}
+                    >
+                      New videos every day this week
+                    </div>
+                    <div css="display: flex; flex-flow: column nowrap; align-items: center;">
+                      <a
+                        href="#watch-now"
+                        css={`
+                          display: flex;
+                          flex-flow: row nowrap;
+                          align-items: center;
+                          font: inherit;
+                          font-family: "Changa One";
+                          background-color: ${MADNESS_THEME_BG_PRIMARY};
+                          color: ${MADNESS_THEME_BLACK};
+                          padding: 0.3em 0.5em;
+                          font-size: 2.5rem;
+                          cursor: pointer;
+                          border-radius: 0.8rem;
+                          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+                        `}
+                      >
+                        <div css="width: 1em" aria-hidden={true} />
+                        <div>Watch now</div>
+                        <svg
+                          css="width: 1em; height: 1em; margin-left: 0.3em;"
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
                         >
-                          Mon 3rd &ndash; Fri 7th August 2020
-                        </div>
-                        <div
-                          css={`
-                            font-family: "Changa One";
-                            font-size: 3rem;
-                            text-transform: uppercase;
-                            color: ${THEME_BLACK};
-                          `}
-                        >
-                          New videos every day
-                        </div>
-                      </div>
-                      {emailAdded ? (
-                        <div css="font-weight: 700; font-size: 2rem;">
-                          Thanks for subscribing!
-                        </div>
-                      ) : (
-                        <div
-                          css={`
-                            position: relative;
-                            align-self: stretch;
-                            display: flex;
-                            flex-flow: column nowrap;
-                            align-items: center;
-                          `}
-                        >
-                          <Stack padding="1rem">
-                            <input
-                              css={`
-                                display: block;
-                                border: none;
-                                padding: 0.7em;
-                                font-size: 1.4rem;
-                                border-radius: 0.6rem;
-                                width: 80%;
-                                color: inherit;
-                                max-width: ${MOBILE_WIDTH}px;
-                                box-sizing: border-box;
-                                border: 2px solid ${THEME_BLACK};
-                              `}
-                              type="email"
-                              placeholder="joebloggs@email.com"
-                              // @ts-ignore
-                              ref={emailInputRef}
-                              name="emailAddress"
-                            />
-                            <button
-                              type="submit"
-                              css={`
-                                font: inherit;
-                                border: none;
-                                background-color: ${THEME_BG_PRIMARY};
-                                color: ${THEME_BLACK};
-                                font-weight: 700;
-                                padding: 0.6em 1em;
-                                font-size: 1rem;
-                                cursor: pointer;
-                                border-radius: 0.8rem;
-                                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-                              `}
-                            >
-                              Send me email updates!
-                            </button>
-                          </Stack>
-                        </div>
-                      )}
-                    </Stack>
-                  </form>
+                          <path d="M0 0h24v24H0V0z" fill="none" />
+                          <path
+                            d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </Stack>
                 </OnlineTextbox>
               </Stack>
             </div>
@@ -391,11 +357,164 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
         </>
       )}
       {SHOW_ONLINE_PROMO && (
-        <PageGutter>
-          <Stack padding="2rem">
+        <Stack padding="2rem">
+          <PageGutter>
             <section
-              dangerouslySetInnerHTML={{ __html: data.onlineCopy.html }}
+              dangerouslySetInnerHTML={{ __html: data.onlineCopy1.html }}
             />
+          </PageGutter>
+          <section
+            id="watch-now"
+            css={`
+              background-image: url(${data.mayhemTile.childImageSharp.fluid
+                .src});
+              background-repeat: repeat;
+              background-color: ${MAYHEM_THEME_BG_PRIMARY};
+              min-height: 100vh;
+              display: flex;
+              flex-flow: column nowrap;
+              justify-content: center;
+              align-items: center;
+              color: ${MAYHEM_THEME_BLACK};
+              font-size: 2rem;
+              padding: 1em 0;
+            `}
+          >
+            <Stack padding="1em">
+              <div css="position: relative;">
+                <img
+                  src={data.textboxHeader.childImageSharp.fixed.src}
+                  css={`
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    height: 100%;
+                  `}
+                />
+                <div
+                  css={`
+                    padding: 0.2em 0.5em;
+                    font-family: Changa One;
+                    font-size: 5rem;
+                    position: relative;
+                    text-align: center;
+                    @media (max-width: ${TINY_WIDTH}px) {
+                      font-size: 4rem;
+                    }
+                  `}
+                >
+                  Watch now
+                </div>
+              </div>
+              <PageGutter>
+                <div
+                  css={`
+                    position: relative;
+                    & a {
+                      color: #ff6fba;
+                    }
+                    padding: 1em 0;
+                  `}
+                >
+                  <img
+                    src={data.textboxBody.childImageSharp.fixed.src}
+                    css={`
+                      position: absolute;
+                      top: 0;
+                      bottom: 0;
+                      left: 0;
+                      right: 0;
+                      width: 100%;
+                      height: 100%;
+                    `}
+                  />
+                  <div css="position: relative; padding: 1em;">
+                    <div
+                      css={`
+                        display: flex;
+                        flex-flow: row nowrap;
+                        align-items: flex-start;
+                        justify-content: center;
+                        @media (max-width: ${TINY_WIDTH}px) {
+                          flex-flow: column nowrap;
+                          align-items: center;
+                        }
+                      `}
+                    >
+                      <CampVideosContainer>
+                        <CampVideos
+                          title="MAX"
+                          age="9-11"
+                          videos={[
+                            { url: "http://website.com", weekday: "Friday" },
+                            { url: "http://website.com", weekday: "Thursday" },
+                            { url: "http://website.com", weekday: "Wednesday" },
+                            { url: "http://website.com", weekday: "Tuesday" },
+                            { url: "http://website.com", weekday: "Monday" },
+                          ]}
+                        />
+                      </CampVideosContainer>
+                      <CampVideosContainer>
+                        <CampVideos
+                          title="Madness"
+                          age="11-14"
+                          videos={[
+                            { url: "http://website.com", weekday: "Friday" },
+                            { url: "http://website.com", weekday: "Thursday" },
+                            { url: "http://website.com", weekday: "Wednesday" },
+                            { url: "http://website.com", weekday: "Tuesday" },
+                            { url: "http://website.com", weekday: "Monday" },
+                          ]}
+                        />
+                      </CampVideosContainer>
+                      <CampVideosContainer>
+                        <CampVideos
+                          title="Mayhem"
+                          age="15-18"
+                          videos={[
+                            { url: "http://website.com", weekday: "Friday" },
+                            { url: "http://website.com", weekday: "Thursday" },
+                            { url: "http://website.com", weekday: "Wednesday" },
+                            { url: "http://website.com", weekday: "Tuesday" },
+                            { url: "http://website.com", weekday: "Monday" },
+                          ]}
+                        />
+                      </CampVideosContainer>
+                    </div>
+                    <div css="margin-top: 1em; font-size: 1.5rem;">
+                      You can find all the links to the week&apos;s videos here.
+                      Don&apos;t forget to browse our{" "}
+                      <a
+                        href="https://bit.ly/madnesscamp"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        online bookstall
+                      </a>{" "}
+                      and subscribe to us on{" "}
+                      <a
+                        href="https://www.youtube.com/channel/UCyHsEJmBEqYRM0AVsT9GCgg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        YouTube
+                      </a>
+                      !
+                    </div>
+                  </div>
+                </div>
+              </PageGutter>
+            </Stack>
+          </section>
+          <PageGutter>
+            <section
+              dangerouslySetInnerHTML={{ __html: data.onlineCopy2.html }}
+            />
+          </PageGutter>
+          <PageGutter>
             <section>
               <div
                 css={`
@@ -416,6 +535,8 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                 />
               </div>
             </section>
+          </PageGutter>
+          <PageGutter>
             <section
               css={`
                 display: flex;
@@ -431,22 +552,6 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                   align-items: flex-start;
                 `}
               >
-                <a
-                  css="color: currentColor;"
-                  href="#"
-                  onClick={e => {
-                    e.preventDefault()
-                    if (emailInputRef.current != null) {
-                      emailInputRef.current.focus()
-                    }
-                  }}
-                >
-                  <CtaItem
-                    fontSize="1.5em"
-                    imgSrc={email}
-                    copy="Sign up for email updates"
-                  />
-                </a>
                 <a
                   css="color: currentColor;"
                   href="https://www.instagram.com/mandmholidays/"
@@ -473,8 +578,8 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                 </a>
               </div>
             </section>
-          </Stack>
-        </PageGutter>
+          </PageGutter>
+        </Stack>
       )}
     </Layout>
   )
@@ -509,8 +614,13 @@ export const pageQuery = graphql`
         }
       }
     }
-    onlineCopy: markdownRemark(
-      fileAbsolutePath: { regex: "//home/online.md/" }
+    onlineCopy1: markdownRemark(
+      fileAbsolutePath: { regex: "//home/online1.md/" }
+    ) {
+      html
+    }
+    onlineCopy2: markdownRemark(
+      fileAbsolutePath: { regex: "//home/online2.md/" }
     ) {
       html
     }
@@ -553,6 +663,27 @@ export const pageQuery = graphql`
     }
     intro: markdownRemark(fileAbsolutePath: { regex: "/home/intro/" }) {
       html
+    }
+    mayhemTile: file(absolutePath: { regex: "/mayhem_tile.png$/" }) {
+      childImageSharp {
+        fluid(maxWidth: 400) {
+          src
+        }
+      }
+    }
+    textboxBody: file(absolutePath: { regex: "/textbox_body.png$/" }) {
+      childImageSharp {
+        fixed(width: 800) {
+          src
+        }
+      }
+    }
+    textboxHeader: file(absolutePath: { regex: "/online_textbox.png$/" }) {
+      childImageSharp {
+        fixed(width: 800) {
+          src
+        }
+      }
     }
   }
 `

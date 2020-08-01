@@ -15,8 +15,9 @@ export const onClientEntry = () => {
     // Needed to make gatsby-image blur-up effect work on safari etc
     import("intersection-observer")
   }
-
-  Sentry.init({
-    dsn: "https://d49a6e7848074da8b589d375b7c31ad7@sentry.io/1361844",
-  })
+  if (process.env.NODE_ENV !== "development") {
+    Sentry.init({
+      dsn: "https://d49a6e7848074da8b589d375b7c31ad7@sentry.io/1361844",
+    })
+  }
 }
