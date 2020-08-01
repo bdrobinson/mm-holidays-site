@@ -21,7 +21,7 @@ const CampVideos: React.FC<Props> = ({ title, videos, age }: Props) => {
       <Stack padding="0.3em">
         <div>
           <div css="font-size: 2rem; font-family: Changa One;">{title}</div>
-          <div css="font-size: 1.5rem; font-weight: 700;">Age {age}</div>
+          <div css="font-size: 1.2rem; font-weight: 700;">Age {age}</div>
         </div>
         <ul
           css={`
