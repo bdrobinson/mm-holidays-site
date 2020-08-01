@@ -7,7 +7,7 @@ interface Props {
   age: string
   videos: Array<{
     weekday: string
-    url: string
+    url: string | undefined
   }>
 }
 
@@ -34,10 +34,14 @@ const CampVideos: React.FC<Props> = ({ title, videos, age }: Props) => {
           <Stack padding="0.4em">
             {videos.map(({ url, weekday }) => {
               return (
-                <li key={url}>
-                  <a href={url} target="_blank" rel="noopener noreferrer">
-                    {weekday}
-                  </a>
+                <li key={weekday}>
+                  {url !== undefined ? (
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                      {weekday}
+                    </a>
+                  ) : (
+                    <span>{weekday}</span>
+                  )}
                 </li>
               )
             })}

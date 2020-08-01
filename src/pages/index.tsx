@@ -35,7 +35,6 @@ const HeroContainer = styled.div`
 const VIDEO_ID = "7RySP8tLL7U"
 const ONLINE_VIDEO_ID = "NjV8FzZcad0"
 
-const THEME_WHITE = "#FFFCD4"
 const MADNESS_THEME_BLACK = "#3B3561"
 const MADNESS_THEME_BG_PRIMARY = "#58F2C8"
 const MAYHEM_THEME_BLACK = "#53295f"
@@ -449,11 +448,11 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                           title="MAX"
                           age="9-11"
                           videos={[
-                            { url: "http://website.com", weekday: "Friday" },
-                            { url: "http://website.com", weekday: "Thursday" },
-                            { url: "http://website.com", weekday: "Wednesday" },
-                            { url: "http://website.com", weekday: "Tuesday" },
-                            { url: "http://website.com", weekday: "Monday" },
+                            { weekday: "Monday", url: "http://website.com" },
+                            { weekday: "Tuesday", url: undefined },
+                            { weekday: "Wednesday", url: undefined },
+                            { weekday: "Thursday", url: undefined },
+                            { weekday: "Friday", url: undefined },
                           ]}
                         />
                       </CampVideosContainer>
@@ -462,11 +461,11 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                           title="Madness"
                           age="11-14"
                           videos={[
-                            { url: "http://website.com", weekday: "Friday" },
-                            { url: "http://website.com", weekday: "Thursday" },
-                            { url: "http://website.com", weekday: "Wednesday" },
-                            { url: "http://website.com", weekday: "Tuesday" },
-                            { url: "http://website.com", weekday: "Monday" },
+                            { weekday: "Monday", url: "http://website.com" },
+                            { weekday: "Tuesday", url: undefined },
+                            { weekday: "Wednesday", url: undefined },
+                            { weekday: "Thursday", url: undefined },
+                            { weekday: "Friday", url: undefined },
                           ]}
                         />
                       </CampVideosContainer>
@@ -475,11 +474,11 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                           title="Mayhem"
                           age="15-18"
                           videos={[
-                            { url: "http://website.com", weekday: "Friday" },
-                            { url: "http://website.com", weekday: "Thursday" },
-                            { url: "http://website.com", weekday: "Wednesday" },
-                            { url: "http://website.com", weekday: "Tuesday" },
-                            { url: "http://website.com", weekday: "Monday" },
+                            { weekday: "Monday", url: "http://website.com" },
+                            { weekday: "Tuesday", url: undefined },
+                            { weekday: "Wednesday", url: undefined },
+                            { weekday: "Thursday", url: undefined },
+                            { weekday: "Friday", url: undefined },
                           ]}
                         />
                       </CampVideosContainer>
