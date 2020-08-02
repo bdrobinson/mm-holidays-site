@@ -18,7 +18,7 @@ module.exports = {
     title: "M+M Online",
     seoDescription:
       "Join us for the M+M Breakfast Show for 9-18s, with new videos every day this week!",
-    baseUrl: getEnv("BASE_URL"),
+    baseUrl: "https://madnessandmayhem.org.uk",
     campWeeks: [
       {
         week: 1,
