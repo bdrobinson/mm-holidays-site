@@ -445,10 +445,15 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                     >
                       <CampVideosContainer>
                         <CampVideos
+                          time="9am"
                           title="MAX"
                           age="9-11"
                           videos={[
-                            { weekday: "Monday", url: "http://website.com" },
+                            {
+                              weekday: "Monday",
+                              url:
+                                "https://www.youtube.com/watch?v=6J03t1oHXXc",
+                            },
                             { weekday: "Tuesday", url: undefined },
                             { weekday: "Wednesday", url: undefined },
                             { weekday: "Thursday", url: undefined },
@@ -459,9 +464,10 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                       <CampVideosContainer>
                         <CampVideos
                           title="Madness"
+                          time="10am"
                           age="11-14"
                           videos={[
-                            { weekday: "Monday", url: "http://website.com" },
+                            { weekday: "Monday", url: undefined },
                             { weekday: "Tuesday", url: undefined },
                             { weekday: "Wednesday", url: undefined },
                             { weekday: "Thursday", url: undefined },
@@ -472,9 +478,14 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                       <CampVideosContainer>
                         <CampVideos
                           title="Mayhem"
+                          time="11am"
                           age="15-18"
                           videos={[
-                            { weekday: "Monday", url: "http://website.com" },
+                            {
+                              weekday: "Monday",
+                              url:
+                                "https://www.youtube.com/watch?v=efa1Xzn_-bU",
+                            },
                             { weekday: "Tuesday", url: undefined },
                             { weekday: "Wednesday", url: undefined },
                             { weekday: "Thursday", url: undefined },
