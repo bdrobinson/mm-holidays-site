@@ -467,7 +467,11 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                           time="10am"
                           age="11-14"
                           videos={[
-                            { weekday: "Monday", url: undefined },
+                            {
+                              weekday: "Monday",
+                              url:
+                                "https://www.youtube.com/watch?v=wcHm4cbcPDo",
+                            },
                             { weekday: "Tuesday", url: undefined },
                             { weekday: "Wednesday", url: undefined },
                             { weekday: "Thursday", url: undefined },
