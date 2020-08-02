@@ -80,7 +80,7 @@ const Layout: FC<Props> = ({
               baseUrl
             }
           }
-          defaultImage: file(relativePath: { eq: "hero0.jpg" }) {
+          defaultImage: file(relativePath: { eq: "madness_theme/social.png" }) {
             childImageSharp {
               fixed(width: 1200) {
                 src
@@ -100,7 +100,7 @@ const Layout: FC<Props> = ({
             : data.site.siteMetadata.seoDescription
 
         const pageImage = `${data.site.siteMetadata.baseUrl}${data.defaultImage.childImageSharp.fixed.src}`
-
+        const imageAlt = "The M+M Online Logo"
         const pageUrl =
           path !== null ? `${data.site.siteMetadata.baseUrl}${path}` : null
         return (
@@ -136,14 +136,8 @@ const Layout: FC<Props> = ({
               <meta name="twitter:title" content={pageTitle} />
               <meta name="twitter:description" content={pageDescription} />
               <meta name="twitter:image" content={pageImage} />
-              <meta
-                name="twitter:image:alt"
-                content="M+M campers with the site in the background"
-              />
-              <meta
-                name="og:image:alt"
-                content="M+M campers with the site in the background"
-              />
+              <meta name="twitter:image:alt" content={imageAlt} />
+              <meta name="og:image:alt" content={imageAlt} />
             </Helmet>
             <HeaderAndHeroContainer theme={theme}>
               {hero != null && hero}
