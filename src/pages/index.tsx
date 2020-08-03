@@ -498,7 +498,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                         />
                       </CampVideosContainer>
                     </div>
-                    <div css="margin-top: 1em; font-size: 1.5rem;">
+                    <p css="margin-top: 1em;">
                       You can find all the links to the week&apos;s videos here.
                       Don&apos;t forget to browse our{" "}
                       <a
@@ -517,7 +517,19 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                         YouTube
                       </a>
                       !
-                    </div>
+                    </p>
+                    <p>
+                      If you&apos;re on Mayhem and would like to find out about
+                      signing up to the M+M Late Show this week, get in touch at{" "}
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="mailto:info@madnessandmayhem.org.uk"
+                      >
+                        info@madnessandmayhem.org.uk
+                      </a>
+                      .
+                    </p>
                   </div>
                 </div>
               </PageGutter>
