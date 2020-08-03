@@ -454,7 +454,11 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                               url:
                                 "https://www.youtube.com/watch?v=6J03t1oHXXc",
                             },
-                            { weekday: "Tuesday", url: undefined },
+                            {
+                              weekday: "Tuesday",
+                              url:
+                                "https://www.youtube.com/watch?v=QKcF0ldpQdc",
+                            },
                             { weekday: "Wednesday", url: undefined },
                             { weekday: "Thursday", url: undefined },
                             { weekday: "Friday", url: undefined },
@@ -472,7 +476,11 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                               url:
                                 "https://www.youtube.com/watch?v=wcHm4cbcPDo",
                             },
-                            { weekday: "Tuesday", url: undefined },
+                            {
+                              weekday: "Tuesday",
+                              url:
+                                "https://www.youtube.com/watch?v=sdRruSfcUX4",
+                            },
                             { weekday: "Wednesday", url: undefined },
                             { weekday: "Thursday", url: undefined },
                             { weekday: "Friday", url: undefined },
@@ -490,7 +498,11 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                               url:
                                 "https://www.youtube.com/watch?v=efa1Xzn_-bU",
                             },
-                            { weekday: "Tuesday", url: undefined },
+                            {
+                              weekday: "Tuesday",
+                              url:
+                                "https://www.youtube.com/watch?v=xElbmFE8ygw",
+                            },
                             { weekday: "Wednesday", url: undefined },
                             { weekday: "Thursday", url: undefined },
                             { weekday: "Friday", url: undefined },
