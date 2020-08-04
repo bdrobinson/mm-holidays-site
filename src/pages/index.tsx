@@ -479,7 +479,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                             {
                               weekday: "Tuesday",
                               url:
-                                "https://www.youtube.com/watch?v=sdRruSfcUX4",
+                                "https://www.youtube.com/watch?v=GNc9vsgL8bw",
                             },
                             { weekday: "Wednesday", url: undefined },
                             { weekday: "Thursday", url: undefined },
