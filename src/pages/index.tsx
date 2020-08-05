@@ -463,7 +463,10 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                               weekday: "Wednesday",
                               url: "https://youtu.be/Ri32B12G7X8",
                             },
-                            { weekday: "Thursday", url: undefined },
+                            {
+                              weekday: "Thursday",
+                              url: "https://youtu.be/j4bcwaV6ujU",
+                            },
                             { weekday: "Friday", url: undefined },
                           ]}
                         />
@@ -488,7 +491,10 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                               weekday: "Wednesday",
                               url: "https://youtu.be/ofV6DoZ470s",
                             },
-                            { weekday: "Thursday", url: undefined },
+                            {
+                              weekday: "Thursday",
+                              url: "https://youtu.be/q-go9l3AVP0",
+                            },
                             { weekday: "Friday", url: undefined },
                           ]}
                         />
@@ -513,7 +519,10 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                               weekday: "Wednesday",
                               url: "https://youtu.be/tjO7x6r8eX4",
                             },
-                            { weekday: "Thursday", url: undefined },
+                            {
+                              weekday: "Thursday",
+                              url: "https://youtu.be/iJ0RYZAtQD0",
+                            },
                             { weekday: "Friday", url: undefined },
                           ]}
                         />
