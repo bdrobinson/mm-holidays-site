@@ -467,7 +467,10 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                               weekday: "Thursday",
                               url: "https://youtu.be/j4bcwaV6ujU",
                             },
-                            { weekday: "Friday", url: undefined },
+                            {
+                              weekday: "Friday",
+                              url: "https://youtu.be/PGJc-lSizLw",
+                            },
                           ]}
                         />
                       </CampVideosContainer>
@@ -495,7 +498,10 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                               weekday: "Thursday",
                               url: "https://youtu.be/q-go9l3AVP0",
                             },
-                            { weekday: "Friday", url: undefined },
+                            {
+                              weekday: "Friday",
+                              url: "https://youtu.be/qp4L3vVHqp0",
+                            },
                           ]}
                         />
                       </CampVideosContainer>
