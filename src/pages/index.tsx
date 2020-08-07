@@ -529,7 +529,10 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                               weekday: "Thursday",
                               url: "https://youtu.be/iJ0RYZAtQD0",
                             },
-                            { weekday: "Friday", url: undefined },
+                            {
+                              weekday: "Friday",
+                              url: "https://youtu.be/0S96OaEduwg",
+                            },
                           ]}
                         />
                       </CampVideosContainer>
