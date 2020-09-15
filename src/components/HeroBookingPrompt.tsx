@@ -81,8 +81,11 @@ const HeroBookingPrompt: FC<Props> = () => {
   `)
   return (
     <Main>
-      <Title>M+M 2020 has been cancelled</Title>
-      <Paragraph>But we will be back in 2021. Save the dates now!</Paragraph>
+      <Title>M+M will return in 2021!</Title>
+      <Paragraph>
+        We can&apos;t wait to head back to the Frontier Centre next summer. Save
+        the dates now!
+      </Paragraph>
       <Content>
         <BookingNoticeText>
           {data.site.siteMetadata.campWeeks.map((week: any) => {

@@ -4,7 +4,6 @@ import Stack from "./Stack"
 
 interface Props {
   title: string
-  time: string
   age: string
   videos: Array<{
     weekday: string
@@ -12,7 +11,7 @@ interface Props {
   }>
 }
 
-const CampVideos: React.FC<Props> = ({ title, time, videos, age }: Props) => {
+const CampVideos: React.FC<Props> = ({ title, videos, age }: Props) => {
   return (
     <div
       css={`
@@ -22,13 +21,7 @@ const CampVideos: React.FC<Props> = ({ title, time, videos, age }: Props) => {
       <Stack padding="0.3em">
         <div>
           <div css="font-size: 2rem; font-family: Changa One;">{title}</div>
-          <div css="font-size: 1.2rem; font-weight: 700;">
-            Age {age}
-            <br />
-            <span css="font-size: 1rem; font-weight: 500;">
-              Live at {time} daily
-            </span>
-          </div>
+          <div css="font-size: 1.2rem; font-weight: 700;">Age {age}</div>
         </div>
         <ul
           css={`
