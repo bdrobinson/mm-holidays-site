@@ -12,9 +12,7 @@ If you're looking to book onto M+M 2020, you can do that on our [booking page](/
 
 ## Email
 
-For any general queries you can email <info@madnessandmayhem.org.uk>, or <mm1@madnessandmayhem.org.uk> and <mm2@madnessandmayhem.org.uk> for information about week 1 and week 2 respectively.
-
-You can contact the Madness and Mayhem Trust at <mmtrust@madnessandmayhem.org.uk>.
+For any general queries you can email <info@madnessandmayhem.org.uk>. You can contact the Madness and Mayhem Trust at <mmtrust@madnessandmayhem.org.uk>.
 
 ## Get involved
 

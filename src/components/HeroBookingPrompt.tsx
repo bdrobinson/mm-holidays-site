@@ -75,16 +75,21 @@ const HeroBookingPrompt: FC<Props> = () => {
             week
             longDates
           }
+          homepage {
+            heroBookingPrompt {
+              title
+              body
+            }
+          }
         }
       }
     }
   `)
   return (
     <Main>
-      <Title>M+M will return in 2021!</Title>
+      <Title>{data.site.siteMetadata.homepage.heroBookingPrompt.title}</Title>
       <Paragraph>
-        We can&apos;t wait to head back to the Frontier Centre next summer. Save
-        the dates now!
+        {data.site.siteMetadata.homepage.heroBookingPrompt.body}
       </Paragraph>
       <Content>
         <BookingNoticeText>
