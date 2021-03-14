@@ -7,8 +7,8 @@ heroAltText: Two smiling campers on an inflatable obstacle course
 theme: "light"
 ---
 
-<!-- ## Booking
-If you're looking to book onto M+M 2020, you can do that on our [booking page](/booking). -->
+## Booking
+If you're looking to book onto M+M 2021, you can do that on our [booking page](/booking).
 
 ## Email
 
