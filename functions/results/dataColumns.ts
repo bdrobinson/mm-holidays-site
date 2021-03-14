@@ -93,14 +93,9 @@ export const createColumns = (params: Params): Array<Column> => {
     },
     {
       id: "childHomePhone",
-      name: "Child's home phone",
+      name: "Child's phone",
       // This might be a mobile but that's okay
       value: params.childPhone,
-    },
-    {
-      id: "childMobilePhone",
-      name: "Child's mobile",
-      value: "",
     },
     {
       id: "childEmail",
@@ -159,8 +154,8 @@ export const createColumns = (params: Params): Array<Column> => {
       value: params.parentPostcode,
     },
     {
-      id: "parentMobilePhone",
-      name: "Parent mobile phone",
+      id: "parentPhone",
+      name: "Parent phone",
       value: params.parentPhone,
     },
     {
