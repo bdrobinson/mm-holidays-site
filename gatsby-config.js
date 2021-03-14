@@ -28,9 +28,8 @@ module.exports = {
     ],
     homepage: {
       heroBookingPrompt: {
-        title: "Bookings will open very soon!",
-        body:
-          "We can't wait to head back to the Frontier Centre this summer. Save the dates now!",
+        title: "Bookings are now open",
+        body: "Don't miss out – book your place today!",
       },
     },
   },

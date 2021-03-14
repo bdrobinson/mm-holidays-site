@@ -17,7 +17,7 @@ const BookingNoticeLink: ComponentType<Props> = styled(Link).attrs({
   to: "/booking",
 })`
   display: inline-block;
-  padding: 1em ${({ paddingHorizontal = "1em" }: Props) => paddingHorizontal};
+  padding: 0.8em ${({ paddingHorizontal = "1em" }: Props) => paddingHorizontal};
   background-color: ${PRIMARY_COLOUR};
   overflow: hidden;
   text-align: center;
