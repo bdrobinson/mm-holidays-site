@@ -92,14 +92,13 @@ const NavLink = styled(Link)`
   }
 `
 
-const AccentNavLink = styled(NavLink)`
-  background-color: white;
-  color: #333;
-  padding: 0.7em 1em !important;
+const AccentNavLink = styled(NavLink)<{ light: boolean }>`
+  background-color: ${props => (props.light ? "white" : "#333")};
+  color: ${props => (props.light ? "#333" : "white")};
+  padding: 0.8em 1.1em !important;
   margin-left: 0.8em !important;
   border-radius: 1.3em;
   text-shadow: none;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
   margin-left: 1.2em;
 `
 
@@ -212,7 +211,11 @@ const Header: FC<Props> = ({
               {LINKS.map(({ link, label, accent, sublabel }) => {
                 if (accent === true) {
                   return (
-                    <AccentNavLink key={link} to={link}>
+                    <AccentNavLink
+                      key={link}
+                      to={link}
+                      light={theme === "light"}
+                    >
                       {label}
                     </AccentNavLink>
                   )
