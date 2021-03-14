@@ -314,7 +314,7 @@ const TextArea = styled.textarea`
   }
 `
 
-const SubmitButton = styled(Button)<{
+const SubmitButton = styled(Button).attrs({ type: "submit" })<{
   disabled: boolean
 }>`
   opacity: ${props => (props.disabled ? 0.6 : 1)};
@@ -713,7 +713,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 <br />
                 <strong>Account number:</strong> 47430702
                 <br />
-                <strong>Ref:</strong> MM1 or MM2 and your child&apos;s name
+                <strong>Ref:</strong> Your child&apos;s name
               </Copy>
             </section>
             <section>
@@ -814,9 +814,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section css="margin-top: 3em;">
               <div>
-                <SubmitButton disabled={isSubmitting} type="submit">
-                  Submit
-                </SubmitButton>
+                <SubmitButton disabled={isSubmitting}>Submit</SubmitButton>
               </div>
               {Object.keys(errors).length > 0 && submitCount > 0 && (
                 <p style={{ color: RED }}>
