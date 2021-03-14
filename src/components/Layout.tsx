@@ -80,7 +80,7 @@ const Layout: FC<Props> = ({
               baseUrl
             }
           }
-          defaultImage: file(relativePath: { eq: "madness_theme/social.png" }) {
+          defaultImage: file(relativePath: { eq: "hero0.jpg" }) {
             childImageSharp {
               fixed(width: 1200) {
                 src
