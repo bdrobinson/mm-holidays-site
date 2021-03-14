@@ -16,7 +16,7 @@ import FieldTitle from "./FieldTitle"
 
 export type FormState = {
   // section 1
-  campChoice: "1" | "2"
+  // campChoice: "1" | "2"
   // section 2
   childFirstName: string
   childLastName: string
@@ -43,9 +43,7 @@ export type FormState = {
   parentAddressCity: string
   parentAddressCounty: string
   parentPostcode: string
-  parentMobilePhone: string
-  parentDaytimePhone: string
-  parentEveningPhone: string
+  parentPhone: string
   parentEmail: string
   siblingNames: string
   // section 4
@@ -98,7 +96,7 @@ const MUST_BE_TRUE: Array<keyof FormState> = [
 
 const getInitialState = (): FormState => ({
   // section 1
-  campChoice: "1",
+  // campChoice: "1",
   // section 2
   childFirstName: "",
   childLastName: "",
@@ -125,9 +123,7 @@ const getInitialState = (): FormState => ({
   parentAddressCity: "",
   parentAddressCounty: "",
   parentPostcode: "",
-  parentMobilePhone: "",
-  parentDaytimePhone: "",
-  parentEveningPhone: "",
+  parentPhone: "",
   parentEmail: "",
   siblingNames: "",
   // section 4
@@ -185,9 +181,7 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
             "parentAddressCity",
             "parentAddressCounty",
             "parentPostcode",
-            "parentMobilePhone",
-            "parentDaytimePhone",
-            "parentEveningPhone",
+            "parentPhoneNumber",
             "parentEmail",
           ]),
     ]
@@ -228,7 +222,6 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
 
 const createRequestParams = (values: FormState): Params => {
   return {
-    campChoice: values.campChoice,
     childFirstName: values.childFirstName,
     childLastName: values.childLastName,
     childAddressLine1: values.childAddressLine1,
@@ -253,9 +246,7 @@ const createRequestParams = (values: FormState): Params => {
     parentAddressCity: values.parentAddressCity,
     parentAddressCounty: values.parentAddressCounty,
     parentPostcode: values.parentPostcode,
-    parentMobile: values.parentMobilePhone,
-    parentDaytimePhone: values.parentDaytimePhone,
-    parentEveningPhone: values.parentEveningPhone,
+    parentPhone: values.parentPhone,
     parentEmail: values.parentEmail,
     siblingNames: values.siblingNames,
     contactByEmail: values.contactByEmail,
@@ -419,7 +410,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               }
             `}
           >
-            <section>
+            {/* <section>
               <h2 css="margin-top: 0 !important;">Select a week</h2>
               <RadioChoices
                 fieldName="campChoice"
@@ -439,9 +430,9 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                   },
                 ]}
               />
-            </section>
+            </section> */}
             <section>
-              <h2>Child&apos;s details</h2>
+              <h2 css="margin-top: 0 !important;">Child&apos;s details</h2>
               <TextField
                 label="Child's first name"
                 name="childFirstName"
@@ -733,6 +724,11 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 that it is completed and returned by a parent/guardian
                 immediately.
               </p>
+              <p>
+                However, in the meantime please let us have any information
+                which would be helpful to the M+M Leaders in planning the
+                holiday.
+              </p>
               <label>
                 <FieldTitle>Dietary needs</FieldTitle>
                 <TextArea
@@ -807,7 +803,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 submitting this, I apply for my child/ward to become a temporary
                 member of Urban Saints and acknowledge that this will happen on
                 acceptance of this application. I agree to pay any outstanding
-                balance by 31st May 2020.
+                balance by 31st May 2021.
               </p>
               <FieldCheckbox
                 fieldName="parentConfirmation"

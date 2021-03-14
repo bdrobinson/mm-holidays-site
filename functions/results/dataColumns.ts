@@ -12,14 +12,6 @@ const parseDate = (year: string, month: string, day: string) => {
   return new Date(`${year}/${month}/${day}`)
 }
 
-const campStartDate = (params: Params) => {
-  if (params.campChoice === "1") {
-    return new Date("2020/07/25")
-  } else {
-    return new Date("2020/08/01")
-  }
-}
-
 export type Column = {
   id: string
   name: string
@@ -35,14 +27,9 @@ export const createColumns = (params: Params): Array<Column> => {
   const now = new Date()
   const monthAgeNow = differenceInMonths(now, birthDate)
 
-  const campDate = campStartDate(params)
+  const campDate = new Date("2021/07/25")
   const monthAgeCamp = differenceInMonths(campDate, birthDate)
   return [
-    {
-      id: "campChoice",
-      name: "Camp week",
-      value: params.campChoice,
-    },
     {
       id: "childFirstName",
       name: "Name (first)",
@@ -174,17 +161,7 @@ export const createColumns = (params: Params): Array<Column> => {
     {
       id: "parentMobilePhone",
       name: "Parent mobile phone",
-      value: params.parentMobile,
-    },
-    {
-      id: "parentDaytimePhone",
-      name: "Parent daytime phone",
-      value: params.parentDaytimePhone,
-    },
-    {
-      id: "parentEveningPhone",
-      name: "Parent evening phone",
-      value: params.parentEveningPhone,
+      value: params.parentPhone,
     },
     {
       id: "parentEmail",
