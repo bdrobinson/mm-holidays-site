@@ -38,6 +38,7 @@ export type FormState = {
   parentFirstName: string
   parentLastName: string
   parentRelationshipToChild: "Parent" | "Guardian" | "Leader"
+  parentAddressSameAsChild: "yes" | "no"
   parentAddressLine1: string
   parentAddressLine2: string
   parentAddressCity: string
@@ -118,6 +119,7 @@ const getInitialState = (): FormState => ({
   parentFirstName: "",
   parentLastName: "",
   parentRelationshipToChild: "Parent",
+  parentAddressSameAsChild: "yes",
   parentAddressLine1: "",
   parentAddressLine2: "",
   parentAddressCity: "",
@@ -177,10 +179,6 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
         : [
             "parentFirstName",
             "parentLastName",
-            "parentAddressLine1",
-            "parentAddressCity",
-            "parentAddressCounty",
-            "parentPostcode",
             "parentPhoneNumber",
             "parentEmail",
           ]),
@@ -241,11 +239,26 @@ const createRequestParams = (values: FormState): Params => {
     parentFirstName: values.parentFirstName,
     parentLastName: values.parentLastName,
     parentRelationshipToChild: values.parentRelationshipToChild,
-    parentAddressLine1: values.parentAddressLine1,
-    parentAddressLine2: values.parentAddressLine2,
-    parentAddressCity: values.parentAddressCity,
-    parentAddressCounty: values.parentAddressCounty,
-    parentPostcode: values.parentPostcode,
+    parentAddressLine1:
+      values.parentAddressSameAsChild === "yes"
+        ? values.childAddressLine1
+        : values.parentAddressLine1,
+    parentAddressLine2:
+      values.parentAddressSameAsChild === "yes"
+        ? values.childAddressLine2
+        : values.parentAddressLine2,
+    parentAddressCity:
+      values.parentAddressSameAsChild === "yes"
+        ? values.childAddressCity
+        : values.parentAddressCity,
+    parentAddressCounty:
+      values.parentAddressSameAsChild === "yes"
+        ? values.childAddressCounty
+        : values.parentAddressCounty,
+    parentPostcode:
+      values.parentAddressSameAsChild === "yes"
+        ? values.childPostcode
+        : values.parentPostcode,
     parentPhone: values.parentPhone,
     parentEmail: values.parentEmail,
     siblingNames: values.siblingNames,
@@ -387,7 +400,6 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
         handleChange,
         submitCount,
         isSubmitting,
-        setValues,
       }) => {
         const age = calculateAge(
           values.childDobYear,
@@ -515,42 +527,31 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                   fieldName="parentRelationshipToChild"
                 />
                 <br />
-                <p>
-                  <Button
-                    onClick={() => {
-                      setValues({
-                        ...values,
-                        parentAddressLine1: values.childAddressLine1,
-                        parentAddressLine2: values.childAddressLine2,
-                        parentAddressCity: values.childAddressCity,
-                        parentAddressCounty: values.childAddressCounty,
-                        parentPostcode: values.childPostcode,
-                      })
-                    }}
-                  >
-                    Copy address from child
-                  </Button>
-                </p>
-                <TextField label="Address line 1" name="parentAddressLine1" />
-                <TextField label="Address line 2" name="parentAddressLine2" />
-                <TextField label="Town/city" name="parentAddressCity" />
-                <TextField label="County" name="parentAddressCounty" />
-                <TextField label="Postcode" name="parentPostcode" />
-                <TextField
-                  label="Mobile phone"
-                  name="parentMobilePhone"
-                  type="tel"
+                <FieldTitle>Address same as child?</FieldTitle>
+                <RadioChoices
+                  fieldName="parentAddressSameAsChild"
+                  value={values.parentAddressSameAsChild}
+                  options={[
+                    { label: "Yes", value: "yes" },
+                    { label: "No", value: "no" },
+                  ]}
                 />
-                <TextField
-                  label="Daytime phone"
-                  name="parentDaytimePhone"
-                  type="tel"
-                />
-                <TextField
-                  label="Evening phone"
-                  name="parentEveningPhone"
-                  type="tel"
-                />
+                {values.parentAddressSameAsChild === "no" && (
+                  <>
+                    <TextField
+                      label="Address line 1"
+                      name="parentAddressLine1"
+                    />
+                    <TextField
+                      label="Address line 2"
+                      name="parentAddressLine2"
+                    />
+                    <TextField label="Town/city" name="parentAddressCity" />
+                    <TextField label="County" name="parentAddressCounty" />
+                    <TextField label="Postcode" name="parentPostcode" />
+                  </>
+                )}
+                <TextField label="Phone" name="parentPhone" type="tel" />
                 <TextField label="Email" name="parentEmail" type="email" />
                 <TextField
                   label="Sibling names"

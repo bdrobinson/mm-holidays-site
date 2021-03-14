@@ -56,7 +56,7 @@ const TextField: FC<Props> = ({
         <Input
           name={name}
           type={type}
-          autocomplete={allowAutocomplete ? undefined : "off"}
+          autoComplete={allowAutocomplete ? undefined : "off"}
         />
       </InputContainer>
       <FieldErrorMessage name={name} />
