@@ -1,4 +1,4 @@
-import React, { useState, FC } from "react"
+import React, { useState, FC, ReactNode } from "react"
 import { Formik, FormikErrors, Field } from "formik"
 import styled from "styled-components"
 import { parse, isValid, differenceInYears } from "date-fns"
@@ -455,11 +455,13 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 name="childLastName"
                 allowAutocomplete={false}
               />
-              <TextField label="Address line 1" name="childAddressLine1" />
-              <TextField label="Address line 2" name="childAddressLine2" />
-              <TextField label="Town/City" name="childAddressCity" />
-              <TextField label="County" name="childAddressCounty" />
-              <TextField label="Postcode" name="childPostcode" />
+              <Subsection title="Address">
+                <TextField label="Line 1" name="childAddressLine1" />
+                <TextField label="Line 2" name="childAddressLine2" />
+                <TextField label="Town/City" name="childAddressCity" />
+                <TextField label="County" name="childAddressCounty" />
+                <TextField label="Postcode" name="childPostcode" />
+              </Subsection>
               <TextField
                 label="Contact phone"
                 name="childPhoneNumber"
@@ -537,19 +539,13 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                   ]}
                 />
                 {values.parentAddressSameAsChild === "no" && (
-                  <>
-                    <TextField
-                      label="Address line 1"
-                      name="parentAddressLine1"
-                    />
-                    <TextField
-                      label="Address line 2"
-                      name="parentAddressLine2"
-                    />
+                  <Subsection title="Address">
+                    <TextField label="Line 1" name="parentAddressLine1" />
+                    <TextField label="Line 2" name="parentAddressLine2" />
                     <TextField label="Town/city" name="parentAddressCity" />
                     <TextField label="County" name="parentAddressCounty" />
                     <TextField label="Postcode" name="parentPostcode" />
-                  </>
+                  </Subsection>
                 )}
                 <TextField label="Phone" name="parentPhone" type="tel" />
                 <TextField label="Email" name="parentEmail" type="email" />
@@ -842,3 +838,18 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
 }
 
 export default BookingForm
+
+const Subsection = ({
+  title,
+  children,
+}: {
+  title: string
+  children: ReactNode
+}) => {
+  return (
+    <section css="padding-left: 1em; border-left: 3px #ddd solid;">
+      <FieldTitle css="font-size: 1em;">{title}</FieldTitle>
+      <div>{children}</div>
+    </section>
+  )
+}

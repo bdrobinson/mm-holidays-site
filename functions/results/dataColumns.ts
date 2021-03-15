@@ -31,6 +31,11 @@ export const createColumns = (params: Params): Array<Column> => {
   const monthAgeCamp = differenceInMonths(campDate, birthDate)
   return [
     {
+      id: "campChoice",
+      name: "Camp week",
+      value: "1",
+    },
+    {
       id: "childFirstName",
       name: "Name (first)",
       value: params.childFirstName,
@@ -93,9 +98,14 @@ export const createColumns = (params: Params): Array<Column> => {
     },
     {
       id: "childHomePhone",
-      name: "Child's phone",
+      name: "Child's home phone",
       // This might be a mobile but that's okay
       value: params.childPhone,
+    },
+    {
+      id: "childMobilePhone",
+      name: "Child's mobile",
+      value: "",
     },
     {
       id: "childEmail",
@@ -154,9 +164,19 @@ export const createColumns = (params: Params): Array<Column> => {
       value: params.parentPostcode,
     },
     {
-      id: "parentPhone",
-      name: "Parent phone",
+      id: "parentMobilePhone",
+      name: "Parent mobile phone",
       value: params.parentPhone,
+    },
+    {
+      id: "parentDaytimePhone",
+      name: "Parent daytime phone",
+      value: "",
+    },
+    {
+      id: "parentEveningPhone",
+      name: "Parent evening phone",
+      value: "",
     },
     {
       id: "parentEmail",
