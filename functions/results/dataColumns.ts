@@ -33,7 +33,7 @@ export const createColumns = (params: Params): Array<Column> => {
     {
       id: "campChoice",
       name: "Camp week",
-      value: "1",
+      value: "",
     },
     {
       id: "childFirstName",
