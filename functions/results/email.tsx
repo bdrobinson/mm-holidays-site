@@ -8,7 +8,7 @@ interface CamperEmailProps {}
 const CamperEmail: FC<CamperEmailProps> = () => {
   return (
     <body>
-      <p>We&apos;re delighted you have applied to come to M+M Holidays 2020.</p>
+      <p>We&apos;re delighted you have applied to come to M+M Holidays 2021.</p>
       <p>Your application will now be processed.</p>
       <p>
         Confirmation of a place/s will only be sent (via email) from the Booking
@@ -27,10 +27,9 @@ const CamperEmail: FC<CamperEmailProps> = () => {
         <strong>Who are you paying?</strong> M&M Holidays fees
       </p>
       <p>
-        <strong>Your reference:</strong> MM1 or MM2, followed by child&apos;s
-        surname and then first name (as much as you can fit in - or initials if
-        you are paying for more than one child) For example - MM1 Webster James
-        or MM2 Webster J, F & B
+        <strong>Your reference:</strong> Child&apos;s surname and then first
+        name (as much as you can fit in - or initials if you are paying for more
+        than one child) For example - Webster James or Webster J, F & B
       </p>
       <p>
         <strong>Sort code:</strong> 60-13-23

@@ -1,4 +1,4 @@
-import React, { useState, FC } from "react"
+import React, { useState, FC, ReactNode } from "react"
 import { Formik, FormikErrors, Field } from "formik"
 import styled from "styled-components"
 import { parse, isValid, differenceInYears } from "date-fns"
@@ -16,7 +16,7 @@ import FieldTitle from "./FieldTitle"
 
 export type FormState = {
   // section 1
-  campChoice: "1" | "2"
+  // campChoice: "1" | "2"
   // section 2
   childFirstName: string
   childLastName: string
@@ -38,14 +38,13 @@ export type FormState = {
   parentFirstName: string
   parentLastName: string
   parentRelationshipToChild: "Parent" | "Guardian" | "Leader"
+  parentAddressSameAsChild: "yes" | "no"
   parentAddressLine1: string
   parentAddressLine2: string
   parentAddressCity: string
   parentAddressCounty: string
   parentPostcode: string
-  parentMobilePhone: string
-  parentDaytimePhone: string
-  parentEveningPhone: string
+  parentPhone: string
   parentEmail: string
   siblingNames: string
   // section 4
@@ -98,7 +97,7 @@ const MUST_BE_TRUE: Array<keyof FormState> = [
 
 const getInitialState = (): FormState => ({
   // section 1
-  campChoice: "1",
+  // campChoice: "1",
   // section 2
   childFirstName: "",
   childLastName: "",
@@ -120,14 +119,13 @@ const getInitialState = (): FormState => ({
   parentFirstName: "",
   parentLastName: "",
   parentRelationshipToChild: "Parent",
+  parentAddressSameAsChild: "yes",
   parentAddressLine1: "",
   parentAddressLine2: "",
   parentAddressCity: "",
   parentAddressCounty: "",
   parentPostcode: "",
-  parentMobilePhone: "",
-  parentDaytimePhone: "",
-  parentEveningPhone: "",
+  parentPhone: "",
   parentEmail: "",
   siblingNames: "",
   // section 4
@@ -181,13 +179,7 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
         : [
             "parentFirstName",
             "parentLastName",
-            "parentAddressLine1",
-            "parentAddressCity",
-            "parentAddressCounty",
-            "parentPostcode",
-            "parentMobilePhone",
-            "parentDaytimePhone",
-            "parentEveningPhone",
+            "parentPhoneNumber",
             "parentEmail",
           ]),
     ]
@@ -228,7 +220,6 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
 
 const createRequestParams = (values: FormState): Params => {
   return {
-    campChoice: values.campChoice,
     childFirstName: values.childFirstName,
     childLastName: values.childLastName,
     childAddressLine1: values.childAddressLine1,
@@ -248,14 +239,27 @@ const createRequestParams = (values: FormState): Params => {
     parentFirstName: values.parentFirstName,
     parentLastName: values.parentLastName,
     parentRelationshipToChild: values.parentRelationshipToChild,
-    parentAddressLine1: values.parentAddressLine1,
-    parentAddressLine2: values.parentAddressLine2,
-    parentAddressCity: values.parentAddressCity,
-    parentAddressCounty: values.parentAddressCounty,
-    parentPostcode: values.parentPostcode,
-    parentMobile: values.parentMobilePhone,
-    parentDaytimePhone: values.parentDaytimePhone,
-    parentEveningPhone: values.parentEveningPhone,
+    parentAddressLine1:
+      values.parentAddressSameAsChild === "yes"
+        ? values.childAddressLine1
+        : values.parentAddressLine1,
+    parentAddressLine2:
+      values.parentAddressSameAsChild === "yes"
+        ? values.childAddressLine2
+        : values.parentAddressLine2,
+    parentAddressCity:
+      values.parentAddressSameAsChild === "yes"
+        ? values.childAddressCity
+        : values.parentAddressCity,
+    parentAddressCounty:
+      values.parentAddressSameAsChild === "yes"
+        ? values.childAddressCounty
+        : values.parentAddressCounty,
+    parentPostcode:
+      values.parentAddressSameAsChild === "yes"
+        ? values.childPostcode
+        : values.parentPostcode,
+    parentPhone: values.parentPhone,
     parentEmail: values.parentEmail,
     siblingNames: values.siblingNames,
     contactByEmail: values.contactByEmail,
@@ -310,7 +314,7 @@ const TextArea = styled.textarea`
   }
 `
 
-const SubmitButton = styled(Button)<{
+const SubmitButton = styled(Button).attrs({ type: "submit" })<{
   disabled: boolean
 }>`
   opacity: ${props => (props.disabled ? 0.6 : 1)};
@@ -396,7 +400,6 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
         handleChange,
         submitCount,
         isSubmitting,
-        setValues,
       }) => {
         const age = calculateAge(
           values.childDobYear,
@@ -419,7 +422,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               }
             `}
           >
-            <section>
+            {/* <section>
               <h2 css="margin-top: 0 !important;">Select a week</h2>
               <RadioChoices
                 fieldName="campChoice"
@@ -439,9 +442,9 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                   },
                 ]}
               />
-            </section>
+            </section> */}
             <section>
-              <h2>Child&apos;s details</h2>
+              <h2 css="margin-top: 0 !important;">Child&apos;s details</h2>
               <TextField
                 label="Child's first name"
                 name="childFirstName"
@@ -452,11 +455,13 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 name="childLastName"
                 allowAutocomplete={false}
               />
-              <TextField label="Address line 1" name="childAddressLine1" />
-              <TextField label="Address line 2" name="childAddressLine2" />
-              <TextField label="Town/City" name="childAddressCity" />
-              <TextField label="County" name="childAddressCounty" />
-              <TextField label="Postcode" name="childPostcode" />
+              <Subsection title="Address">
+                <TextField label="Line 1" name="childAddressLine1" />
+                <TextField label="Line 2" name="childAddressLine2" />
+                <TextField label="Town/City" name="childAddressCity" />
+                <TextField label="County" name="childAddressCounty" />
+                <TextField label="Postcode" name="childPostcode" />
+              </Subsection>
               <TextField
                 label="Contact phone"
                 name="childPhoneNumber"
@@ -524,42 +529,25 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                   fieldName="parentRelationshipToChild"
                 />
                 <br />
-                <p>
-                  <Button
-                    onClick={() => {
-                      setValues({
-                        ...values,
-                        parentAddressLine1: values.childAddressLine1,
-                        parentAddressLine2: values.childAddressLine2,
-                        parentAddressCity: values.childAddressCity,
-                        parentAddressCounty: values.childAddressCounty,
-                        parentPostcode: values.childPostcode,
-                      })
-                    }}
-                  >
-                    Copy address from child
-                  </Button>
-                </p>
-                <TextField label="Address line 1" name="parentAddressLine1" />
-                <TextField label="Address line 2" name="parentAddressLine2" />
-                <TextField label="Town/city" name="parentAddressCity" />
-                <TextField label="County" name="parentAddressCounty" />
-                <TextField label="Postcode" name="parentPostcode" />
-                <TextField
-                  label="Mobile phone"
-                  name="parentMobilePhone"
-                  type="tel"
+                <FieldTitle>Address same as child?</FieldTitle>
+                <RadioChoices
+                  fieldName="parentAddressSameAsChild"
+                  value={values.parentAddressSameAsChild}
+                  options={[
+                    { label: "Yes", value: "yes" },
+                    { label: "No", value: "no" },
+                  ]}
                 />
-                <TextField
-                  label="Daytime phone"
-                  name="parentDaytimePhone"
-                  type="tel"
-                />
-                <TextField
-                  label="Evening phone"
-                  name="parentEveningPhone"
-                  type="tel"
-                />
+                {values.parentAddressSameAsChild === "no" && (
+                  <Subsection title="Address">
+                    <TextField label="Line 1" name="parentAddressLine1" />
+                    <TextField label="Line 2" name="parentAddressLine2" />
+                    <TextField label="Town/city" name="parentAddressCity" />
+                    <TextField label="County" name="parentAddressCounty" />
+                    <TextField label="Postcode" name="parentPostcode" />
+                  </Subsection>
+                )}
+                <TextField label="Phone" name="parentPhone" type="tel" />
                 <TextField label="Email" name="parentEmail" type="email" />
                 <TextField
                   label="Sibling names"
@@ -688,7 +676,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             <section>
               <h2>Payment information</h2>
               <p>
-                If you would find it difficult to pay the full fee of £239,
+                If you would find it difficult to pay the full fee of £250,
                 please get in touch by emailing{" "}
                 <a href="mailto:info@madnessandmayhem.org.uk">
                   info@madnessandmayhem.org.uk
@@ -708,7 +696,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <RadioChoices
                 title="Payment amount"
                 options={[
-                  { label: "Full (£239)", value: "Full" },
+                  { label: "Full (£250)", value: "Full" },
                   { label: "Deposit (£40)", value: "Deposit" },
                 ]}
                 fieldName="paymentAmount"
@@ -721,7 +709,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 <br />
                 <strong>Account number:</strong> 47430702
                 <br />
-                <strong>Ref:</strong> MM1 or MM2 and your child&apos;s name
+                <strong>Ref:</strong> Your child&apos;s name
               </Copy>
             </section>
             <section>
@@ -732,6 +720,11 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 sent shortly before the holiday commences and it is essential
                 that it is completed and returned by a parent/guardian
                 immediately.
+              </p>
+              <p>
+                However, in the meantime please let us have any information
+                which would be helpful to the M+M Leaders in planning the
+                holiday.
               </p>
               <label>
                 <FieldTitle>Dietary needs</FieldTitle>
@@ -807,7 +800,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 submitting this, I apply for my child/ward to become a temporary
                 member of Urban Saints and acknowledge that this will happen on
                 acceptance of this application. I agree to pay any outstanding
-                balance by 31st May 2020.
+                balance by 31st May 2021.
               </p>
               <FieldCheckbox
                 fieldName="parentConfirmation"
@@ -817,9 +810,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section css="margin-top: 3em;">
               <div>
-                <SubmitButton disabled={isSubmitting} type="submit">
-                  Submit
-                </SubmitButton>
+                <SubmitButton disabled={isSubmitting}>Submit</SubmitButton>
               </div>
               {Object.keys(errors).length > 0 && submitCount > 0 && (
                 <p style={{ color: RED }}>
@@ -847,3 +838,18 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
 }
 
 export default BookingForm
+
+const Subsection = ({
+  title,
+  children,
+}: {
+  title: string
+  children: ReactNode
+}) => {
+  return (
+    <section css="padding-left: 1em; border-left: 3px #ddd solid;">
+      <FieldTitle css="font-size: 1em;">{title}</FieldTitle>
+      <div>{children}</div>
+    </section>
+  )
+}

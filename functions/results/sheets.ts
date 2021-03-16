@@ -22,7 +22,7 @@ export const appendRow = async (params: {
   // @ts-ignore
   await sheets.spreadsheets.values.append({
     spreadsheetId: params.spreadsheetId,
-    range: "Sheet1",
+    range: "2021",
     valueInputOption: "RAW",
     insertDataOption: "INSERT_ROWS",
     resource: {

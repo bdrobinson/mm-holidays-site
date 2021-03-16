@@ -18,7 +18,7 @@ const getEnv = (name: string): string => {
 
 export interface Params {
   // section 1
-  campChoice: "1" | "2"
+  // campChoice: "1" | "2"
   // section 2
   childFirstName: string
   childLastName: string
@@ -45,9 +45,7 @@ export interface Params {
   parentAddressCity: string
   parentAddressCounty: string
   parentPostcode: string
-  parentMobile: string
-  parentDaytimePhone: string
-  parentEveningPhone: string
+  parentPhone: string
   parentEmail: string
   siblingNames: string
   // section 4
@@ -177,7 +175,7 @@ export const handleAsync = async (
         email: confirmationEmailAddress,
       },
       from: { name: "M+M Bookings", email: "info@madnessandmayhem.org.uk" },
-      subject: "Thank you for applying for a place at M+M 2020",
+      subject: "Thank you for applying for a place at M+M 2021",
       text: html,
       html,
     }
