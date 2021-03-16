@@ -30,7 +30,7 @@ const HeroContainer = styled.div`
   position: relative;
 `
 
-const VIDEO_ID = "7RySP8tLL7U"
+const VIDEO_ID = "13h1cLxePg8"
 const ONLINE_VIDEO_ID = "NjV8FzZcad0"
 
 const MADNESS_THEME_BLACK = "#3B3561"
