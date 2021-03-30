@@ -28,8 +28,9 @@ module.exports = {
     ],
     homepage: {
       heroBookingPrompt: {
-        title: "Bookings are now open",
-        body: "Don't miss out – book your place today!",
+        title: "Limited spaces left",
+        body:
+          "Madness is now full, but you can still book on to Max and Mayhem!",
       },
     },
   },
