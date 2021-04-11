@@ -57,10 +57,12 @@ const BookingNoticeLabel = styled.div`
 //   }
 // `
 
-const Paragraph = styled.p`
-  font-size: 1.2em;
-  margin: 0.2em 0;
-  text-align: center;
+const Paragraph = styled.div`
+  & > p {
+    font-size: 1.2em;
+    margin: 0.2em 0;
+    text-align: center;
+  }
 `
 
 interface Props {}
@@ -75,22 +77,22 @@ const HeroBookingPrompt: FC<Props> = () => {
             week
             longDates
           }
-          homepage {
-            heroBookingPrompt {
-              title
-              body
-            }
-          }
         }
+      }
+      copy: markdownRemark(fileAbsolutePath: { regex: "/booking-prompt.md/" }) {
+        frontmatter {
+          header
+        }
+        html
       }
     }
   `)
   return (
     <Main>
-      <Title>{data.site.siteMetadata.homepage.heroBookingPrompt.title}</Title>
-      <Paragraph>
-        {data.site.siteMetadata.homepage.heroBookingPrompt.body}
-      </Paragraph>
+      <Title>{data.copy.frontmatter.header}</Title>
+      <Paragraph
+        dangerouslySetInnerHTML={{ __html: data.copy.html }}
+      ></Paragraph>
       <Content>
         <BookingNoticeText>
           {data.site.siteMetadata.campWeeks.map((week: any) => {

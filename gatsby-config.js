@@ -26,13 +26,6 @@ module.exports = {
         longDates: "Sat 24 – Sat 31 July",
       },
     ],
-    homepage: {
-      heroBookingPrompt: {
-        title: "Limited spaces left",
-        body:
-          "Madness is now full, but you can still book on to Max and Mayhem!",
-      },
-    },
   },
   developMiddleware: app => {
     app.use(
