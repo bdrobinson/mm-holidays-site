@@ -16,7 +16,7 @@ import FieldTitle from "./FieldTitle"
 
 export type FormState = {
   // section 1
-  // campChoice: "1" | "2"
+  campChoice: "A" | "B"
   // section 2
   childFirstName: string
   childLastName: string
@@ -97,7 +97,7 @@ const MUST_BE_TRUE: Array<keyof FormState> = [
 
 const getInitialState = (): FormState => ({
   // section 1
-  // campChoice: "1",
+  campChoice: "A",
   // section 2
   childFirstName: "",
   childLastName: "",
@@ -220,6 +220,7 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
 
 const createRequestParams = (values: FormState): Params => {
   return {
+    campChoice: values.campChoice,
     childFirstName: values.childFirstName,
     childLastName: values.childLastName,
     childAddressLine1: values.childAddressLine1,
@@ -422,29 +423,31 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               }
             `}
           >
-            {/* <section>
-              <h2 css="margin-top: 0 !important;">Select a week</h2>
+            <section>
+              <h2 css="margin-top: 0 !important; margin-bottom: 0.3em;">
+                Select your dates
+              </h2>
               <RadioChoices
                 fieldName="campChoice"
                 value={values.campChoice}
                 options={[
                   {
-                    value: "1",
-                    label: "Week 1",
-                    subtitle: "25th July – 1st August",
+                    value: "A",
+                    label: "Part A",
+                    subtitle: "Sat 24th – Tues 27th July",
                     disabled: false,
                   },
                   {
-                    value: "2",
-                    label: "Week 2",
-                    subtitle: "1st–8th August",
+                    value: "B",
+                    label: "Part B",
+                    subtitle: "Weds 28th – Sat 31st July",
                     disabled: false,
                   },
                 ]}
               />
-            </section> */}
+            </section>
             <section>
-              <h2 css="margin-top: 0 !important;">Child&apos;s details</h2>
+              <h2>Child&apos;s details</h2>
               <TextField
                 label="Child's first name"
                 name="childFirstName"

@@ -18,7 +18,7 @@ const getEnv = (name: string): string => {
 
 export interface Params {
   // section 1
-  // campChoice: "1" | "2"
+  campChoice: "A" | "B"
   // section 2
   childFirstName: string
   childLastName: string

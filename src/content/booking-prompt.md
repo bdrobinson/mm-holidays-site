@@ -1,4 +1,4 @@
 ---
-header: "M+M 2021 is now fully booked"
+header: "Places are now available for 2021!"
 ---
-Please contact <info@madnessandmayhem.org.uk> to be added to our waiting list.
+We are now running camp in two shorter parts so everyone can still join M+M this summer.
