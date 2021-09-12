@@ -21,12 +21,12 @@ module.exports = {
     baseUrl: "https://madnessandmayhem.org.uk",
     campWeeks: [
       {
-        week: "A",
-        shortDates: "Sat 24th – Tues 27th July",
+        week: "1",
+        shortDates: "Sat 23rd – Sat 30th July 2022",
       },
       {
-        week: "B",
-        shortDates: "Weds 28th – Sat 31st July",
+        week: "2",
+        shortDates: "Sat 30th July – Sat 6th August 2022",
       },
     ],
   },

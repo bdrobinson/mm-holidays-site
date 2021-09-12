@@ -300,10 +300,8 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                 <div css="position: relative; padding: 1em 1.5em;">
                   <p>
                     In summer 2020 the pandemic stopped us running camp as
-                    usual, so we hosted M+M Online instead! We can&apos;t wait
-                    to get back to the Frontier Centre in 2021, but in the
-                    meantime you can catch up on all the week&apos;s videos
-                    right here.
+                    usual, so we hosted M+M Online instead! You can catch up on
+                    all the week&apos;s videos right here.
                   </p>
                   <div
                     css={`

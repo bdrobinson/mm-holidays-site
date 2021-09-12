@@ -98,7 +98,7 @@ const HeroBookingPrompt: FC<Props> = () => {
           {data.site.siteMetadata.campWeeks.map((week: any) => {
             return (
               <BookingNoticeRow key={week.week}>
-                <BookingNoticeLabel>Part {week.week}</BookingNoticeLabel>
+                <BookingNoticeLabel>Week {week.week}</BookingNoticeLabel>
                 <span>{week.shortDates}</span>
               </BookingNoticeRow>
             )

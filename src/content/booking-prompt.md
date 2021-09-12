@@ -1,4 +1,4 @@
 ---
-header: "Places are available for 2021!"
+header: "Save the dates for 2022!"
 ---
-We are now running camp in two shorter parts so everyone can still join M+M this summer.
+We'll be back with two full weeks so make sure you are free! Bookings will open in early 2022.
