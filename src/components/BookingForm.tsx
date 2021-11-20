@@ -679,7 +679,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             <section>
               <h2>Payment information</h2>
               <p>
-                If you would find it difficult to pay the full fee of £120,
+                If you would find it difficult to pay the full fee of £250,
                 please get in touch by emailing{" "}
                 <a href="mailto:info@madnessandmayhem.org.uk">
                   info@madnessandmayhem.org.uk
@@ -699,7 +699,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <RadioChoices
                 title="Payment amount"
                 options={[
-                  { label: "Full (£120)", value: "Full" },
+                  { label: "Full (£250)", value: "Full" },
                   { label: "Deposit (£40)", value: "Deposit" },
                 ]}
                 fieldName="paymentAmount"
