@@ -16,7 +16,7 @@ import FieldTitle from "./FieldTitle"
 
 export type FormState = {
   // section 1
-  campChoice: "A" | "B"
+  campChoice: "1" | "2"
   // section 2
   childFirstName: string
   childLastName: string
@@ -97,7 +97,7 @@ const MUST_BE_TRUE: Array<keyof FormState> = [
 
 const getInitialState = (): FormState => ({
   // section 1
-  campChoice: "A",
+  campChoice: "1",
   // section 2
   childFirstName: "",
   childLastName: "",
@@ -432,15 +432,15 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 value={values.campChoice}
                 options={[
                   {
-                    value: "A",
-                    label: "Part A",
-                    subtitle: "Sat 24th – Tues 27th July",
+                    value: "1",
+                    label: "Week 1",
+                    subtitle: "Sat 23rd – Sat 30th July 2022",
                     disabled: false,
                   },
                   {
-                    value: "B",
-                    label: "Part B",
-                    subtitle: "Weds 28th – Sat 31st July",
+                    value: "2",
+                    label: "Week 2",
+                    subtitle: "Sat 30th July – Sat 6th August 2022",
                     disabled: false,
                   },
                 ]}
