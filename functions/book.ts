@@ -1,3 +1,4 @@
+import { google } from "googleapis"
 import sendgrid from "@sendgrid/mail"
 import dotenv from "dotenv"
 import { init as initSentry, captureException } from "@sentry/node"
@@ -154,11 +155,35 @@ export const handleAsync = async (
 
   try {
     console.log("appending row to google sheet")
+    const sheetsClient = await getSheetsClient(
+      GOOGLE_CLIENT_EMAIL,
+      GOOGLE_PRIVATE_KEY,
+    )
+    const row = columns.map(c => {
+      if (["childHomePhone", "parentMobilePhone"].includes(c.id)) {
+        // ensures it gets formatted as a string in sheets
+        return `'${c.value}`
+      }
+      return c.value
+    })
+    console.log(row)
     await appendRow({
+      sheetsClient,
       spreadsheetId: GOOGLE_SPREADSHEET_ID,
-      row: columns.map(c => c.value),
-      googleAuthClientEmail: GOOGLE_CLIENT_EMAIL,
-      googlePrivateKey: GOOGLE_PRIVATE_KEY,
+      row,
+      tabName: "Raw Bookings",
+      startColumn: "A",
+      endColumn: "BA",
+      startRow: 2,
+    })
+    await appendRow({
+      sheetsClient,
+      spreadsheetId: GOOGLE_SPREADSHEET_ID,
+      row,
+      tabName: "Bookings",
+      startColumn: "B",
+      endColumn: "BB",
+      startRow: 4,
     })
   } catch (err) {
     console.log("failed to append row to google sheet")
@@ -207,4 +232,20 @@ export const handleAsync = async (
     statusCode: 200,
     body: "",
   })
+}
+
+const getSheetsClient = async (
+  googleClientEmail: string,
+  googlePrivateKey: string,
+) => {
+  const jwtClient = new google.auth.JWT(
+    googleClientEmail,
+    undefined,
+    googlePrivateKey,
+    ["https://www.googleapis.com/auth/spreadsheets"],
+  )
+  //authenticate request
+  await jwtClient.authorize()
+
+  return google.sheets({ version: "v4", auth: jwtClient })
 }
