@@ -8,7 +8,7 @@ interface CamperEmailProps {}
 const CamperEmail: FC<CamperEmailProps> = () => {
   return (
     <body>
-      <p>We&apos;re delighted you have applied to come to M+M Holidays 2021.</p>
+      <p>We&apos;re delighted you have applied to come to M+M Holidays 2022.</p>
       <p>Your application will now be processed.</p>
       <p>
         Confirmation of a place/s will only be sent (via email) from the Booking

@@ -803,7 +803,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 submitting this, I apply for my child/ward to become a temporary
                 member of Urban Saints and acknowledge that this will happen on
                 acceptance of this application. I agree to pay any outstanding
-                balance by 31st May 2021.
+                balance by 31st May 2022.
               </p>
               <FieldCheckbox
                 fieldName="parentConfirmation"
