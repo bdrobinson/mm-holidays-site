@@ -10,21 +10,9 @@ const CamperEmail: FC<CamperEmailProps> = () => {
     <body>
       <p>We&apos;re delighted you have applied to come to M+M Holidays 2022.</p>
       <p>Your application will now be processed.</p>
-      <p>
-        Confirmation of a place/s will only be sent (via email) from the Booking
-        Secretary{" "}
-        <strong>once we have received your deposit for the holiday</strong>.
-      </p>
-      <p>
-        Please send your deposit to: El Webster, Booking Secretary, M+M, 18 John
-        Morgan Close, Hook, Hants, RG27 9RP
-      </p>
-      <p>
-        Please make cheques payable to &ldquo;M+M Holidays fees account&rdquo;.
-      </p>
       <p>To pay by bank transfer, use the following details:</p>
       <p>
-        <strong>Who are you paying?</strong> M&M Holidays fees
+        <strong>Who are you paying?</strong> M&amp;M Holidays fees
       </p>
       <p>
         <strong>Your reference:</strong> Child&apos;s surname and then first
@@ -36,6 +24,19 @@ const CamperEmail: FC<CamperEmailProps> = () => {
       </p>
       <p>
         <strong>Account number:</strong> 47430702
+      </p>
+      <p>
+        If you would rather pay by cheque, please send your deposit to: El
+        Webster, Booking Secretary, M+M, 18 John Morgan Close, Hook, Hants, RG27
+        9RP
+      </p>
+      <p>
+        Please make cheques payable to &ldquo;M+M Holidays fees account&rdquo;.
+      </p>
+      <p>
+        Confirmation of a place/s will only be sent (via email) from the Booking
+        Secretary{" "}
+        <strong>once we have received your deposit for the holiday</strong>.
       </p>
       <p>
         We will continue to send important information via email, particularly
