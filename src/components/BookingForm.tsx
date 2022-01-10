@@ -89,6 +89,13 @@ const NON_EMPTY_STRINGS: Array<keyof FormState> = [
   "childEmail",
 ]
 
+const NON_EMPTY_STRINGS_FOR_U18S: Array<keyof FormState> = [
+  "parentFirstName",
+  "parentLastName",
+  "parentPhone",
+  "parentEmail",
+]
+
 const MUST_BE_TRUE: Array<keyof FormState> = [
   "acceptRecordKeeping",
   "childConfirmation",
@@ -172,17 +179,11 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
     new Date(),
   )
   Object.keys(formState).map(key => {
-    const nonEmptyStrings = [
+    const nonEmptyStrings: Array<keyof FormState> = [
       ...NON_EMPTY_STRINGS,
-      ...(age !== null && age >= 18
-        ? []
-        : [
-            "parentFirstName",
-            "parentLastName",
-            "parentPhoneNumber",
-            "parentEmail",
-          ]),
+      ...(age !== null && age >= 18 ? [] : NON_EMPTY_STRINGS_FOR_U18S),
     ]
+    // @ts-ignore
     if (nonEmptyStrings.includes(key)) {
       // @ts-ignore
       if (formState[key].trim() === "") {
