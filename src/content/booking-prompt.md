@@ -1,4 +1,4 @@
 ---
-header: "Save the dates for 2022!"
+header: "Bookings are now open for 2022!"
 ---
-We'll be back with two full weeks so make sure you are free! Bookings will open in early 2022.
+We can't wait for a full week of camp this year. Don't miss out, book your place today!

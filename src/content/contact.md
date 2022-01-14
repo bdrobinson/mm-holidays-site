@@ -8,7 +8,7 @@ theme: "light"
 ---
 
 ## Booking
-Bookings for M+M 2022 will open in early 2022.
+Bookings for M+M 2022 are now open! You can fill out our [online booking form here](/booking).
 
 ## Email
 
