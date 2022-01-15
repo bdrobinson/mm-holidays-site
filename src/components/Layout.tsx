@@ -15,6 +15,7 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow-x: hidden; /* hack for mobile safari, needs to be fixed*/
 `
 
 const Content = styled.div`
