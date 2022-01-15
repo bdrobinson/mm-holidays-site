@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 
 import BookButton from "./BookButton"
-import { MOBILE_WIDTH, ENABLE_BOOKING } from "../constants"
+import { MOBILE_WIDTH, ENABLE_BOOKING, TINY_WIDTH } from "../constants"
 
 const HeroDetailsContent = styled.div`
   display: flex;
@@ -23,6 +23,9 @@ const HeroDetailsRow = styled.div<{ shadows: boolean }>`
   flex-flow: row nowrap;
   align-items: baseline;
   justify-content: space-between;
+  @media (max-width: ${TINY_WIDTH}px) {
+    flex-flow: column nowrap;
+  }
 `
 
 const BookButtonContainer = styled.div`
@@ -39,9 +42,8 @@ const CampName = styled.div`
 `
 
 const CampDate = styled.div`
-  text-align: right;
   @media (max-width: ${MOBILE_WIDTH}px) {
-    font-size: 0.9em;
+    font-size: 0.7em;
   }
 `
 
