@@ -167,6 +167,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
               data.hero1.childImageSharp.fluid,
               data.hero2.childImageSharp.fluid,
               data.hero3.childImageSharp.fluid,
+              data.hero4.childImageSharp.fluid,
             ]}
             renderImage={fluid => {
               return (
@@ -503,6 +504,11 @@ export const pageQuery = graphql`
       }
     }
     hero3: file(relativePath: { eq: "tires.jpg" }) {
+      childImageSharp {
+        ...FluidHeroImage
+      }
+    }
+    hero4: file(relativePath: { eq: "high_ropes.jpg" }) {
       childImageSharp {
         ...FluidHeroImage
       }
