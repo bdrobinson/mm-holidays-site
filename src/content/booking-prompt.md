@@ -1,4 +1,4 @@
 ---
 header: "Bookings are now open for 2022!"
 ---
-We can't wait for a full week of camp this year. Don't miss out, book your place today!
+Week 1 is fully booked but there's still space on Week 2. Don't miss out, book your place today!
