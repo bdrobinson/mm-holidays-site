@@ -1,4 +1,4 @@
 ---
-header: "Bookings are now open for 2022!"
+header: "Save the dates for M+M 2023!"
 ---
-Week 1 is fully booked but there's still space on Week 2. Don't miss out, book your place today!
+We'll be back with two full weeks so make sure you are free! Bookings will open in early 2023.

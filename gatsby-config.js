@@ -22,11 +22,11 @@ module.exports = {
     campWeeks: [
       {
         week: "1",
-        shortDates: "Sat 23rd – Sat 30th July 2022",
+        shortDates: "Sat 22nd – Sat 29th July 2023",
       },
       {
         week: "2",
-        shortDates: "Sat 30th July – Sat 6th August 2022",
+        shortDates: "Sat 29th July – Sat 5th August 2023",
       },
     ],
   },

@@ -7,9 +7,6 @@ heroAltText: Two smiling campers on an inflatable obstacle course
 theme: "light"
 ---
 
-## Booking
-Bookings for M+M 2022 are now open! You can fill out our [online booking form here](/booking).
-
 ## Email
 
 For any general queries you can email <info@madnessandmayhem.org.uk>. You can contact the Madness and Mayhem Trust at <mmtrust@madnessandmayhem.org.uk>.
