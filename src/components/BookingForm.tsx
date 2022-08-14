@@ -371,9 +371,8 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
   const initialSubmitState: SubmitState = {
     type: "ready",
   }
-  const [networkSubmitState, setNetworkSubmitState] = useState<SubmitState>(
-    initialSubmitState,
-  )
+  const [networkSubmitState, setNetworkSubmitState] =
+    useState<SubmitState>(initialSubmitState)
   return (
     <Formik
       initialValues={{ ...getInitialState(), ...(initialState ?? {}) }}

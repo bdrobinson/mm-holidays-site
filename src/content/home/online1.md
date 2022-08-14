@@ -1,5 +1,6 @@
 ---
 ---
+
 M+M Online is a digital version of our Max, Madness and Mayhem summer camps, for summer 2020.
 
 Because of the lockdown restrictions in the UK, we can’t stay at the Frontier Centre and spend the week together as we usually would on camp. So, for one year and (hopefully) one year only, we’re running camp online, so that you can join in from your home.

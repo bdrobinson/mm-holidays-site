@@ -85,7 +85,7 @@ const Camp: FC<Props> = ({ data }: Props) => {
 export default Camp
 
 export const pageQuery = graphql`
-  query($path: String!) {
+  query ($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
