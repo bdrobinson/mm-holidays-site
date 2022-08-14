@@ -1,5 +1,3 @@
-// @flow
-
 import { differenceInMonths, format } from "date-fns"
 
 import { Params } from "../book"

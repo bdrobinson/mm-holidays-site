@@ -1,5 +1,3 @@
-// @flow
-
 import { sheets_v4 } from "googleapis"
 
 const getNumberOfFilledRows = async (params: {
