@@ -6,9 +6,20 @@ import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
 import Button from "../components/Button"
 import { MOBILE_WIDTH } from "../constants"
+import HeadTags from "../components/HeadTags"
 
 interface Props {
   data: any
+}
+
+export const Head = ({ data }: Props) => {
+  return (
+    <HeadTags
+      path={data.markdownRemark.frontmatter.path}
+      title="Book"
+      seoDescription={data.markdownRemark.frontmatter.description}
+    />
+  )
 }
 
 const Booking: FC<Props> = ({ data }: Props) => {
@@ -17,8 +28,6 @@ const Booking: FC<Props> = ({ data }: Props) => {
 
   return (
     <Layout
-      path={data.markdownRemark.frontmatter.path}
-      title="Book"
       hero={
         <HeroImage
           imageAltText="Max campers at the last night party."
@@ -27,7 +36,6 @@ const Booking: FC<Props> = ({ data }: Props) => {
         />
       }
       theme="light"
-      seoDescription={data.markdownRemark.frontmatter.description}
     >
       {booked && (
         <>

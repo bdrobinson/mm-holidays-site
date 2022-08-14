@@ -7,6 +7,7 @@ import CampDatesCTA from "../components/CampDatesCTA"
 import PageGutter from "../components/PageGutter"
 import HeroImage from "../components/HeroImage"
 import { SMALLSCREEN_WIDTH } from "../constants"
+import HeadTags from "../components/HeadTags"
 
 const HeroCampDates = styled.div`
   position: absolute;
@@ -34,14 +35,22 @@ interface Props {
   data: any
 }
 
+export const Head = ({ data }: Props) => {
+  const meta = data.markdownRemark.frontmatter
+  return (
+    <HeadTags
+      path={meta.path}
+      title={meta.title}
+      seoDescription={meta.description}
+    />
+  )
+}
+
 const Camp: FC<Props> = ({ data }: Props) => {
   const meta = data.markdownRemark.frontmatter
   return (
     <Layout
-      path={meta.path}
-      title={meta.title}
       theme="light"
-      seoDescription={meta.description}
       hero={
         <HeroImage
           fluid={meta.hero.childImageSharp.fluid}

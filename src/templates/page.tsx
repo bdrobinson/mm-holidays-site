@@ -2,22 +2,32 @@ import React, { FC } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
+import HeadTags from "../components/HeadTags"
 
 interface Props {
   data: any
 }
 
-const Template: FC<Props> = ({ data }: Props) => {
+export const Head = ({ data }: Props) => {
   const frontmatter = data.markdownRemark.frontmatter
   const title = frontmatter.title
   const description = frontmatter.description
+  return (
+    <HeadTags
+      title={title}
+      seoDescription={description}
+      path={frontmatter.path}
+    ></HeadTags>
+  )
+}
+
+const Template: FC<Props> = ({ data }: Props) => {
+  const frontmatter = data.markdownRemark.frontmatter
+  const title = frontmatter.title
   const hasHero = frontmatter.hero != null
 
   return (
     <Layout
-      title={title}
-      seoDescription={description}
-      path={frontmatter.path}
       hero={
         hasHero ? (
           <HeroImage

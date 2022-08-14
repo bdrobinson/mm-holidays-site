@@ -4,15 +4,24 @@ import Img from "gatsby-image"
 
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
+import HeadTags from "../components/HeadTags"
 
 interface Props {
   data: any
 }
 
+export const Head = () => {
+  return (
+    <HeadTags
+      path="/about"
+      title="About"
+      seoDescription="The history of M+M and general information about camp."
+    />
+  )
+}
+
 const IndexPage: FC<Props> = ({ data }: Props) => (
   <Layout
-    path="/about"
-    title="About"
     hero={
       <HeroImage
         imageAltText="Campers playing laser tag in the woods on site."
@@ -21,7 +30,6 @@ const IndexPage: FC<Props> = ({ data }: Props) => (
       />
     }
     theme="light"
-    seoDescription="The history of M+M and general information about camp."
   >
     {data.allMarkdownRemark.edges.map((edge: any) => {
       const fluid: any | null =

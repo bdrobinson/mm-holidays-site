@@ -23,6 +23,7 @@ import CampVideos from "../components/CampVideos"
 
 import instagram from "../images/instagram.svg"
 import facebook from "../images/facebook.svg"
+import HeadTags from "../components/HeadTags"
 
 const HeroContainer = styled.div`
   position: relative;
@@ -145,15 +146,22 @@ interface Props {
   data: any
 }
 
+export const Head = ({ data }: Props) => {
+  return (
+    <HeadTags
+      title={null}
+      path="/"
+      seoDescription={data.site.siteMetadata.seoDescription}
+    />
+  )
+}
+
 const IndexPage: FC<Props> = ({ data }: Props) => {
   return (
     <Layout
       showNav={true}
-      title={null}
-      path="/"
       theme="light"
       applyGutter={false}
-      seoDescription={data.site.siteMetadata.seoDescription}
       hero={
         <HeroContainer>
           <ImageCrossfade
