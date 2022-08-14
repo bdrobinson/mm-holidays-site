@@ -382,7 +382,6 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
         Sentry.addBreadcrumb({
           category: "booking",
           message: `Submitted form ${JSON.stringify(values)}`,
-          level: Sentry.Severity.Info,
         })
         bag.setSubmitting(true)
         try {
