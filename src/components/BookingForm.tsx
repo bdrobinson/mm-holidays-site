@@ -289,6 +289,7 @@ const createRequestParams = (values: FormState): Params => {
   }
 }
 
+// @ts-ignore
 const DobField = styled(Field)`
   border-width: 1px;
   border-radius: 0.3em;
@@ -316,10 +317,16 @@ const TextArea = styled.textarea`
   }
 `
 
-const SubmitButton = styled(Button).attrs({ type: "submit" })<{
+// @ts-ignore
+const SubmitButton: React.FC<{
+  children?: React.ReactNode
+  disabled: boolean
+}> = styled(Button).attrs({ type: "submit" })<{
   disabled: boolean
 }>`
-  opacity: ${props => (props.disabled ? 0.6 : 1)};
+  opacity: ${props =>
+    // @ts-ignore
+    props.disabled ? 0.6 : 1};
   font-size: 1.2em;
   margin-top: 1em;
 `
@@ -389,7 +396,10 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
           setNetworkSubmitState({ type: "success" })
           onComplete(values)
         } catch (err) {
-          setNetworkSubmitState({ type: "error", message: err.message })
+          setNetworkSubmitState({
+            type: "error",
+            message: err instanceof Error ? err.message : "Unknown error",
+          })
           Sentry.captureException(err)
         }
         bag.setSubmitting(false)

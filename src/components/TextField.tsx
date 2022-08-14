@@ -31,6 +31,7 @@ const InputContainer = styled.div`
   margin-bottom: 0.4em;
 `
 
+// @ts-ignore
 const Input = styled(Field)`
   padding: 0.7em;
   width: 100%;

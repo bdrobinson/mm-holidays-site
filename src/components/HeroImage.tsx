@@ -46,6 +46,7 @@ const Subtitle = styled.div`
   }
 `
 
+// @ts-ignore
 const Image = styled(Img)`
   max-height: ${HERO_IMAGE_MAX_HEIGHT}px;
   min-height: ${HERO_IMAGE_MIN_HEIGHT}px;

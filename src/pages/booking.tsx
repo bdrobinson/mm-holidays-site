@@ -79,9 +79,6 @@ const Booking: FC<Props> = ({ data }: Props) => {
                     parentAddressCity: previousState.parentAddressCity,
                     parentAddressCounty: previousState.parentAddressCounty,
                     parentPostcode: previousState.parentPostcode,
-                    parentMobilePhone: previousState.parentMobilePhone,
-                    parentDaytimePhone: previousState.parentDaytimePhone,
-                    parentEveningPhone: previousState.parentEveningPhone,
                     parentEmail: previousState.parentEmail,
                   }
                 : null

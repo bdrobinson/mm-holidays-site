@@ -206,7 +206,9 @@ export const handleAsync = async (
     }
     await sendgrid.send(camperEmail)
   } catch (err) {
+    // @ts-ignore
     console.log(err.response.body)
+    // @ts-ignore
     console.log("failed to send camper confirmation email", err.message)
     captureException(err)
   }

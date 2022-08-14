@@ -7,7 +7,10 @@ import {
   PRIMARY_COLOUR_DARK,
 } from "../constants"
 
-const GlobalStyles = createGlobalStyle`
+// @ts-ignore
+const GlobalStyles: React.FC<{
+  children?: React.ReactNode
+}> = createGlobalStyle`
     html {
         font-size: 16px;
         @media (max-width: ${MOBILE_WIDTH}px) {

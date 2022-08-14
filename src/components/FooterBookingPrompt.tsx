@@ -15,6 +15,7 @@ const ImageContainer = styled.div`
   overflow: hidden;
 `
 
+// @ts-ignore
 const Img = styled(Image)`
   height: ${IMAGE_HEIGHT}px;
   width: 100%;

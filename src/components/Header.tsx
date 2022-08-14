@@ -71,6 +71,7 @@ const MenuButton = styled.button.attrs({ children: "Menu" })`
   }
 `
 
+// @ts-ignore
 const NavLink = styled(Link)`
   display: block;
   margin-left: 0.8em;
@@ -119,6 +120,7 @@ const MobileNavLinksContainer = styled.div`
   padding: 1em 0;
 `
 
+// @ts-ignore
 const MobileNavLink = styled(Link)`
   display: block;
   flex-grow: 0;

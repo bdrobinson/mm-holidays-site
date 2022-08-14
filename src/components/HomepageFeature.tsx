@@ -9,6 +9,7 @@ const IMAGE_MIN_HEIGHT = 400
 
 const Main = styled.section``
 
+// @ts-ignore
 const Image = styled(Img)`
   max-height: ${IMAGE_MAX_HEIGHT}px;
   min-height: ${IMAGE_MIN_HEIGHT}px;

@@ -19,8 +19,6 @@ import {
 import HeroBookingPrompt from "../components/HeroBookingPrompt"
 import FooterBookingPrompt from "../components/FooterBookingPrompt"
 import Stack from "../components/Stack"
-import WiggleBackground from "../components/WiggleBackground"
-import OnlineTextbox from "../components/OnlineTextbox"
 import CampVideos from "../components/CampVideos"
 
 import instagram from "../images/instagram.svg"
@@ -31,10 +29,6 @@ const HeroContainer = styled.div`
 `
 
 const VIDEO_ID = "IF-ZT3kZsoo"
-const ONLINE_VIDEO_ID = "NjV8FzZcad0"
-
-const MADNESS_THEME_BLACK = "#3B3561"
-const MADNESS_THEME_BG_PRIMARY = "#58F2C8"
 const MAYHEM_THEME_BLACK = "#53295f"
 const MAYHEM_THEME_BG_PRIMARY = "#f2a578"
 

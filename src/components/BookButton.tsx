@@ -11,8 +11,10 @@ import {
 interface Props {
   fontSize?: string
   paddingHorizontal?: string
+  children: React.ReactNode
 }
 
+// @ts-ignore
 const BookingNoticeLink: ComponentType<Props> = styled(Link).attrs({
   to: "/booking",
 })`
