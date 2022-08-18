@@ -1,5 +1,5 @@
 ---
-path: "/get_involved"
+path: "/get-involved"
 title: "Get involved"
 description: "Information for joining the M+M team or giving to support our work."
 hero: ../images/happy_david.jpg

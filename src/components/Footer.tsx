@@ -18,7 +18,7 @@ const links: Array<{ name: string; path: string }> = [
   { name: "Max", path: "/max" },
   { name: "Madness", path: "/madness" },
   { name: "Mayhem", path: "/mayhem" },
-  { name: "Get Involved", path: "/get_involved" },
+  { name: "Get Involved", path: "/get-involved" },
   ...(ENABLE_BOOKING
     ? [
         { name: "Book", path: "/booking" },
