@@ -16,8 +16,8 @@ const Fader = styled.div<{ first: boolean; visible: boolean }>`
 `
 
 interface Props {
-  renderImage: (fluid: any) => ReactNode
-  fluids: Array<any>
+  renderImage: (image: any) => ReactNode
+  images: Array<any>
 }
 
 const useIncrement = () => {
@@ -33,14 +33,14 @@ const useIncrement = () => {
   return count
 }
 
-const ImageCrossfade: FC<Props> = ({ renderImage, fluids }: Props) => {
+const ImageCrossfade: FC<Props> = ({ renderImage, images }: Props) => {
   const count = useIncrement()
-  const option = count % fluids.length
+  const option = count % images.length
   return (
     <Main>
-      {fluids.map((fluid, i) => (
+      {images.map((image, i) => (
         <Fader key={i} visible={i === option} first={i === 0}>
-          {renderImage(fluid)}
+          {renderImage(image)}
         </Fader>
       ))}
     </Main>

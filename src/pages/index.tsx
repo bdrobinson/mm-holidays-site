@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import styled, { keyframes } from "styled-components"
 
 import Layout from "../components/Layout"
@@ -166,16 +166,16 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
       hero={
         <HeroContainer>
           <ImageCrossfade
-            fluids={[
-              data.hero1.childImageSharp.fluid,
-              data.hero2.childImageSharp.fluid,
-              data.hero3.childImageSharp.fluid,
-              data.hero4.childImageSharp.fluid,
+            images={[
+              getImage(data.hero1),
+              getImage(data.hero2),
+              getImage(data.hero3),
+              getImage(data.hero4),
             ]}
-            renderImage={fluid => {
+            renderImage={image => {
               return (
-                <Img
-                  fluid={fluid}
+                <GatsbyImage
+                  image={image}
                   style={{
                     maxHeight: `${HERO_IMAGE_MAX_HEIGHT}px`,
                     minHeight: `${HERO_IMAGE_MIN_HEIGHT}px`,
@@ -277,7 +277,12 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
         >
           <Stack padding="1em">
             <div css="position: relative;">
-              <Img fixed={data.onlineLogo.childImageSharp.fixed} />
+              <StaticImage
+                src="../images/madness_theme/mm_online_logo.png"
+                width={500}
+                layout="fixed"
+                alt="The logo for M+M online"
+              />
             </div>
             <PageGutter>
               <div
@@ -498,35 +503,22 @@ export const pageQuery = graphql`
     }
     hero1: file(relativePath: { eq: "inflatables.jpg" }) {
       childImageSharp {
-        ...FluidHeroImage
+        gatsbyImageData(layout: FULL_WIDTH, quality: 90)
       }
     }
     hero2: file(relativePath: { eq: "sunset.jpg" }) {
       childImageSharp {
-        ...FluidHeroImage
+        gatsbyImageData(layout: FULL_WIDTH, quality: 90)
       }
     }
     hero3: file(relativePath: { eq: "tires.jpg" }) {
       childImageSharp {
-        ...FluidHeroImage
+        gatsbyImageData(layout: FULL_WIDTH, quality: 90)
       }
     }
     hero4: file(relativePath: { eq: "high_ropes.jpg" }) {
       childImageSharp {
-        ...FluidHeroImage
-      }
-    }
-    onlineHero: file(relativePath: { eq: "online_hero.jpg" }) {
-      childImageSharp {
-        fluid(
-          maxWidth: 1920
-          srcSetBreakpoints: [400, 600, 960, 1280, 1600, 1920]
-          quality: 90
-          duotone: { highlight: "#ff7bf4", shadow: "#002f8a" }
-          toFormat: PNG
-        ) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
-        }
+        gatsbyImageData(layout: FULL_WIDTH, quality: 90)
       }
     }
     onlineLogo: file(
