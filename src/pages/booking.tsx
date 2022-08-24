@@ -110,7 +110,7 @@ export const pageQuery = graphql`
     }
     hero: file(relativePath: { eq: "eating_pancakes.jpg" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }
     }
   }

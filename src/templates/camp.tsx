@@ -97,7 +97,11 @@ export const pageQuery = graphql`
         ages
         hero {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              quality: 90
+              placeholder: BLURRED
+            )
           }
         }
         heroAltText

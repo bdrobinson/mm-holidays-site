@@ -29,7 +29,7 @@ const FooterBookingPrompt: FC<Props> = () => {
     {
       bg: file(relativePath: { eq: "_DSC2148-186.jpg" }) {
         childImageSharp {
-          gatsbyImageData(layout: FULL_WIDTH)
+          gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
         }
       }
     }

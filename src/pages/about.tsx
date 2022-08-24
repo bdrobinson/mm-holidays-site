@@ -61,7 +61,7 @@ export const pageQuery = graphql`
     }
     hero: file(relativePath: { eq: "lasertag_walking.jpg" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }
     }
   }

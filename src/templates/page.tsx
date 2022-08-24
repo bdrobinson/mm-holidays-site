@@ -60,7 +60,11 @@ export const pageQuery = graphql`
         description
         hero {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              quality: 90
+              placeholder: BLURRED
+            )
           }
         }
         heroAltText
