@@ -46,6 +46,7 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-image",
+    "gatsby-plugin-netlify",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
