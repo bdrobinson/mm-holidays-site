@@ -44,7 +44,6 @@ const HeadTags: React.FC<Props> = ({ title, seoDescription, path }: Props) => {
           path !== null ? `${data.site.siteMetadata.baseUrl}${path}` : null
         return (
           <>
-            <html lang="en" />
             <title>{pageTitle}</title>
             <link
               href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700"
