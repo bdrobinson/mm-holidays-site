@@ -282,6 +282,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                 width={500}
                 layout="fixed"
                 alt="The logo for M+M online"
+                placeholder="tracedSVG"
               />
             </div>
             <PageGutter>
@@ -483,7 +484,11 @@ export const pageQuery = graphql`
             imageAltText
             image {
               childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH, quality: 90)
+                gatsbyImageData(
+                  layout: FULL_WIDTH
+                  quality: 90
+                  placeholder: BLURRED
+                )
               }
             }
           }
@@ -503,22 +508,22 @@ export const pageQuery = graphql`
     }
     hero1: file(relativePath: { eq: "inflatables.jpg" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH, quality: 90)
+        gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }
     }
     hero2: file(relativePath: { eq: "sunset.jpg" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH, quality: 90)
+        gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }
     }
     hero3: file(relativePath: { eq: "tires.jpg" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH, quality: 90)
+        gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }
     }
     hero4: file(relativePath: { eq: "high_ropes.jpg" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH, quality: 90)
+        gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }
     }
     onlineLogo: file(

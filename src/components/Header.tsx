@@ -184,11 +184,13 @@ const Header: FC<Props> = ({
                   <StaticImage
                     src="../images/logo_white.png"
                     alt="The M+M logo"
+                    placeholder="tracedSVG"
                   />
                 ) : (
                   <StaticImage
                     src="../images/logo_black.png"
                     alt="The M+M logo"
+                    placeholder="tracedSVG"
                   />
                 )}
               </div>

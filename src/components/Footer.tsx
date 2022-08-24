@@ -77,7 +77,11 @@ const Footer: FC<Props> = () => {
               opacity: 0.6;
             `}
           >
-            <StaticImage src="../images/logo_black.png" alt="The M+M logo" />
+            <StaticImage
+              src="../images/logo_black.png"
+              alt="The M+M logo"
+              placeholder="tracedSVG"
+            />
           </Link>
           <div
             css={`
