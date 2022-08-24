@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
+import { getImage } from "gatsby-plugin-image"
 
 import Layout from "../components/Layout"
 import CampDatesCTA from "../components/CampDatesCTA"
@@ -53,7 +54,7 @@ const Camp: FC<Props> = ({ data }: Props) => {
       theme="light"
       hero={
         <HeroImage
-          fluid={meta.hero.childImageSharp.fluid}
+          image={getImage(meta.hero)}
           title={meta.title}
           subtitle={`Age ${meta.ages}`}
           imageAltText={meta.heroAltText}
@@ -96,7 +97,7 @@ export const pageQuery = graphql`
         ages
         hero {
           childImageSharp {
-            ...FluidHeroImage
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         heroAltText

@@ -1,10 +1,10 @@
 import React, { FC } from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
 import HeadTags from "../components/HeadTags"
+import { getImage } from "gatsby-plugin-image"
 
 interface Props {
   data: any
@@ -25,20 +25,17 @@ const IndexPage: FC<Props> = ({ data }: Props) => (
     hero={
       <HeroImage
         imageAltText="Campers playing laser tag in the woods on site."
-        fluid={data.hero.childImageSharp.fluid}
+        image={getImage(data.hero)}
         title="About us"
       />
     }
     theme="light"
   >
     {data.allMarkdownRemark.edges.map((edge: any) => {
-      const fluid: any | null =
-        edge.node.frontmatter.image?.childImageSharp.fluid
       return (
         <section key={edge.node.id}>
           <h1>{edge.node.frontmatter.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: edge.node.html }} />
-          {fluid != null && <Img fluid={fluid} />}
         </section>
       )
     })}
@@ -57,11 +54,6 @@ export const pageQuery = graphql`
           frontmatter {
             title
             order
-            image {
-              childImageSharp {
-                ...FluidHeroImage
-              }
-            }
           }
           html
         }
@@ -69,7 +61,7 @@ export const pageQuery = graphql`
     }
     hero: file(relativePath: { eq: "lasertag_walking.jpg" }) {
       childImageSharp {
-        ...FluidHeroImage
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }

@@ -1,6 +1,6 @@
 import React, { ReactNode, FC } from "react"
 import styled from "styled-components"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql } from "gatsby"
 
 import {
@@ -46,14 +46,8 @@ const Subtitle = styled.div`
   }
 `
 
-// @ts-ignore
-const Image = styled(Img)`
-  max-height: ${HERO_IMAGE_MAX_HEIGHT}px;
-  min-height: ${HERO_IMAGE_MIN_HEIGHT}px;
-`
-
 interface Props {
-  fluid: any
+  image: any
   imageAltText: string
   title: string
   subtitle?: string | null
@@ -61,7 +55,7 @@ interface Props {
 }
 
 const HeroImage: FC<Props> = ({
-  fluid,
+  image,
   title,
   subtitle,
   children,
@@ -69,8 +63,12 @@ const HeroImage: FC<Props> = ({
 }: Props) => {
   return (
     <Main>
-      <Image
-        fluid={fluid}
+      <GatsbyImage
+        style={{
+          maxHeight: HERO_IMAGE_MAX_HEIGHT,
+          minHeight: HERO_IMAGE_MIN_HEIGHT,
+        }}
+        image={image}
         imgStyle={{ objectPosition: "center" }}
         alt={imageAltText}
         loading="eager"

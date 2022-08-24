@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
 import HeadTags from "../components/HeadTags"
+import { getImage } from "gatsby-plugin-image"
 
 interface Props {
   data: any
@@ -32,7 +33,7 @@ const Template: FC<Props> = ({ data }: Props) => {
         hasHero ? (
           <HeroImage
             imageAltText={frontmatter.heroAltText}
-            fluid={frontmatter.hero.childImageSharp.fluid}
+            image={getImage(frontmatter.hero)}
             title={title}
           />
         ) : null
@@ -59,7 +60,7 @@ export const pageQuery = graphql`
         description
         hero {
           childImageSharp {
-            ...FluidHeroImage
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         heroAltText

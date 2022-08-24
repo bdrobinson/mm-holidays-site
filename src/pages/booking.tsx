@@ -7,6 +7,7 @@ import HeroImage from "../components/HeroImage"
 import Button from "../components/Button"
 import { MOBILE_WIDTH } from "../constants"
 import HeadTags from "../components/HeadTags"
+import { getImage } from "gatsby-plugin-image"
 
 interface Props {
   data: any
@@ -31,7 +32,7 @@ const Booking: FC<Props> = ({ data }: Props) => {
       hero={
         <HeroImage
           imageAltText="Max campers at the last night party."
-          fluid={data.hero.childImageSharp.fluid}
+          image={getImage(data.hero)}
           title={booked ? "Thanks!" : "Book your place"}
         />
       }
@@ -109,7 +110,7 @@ export const pageQuery = graphql`
     }
     hero: file(relativePath: { eq: "eating_pancakes.jpg" }) {
       childImageSharp {
-        ...FluidHeroImage
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }
