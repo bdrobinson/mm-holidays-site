@@ -1,6 +1,5 @@
 import React, { FC } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
 import Link from "gatsby-link"
 
 import PageGutter from "./PageGutter"
@@ -10,6 +9,7 @@ import {
   MOBILE_WIDTH,
   ENABLE_BOOKING,
 } from "../constants"
+import { StaticImage } from "gatsby-plugin-image"
 
 const links: Array<{ name: string; path: string }> = [
   { name: "Home", path: "/" },
@@ -35,13 +35,6 @@ const Footer: FC<Props> = () => {
       query Footer {
         site {
           buildTime
-        }
-        logo: file(relativePath: { eq: "logo_black.png" }) {
-          childImageSharp {
-            fluid(maxWidth: 150, traceSVG: { color: "black" }) {
-              ...GatsbyImageSharpFluid_tracedSVG
-            }
-          }
         }
       }
     `,
@@ -84,7 +77,7 @@ const Footer: FC<Props> = () => {
               opacity: 0.6;
             `}
           >
-            <Img fluid={data.logo.childImageSharp.fluid} alt="The M+M logo" />
+            <StaticImage src="../images/logo_black.png" alt="The M+M logo" />
           </Link>
           <div
             css={`
