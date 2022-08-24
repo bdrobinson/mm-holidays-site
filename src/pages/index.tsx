@@ -24,6 +24,7 @@ import CampVideos from "../components/CampVideos"
 import instagram from "../images/instagram.svg"
 import facebook from "../images/facebook.svg"
 import HeadTags from "../components/HeadTags"
+import { getImage } from "gatsby-plugin-image"
 
 const HeroContainer = styled.div`
   position: relative;
@@ -244,7 +245,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
         return (
           <HomepageFeature
             key={edge.node.id}
-            imageFluid={frontmatter.image.childImageSharp.fluid}
+            image={getImage(frontmatter.image)}
             imageAltText={frontmatter.imageAltText}
             title={frontmatter.title}
             subtitle={frontmatter.subtitle}
@@ -477,7 +478,7 @@ export const pageQuery = graphql`
             imageAltText
             image {
               childImageSharp {
-                ...FluidHeroImage
+                gatsbyImageData(layout: FULL_WIDTH, quality: 90)
               }
             }
           }
