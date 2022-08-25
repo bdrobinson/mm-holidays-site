@@ -1,7 +1,6 @@
 import React, { ReactNode, FC } from "react"
 import styled from "styled-components"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { graphql } from "gatsby"
 
 import {
   HERO_IMAGE_MAX_HEIGHT,
@@ -85,15 +84,3 @@ const HeroImage: FC<Props> = ({
 }
 
 export default HeroImage
-
-export const FluidHeroImage = graphql`
-  fragment FluidHeroImage on ImageSharp {
-    fluid(
-      maxWidth: 1920
-      srcSetBreakpoints: [400, 600, 960, 1280, 1600, 1920]
-      quality: 90
-    ) {
-      ...GatsbyImageSharpFluid_withWebp
-    }
-  }
-`
