@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Image from "gatsby-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import BookButton from "./BookButton"
 import { SMALLSCREEN_WIDTH, MOBILE_WIDTH } from "../constants"
@@ -15,7 +15,8 @@ const ImageContainer = styled.div`
   overflow: hidden;
 `
 
-const Img = styled(Image)`
+// @ts-ignore
+const Img = styled(GatsbyImage)`
   height: ${IMAGE_HEIGHT}px;
   width: 100%;
   object-position: center;
@@ -28,7 +29,7 @@ const FooterBookingPrompt: FC<Props> = () => {
     {
       bg: file(relativePath: { eq: "_DSC2148-186.jpg" }) {
         childImageSharp {
-          ...FluidHeroImage
+          gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
         }
       }
     }
@@ -37,7 +38,11 @@ const FooterBookingPrompt: FC<Props> = () => {
   return (
     <div css="position: relative;">
       <ImageContainer>
-        <Img fluid={data.bg.childImageSharp.fluid} />
+        <Img
+          // @ts-ignore
+          image={getImage(data.bg)}
+          alt="Campers smiling and holding laser tag gear"
+        />
       </ImageContainer>
       <div
         css={`

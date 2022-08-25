@@ -13,4 +13,4 @@ For any general queries you can email <info@madnessandmayhem.org.uk>. You can co
 
 ## Get involved
 
-For information about joining the M+M team or supporting our work financially, have a look at how to [get involved](/get_involved).
+For information about joining the M+M team or supporting our work financially, have a look at how to [get involved](/get-involved).

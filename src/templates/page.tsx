@@ -2,27 +2,38 @@ import React, { FC } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
+import HeadTags from "../components/HeadTags"
+import { getImage } from "gatsby-plugin-image"
 
 interface Props {
   data: any
 }
 
-const Template: FC<Props> = ({ data }: Props) => {
+export const Head = ({ data }: Props) => {
   const frontmatter = data.markdownRemark.frontmatter
   const title = frontmatter.title
   const description = frontmatter.description
+  return (
+    <HeadTags
+      title={title}
+      seoDescription={description}
+      path={frontmatter.path}
+    ></HeadTags>
+  )
+}
+
+const Template: FC<Props> = ({ data }: Props) => {
+  const frontmatter = data.markdownRemark.frontmatter
+  const title = frontmatter.title
   const hasHero = frontmatter.hero != null
 
   return (
     <Layout
-      title={title}
-      seoDescription={description}
-      path={frontmatter.path}
       hero={
         hasHero ? (
           <HeroImage
             imageAltText={frontmatter.heroAltText}
-            fluid={frontmatter.hero.childImageSharp.fluid}
+            image={getImage(frontmatter.hero)}
             title={title}
           />
         ) : null
@@ -40,7 +51,7 @@ const Template: FC<Props> = ({ data }: Props) => {
 export default Template
 
 export const pageQuery = graphql`
-  query($path: String!) {
+  query ($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
@@ -49,7 +60,11 @@ export const pageQuery = graphql`
         description
         hero {
           childImageSharp {
-            ...FluidHeroImage
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              quality: 90
+              placeholder: BLURRED
+            )
           }
         }
         heroAltText

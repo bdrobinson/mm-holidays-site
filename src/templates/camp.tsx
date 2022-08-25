@@ -1,12 +1,14 @@
 import React, { FC } from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
+import { getImage } from "gatsby-plugin-image"
 
 import Layout from "../components/Layout"
 import CampDatesCTA from "../components/CampDatesCTA"
 import PageGutter from "../components/PageGutter"
 import HeroImage from "../components/HeroImage"
 import { SMALLSCREEN_WIDTH } from "../constants"
+import HeadTags from "../components/HeadTags"
 
 const HeroCampDates = styled.div`
   position: absolute;
@@ -34,17 +36,25 @@ interface Props {
   data: any
 }
 
+export const Head = ({ data }: Props) => {
+  const meta = data.markdownRemark.frontmatter
+  return (
+    <HeadTags
+      path={meta.path}
+      title={meta.title}
+      seoDescription={meta.description}
+    />
+  )
+}
+
 const Camp: FC<Props> = ({ data }: Props) => {
   const meta = data.markdownRemark.frontmatter
   return (
     <Layout
-      path={meta.path}
-      title={meta.title}
       theme="light"
-      seoDescription={meta.description}
       hero={
         <HeroImage
-          fluid={meta.hero.childImageSharp.fluid}
+          image={getImage(meta.hero)}
           title={meta.title}
           subtitle={`Age ${meta.ages}`}
           imageAltText={meta.heroAltText}
@@ -76,7 +86,7 @@ const Camp: FC<Props> = ({ data }: Props) => {
 export default Camp
 
 export const pageQuery = graphql`
-  query($path: String!) {
+  query ($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
@@ -87,7 +97,11 @@ export const pageQuery = graphql`
         ages
         hero {
           childImageSharp {
-            ...FluidHeroImage
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              quality: 90
+              placeholder: BLURRED
+            )
           }
         }
         heroAltText

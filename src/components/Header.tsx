@@ -1,7 +1,6 @@
 import React, { FC } from "react"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 import styled from "styled-components"
-import Img from "gatsby-image"
 
 import PageGutter from "./PageGutter"
 import {
@@ -11,6 +10,7 @@ import {
   ENABLE_BOOKING,
   SMALLSCREEN_WIDTH,
 } from "../constants"
+import { StaticImage } from "gatsby-plugin-image"
 
 const LINKS: Array<{
   link: string
@@ -22,7 +22,7 @@ const LINKS: Array<{
   { link: "/max", label: "Max", sublabel: "9-11" },
   { link: "/madness", label: "Madness", sublabel: "12-14" },
   { link: "/mayhem", label: "Mayhem", sublabel: "15-18" },
-  { link: "/get_involved", label: "Get involved" },
+  { link: "/get-involved", label: "Get involved" },
   { link: "/contact", label: "Contact" },
   ...(ENABLE_BOOKING
     ? [{ link: "/booking", label: "Book", accent: true }]
@@ -71,6 +71,7 @@ const MenuButton = styled.button.attrs({ children: "Menu" })`
   }
 `
 
+// @ts-ignore
 const NavLink = styled(Link)`
   display: block;
   margin-left: 0.8em;
@@ -119,6 +120,7 @@ const MobileNavLinksContainer = styled.div`
   padding: 1em 0;
 `
 
+// @ts-ignore
 const MobileNavLink = styled(Link)`
   display: block;
   flex-grow: 0;
@@ -178,33 +180,19 @@ const Header: FC<Props> = ({
                   }
                 `}
               >
-                <StaticQuery
-                  query={graphql`
-                    query {
-                      light: file(relativePath: { eq: "logo_white.png" }) {
-                        childImageSharp {
-                          fluid(maxWidth: 130, traceSVG: { color: "white" }) {
-                            ...GatsbyImageSharpFluid_tracedSVG
-                          }
-                        }
-                      }
-                      dark: file(relativePath: { eq: "logo_black.png" }) {
-                        childImageSharp {
-                          fluid(maxWidth: 130, traceSVG: { color: "black" }) {
-                            ...GatsbyImageSharpFluid_tracedSVG
-                          }
-                        }
-                      }
-                    }
-                  `}
-                  render={data => {
-                    const image =
-                      themeToUse === "light"
-                        ? data.light.childImageSharp.fluid
-                        : data.dark.childImageSharp.fluid
-                    return <Img fluid={image} alt="The M+M logo" />
-                  }}
-                />
+                {themeToUse === "light" ? (
+                  <StaticImage
+                    src="../images/logo_white.png"
+                    alt="The M+M logo"
+                    placeholder="tracedSVG"
+                  />
+                ) : (
+                  <StaticImage
+                    src="../images/logo_black.png"
+                    alt="The M+M logo"
+                    placeholder="tracedSVG"
+                  />
+                )}
               </div>
             </Link>
             <Nav shadow={displayShadows}>

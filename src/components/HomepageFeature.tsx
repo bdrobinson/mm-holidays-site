@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import PageGutter from "./PageGutter"
 
@@ -9,7 +9,8 @@ const IMAGE_MIN_HEIGHT = 400
 
 const Main = styled.section``
 
-const Image = styled(Img)`
+// @ts-ignore
+const Image = styled(GatsbyImage)`
   max-height: ${IMAGE_MAX_HEIGHT}px;
   min-height: ${IMAGE_MIN_HEIGHT}px;
 `
@@ -47,7 +48,7 @@ const Description = styled.div`
 `
 
 interface Props {
-  imageFluid: any
+  image: any
   imageAltText: string
   title: string
   subtitle: string
@@ -55,7 +56,7 @@ interface Props {
 }
 
 const HomepageFeature: FC<Props> = ({
-  imageFluid,
+  image,
   title,
   subtitle,
   descriptionHtml,
@@ -65,7 +66,7 @@ const HomepageFeature: FC<Props> = ({
     <Main>
       <ImageContainer>
         <Image
-          fluid={imageFluid}
+          image={image}
           alt={imageAltText}
           imgStyle={{
             objectPosition: "center",

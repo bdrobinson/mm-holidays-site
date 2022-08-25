@@ -6,9 +6,21 @@ import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
 import Button from "../components/Button"
 import { MOBILE_WIDTH } from "../constants"
+import HeadTags from "../components/HeadTags"
+import { getImage } from "gatsby-plugin-image"
 
 interface Props {
   data: any
+}
+
+export const Head = ({ data }: Props) => {
+  return (
+    <HeadTags
+      path={data.markdownRemark.frontmatter.path}
+      title="Book"
+      seoDescription={data.markdownRemark.frontmatter.description}
+    />
+  )
 }
 
 const Booking: FC<Props> = ({ data }: Props) => {
@@ -17,17 +29,14 @@ const Booking: FC<Props> = ({ data }: Props) => {
 
   return (
     <Layout
-      path={data.markdownRemark.frontmatter.path}
-      title="Book"
       hero={
         <HeroImage
           imageAltText="Max campers at the last night party."
-          fluid={data.hero.childImageSharp.fluid}
+          image={getImage(data.hero)}
           title={booked ? "Thanks!" : "Book your place"}
         />
       }
       theme="light"
-      seoDescription={data.markdownRemark.frontmatter.description}
     >
       {booked && (
         <>
@@ -79,9 +88,6 @@ const Booking: FC<Props> = ({ data }: Props) => {
                     parentAddressCity: previousState.parentAddressCity,
                     parentAddressCounty: previousState.parentAddressCounty,
                     parentPostcode: previousState.parentPostcode,
-                    parentMobilePhone: previousState.parentMobilePhone,
-                    parentDaytimePhone: previousState.parentDaytimePhone,
-                    parentEveningPhone: previousState.parentEveningPhone,
                     parentEmail: previousState.parentEmail,
                   }
                 : null
@@ -104,7 +110,7 @@ export const pageQuery = graphql`
     }
     hero: file(relativePath: { eq: "eating_pancakes.jpg" }) {
       childImageSharp {
-        ...FluidHeroImage
+        gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }
     }
   }

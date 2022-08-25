@@ -1,4 +1,4 @@
-const proxy = require("http-proxy-middleware")
+const { createProxyMiddleware } = require("http-proxy-middleware")
 const dotenv = require("dotenv")
 dotenv.config()
 
@@ -33,7 +33,7 @@ module.exports = {
   developMiddleware: app => {
     app.use(
       "/.netlify/functions/",
-      proxy({
+      createProxyMiddleware({
         target: "http://localhost:9000",
         pathRewrite: {
           "/.netlify/functions/": "",
@@ -43,9 +43,10 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-typescript",
-    "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-image",
+    "gatsby-plugin-netlify",
     {
       resolve: `gatsby-source-filesystem`,
       options: {

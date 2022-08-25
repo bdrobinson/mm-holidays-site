@@ -5,14 +5,17 @@ description: "All the T&Cs for booking onto M+M Holidays."
 ---
 
 ## Introduction
-The combination of travel services offered to you is a package within the meaning of the *Package Travel and Linked Travel Arrangements Regulations 2018*. Urban Saints will be fully responsible for the proper performance of the package as a whole. Additionally, as required by law, Urban Saints has protection in place to refund your payments in the event that it becomes insolvent. More information on key rights under the *Package Travel and Linked Travel Arrangements Regulations 2018* may be found here: <https://www.legislation.gov.uk/ukdsi/2018/9780111168479/contents>.
+
+The combination of travel services offered to you is a package within the meaning of the _Package Travel and Linked Travel Arrangements Regulations 2018_. Urban Saints will be fully responsible for the proper performance of the package as a whole. Additionally, as required by law, Urban Saints has protection in place to refund your payments in the event that it becomes insolvent. More information on key rights under the _Package Travel and Linked Travel Arrangements Regulations 2018_ may be found here: <https://www.legislation.gov.uk/ukdsi/2018/9780111168479/contents>.
 
 By booking with Urban Saints you need to be aware that as soon as the request for a place has been acknowledged in writing, a contract exists between Urban Saints, Kestin House, 45 Crescent Road, Luton, LU2 0AH and the parent or guardian of the young person wishing to attend the holiday, should he/she be under 18 on the day the application is accepted.
 
 ## 1. Language and Accessibility
+
 All activities will be carried out in English, apart from Welsh speaking camps, where English and Welsh will be used as appropriate. We endeavour to make our Camps as accessible as possible. However, given the nature of certain sites, access for people with additional needs may be limited. Please contact the Camp’s Main Leader for more information.
 
 ## 2. How do I book a place at MAX, Madness or Mayhem?
+
 You can [book online](/booking). The completed application must be accompanied by a non-returnable deposit of £40, payable by bank transfer or cheque. Cheques should be payable to ‘M&M Holidays fees account’. Applications will be dealt with on a date-received priority basis, and you will receive an email of confirmation regarding your booking once it has been processed.
 
 The balance of the holiday fees is due by 31st May 2022. You will not receive a reminder of the balance due. If payment is not received by this date, we reserve the right to advise you of cancellation of your booking and the loss of your deposit. If you book within eight weeks of the start of a camp, full fees are due with the application. In cases of financial hardship, Urban Saints may be able to help you access charitable funding to subsidise the cost of the holiday. Wherever possible please make us aware of any need at the time of booking. Holiday places are limited so please book early.
@@ -40,6 +43,7 @@ If you decide to cancel your application you must inform the Booking Secretary i
 **0 – 6 days**: 100% of total published price
 
 ## 7. What about the impact of Covid?
+
 Please see our [Frequently Asked Questions](https://urbansaints.org/covid-camps-parents) for details on how cancellations, refunds and other operational matters relating to the pandemic will be handled.
 
 ## 8. What about insurance?
@@ -53,7 +57,6 @@ It is expected that all participants at an Urban Saints Holiday will behave reas
 ## 10. Smoking, alcohol and illegal substances
 
 Smoking and alcohol are NOT permitted on Urban Saints Holidays. In the unlikely event of anyone being caught in possession of controlled drugs, they will automatically be referred to the police.
-
 
 ## 11. Other stuff
 
