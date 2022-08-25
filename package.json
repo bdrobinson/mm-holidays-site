@@ -20,7 +20,7 @@
     "gatsby-source-filesystem": "4.20.0",
     "gatsby-transformer-remark": "^5.20.0",
     "gatsby-transformer-sharp": "^4.20.0",
-    "googleapis": "^36.0.0",
+    "googleapis": "^39.1.0",
     "http-proxy-middleware": "^2.0.6",
     "intersection-observer": "^0.12.2",
     "normalize.css": "^8.0.1",
