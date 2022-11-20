@@ -15,4 +15,4 @@ children and young people with the good news of Jesus Christ.
 You can read the basis of faith of Urban Saints [here](https://www.urbansaints.org/basis-of-faith).
 
 The team members who teach at M+M also sign up to the [UCCF doctrinal
-basis](http://www.uccf.org.uk/about-us/doctrinal-basis.htm).
+basis](https://www.uccf.org.uk/about/doctrinal-basis).
