@@ -501,14 +501,14 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 options={[
                   {
                     value: "1",
-                    label: "Week 1 (fully booked)",
-                    subtitle: "Sat 23rd – Sat 30th July 2022",
+                    label: "Week 1",
+                    subtitle: "Sat 22nd – Sat 29th July 2023",
                     disabled: true,
                   },
                   {
                     value: "2",
                     label: "Week 2",
-                    subtitle: "Sat 30th July – Sat 6th August 2022",
+                    subtitle: "Sat 29th July – Sat 5th August 2023",
                     disabled: false,
                   },
                 ]}
