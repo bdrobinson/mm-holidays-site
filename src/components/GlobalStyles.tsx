@@ -1,11 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 
-import {
-  MOBILE_WIDTH,
-  BODY_COLOUR,
-  ACCENT_COLOUR,
-  PRIMARY_COLOUR_DARK,
-} from "../constants"
+import { MOBILE_WIDTH, BODY_COLOUR, ACCENT_COLOUR } from "../constants"
 
 // @ts-ignore
 const GlobalStyles: React.FC<{
@@ -52,7 +47,6 @@ const GlobalStyles: React.FC<{
     }
 
     blockquote {
-        border-left: 2px solid ${PRIMARY_COLOUR_DARK};
         margin: 0;
         padding: 0.1em 2em;
         background-color: hsla(0,0%,97%);
