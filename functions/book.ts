@@ -77,6 +77,7 @@ export interface Params {
   anythingElse: string
   // section 9
   childConfirmation: boolean
+  mobileConfirmation: boolean
   // section 10
   parentConfirmation: boolean
 }
@@ -128,6 +129,14 @@ export const handleAsync = async (
     callback(null, {
       statusCode: 400,
       body: "The child confirmation box must be ticked",
+    })
+    return
+  }
+
+  if (params.mobileConfirmation === false) {
+    callback(null, {
+      statusCode: 400,
+      body: "The mobile phone declaration box must be ticked",
     })
     return
   }

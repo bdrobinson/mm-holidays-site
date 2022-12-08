@@ -282,6 +282,11 @@ export const createColumns = (params: Params): Array<Column> => {
       value: stringifyBoolean(params.childConfirmation),
     },
     {
+      id: "mobileConfirmation",
+      name: "Mobile confirmation",
+      value: stringifyBoolean(params.mobileConfirmation),
+    },
+    {
       id: "parentConfirmation",
       name: "Parent confirmation",
       value: stringifyBoolean(params.parentConfirmation),

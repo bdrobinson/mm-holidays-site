@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { parse, isValid, differenceInYears } from "date-fns"
 import * as Sentry from "@sentry/browser"
 import fetch from "unfetch"
+import Link from "gatsby-link"
 
 import TextField from "./TextField"
 import { Params } from "../../functions/book"
@@ -75,6 +76,7 @@ export type FormState = {
   anythingElse: string
   // section 9
   childConfirmation: boolean
+  mobileConfirmation: boolean
   // section 10
   parentConfirmation: boolean
 }
@@ -101,6 +103,7 @@ const MUST_BE_TRUE: Array<keyof FormState> = [
   "acceptRecordKeeping",
   "childConfirmation",
   "parentConfirmation",
+  "mobileConfirmation",
 ]
 
 const getInitialState = (): FormState => ({
@@ -165,6 +168,8 @@ const getInitialState = (): FormState => ({
   // section 9
   childConfirmation: false,
   // section 10
+  mobileConfirmation: false,
+  // section 11
   parentConfirmation: false,
 })
 
@@ -329,6 +334,7 @@ const createRequestParams = (values: FormState): Params => {
     additionalNeeds: values.additionalNeeds,
     anythingElse: values.anythingElse,
     childConfirmation: values.childConfirmation,
+    mobileConfirmation: values.mobileConfirmation,
     parentConfirmation: values.parentConfirmation,
   }
 }
@@ -865,6 +871,57 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               />
             </section>
             <section>
+              <h2>Mobile phone declaration</h2>
+              <p>
+                One of the great benefits of camp is being on holiday and taking
+                a break from our normal lives. Since none of us needs to be
+                contacted 24/7, we have the following mobile phone policy:
+              </p>
+              <p>
+                <em>
+                  All camper mobile phones will be looked after overnight by a
+                  designated Holiday Team Leader and returned the following day.
+                </em>
+              </p>
+              <p>
+                <em>
+                  On Max (9-11s), mobile phones will only be returned for a
+                  limited time in the middle of the day.
+                </em>
+              </p>
+              <p>
+                <em>
+                  On Madness (11-14s) and Mayhem (15-18s) our expectation is
+                  that mobile phones will only be used at appropriate times and
+                  in communal areas.
+                </em>
+              </p>
+              <p>
+                <em>
+                  Inappropriate use may mean that we will have to remove your
+                  phone for a short while.
+                </em>
+              </p>
+              <p>
+                <em>
+                  If contact with home is required, we insist that the young
+                  person or parent/guardian communicate through the overall week
+                  leaders of the camp (Rupert and El Webster/Will and Anna
+                  Eley).
+                </em>
+              </p>
+              <p>
+                If you have any concerns about this, please{" "}
+                <Link to="/contact">contact us</Link> and we would be happy to
+                discuss it with you further.
+              </p>
+              <FieldCheckbox
+                fieldName="mobileConfirmation"
+                checked={values.mobileConfirmation}
+                label="I agree to the mobile phone policy"
+              />
+            </section>
+            <section>
               <h2>
                 Parent/guardian declaration (or by young person if over 18)
               </h2>
@@ -874,7 +931,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 submitting this, I apply for my child/ward to become a temporary
                 member of Urban Saints and acknowledge that this will happen on
                 acceptance of this application. I agree to pay any outstanding
-                balance by 31st May 2022.
+                balance by 31st May 2023.
               </p>
               <FieldCheckbox
                 fieldName="parentConfirmation"
