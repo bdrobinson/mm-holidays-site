@@ -267,6 +267,11 @@ export const createColumns = (params: Params): Array<Column> => {
       value: params.englishNotFirstLanguage,
     },
     {
+      id: "additionalNeeds",
+      name: "Additional needs",
+      value: params.additionalNeeds,
+    },
+    {
       id: "anythingElse",
       name: "Anything else",
       value: params.anythingElse,

@@ -73,6 +73,7 @@ export interface Params {
   medicalIssues: string
   behaviouralNeeds: string
   englishNotFirstLanguage: string
+  additionalNeeds: string
   anythingElse: string
   // section 9
   childConfirmation: boolean

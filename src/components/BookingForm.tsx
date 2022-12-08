@@ -71,6 +71,7 @@ export type FormState = {
   medicalIssues: string
   behaviouralNeeds: string
   englishNotFirstLanguage: string
+  additionalNeeds: string
   anythingElse: string
   // section 9
   childConfirmation: boolean
@@ -159,6 +160,7 @@ const getInitialState = (): FormState => ({
   medicalIssues: "",
   behaviouralNeeds: "",
   englishNotFirstLanguage: "",
+  additionalNeeds: "",
   anythingElse: "",
   // section 9
   childConfirmation: false,
@@ -324,6 +326,7 @@ const createRequestParams = (values: FormState): Params => {
     medicalIssues: values.medicalIssues,
     behaviouralNeeds: values.behaviouralNeeds,
     englishNotFirstLanguage: values.englishNotFirstLanguage,
+    additionalNeeds: values.additionalNeeds,
     anythingElse: values.anythingElse,
     childConfirmation: values.childConfirmation,
     parentConfirmation: values.parentConfirmation,
@@ -777,16 +780,13 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             <section>
               <h2>Other information</h2>
               <p>
-                Please let us have any information now which would be helpful to
-                the M+M Leaders in planning the holiday. A medical form will be
-                sent shortly before the holiday commences and it is essential
-                that it is completed and returned by a parent/guardian
-                immediately.
+                Please let us have any information which would be helpful to the
+                M+M Leaders in planning the holiday.
               </p>
               <p>
-                However, in the meantime please let us have any information
-                which would be helpful to the M+M Leaders in planning the
-                holiday.
+                A medical form will be sent separately before the holiday
+                commences and it is essential that it is completed and returned
+                by a parent/guardian immediately.
               </p>
               <label>
                 <FieldTitle>Dietary needs</FieldTitle>
@@ -825,6 +825,18 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 <TextArea
                   name="englishNotFirstLanguage"
                   value={values.englishNotFirstLanguage}
+                  onChange={handleChange}
+                />
+              </label>
+            </section>
+            <section>
+              <label>
+                <FieldTitle>
+                  Additional needs (eg, extra 1:1 time at school)
+                </FieldTitle>
+                <TextArea
+                  name="additionalNeeds"
+                  value={values.additionalNeeds}
                   onChange={handleChange}
                 />
               </label>
