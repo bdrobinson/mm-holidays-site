@@ -1,4 +1,4 @@
-import React, { useState, FC, ReactNode } from "react"
+import React, { useState, FC, ReactNode, useMemo } from "react"
 import { Formik, FormikErrors, Field } from "formik"
 import styled from "styled-components"
 import { parse, isValid, differenceInYears } from "date-fns"
@@ -170,7 +170,35 @@ const dayRegex = /^\d\d?$/
 const monthRegex = /^\d\d?$/
 const yearRegex = /^\d\d\d\d$/
 
+const LOCAL_STORAGE_KEY = "bookingform_v1"
+
+const dumpToLocalStorage = (state: FormState) => {
+  if (localStorage == null) {
+    return
+  }
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state))
+}
+
+const readFromLocalStorage = (): FormState | null => {
+  if (localStorage == null) {
+    return null
+  }
+  const stringified = localStorage.getItem(LOCAL_STORAGE_KEY)
+  if (stringified == null) {
+    return null
+  }
+  return JSON.parse(stringified)
+}
+
+const clearLocalStorage = () => {
+  if (localStorage == null) {
+    return
+  }
+  localStorage.removeItem(LOCAL_STORAGE_KEY)
+}
+
 const validateForm = (formState: FormState): FormikErrors<FormState> => {
+  dumpToLocalStorage(formState)
   const errors: FormikErrors<FormState> = {}
   const age = calculateAge(
     formState.childDobYear,
@@ -373,9 +401,17 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
   }
   const [networkSubmitState, setNetworkSubmitState] =
     useState<SubmitState>(initialSubmitState)
+
+  const restoredState = useMemo(() => {
+    return readFromLocalStorage()
+  }, [])
   return (
     <Formik
-      initialValues={{ ...getInitialState(), ...(initialState ?? {}) }}
+      initialValues={{
+        ...getInitialState(),
+        ...(initialState ?? {}),
+        ...(restoredState ?? {}),
+      }}
       validate={validateForm}
       onSubmit={async (values, bag) => {
         Sentry.addBreadcrumb({
@@ -392,6 +428,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             throw new Error(await response.text())
           }
           setNetworkSubmitState({ type: "success" })
+          clearLocalStorage()
           onComplete(values)
         } catch (err) {
           setNetworkSubmitState({
