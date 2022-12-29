@@ -838,7 +838,8 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             <section>
               <label>
                 <FieldTitle>
-                  Additional needs (eg, extra 1:1 time at school)
+                  Additional needs (eg, has EHCP/IEP or additional 1:1 support
+                  at school)
                 </FieldTitle>
                 <TextArea
                   name="additionalNeeds"
