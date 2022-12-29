@@ -9,7 +9,9 @@ theme: "light"
 
 ## Email
 
-For any general queries you can email <info@madnessandmayhem.org.uk>. You can contact the Madness and Mayhem Trust at <mmtrust@madnessandmayhem.org.uk>.
+- General queries: <info@madnessandmayhem.org.uk>
+- Bookings: <bookings@madnessandmayhem.org.uk>
+- Madness and Mayhem Trust: <mmtrust@madnessandmayhem.org.uk>
 
 ## Get involved
 

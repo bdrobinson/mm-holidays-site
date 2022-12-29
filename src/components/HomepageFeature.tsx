@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 import PageGutter from "./PageGutter"
+import RemarkText from "./RemarkText"
 
 const IMAGE_MAX_HEIGHT = 600
 const IMAGE_MIN_HEIGHT = 400
@@ -81,7 +82,7 @@ const HomepageFeature: FC<Props> = ({
       </ImageContainer>
       <PageGutter>
         <Description>
-          <div dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
+          <RemarkText innerHTML={descriptionHtml} />
         </Description>
       </PageGutter>
     </Main>

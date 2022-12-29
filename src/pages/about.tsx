@@ -5,6 +5,7 @@ import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
 import HeadTags from "../components/HeadTags"
 import { getImage } from "gatsby-plugin-image"
+import RemarkText from "../components/RemarkText"
 
 interface Props {
   data: any
@@ -35,7 +36,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => (
       return (
         <section key={edge.node.id}>
           <h1>{edge.node.frontmatter.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: edge.node.html }} />
+          <RemarkText innerHTML={edge.node.html} />
         </section>
       )
     })}

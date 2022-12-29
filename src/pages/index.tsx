@@ -25,6 +25,7 @@ import instagram from "../images/instagram.svg"
 import facebook from "../images/facebook.svg"
 import HeadTags from "../components/HeadTags"
 import { getImage } from "gatsby-plugin-image"
+import RemarkText from "../components/RemarkText"
 
 const HeroContainer = styled.div`
   position: relative;
@@ -228,7 +229,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
       </BookingNoticeSection>
       <section>
         <PageGutter>
-          <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />
+          <RemarkText innerHTML={data.intro.html} />
           <PromoVideoContainer>
             <PromoVideo
               width="560"

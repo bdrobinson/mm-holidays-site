@@ -8,6 +8,7 @@ import Button from "../components/Button"
 import { MOBILE_WIDTH } from "../constants"
 import HeadTags from "../components/HeadTags"
 import { getImage } from "gatsby-plugin-image"
+import RemarkText from "../components/RemarkText"
 
 interface Props {
   data: any
@@ -69,7 +70,7 @@ const Booking: FC<Props> = ({ data }: Props) => {
             }
           `}
         >
-          <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+          <RemarkText innerHTML={data.markdownRemark.html} />
           <BookingForm
             onComplete={formState => {
               setPreviousState(formState)

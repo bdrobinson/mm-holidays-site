@@ -9,6 +9,7 @@ import PageGutter from "../components/PageGutter"
 import HeroImage from "../components/HeroImage"
 import { SMALLSCREEN_WIDTH } from "../constants"
 import HeadTags from "../components/HeadTags"
+import RemarkText from "../components/RemarkText"
 
 const HeroCampDates = styled.div`
   position: absolute;
@@ -78,7 +79,7 @@ const Camp: FC<Props> = ({ data }: Props) => {
           price={meta.price}
         />
       </BodyCampDates>
-      <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+      <RemarkText innerHTML={data.markdownRemark.html} />
     </Layout>
   )
 }
