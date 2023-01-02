@@ -7,14 +7,12 @@ heroAltText: Campers canoeing down the river.
 theme: "light"
 ---
 
-# What we offer
-Bursaries galore
+We want all young people to be able to join us on camp, regardless of their financial circumstances. We have a bursary scheme available to support those who would love to come to camp but would struggle to pay.
 
-# Who qualifies
-Everyone!
+# What's available
+
+The bursery varies in size depending on individual circumstances, but can be as much as 2/3 the price of camp (with more available if needed). The bursery is available to any child whose parent or guardian will find it hard to meet the full cost of the holiday (eg receiving benefits, or struggling financially in the current climate).
 
 # How to apply
-Tick a box somewhere
 
-# How to find out more
-Email [someone](mailto:someone@madnessandmayhem.org.uk)
+To apply, please email [bookings@madnessandmayhem.org.uk](mailto:bookings@madnessandmayhem.org.uk).
