@@ -172,7 +172,18 @@ const yearRegex = /^\d\d\d\d$/
 
 const LOCAL_STORAGE_KEY = "bookingform_v1"
 
+const getLocalStorage = (): Storage | null => {
+  if (typeof window === "undefined") {
+    return null
+  }
+  if (window.localStorage == null) {
+    return null
+  }
+  return window.localStorage
+}
+
 const dumpToLocalStorage = (state: FormState) => {
+  const localStorage = getLocalStorage()
   if (localStorage == null) {
     return
   }
@@ -180,6 +191,7 @@ const dumpToLocalStorage = (state: FormState) => {
 }
 
 const readFromLocalStorage = (): FormState | null => {
+  const localStorage = getLocalStorage()
   if (localStorage == null) {
     return null
   }
@@ -191,6 +203,7 @@ const readFromLocalStorage = (): FormState | null => {
 }
 
 const clearLocalStorage = () => {
+  const localStorage = getLocalStorage()
   if (localStorage == null) {
     return
   }
