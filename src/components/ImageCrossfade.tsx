@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 const Main = styled.div`
   position: relative;
+  overflow: hidden;
 `
 
 const Fader = styled.div<{ first: boolean; visible: boolean }>`
