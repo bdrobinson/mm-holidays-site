@@ -111,7 +111,7 @@ const MUST_BE_TRUE: Array<keyof FormState> = [
 
 const getInitialState = (): FormState => ({
   // section 1
-  campChoice: "2",
+  campChoice: "1",
   // section 2
   childFirstName: "",
   childLastName: "",
@@ -510,7 +510,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                     value: "1",
                     label: "Week 1",
                     subtitle: "Sat 22nd – Sat 29th July 2023",
-                    disabled: true,
+                    disabled: false,
                   },
                   {
                     value: "2",
