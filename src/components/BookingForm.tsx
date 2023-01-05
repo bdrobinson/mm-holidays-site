@@ -709,6 +709,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <h2>How did you hear about M+M?</h2>
+              <br />
               <FieldCheckbox
                 fieldName="heardUrbanSaintsMailing"
                 checked={values.heardUrbanSaintsMailing}
