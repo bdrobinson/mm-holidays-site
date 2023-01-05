@@ -507,12 +507,12 @@ export const pageQuery = graphql`
     ) {
       html
     }
-    hero1: file(relativePath: { eq: "DSC06420.jpeg" }) {
+    hero1: file(relativePath: { eq: "_DSC1528.jpeg" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }
     }
-    hero2: file(relativePath: { eq: "_DSC1528.jpeg" }) {
+    hero2: file(relativePath: { eq: "DSC06420.jpeg" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }
