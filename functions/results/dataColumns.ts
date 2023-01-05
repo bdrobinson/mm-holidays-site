@@ -167,11 +167,6 @@ export const createColumns = (params: Params): Array<Column> => {
       value: params.parentEmail,
     },
     {
-      id: "siblingNames",
-      name: "Sibling names",
-      value: params.siblingNames,
-    },
-    {
       id: "contactByEmail",
       name: "Contact email?",
       value: stringifyBoolean(params.contactByEmail),
@@ -290,6 +285,16 @@ export const createColumns = (params: Params): Array<Column> => {
       id: "parentConfirmation",
       name: "Parent confirmation",
       value: stringifyBoolean(params.parentConfirmation),
+    },
+    {
+      id: "siblingNames",
+      name: "Sibling discount names",
+      value: params.siblingDiscountNames,
+    },
+    {
+      id: "wantBursary",
+      name: "Apply for bursary?",
+      value: stringifyBoolean(params.wantBursary),
     },
     {
       id: "formSubmissionDate",

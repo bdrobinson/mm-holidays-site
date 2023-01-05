@@ -317,7 +317,6 @@ const createRequestParams = (values: FormState): Params => {
         : values.parentPostcode,
     parentPhone: values.parentPhone,
     parentEmail: values.parentEmail,
-    siblingNames: values.siblingNames,
     contactByEmail: values.contactByEmail,
     contactByPhone: values.contactByPhone,
     contactByPost: values.contactByPost,
@@ -342,6 +341,8 @@ const createRequestParams = (values: FormState): Params => {
     childConfirmation: values.childConfirmation,
     mobileConfirmation: values.mobileConfirmation,
     parentConfirmation: values.parentConfirmation,
+    siblingDiscountNames: values.wantSiblingDiscount ? values.siblingNames : "",
+    wantBursary: values.wantBursary,
   }
 }
 

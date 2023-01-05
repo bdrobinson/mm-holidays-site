@@ -48,7 +48,6 @@ export interface Params {
   parentPostcode: string
   parentPhone: string
   parentEmail: string
-  siblingNames: string
   // section 4
   contactByEmail: boolean
   contactByPhone: boolean
@@ -80,6 +79,9 @@ export interface Params {
   mobileConfirmation: boolean
   // section 10
   parentConfirmation: boolean
+
+  siblingDiscountNames: string
+  wantBursary: boolean
 }
 
 export const handler = (
