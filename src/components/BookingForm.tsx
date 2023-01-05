@@ -79,6 +79,9 @@ export type FormState = {
   mobileConfirmation: boolean
   // section 10
   parentConfirmation: boolean
+
+  // discounts
+  wantSiblingDiscount: boolean
 }
 
 const NON_EMPTY_STRINGS: Array<keyof FormState> = [
@@ -171,6 +174,8 @@ const getInitialState = (): FormState => ({
   mobileConfirmation: false,
   // section 11
   parentConfirmation: false,
+
+  wantSiblingDiscount: false,
 })
 
 const dayRegex = /^\d\d?$/
@@ -620,11 +625,6 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 )}
                 <TextField label="Phone" name="parentPhone" type="tel" />
                 <TextField label="Email" name="parentEmail" type="email" />
-                <TextField
-                  label="Sibling names"
-                  subtitle="If applying for sibling discount"
-                  name="siblingNames"
-                />
               </section>
             )}
             <section>
@@ -782,6 +782,21 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 <br />
                 <strong>Ref:</strong> Your child&apos;s name
               </Copy>
+            </section>
+            <section>
+              <h2>Sibling discount</h2>
+              <p>
+                If you would like to apply for the sibling discount, please tick
+                the box and write the names of the camper&apos;s siblings below.
+              </p>
+              <FieldCheckbox
+                fieldName="wantSiblingDiscount"
+                checked={values.wantSiblingDiscount}
+                label="Apply for sibling discount"
+              />
+              {values.wantSiblingDiscount && (
+                <TextField label="Sibling names" name="siblingNames" />
+              )}
             </section>
             <section>
               <h2>Other information</h2>
