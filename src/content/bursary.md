@@ -11,8 +11,8 @@ We want all young people to be able to join us on camp, regardless of their fina
 
 # What's available
 
-The bursery varies in size depending on individual circumstances, but can be as much as 2/3 the price of camp (with more available if needed). The bursery is available to any child whose parent or guardian will find it hard to meet the full cost of the holiday (eg receiving benefits, or struggling financially in the current climate).
+The bursary varies in size depending on individual circumstances, but can be as much as 2/3 the price of camp (with more available if needed). The bursary is available to any child whose parent or guardian will find it hard to meet the full cost of the holiday (eg receiving benefits, or struggling financially in the current climate).
 
 # How to apply
 
-To apply, please email [bookings@madnessandmayhem.org.uk](mailto:bookings@madnessandmayhem.org.uk).
+You can apply for the bursary by ticking the relevant box on [the booking form](/booking), and from there we will get in touch with you. To ask any questions before applying, please email [bookings@madnessandmayhem.org.uk](mailto:bookings@madnessandmayhem.org.uk).
