@@ -32,7 +32,7 @@ const Booking: FC<Props> = ({ data }: Props) => {
     <Layout
       hero={
         <HeroImage
-          imageAltText="Max campers at the last night party."
+          imageAltText="A camper on the bungee run at the M+M party."
           image={getImage(data.hero)}
           title={booked ? "Thanks!" : "Book your place"}
         />
@@ -109,7 +109,7 @@ export const pageQuery = graphql`
       }
       html
     }
-    hero: file(relativePath: { eq: "eating_pancakes.jpg" }) {
+    hero: file(relativePath: { eq: "bungee_run_2022.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }
