@@ -6,7 +6,7 @@ description: "All the T&Cs for booking onto M+M Holidays."
 
 ## Introduction
 
-The combination of travel services offered to you is a package within the meaning of the _Package Travel and Linked Travel Arrangements Regulations 2018_. Urban Saints will be fully responsible for the proper performance of the package as a whole. Additionally, as required by law, Urban Saints has protection in place to refund your payments in the event that it becomes insolvent. More information on key rights under the _Package Travel and Linked Travel Arrangements Regulations 2018_ may be found here: <https://www.legislation.gov.uk/ukdsi/2018/9780111168479/contents>.
+The combination of travel services offered to you is a package within the meaning of the _Package Travel and Linked Travel Arrangements Regulations 2018_. Urban Saints will be fully responsible for the proper performance of the package as a whole. Additionally, as required by law, Urban Saints has protection in place to refund your payments in the event that it becomes insolvent. More information on key rights under the _Package Travel and Linked Travel Arrangements Regulations 2018_ may be found [here](https://www.legislation.gov.uk/ukdsi/2018/9780111168479/contents).
 
 By booking with Urban Saints you need to be aware that as soon as the request for a place has been acknowledged in writing, a contract exists between Urban Saints, Kestin House, 45 Crescent Road, Luton, LU2 0AH and the parent or guardian of the young person wishing to attend the holiday, should he/she be under 18 on the day the application is accepted.
 
