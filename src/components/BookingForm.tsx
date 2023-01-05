@@ -4,7 +4,6 @@ import styled from "styled-components"
 import { parse, isValid, differenceInYears } from "date-fns"
 import * as Sentry from "@sentry/browser"
 import fetch from "unfetch"
-import Link from "gatsby-link"
 
 import TextField from "./TextField"
 import { Params } from "../../functions/book"
@@ -82,6 +81,7 @@ export type FormState = {
 
   // discounts
   wantSiblingDiscount: boolean
+  wantBursary: boolean
 }
 
 const NON_EMPTY_STRINGS: Array<keyof FormState> = [
@@ -176,6 +176,7 @@ const getInitialState = (): FormState => ({
   parentConfirmation: false,
 
   wantSiblingDiscount: false,
+  wantBursary: false,
 })
 
 const dayRegex = /^\d\d?$/
@@ -799,6 +800,22 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               )}
             </section>
             <section>
+              <h2>Bursary</h2>
+              <p>
+                If you would like to apply for a bursary, please tick the below
+                box and we will get in touch with you. See{" "}
+                <a href="/bursary" target="_blank" rel="noopener noreferrer">
+                  the bursary page
+                </a>{" "}
+                for more information.
+              </p>
+              <FieldCheckbox
+                fieldName="wantBursary"
+                checked={values.wantBursary}
+                label="Apply for a bursary"
+              />
+            </section>
+            <section>
               <h2>Other information</h2>
               <p>
                 Please let us have any information which would be helpful to the
@@ -928,8 +945,10 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               </p>
               <p>
                 If you have any concerns about this, please{" "}
-                <Link to="/contact">contact us</Link> and we would be happy to
-                discuss it with you further.
+                <a href="/contact" target="_blank" rel="noopener noreferrer">
+                  contact us
+                </a>{" "}
+                and we would be happy to discuss it with you further.
               </p>
               <FieldCheckbox
                 fieldName="mobileConfirmation"
