@@ -749,14 +749,6 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <h2>Payment information</h2>
-              <p>
-                If you would find it difficult to pay the full fee of £250,
-                please get in touch by emailing{" "}
-                <a href="mailto:info@madnessandmayhem.org.uk">
-                  info@madnessandmayhem.org.uk
-                </a>
-                , as there are bursaries available to support.
-              </p>
               <RadioChoices
                 title="Payment method"
                 options={[
@@ -789,7 +781,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             <section>
               <h2>Sibling discount</h2>
               <p>
-                If you would like to apply for the sibling discount, please tick
+                If you would like to apply for the sibling discount (£30), please tick
                 the box and write the names of the camper&apos;s siblings below.
               </p>
               <FieldCheckbox
