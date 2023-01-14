@@ -201,6 +201,7 @@ export const handleAsync = async (
     console.log("failed to append row to google sheet")
     console.log(err)
     captureException(err)
+    throw new Error("Could not store booking")
   }
 
   try {
