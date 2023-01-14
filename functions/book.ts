@@ -185,7 +185,7 @@ export const handleAsync = async (
       row,
       tabName: "Raw Bookings",
       startColumn: "A",
-      endColumn: "BA",
+      endColumn: "BD",
       startRow: 2,
     })
     await appendRow({
@@ -194,8 +194,8 @@ export const handleAsync = async (
       row,
       tabName: "Bookings",
       startColumn: "B",
-      endColumn: "BB",
-      startRow: 4,
+      endColumn: "BE",
+      startRow: 2,
     })
   } catch (err) {
     console.log("failed to append row to google sheet")
