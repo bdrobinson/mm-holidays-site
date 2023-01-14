@@ -201,7 +201,11 @@ export const handleAsync = async (
     console.log("failed to append row to google sheet")
     console.log(err)
     captureException(err)
-    throw new Error("Could not store booking")
+    callback(null, {
+      statusCode: 500,
+      body: "Could not store booking. Please contact bookings@madnessandmayhem.org.uk",
+    })
+    return
   }
 
   try {
@@ -212,7 +216,7 @@ export const handleAsync = async (
         name: `${params.parentFirstName} ${params.parentLastName}`,
         email: confirmationEmailAddress,
       },
-      from: { name: "M+M Bookings", email: "info@madnessandmayhem.org.uk" },
+      from: { name: "M+M Bookings", email: "bookings@madnessandmayhem.org.uk" },
       subject: "Thank you for applying for a place at M+M 2023",
       text: html,
       html,
@@ -231,7 +235,7 @@ export const handleAsync = async (
     const html = renderCampLeaderEmail(columns)
     const leaderEmail = {
       to: CONFIRMATION_EMAIL_RECIPIENT.split(","),
-      from: { name: "M+M Bookings", email: "info@madnessandmayhem.org.uk" },
+      from: { name: "M+M Bookings", email: "bookings@madnessandmayhem.org.uk" },
       subject: "New submission from booking form",
       text: html,
       html,

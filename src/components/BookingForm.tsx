@@ -984,8 +984,8 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                   {networkSubmitState.message}
                   <br />
                   Could not submit form. Please try again or contact{" "}
-                  <a href="mailto:info@madnessandmayhem.org.uk">
-                    info@madnessandmayhem.org.uk
+                  <a href="mailto:bookings@madnessandmayhem.org.uk">
+                    bookings@madnessandmayhem.org.uk
                   </a>
                   .
                 </p>
