@@ -781,8 +781,9 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             <section>
               <h2>Sibling discount</h2>
               <p>
-                If you would like to apply for the sibling discount (£30), please tick
-                the box and write the names of the camper&apos;s siblings below.
+                If you would like to apply for the sibling discount (£30),
+                please tick the box and write the names of the camper&apos;s
+                siblings below.
               </p>
               <FieldCheckbox
                 fieldName="wantSiblingDiscount"
