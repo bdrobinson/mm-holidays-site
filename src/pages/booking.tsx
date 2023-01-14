@@ -32,7 +32,7 @@ const Booking: FC<Props> = ({ data }: Props) => {
     <Layout
       hero={
         <HeroImage
-          imageAltText="Max campers at the last night party."
+          imageAltText="A camper on the bungee run at the M+M party."
           image={getImage(data.hero)}
           title={booked ? "Thanks!" : "Book your place"}
         />
@@ -41,12 +41,12 @@ const Booking: FC<Props> = ({ data }: Props) => {
     >
       {booked && (
         <>
-          <h2>Thank you for applying to M+M 2022!</h2>
+          <h2>Thank you for applying to M+M 2023!</h2>
           <p>
             We&apos;ve received your application. Please check your inbox for a
             confirmation email and{" "}
-            <a href="mailto:info@madnessandmayhem.org.uk">contact us</a> if you
-            do not receive one.
+            <a href="mailto:bookings@madnessandmayhem.org.uk">contact us</a> if
+            you do not receive one.
           </p>
           <p>
             <Button
@@ -109,7 +109,7 @@ export const pageQuery = graphql`
       }
       html
     }
-    hero: file(relativePath: { eq: "eating_pancakes.jpg" }) {
+    hero: file(relativePath: { eq: "bungee_run_2022.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }

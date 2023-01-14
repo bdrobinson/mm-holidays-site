@@ -2,8 +2,8 @@
 path: "/contact"
 title: "Contact"
 description: "Get in contact for any extra info about M+M."
-hero: ../images/girls_on_bouncy_thing.jpg
-heroAltText: Two smiling campers on an inflatable obstacle course
+hero: ../images/_DSC1639.jpeg
+heroAltText: Three campers in front of a climbing wall.
 theme: "light"
 ---
 

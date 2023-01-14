@@ -71,11 +71,17 @@ export type FormState = {
   medicalIssues: string
   behaviouralNeeds: string
   englishNotFirstLanguage: string
+  additionalNeeds: string
   anythingElse: string
   // section 9
   childConfirmation: boolean
+  mobileConfirmation: boolean
   // section 10
   parentConfirmation: boolean
+
+  // discounts
+  wantSiblingDiscount: boolean
+  wantBursary: boolean
 }
 
 const NON_EMPTY_STRINGS: Array<keyof FormState> = [
@@ -100,11 +106,12 @@ const MUST_BE_TRUE: Array<keyof FormState> = [
   "acceptRecordKeeping",
   "childConfirmation",
   "parentConfirmation",
+  "mobileConfirmation",
 ]
 
 const getInitialState = (): FormState => ({
   // section 1
-  campChoice: "2",
+  campChoice: "1",
   // section 2
   childFirstName: "",
   childLastName: "",
@@ -159,11 +166,17 @@ const getInitialState = (): FormState => ({
   medicalIssues: "",
   behaviouralNeeds: "",
   englishNotFirstLanguage: "",
+  additionalNeeds: "",
   anythingElse: "",
   // section 9
   childConfirmation: false,
   // section 10
+  mobileConfirmation: false,
+  // section 11
   parentConfirmation: false,
+
+  wantSiblingDiscount: false,
+  wantBursary: false,
 })
 
 const dayRegex = /^\d\d?$/
@@ -304,7 +317,6 @@ const createRequestParams = (values: FormState): Params => {
         : values.parentPostcode,
     parentPhone: values.parentPhone,
     parentEmail: values.parentEmail,
-    siblingNames: values.siblingNames,
     contactByEmail: values.contactByEmail,
     contactByPhone: values.contactByPhone,
     contactByPost: values.contactByPost,
@@ -324,9 +336,13 @@ const createRequestParams = (values: FormState): Params => {
     medicalIssues: values.medicalIssues,
     behaviouralNeeds: values.behaviouralNeeds,
     englishNotFirstLanguage: values.englishNotFirstLanguage,
+    additionalNeeds: values.additionalNeeds,
     anythingElse: values.anythingElse,
     childConfirmation: values.childConfirmation,
+    mobileConfirmation: values.mobileConfirmation,
     parentConfirmation: values.parentConfirmation,
+    siblingDiscountNames: values.wantSiblingDiscount ? values.siblingNames : "",
+    wantBursary: values.wantBursary,
   }
 }
 
@@ -492,14 +508,14 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 options={[
                   {
                     value: "1",
-                    label: "Week 1 (fully booked)",
-                    subtitle: "Sat 23rd – Sat 30th July 2022",
-                    disabled: true,
+                    label: "Week 1",
+                    subtitle: "Sat 22nd – Sat 29th July 2023",
+                    disabled: false,
                   },
                   {
                     value: "2",
                     label: "Week 2",
-                    subtitle: "Sat 30th July – Sat 6th August 2022",
+                    subtitle: "Sat 29th July – Sat 5th August 2023",
                     disabled: false,
                   },
                 ]}
@@ -611,11 +627,6 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 )}
                 <TextField label="Phone" name="parentPhone" type="tel" />
                 <TextField label="Email" name="parentEmail" type="email" />
-                <TextField
-                  label="Sibling names"
-                  subtitle="If applying for sibling discount"
-                  name="siblingNames"
-                />
               </section>
             )}
             <section>
@@ -698,6 +709,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <h2>How did you hear about M+M?</h2>
+              <br />
               <FieldCheckbox
                 fieldName="heardUrbanSaintsMailing"
                 checked={values.heardUrbanSaintsMailing}
@@ -737,14 +749,6 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <h2>Payment information</h2>
-              <p>
-                If you would find it difficult to pay the full fee of £250,
-                please get in touch by emailing{" "}
-                <a href="mailto:info@madnessandmayhem.org.uk">
-                  info@madnessandmayhem.org.uk
-                </a>
-                , as there are bursaries available to support.
-              </p>
               <RadioChoices
                 title="Payment method"
                 options={[
@@ -775,18 +779,47 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               </Copy>
             </section>
             <section>
+              <h2>Sibling discount</h2>
+              <p>
+                If you would like to apply for the sibling discount (£30),
+                please tick the box and write the names of the camper&apos;s
+                siblings below.
+              </p>
+              <FieldCheckbox
+                fieldName="wantSiblingDiscount"
+                checked={values.wantSiblingDiscount}
+                label="Apply for sibling discount"
+              />
+              {values.wantSiblingDiscount && (
+                <TextField label="Sibling names" name="siblingNames" />
+              )}
+            </section>
+            <section>
+              <h2>Bursary</h2>
+              <p>
+                If you would like to apply for a bursary, please tick the below
+                box and we will get in touch with you. See{" "}
+                <a href="/bursary" target="_blank" rel="noopener noreferrer">
+                  the bursary page
+                </a>{" "}
+                for more information.
+              </p>
+              <FieldCheckbox
+                fieldName="wantBursary"
+                checked={values.wantBursary}
+                label="Apply for a bursary"
+              />
+            </section>
+            <section>
               <h2>Other information</h2>
               <p>
-                Please let us have any information now which would be helpful to
-                the M+M Leaders in planning the holiday. A medical form will be
-                sent shortly before the holiday commences and it is essential
-                that it is completed and returned by a parent/guardian
-                immediately.
+                Please let us have any information which would be helpful to the
+                M+M Leaders in planning the holiday.
               </p>
               <p>
-                However, in the meantime please let us have any information
-                which would be helpful to the M+M Leaders in planning the
-                holiday.
+                A medical form will be sent separately before the holiday
+                commences and it is essential that it is completed and returned
+                by a parent/guardian immediately.
               </p>
               <label>
                 <FieldTitle>Dietary needs</FieldTitle>
@@ -831,6 +864,19 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <label>
+                <FieldTitle>
+                  Additional needs (eg, has EHCP/IEP or additional 1:1 support
+                  at school)
+                </FieldTitle>
+                <TextArea
+                  name="additionalNeeds"
+                  value={values.additionalNeeds}
+                  onChange={handleChange}
+                />
+              </label>
+            </section>
+            <section>
+              <label>
                 <FieldTitle>Anything else</FieldTitle>
                 <TextArea
                   name="anythingElse"
@@ -853,6 +899,59 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               />
             </section>
             <section>
+              <h2>Mobile phone declaration</h2>
+              <p>
+                One of the great benefits of camp is being on holiday and taking
+                a break from our normal lives. Since none of us needs to be
+                contacted 24/7, we have the following mobile phone policy:
+              </p>
+              <p>
+                <em>
+                  All camper mobile phones will be looked after overnight by a
+                  designated Holiday Team Leader and returned the following day.
+                </em>
+              </p>
+              <p>
+                <em>
+                  On Max (9-11s), mobile phones will only be returned for a
+                  limited time in the middle of the day.
+                </em>
+              </p>
+              <p>
+                <em>
+                  On Madness (11-14s) and Mayhem (15-18s) our expectation is
+                  that mobile phones will only be used at appropriate times and
+                  in communal areas.
+                </em>
+              </p>
+              <p>
+                <em>
+                  Inappropriate use may mean that we will have to remove your
+                  phone for a short while.
+                </em>
+              </p>
+              <p>
+                <em>
+                  If contact with home is required, we insist that the young
+                  person or parent/guardian communicate through the overall week
+                  leaders of the camp (Rupert and El Webster/Will and Anna
+                  Eley).
+                </em>
+              </p>
+              <p>
+                If you have any concerns about this, please{" "}
+                <a href="/contact" target="_blank" rel="noopener noreferrer">
+                  contact us
+                </a>{" "}
+                and we would be happy to discuss it with you further.
+              </p>
+              <FieldCheckbox
+                fieldName="mobileConfirmation"
+                checked={values.mobileConfirmation}
+                label="I agree to the mobile phone policy"
+              />
+            </section>
+            <section>
               <h2>
                 Parent/guardian declaration (or by young person if over 18)
               </h2>
@@ -862,7 +961,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 submitting this, I apply for my child/ward to become a temporary
                 member of Urban Saints and acknowledge that this will happen on
                 acceptance of this application. I agree to pay any outstanding
-                balance by 31st May 2022.
+                balance by 31st May 2023.
               </p>
               <FieldCheckbox
                 fieldName="parentConfirmation"
@@ -885,8 +984,8 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                   {networkSubmitState.message}
                   <br />
                   Could not submit form. Please try again or contact{" "}
-                  <a href="mailto:info@madnessandmayhem.org.uk">
-                    info@madnessandmayhem.org.uk
+                  <a href="mailto:bookings@madnessandmayhem.org.uk">
+                    bookings@madnessandmayhem.org.uk
                   </a>
                   .
                 </p>

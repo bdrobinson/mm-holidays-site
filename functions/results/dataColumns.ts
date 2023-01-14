@@ -25,7 +25,7 @@ export const createColumns = (params: Params): Array<Column> => {
   const now = new Date()
   const monthAgeNow = differenceInMonths(now, birthDate)
 
-  const campDate = new Date("2022/07/25")
+  const campDate = new Date("2023/07/22")
   const monthAgeCamp = differenceInMonths(campDate, birthDate)
   return [
     {
@@ -167,11 +167,6 @@ export const createColumns = (params: Params): Array<Column> => {
       value: params.parentEmail,
     },
     {
-      id: "siblingNames",
-      name: "Sibling names",
-      value: params.siblingNames,
-    },
-    {
       id: "contactByEmail",
       name: "Contact email?",
       value: stringifyBoolean(params.contactByEmail),
@@ -267,6 +262,11 @@ export const createColumns = (params: Params): Array<Column> => {
       value: params.englishNotFirstLanguage,
     },
     {
+      id: "additionalNeeds",
+      name: "Additional needs",
+      value: params.additionalNeeds,
+    },
+    {
       id: "anythingElse",
       name: "Anything else",
       value: params.anythingElse,
@@ -277,9 +277,24 @@ export const createColumns = (params: Params): Array<Column> => {
       value: stringifyBoolean(params.childConfirmation),
     },
     {
+      id: "mobileConfirmation",
+      name: "Mobile confirmation",
+      value: stringifyBoolean(params.mobileConfirmation),
+    },
+    {
       id: "parentConfirmation",
       name: "Parent confirmation",
       value: stringifyBoolean(params.parentConfirmation),
+    },
+    {
+      id: "siblingNames",
+      name: "Sibling discount names",
+      value: params.siblingDiscountNames,
+    },
+    {
+      id: "wantBursary",
+      name: "Apply for bursary?",
+      value: stringifyBoolean(params.wantBursary),
     },
     {
       id: "formSubmissionDate",

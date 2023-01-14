@@ -48,7 +48,6 @@ export interface Params {
   parentPostcode: string
   parentPhone: string
   parentEmail: string
-  siblingNames: string
   // section 4
   contactByEmail: boolean
   contactByPhone: boolean
@@ -73,11 +72,16 @@ export interface Params {
   medicalIssues: string
   behaviouralNeeds: string
   englishNotFirstLanguage: string
+  additionalNeeds: string
   anythingElse: string
   // section 9
   childConfirmation: boolean
+  mobileConfirmation: boolean
   // section 10
   parentConfirmation: boolean
+
+  siblingDiscountNames: string
+  wantBursary: boolean
 }
 
 export const handler = (
@@ -131,6 +135,14 @@ export const handleAsync = async (
     return
   }
 
+  if (params.mobileConfirmation === false) {
+    callback(null, {
+      statusCode: 400,
+      body: "The mobile phone declaration box must be ticked",
+    })
+    return
+  }
+
   if (params.parentConfirmation === false) {
     callback(null, {
       statusCode: 400,
@@ -173,7 +185,7 @@ export const handleAsync = async (
       row,
       tabName: "Raw Bookings",
       startColumn: "A",
-      endColumn: "BA",
+      endColumn: "BD",
       startRow: 2,
     })
     await appendRow({
@@ -182,13 +194,18 @@ export const handleAsync = async (
       row,
       tabName: "Bookings",
       startColumn: "B",
-      endColumn: "BB",
-      startRow: 4,
+      endColumn: "BE",
+      startRow: 2,
     })
   } catch (err) {
     console.log("failed to append row to google sheet")
     console.log(err)
     captureException(err)
+    callback(null, {
+      statusCode: 500,
+      body: "Could not store booking. Please contact bookings@madnessandmayhem.org.uk",
+    })
+    return
   }
 
   try {
@@ -199,8 +216,8 @@ export const handleAsync = async (
         name: `${params.parentFirstName} ${params.parentLastName}`,
         email: confirmationEmailAddress,
       },
-      from: { name: "M+M Bookings", email: "info@madnessandmayhem.org.uk" },
-      subject: "Thank you for applying for a place at M+M 2022",
+      from: { name: "M+M Bookings", email: "bookings@madnessandmayhem.org.uk" },
+      subject: "Thank you for applying for a place at M+M 2023",
       text: html,
       html,
     }
@@ -218,7 +235,7 @@ export const handleAsync = async (
     const html = renderCampLeaderEmail(columns)
     const leaderEmail = {
       to: CONFIRMATION_EMAIL_RECIPIENT.split(","),
-      from: { name: "M+M Bookings", email: "info@madnessandmayhem.org.uk" },
+      from: { name: "M+M Bookings", email: "bookings@madnessandmayhem.org.uk" },
       subject: "New submission from booking form",
       text: html,
       html,

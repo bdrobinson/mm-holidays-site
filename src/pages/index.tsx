@@ -507,17 +507,17 @@ export const pageQuery = graphql`
     ) {
       html
     }
-    hero1: file(relativePath: { eq: "inflatables.jpg" }) {
+    hero1: file(relativePath: { eq: "_DSC1528.jpeg" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }
     }
-    hero2: file(relativePath: { eq: "sunset.jpg" }) {
+    hero2: file(relativePath: { eq: "DSC06420.jpeg" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }
     }
-    hero3: file(relativePath: { eq: "tires.jpg" }) {
+    hero3: file(relativePath: { eq: "DSC05753.jpeg" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
       }

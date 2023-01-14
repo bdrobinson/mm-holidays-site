@@ -1,5 +1,4 @@
 ---
-header: "Save the dates for M+M 2023!"
+header: "Bookings for 2023 are now open!"
 ---
-
-We'll be back with two full weeks so make sure you are free! Bookings will open in early 2023.
+We can't wait for camp this year. Don't miss out, book your place today!

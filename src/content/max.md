@@ -6,8 +6,8 @@ template: CAMP_PROFILE
 ages: 9-11
 price: £250
 sections: []
-hero: ../images/canoe.jpg
-heroAltText: Max campers canoeing on the on-site lake.
+hero: ../images/max_boys_2022.jpeg
+heroAltText: Max campers smiling at the camera on a sunny day.
 ---
 
 If you’re 9 to 11 years old, Max is the holiday for you.
