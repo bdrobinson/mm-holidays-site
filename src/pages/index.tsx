@@ -180,6 +180,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                   style={{
                     maxHeight: `${HERO_IMAGE_MAX_HEIGHT}px`,
                     minHeight: `${HERO_IMAGE_MIN_HEIGHT}px`,
+                    height: "100%",
                   }}
                   imgStyle={{ objectPosition: "center" }}
                   alt="The M+M site and available activities."
