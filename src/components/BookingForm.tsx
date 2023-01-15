@@ -8,7 +8,12 @@ import fetch from "unfetch"
 import TextField from "./TextField"
 import { Params } from "../../functions/book"
 import RadioChoices from "./RadioChoices"
-import { GREY_BORDER_COLOUR, MOBILE_WIDTH, RED } from "../constants"
+import {
+  GREY_BORDER_COLOUR,
+  MOBILE_WIDTH,
+  RED,
+  PRIMARY_COLOUR_DARK,
+} from "../constants"
 import FieldErrorMessage from "./FieldErrorMessage"
 import FieldCheckbox from "./FieldCheckbox"
 import Button from "./Button"
@@ -386,6 +391,7 @@ const SubmitButton: React.FC<{
     props.disabled ? 0.6 : 1};
   font-size: 1.2em;
   margin-top: 1em;
+  color: ${PRIMARY_COLOUR_DARK};
 `
 
 const newDate = (year: string, month: string, day: string): Date | null => {
