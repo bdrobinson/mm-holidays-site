@@ -26,14 +26,6 @@ const CamperEmail: FC<CamperEmailProps> = () => {
         <strong>Account number:</strong> 47430702
       </p>
       <p>
-        If you would rather pay by cheque, please send your deposit to: El
-        Webster, Booking Secretary, M+M, 18 John Morgan Close, Hook, Hants, RG27
-        9RP
-      </p>
-      <p>
-        Please make cheques payable to &ldquo;M+M Holidays fees account&rdquo;.
-      </p>
-      <p>
         Confirmation of a place/s will only be sent (via email) from the Booking
         Secretary{" "}
         <strong>once we have received your deposit for the holiday</strong>.
