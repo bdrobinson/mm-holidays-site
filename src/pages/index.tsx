@@ -31,7 +31,7 @@ const HeroContainer = styled.div`
   position: relative;
 `
 
-const VIDEO_ID = "IF-ZT3kZsoo"
+const VIDEO_ID = "10s7T3wUtEo"
 const MAYHEM_THEME_BLACK = "#53295f"
 const MAYHEM_THEME_BG_PRIMARY = "#f2a578"
 
