@@ -68,6 +68,10 @@ const Booking: FC<Props> = ({ data }: Props) => {
             & > * {
               max-width: ${MOBILE_WIDTH}px;
             }
+            & h2 {
+              font-family: Raleway;
+              font-weight: 700;
+            }
           `}
         >
           <RemarkText innerHTML={data.markdownRemark.html} />

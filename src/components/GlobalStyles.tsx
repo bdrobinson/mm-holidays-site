@@ -39,11 +39,15 @@ const GlobalStyles: React.FC<{
         font-size: 3.5rem;
         margin-top: 2rem;
         margin-bottom: 0.8rem;
+        font-family: Changa One;
+        font-weight: normal;
     }
 
     h2 {
         margin-top: 1em;
         margin-bottom: 0;
+        font-family: Changa One;
+        font-weight: normal;
     }
 
     blockquote {

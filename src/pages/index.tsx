@@ -196,7 +196,7 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
                     Get ready
                   </span>
                   <br />
-                  <span css="font-size: 0.9em;">
+                  <span css="font-size: 0.9em; font-family: Raleway; font-weight: bold;">
                     for the best week of the year
                   </span>
                 </Tagline>
