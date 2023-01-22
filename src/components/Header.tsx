@@ -93,7 +93,7 @@ const NavLink = styled(Link)`
   }
 `
 
-const AccentNavLink = styled(NavLink)<{ light: boolean }>`
+const AccentNavLink = styled(NavLink)<{ light: "true" | "false" }>`
   background-color: ${props => (props.light ? "white" : "#333")};
   color: ${props => (props.light ? "#333" : "white")};
   padding: 0.8em 1.1em !important;
@@ -202,7 +202,7 @@ const Header: FC<Props> = ({
                     <AccentNavLink
                       key={link}
                       to={link}
-                      light={theme === "light"}
+                      light={theme === "light" ? "true" : "false"}
                     >
                       {label}
                     </AccentNavLink>
