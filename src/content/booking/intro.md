@@ -5,9 +5,9 @@ description: You can book onto M+M either with our online form.
 Fill out this form to book your place on M+M. You can read our Terms and Conditions [here](/terms-and-conditions).
 
 
-> ⚠️ **Madness 2 Waiting List**
+> ⚠️ **M+M 2 places are limited**
 > 
-> Due to high demand, Madness (11-14s) week 2 is currently operating a waiting list. Please [get in touch](/contact) if you would like more information.
+> Week 2 has only a few spaces remaining. Before booking, please [get in contact](/contact) with us, although unfortunately we cannot guarantee a space.
 <br>
 
 > **Bursaries**
