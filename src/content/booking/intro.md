@@ -5,9 +5,9 @@ description: You can book onto M+M either with our online form.
 Fill out this form to book your place on M+M. You can read our Terms and Conditions [here](/terms-and-conditions).
 
 
-> ⚠️ **M+M 2 places are limited**
+> ⚠️ **Waiting list only**
 > 
-> Week 2 has only a few spaces remaining. Before booking, please [get in contact](/contact) with us, although unfortunately we cannot guarantee a space.
+> Both Week 1 and Week 2 are now full. Please [get in contact](mailto:bookings@madnessandmayhem.org.uk) with us to join the waiting list.
 <br>
 
 > **Bursaries**
