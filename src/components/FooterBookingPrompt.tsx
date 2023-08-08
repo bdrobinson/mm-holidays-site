@@ -109,7 +109,7 @@ const FooterBookingPrompt: FC<Props> = () => {
                 text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
               `}
             >
-              Bookings for 2023 are now open!
+              Bookings for 2024 are now open!
             </h2>
             <div
               css={`

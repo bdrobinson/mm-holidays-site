@@ -515,13 +515,13 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                   {
                     value: "1",
                     label: "Week 1",
-                    subtitle: "Sat 22nd – Sat 29th July 2023",
+                    subtitle: "Sat 27th July – Sat 3rd August 2024",
                     disabled: false,
                   },
                   {
                     value: "2",
                     label: "Week 2",
-                    subtitle: "Sat 29th July – Sat 5th August 2023",
+                    subtitle: "Sat 3rd August – Sat 10th August 2024",
                     disabled: false,
                   },
                 ]}
@@ -967,7 +967,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 submitting this, I apply for my child/ward to become a temporary
                 member of Urban Saints and acknowledge that this will happen on
                 acceptance of this application. I agree to pay any outstanding
-                balance by 31st May 2023.
+                balance by 31st May 2024.
               </p>
               <FieldCheckbox
                 fieldName="parentConfirmation"

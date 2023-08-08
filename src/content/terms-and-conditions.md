@@ -18,7 +18,7 @@ All activities will be carried out in English, apart from Welsh speaking camps, 
 
 You can [book online](/booking). The completed application must be accompanied by a non-returnable deposit of £40, payable by bank transfer or cheque. Cheques should be payable to ‘M&M Holidays fees account’. Applications will be dealt with on a date-received priority basis, and you will receive an email of confirmation regarding your booking once it has been processed.
 
-The balance of the holiday fees is due by 31st May 2023. You will not receive a reminder of the balance due. If payment is not received by this date, we reserve the right to advise you of cancellation of your booking and the loss of your deposit. If you book within eight weeks of the start of a camp, full fees are due with the application. In cases of financial hardship, Urban Saints may be able to help you access charitable funding to subsidise the cost of the holiday. Wherever possible please make us aware of any need at the time of booking. Holiday places are limited so please book early.
+The balance of the holiday fees is due by 31st May 2024. You will not receive a reminder of the balance due. If payment is not received by this date, we reserve the right to advise you of cancellation of your booking and the loss of your deposit. If you book within eight weeks of the start of a camp, full fees are due with the application. In cases of financial hardship, Urban Saints may be able to help you access charitable funding to subsidise the cost of the holiday. Wherever possible please make us aware of any need at the time of booking. Holiday places are limited so please book early.
 
 ## 3. Sibling Discounts
 

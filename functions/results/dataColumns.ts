@@ -25,7 +25,7 @@ export const createColumns = (params: Params): Array<Column> => {
   const now = new Date()
   const monthAgeNow = differenceInMonths(now, birthDate)
 
-  const campDate = new Date("2023/07/22")
+  const campDate = new Date("2024/07/27")
   const monthAgeCamp = differenceInMonths(campDate, birthDate)
   return [
     {
