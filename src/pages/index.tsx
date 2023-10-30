@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { graphql } from "gatsby"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import styled, { keyframes } from "styled-components"
 
 import Layout from "../components/Layout"
@@ -10,7 +10,6 @@ import ImageCrossfade from "../components/ImageCrossfade"
 import {
   SMALLSCREEN_WIDTH,
   MOBILE_WIDTH,
-  TINY_WIDTH,
   HERO_IMAGE_MAX_HEIGHT,
   HERO_IMAGE_MIN_HEIGHT,
   PRIMARY_COLOUR_DARK,
@@ -18,8 +17,6 @@ import {
 } from "../constants"
 import HeroBookingPrompt from "../components/HeroBookingPrompt"
 import FooterBookingPrompt from "../components/FooterBookingPrompt"
-import Stack from "../components/Stack"
-import CampVideos from "../components/CampVideos"
 
 import instagram from "../images/instagram.svg"
 import facebook from "../images/facebook.svg"
@@ -32,8 +29,6 @@ const HeroContainer = styled.div`
 `
 
 const VIDEO_ID = "10s7T3wUtEo"
-const MAYHEM_THEME_BLACK = "#53295f"
-const MAYHEM_THEME_BG_PRIMARY = "#f2a578"
 
 const anim = keyframes`
   from {
@@ -130,17 +125,6 @@ const BookingNoticeSection = styled.section`
   margin-top: 1em;
   @media (min-width: ${SMALLSCREEN_WIDTH}px) {
     display: none;
-  }
-`
-
-const CampVideosContainer = styled.div`
-  flex: 1 1 auto;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  @media (max-width: ${TINY_WIDTH}px) {
-    margin-top: 0.5em;
   }
 `
 
@@ -260,207 +244,49 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
           <FooterBookingPrompt />
         </section>
       )}
-      <Stack padding="2rem">
+      <PageGutter>
         <section
-          id="watch-now"
           css={`
-            background-image: url(${data.mayhemTile.childImageSharp.fluid.src});
-            background-repeat: repeat;
-            background-color: ${MAYHEM_THEME_BG_PRIMARY};
-            min-height: 100vh;
-            display: flex;
-            flex-flow: column nowrap;
-            justify-content: center;
-            align-items: center;
-            color: ${MAYHEM_THEME_BLACK};
-            font-size: 2rem;
-            padding: 1em 0;
-          `}
-        >
-          <Stack padding="1em">
-            <div css="position: relative;">
-              <StaticImage
-                src="../images/madness_theme/mm_online_logo.png"
-                width={500}
-                layout="fixed"
-                alt="The logo for M+M online"
-                placeholder="tracedSVG"
-              />
-            </div>
-            <PageGutter>
-              <div
-                css={`
-                  position: relative;
-                  & a {
-                    color: #ff6fba;
-                  }
-                  padding: 1em 0;
-                `}
-              >
-                <img
-                  src={data.textboxBody.childImageSharp.fixed.src}
-                  css={`
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    width: 100%;
-                    height: 100%;
-                  `}
-                />
-                <div css="position: relative; padding: 1em 1.5em;">
-                  <p>
-                    In summer 2020 the pandemic stopped us running camp as
-                    usual, so we hosted M+M Online instead! You can catch up on
-                    all the week&apos;s videos right here.
-                  </p>
-                  <div
-                    css={`
-                      display: flex;
-                      flex-flow: row nowrap;
-                      align-items: flex-start;
-                      justify-content: center;
-                      @media (max-width: ${TINY_WIDTH}px) {
-                        flex-flow: column nowrap;
-                        align-items: center;
-                      }
-                    `}
-                  >
-                    <CampVideosContainer>
-                      <CampVideos
-                        title="MAX"
-                        age="9-11"
-                        videos={[
-                          {
-                            weekday: "Monday",
-                            url: "https://www.youtube.com/watch?v=6J03t1oHXXc",
-                          },
-                          {
-                            weekday: "Tuesday",
-                            url: "https://www.youtube.com/watch?v=QKcF0ldpQdc",
-                          },
-                          {
-                            weekday: "Wednesday",
-                            url: "https://youtu.be/Ri32B12G7X8",
-                          },
-                          {
-                            weekday: "Thursday",
-                            url: "https://youtu.be/j4bcwaV6ujU",
-                          },
-                          {
-                            weekday: "Friday",
-                            url: "https://youtu.be/PGJc-lSizLw",
-                          },
-                        ]}
-                      />
-                    </CampVideosContainer>
-                    <CampVideosContainer>
-                      <CampVideos
-                        title="Madness"
-                        age="11-14"
-                        videos={[
-                          {
-                            weekday: "Monday",
-                            url: "https://www.youtube.com/watch?v=wcHm4cbcPDo",
-                          },
-                          {
-                            weekday: "Tuesday",
-                            url: "https://www.youtube.com/watch?v=GNc9vsgL8bw",
-                          },
-                          {
-                            weekday: "Wednesday",
-                            url: "https://youtu.be/ofV6DoZ470s",
-                          },
-                          {
-                            weekday: "Thursday",
-                            url: "https://youtu.be/q-go9l3AVP0",
-                          },
-                          {
-                            weekday: "Friday",
-                            url: "https://youtu.be/qp4L3vVHqp0",
-                          },
-                        ]}
-                      />
-                    </CampVideosContainer>
-                    <CampVideosContainer>
-                      <CampVideos
-                        title="Mayhem"
-                        age="15-18"
-                        videos={[
-                          {
-                            weekday: "Monday",
-                            url: "https://www.youtube.com/watch?v=efa1Xzn_-bU",
-                          },
-                          {
-                            weekday: "Tuesday",
-                            url: "https://www.youtube.com/watch?v=xElbmFE8ygw",
-                          },
-                          {
-                            weekday: "Wednesday",
-                            url: "https://youtu.be/tjO7x6r8eX4",
-                          },
-                          {
-                            weekday: "Thursday",
-                            url: "https://youtu.be/iJ0RYZAtQD0",
-                          },
-                          {
-                            weekday: "Friday",
-                            url: "https://youtu.be/0S96OaEduwg",
-                          },
-                        ]}
-                      />
-                    </CampVideosContainer>
-                  </div>
-                </div>
-              </div>
-            </PageGutter>
-          </Stack>
-        </section>
-        <PageGutter>
-          <section
-            css={`
               display: flex;
               flex-flow: column nowrap;
               align-items: center;
               margin-bottom: 1rem;
             `}
-          >
-            <div
-              css={`
+        >
+          <div
+            css={`
                 display: flex;
                 flex-flow: column nowrap;
                 align-items: flex-start;
               `}
+          >
+            <a
+              css="color: currentColor;"
+              href="https://www.instagram.com/mandmholidays/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <a
-                css="color: currentColor;"
-                href="https://www.instagram.com/mandmholidays/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <CtaItem
-                  fontSize="1.5em"
-                  imgSrc={instagram}
-                  copy="Follow us on Instagram"
-                />
-              </a>
-              <a
-                css="color: currentColor;"
-                href="https://www.facebook.com/Madnessandmayhemholidays/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <CtaItem
-                  fontSize="1.5em"
-                  imgSrc={facebook}
-                  copy="Follow us on Facebook"
-                />
-              </a>
-            </div>
-          </section>
-        </PageGutter>
-      </Stack>
+              <CtaItem
+                fontSize="1.5em"
+                imgSrc={instagram}
+                copy="Follow us on Instagram"
+              />
+            </a>
+            <a
+              css="color: currentColor;"
+              href="https://www.facebook.com/Madnessandmayhemholidays/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <CtaItem
+                fontSize="1.5em"
+                imgSrc={facebook}
+                copy="Follow us on Facebook"
+              />
+            </a>
+          </div>
+        </section>
+      </PageGutter>
     </Layout>
   )
 }
