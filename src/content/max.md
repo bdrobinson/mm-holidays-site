@@ -16,7 +16,7 @@ Max is a week of fantastic activities and great teaching from the Bible. You’l
 
 When you arrive, our experienced team of leaders will help you settle in. They’ll look after you throughout the week and make sure that you have a brilliant holiday.
 
-Max costs £299, but bursaries/extra funding are available if required. Also included in the price this year is a trip to the fantastic [Twin Lakes theme park](https://www.twinlakespark.co.uk/) and a separate activity choice of raft building, canoeing or King Swing.
+Max costs £299, but bursaries/extra funding are available if required.
 
 Tell all your friends and get ready for the best week of the year. It’s going to be
 epic...
