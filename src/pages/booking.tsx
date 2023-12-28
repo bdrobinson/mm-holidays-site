@@ -1,105 +1,116 @@
-import React, { FC, useState } from "react"
+import React, { FC } from "react"
 import { graphql } from "gatsby"
 
-import BookingForm, { FormState } from "../components/BookingForm"
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
-import Button from "../components/Button"
-import { MOBILE_WIDTH } from "../constants"
 import HeadTags from "../components/HeadTags"
 import { getImage } from "gatsby-plugin-image"
-import RemarkText from "../components/RemarkText"
 
 interface Props {
   data: any
 }
 
-export const Head = ({ data }: Props) => {
+export const Head = () => {
   return (
     <HeadTags
-      path={data.markdownRemark.frontmatter.path}
+      path="/booking"
       title="Book"
-      seoDescription={data.markdownRemark.frontmatter.description}
+      seoDescription="Book onto Madness and Mayhem here!"
     />
   )
 }
+type Week = {
+  shortDates: string
+}
+
+type CampWeek = {
+  number: string
+  shortDates: string
+  camps: Array<{
+    name: string
+    age: string
+    link: string
+  }>
+}
 
 const Booking: FC<Props> = ({ data }: Props) => {
-  const [booked, setBooked] = useState(false)
-  const [previousState, setPreviousState] = useState<FormState | null>(null)
-
+  console.log("rendering")
+  const [week1, week2]: [Week, Week] = data.site.siteMetadata.campWeeks
+  const campWeeks: Array<CampWeek> = [
+    {
+      number: "1",
+      shortDates: week1.shortDates,
+      camps: [
+        {
+          name: "Max 1",
+          age: "9-11",
+          link: "https://www.ventures.org.uk/holiday/mm-1-max?token=1",
+        },
+        {
+          name: "Madness 1",
+          age: "12-14",
+          link: "https://www.ventures.org.uk/holiday/mm-1-madness?token=2",
+        },
+        {
+          name: "Mayhem 1",
+          age: "15-18",
+          link: "https://www.ventures.org.uk/holiday/mm-1-mayhem?token=3",
+        },
+      ],
+    },
+    {
+      number: "2",
+      shortDates: week2.shortDates,
+      camps: [
+        {
+          name: "Max 2",
+          age: "9-11",
+          link: "https://www.ventures.org.uk/holiday/mm-2-max?token=4",
+        },
+        {
+          name: "Madness 2",
+          age: "12-14",
+          link: "https://www.ventures.org.uk/holiday/mm-2-madness?token=5",
+        },
+        {
+          name: "Mayhem 2",
+          age: "15-18",
+          link: "https://www.ventures.org.uk/holiday/mm-2-mayhem?token=6",
+        },
+      ],
+    },
+  ]
   return (
     <Layout
       hero={
         <HeroImage
           imageAltText="A camper on the bungee run at the M+M party."
           image={getImage(data.hero)}
-          title={booked ? "Thanks!" : "Book your place"}
+          title="Book your place"
         />
       }
       theme="light"
     >
-      {booked && (
-        <>
-          <h2>Thank you for applying to M+M 2024!</h2>
-          <p>
-            We&apos;ve received your application. Please check your inbox for a
-            confirmation email and{" "}
-            <a href="mailto:bookings@madnessandmayhem.org.uk">contact us</a> if
-            you do not receive one.
-          </p>
-          <p>
-            <Button
-              onClick={() => {
-                setBooked(false)
-              }}
-            >
-              Book another child
-            </Button>
-          </p>
-        </>
-      )}
-      {booked === false && (
-        <div
-          css={`
-            display: flex;
-            flex-flow: column nowrap;
-            align-items: center;
-            & > * {
-              max-width: ${MOBILE_WIDTH}px;
-            }
-            & h2 {
-              font-family: Raleway;
-              font-weight: 700;
-            }
-          `}
-        >
-          <RemarkText innerHTML={data.markdownRemark.html} />
-          <BookingForm
-            onComplete={formState => {
-              setPreviousState(formState)
-              setBooked(true)
-            }}
-            initialState={
-              previousState !== null
-                ? {
-                    title: previousState.title,
-                    parentFirstName: previousState.parentFirstName,
-                    parentLastName: previousState.parentLastName,
-                    parentRelationshipToChild:
-                      previousState.parentRelationshipToChild,
-                    parentAddressLine1: previousState.parentAddressLine1,
-                    parentAddressLine2: previousState.parentAddressLine2,
-                    parentAddressCity: previousState.parentAddressCity,
-                    parentAddressCounty: previousState.parentAddressCounty,
-                    parentPostcode: previousState.parentPostcode,
-                    parentEmail: previousState.parentEmail,
-                  }
-                : null
-            }
-          />
-        </div>
-      )}
+      <p>
+        You can book onto M+M on the website of Ventures, our parent
+        organisation. Here are the links:
+      </p>
+      {campWeeks.map(({ number, camps, shortDates }) => {
+        return (
+          <section key={number}>
+            <h2>
+              Week {number} ({shortDates})
+            </h2>
+            {camps.map(({ name, age, link }) => {
+              return (
+                <p key={name}>
+                  {name} (age {age}): <a href={link}>Book</a>
+                </p>
+              )
+            })}
+          </section>
+        )
+      })}
     </Layout>
   )
 }
@@ -111,11 +122,18 @@ export const pageQuery = graphql`
         description
         path
       }
-      html
     }
     hero: file(relativePath: { eq: "bungee_run_2022.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
+      }
+    }
+    site {
+      siteMetadata {
+        campWeeks {
+          week
+          shortDates
+        }
       }
     }
   }
