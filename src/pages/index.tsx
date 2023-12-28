@@ -28,7 +28,7 @@ const HeroContainer = styled.div`
   position: relative;
 `
 
-const VIDEO_ID = "10s7T3wUtEo"
+const VIDEO_ID = "9BUdrU5Vi2M"
 
 const anim = keyframes`
   from {
@@ -247,18 +247,18 @@ const IndexPage: FC<Props> = ({ data }: Props) => {
       <PageGutter>
         <section
           css={`
-              display: flex;
-              flex-flow: column nowrap;
-              align-items: center;
-              margin-bottom: 1rem;
-            `}
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            margin-bottom: 1rem;
+          `}
         >
           <div
             css={`
-                display: flex;
-                flex-flow: column nowrap;
-                align-items: flex-start;
-              `}
+              display: flex;
+              flex-flow: column nowrap;
+              align-items: flex-start;
+            `}
           >
             <a
               css="color: currentColor;"
