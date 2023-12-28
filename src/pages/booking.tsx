@@ -104,7 +104,10 @@ const Booking: FC<Props> = ({ data }: Props) => {
             {camps.map(({ name, age, link }) => {
               return (
                 <p key={name}>
-                  {name} (age {age}): <a href={link}>Book</a>
+                  {name} (age {age}):{" "}
+                  <a href={link} target="_blank" rel="noopener noreferrer">
+                    Book
+                  </a>
                 </p>
               )
             })}
