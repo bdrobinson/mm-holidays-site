@@ -12,5 +12,4 @@ M+M Holidays has been running since 2001. We’re a part of [Ventures](https://w
 
 You can read the basis of faith of Ventures [here](https://www.ventures.org.uk/basis-faith).
 
-The team members who teach at M+M also sign up to the [UCCF doctrinal
-basis](https://www.uccf.org.uk/about/doctrinal-basis).
+The team members who teach at M+M also sign up to the CPAS [Basis of Faith](https://www.cpas.org.uk/basis-faith-0) and [Outworkings of Faith](https://www.cpas.org.uk/outworkings-faith) statements.

@@ -15,4 +15,4 @@ The bursary varies in size depending on individual circumstances, but can be as 
 
 # How to apply
 
-You can apply for the bursary by ticking the relevant box on [the booking form](/booking), and from there we will get in touch with you. To ask any questions before applying, please email [bookings@madnessandmayhem.org.uk](mailto:bookings@madnessandmayhem.org.uk).
+You can apply for the bursary or ask any questions by emailing [madnessandmayhem@ventures.org.uk](mailto:madnessandmayhem@ventures.org.uk).
