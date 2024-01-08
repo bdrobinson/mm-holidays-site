@@ -1,5 +1,5 @@
 ---
-header: "Bookings for 2024 open soon!"
+header: "Bookings for 2024 are now open!"
 ---
 
-Put the dates for M+M 2024 into your diary and we'll see you there! Bookings will open on 8th Jan 2024.
+We can't wait for camp this year. Don't miss out, book your place today!
