@@ -1,5 +1,5 @@
 ---
-header: "Bookings for 2024 are now open!"
+header: "M+M 2024 is now fully booked!"
 ---
 
-We can't wait for camp this year. Don't miss out, book your place today!
+But you can join the waiting list by emailing <info@madnessandmayhem.org.uk>.
