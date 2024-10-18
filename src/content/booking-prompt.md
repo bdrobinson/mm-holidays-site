@@ -1,5 +1,5 @@
 ---
-header: "M+M 2024 is now fully booked!"
+header: "Save the dates for 2025!"
 ---
 
-But you can join the waiting list by emailing <info@madnessandmayhem.org.uk>.
+Put the dates for M+M 2025 into your diary and we'll see you there! Bookings will open in the new year.
