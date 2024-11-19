@@ -28,6 +28,8 @@ const Booking: FC<Props> = ({ data }: Props) => {
   const [booked, setBooked] = useState(false)
   const [previousState, setPreviousState] = useState<FormState | null>(null)
 
+  const showBookings = new URLSearchParams(window.location.search).get('previewBookings') !== null
+
   return (
     <Layout
       hero={
@@ -59,7 +61,7 @@ const Booking: FC<Props> = ({ data }: Props) => {
           </p>
         </>
       )}
-      {booked === false && (
+      {booked === false && showBookings && (
         <div
           css={`
             display: flex;
@@ -97,9 +99,9 @@ const Booking: FC<Props> = ({ data }: Props) => {
                 }
                 : null
             }
-          />
-        </div>
+          /></div>
       )}
+      {showBookings === false && <p style={{marginBottom: "5em", marginTop: "1em"}}>Bookings will open in January!</p>}
     </Layout>
   )
 }
