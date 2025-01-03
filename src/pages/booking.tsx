@@ -29,7 +29,10 @@ const Booking: FC<Props> = ({ data }: Props) => {
   const [previousState, setPreviousState] = useState<FormState | null>(null)
   const [showBookings, setShowBookings] = useState(false)
   useLayoutEffect(() => {
-    setShowBookings(new URLSearchParams(window.location.search).get('previewBookings') !== null)
+    setShowBookings(
+      new URLSearchParams(window.location.search).get("previewBookings") !==
+        null,
+    )
   }, [])
 
   return (
@@ -87,23 +90,28 @@ const Booking: FC<Props> = ({ data }: Props) => {
             initialState={
               previousState !== null
                 ? {
-                  title: previousState.title,
-                  parentFirstName: previousState.parentFirstName,
-                  parentLastName: previousState.parentLastName,
-                  parentRelationshipToChild:
-                    previousState.parentRelationshipToChild,
-                  parentAddressLine1: previousState.parentAddressLine1,
-                  parentAddressLine2: previousState.parentAddressLine2,
-                  parentAddressCity: previousState.parentAddressCity,
-                  parentAddressCounty: previousState.parentAddressCounty,
-                  parentPostcode: previousState.parentPostcode,
-                  parentEmail: previousState.parentEmail,
-                }
+                    title: previousState.title,
+                    parentFirstName: previousState.parentFirstName,
+                    parentLastName: previousState.parentLastName,
+                    parentRelationshipToChild:
+                      previousState.parentRelationshipToChild,
+                    parentAddressLine1: previousState.parentAddressLine1,
+                    parentAddressLine2: previousState.parentAddressLine2,
+                    parentAddressCity: previousState.parentAddressCity,
+                    parentAddressCounty: previousState.parentAddressCounty,
+                    parentPostcode: previousState.parentPostcode,
+                    parentEmail: previousState.parentEmail,
+                  }
                 : null
             }
-          /></div>
+          />
+        </div>
       )}
-      {showBookings === false && <p style={{marginBottom: "5em", marginTop: "1em"}}>Bookings will open in January!</p>}
+      {showBookings === false && (
+        <p style={{ marginBottom: "5em", marginTop: "1em" }}>
+          Bookings will open in January!
+        </p>
+      )}
     </Layout>
   )
 }
