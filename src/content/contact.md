@@ -10,7 +10,7 @@ theme: "light"
 # Email
 
 - General queries: <info@madnessandmayhem.org.uk>
-- Bookings: <madnessandmayhem@ventures.org.uk>
+- Bookings: <bookings@madnessandmayhem.org.uk>
 - Madness and Mayhem Trust: <mmtrust@madnessandmayhem.org.uk>
 
 # Get involved
