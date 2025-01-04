@@ -7,12 +7,10 @@ heroAltText: Campers canoeing down the river.
 theme: "light"
 ---
 
-We want all young people to be able to join us on camp, regardless of their financial circumstances. We have a bursary scheme available to support those who would love to come to camp but would struggle to pay.
+We want all young people to be able to join us on camp, regardless of their financial circumstances. Bursaries are available to any child whose parent or carer will find it hard to meet the full cost of the holiday (eg receiving benefits, or struggling financially in the current climate).
 
 # What's available
 
-The bursary varies in size depending on individual circumstances, but can be as much as 2/3 the price of camp (with more available if needed). The bursary is available to any child whose parent or guardian will find it hard to meet the full cost of the holiday (eg receiving benefits, or struggling financially in the current climate).
+The bursary varies in size depending on individual circumstances. Parents, carers and youth leaders can apply to [the David Chilcott Fund](https://www.crnet.org.uk/application-form) for up to 1/3 of the cost of the holiday. 
 
-# How to apply
-
-You can apply for the bursary or ask any questions by emailing [bookings@madnessandmayhem.org.uk](mailto:bookings@madnessandmayhem.org.uk).
+If further financial assistance is needed, bursaries are available from the M+M Trust. Please email <mmtrust@madnessandmayhem.org.uk> to apply.
