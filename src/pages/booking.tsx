@@ -1,4 +1,4 @@
-import React, { FC, useLayoutEffect, useState } from "react"
+import React, { FC, useState } from "react"
 import { graphql } from "gatsby"
 
 import BookingForm, { FormState } from "../components/BookingForm"
@@ -27,13 +27,6 @@ export const Head = ({ data }: Props) => {
 const Booking: FC<Props> = ({ data }: Props) => {
   const [booked, setBooked] = useState(false)
   const [previousState, setPreviousState] = useState<FormState | null>(null)
-  const [showBookings, setShowBookings] = useState(false)
-  useLayoutEffect(() => {
-    setShowBookings(
-      new URLSearchParams(window.location.search).get("previewBookings") !==
-        null,
-    )
-  }, [])
 
   return (
     <Layout
@@ -66,7 +59,7 @@ const Booking: FC<Props> = ({ data }: Props) => {
           </p>
         </>
       )}
-      {booked === false && showBookings && (
+      {booked === false && (
         <div
           css={`
             display: flex;
@@ -106,11 +99,6 @@ const Booking: FC<Props> = ({ data }: Props) => {
             }
           />
         </div>
-      )}
-      {showBookings === false && (
-        <p style={{ marginBottom: "5em", marginTop: "1em" }}>
-          Bookings will open in January!
-        </p>
       )}
     </Layout>
   )
