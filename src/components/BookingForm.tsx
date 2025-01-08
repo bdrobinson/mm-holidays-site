@@ -60,8 +60,8 @@ export type FormState = {
   // section 5
   photoPermission: ("yes" | "no") | null
   // section 6
-  heardUrbanSaintsMailing: boolean
-  heardUrbanSaintsWebsite: boolean
+  heardSocialMedia: boolean
+  heardMMWebsite: boolean
   heardBeenBefore: boolean
   heardFamilyMember: boolean
   heardChurch: boolean
@@ -155,8 +155,8 @@ const getInitialState = (): FormState => ({
   // section 5
   photoPermission: null,
   // section 6
-  heardUrbanSaintsMailing: false,
-  heardUrbanSaintsWebsite: false,
+  heardSocialMedia: false,
+  heardMMWebsite: false,
   heardBeenBefore: false,
   heardFamilyMember: false,
   heardChurch: false,
@@ -327,8 +327,8 @@ const createRequestParams = (values: FormState): Params => {
     contactByPost: values.contactByPost,
     acceptRecordKeeping: values.acceptRecordKeeping,
     photoPermission: values.photoPermission === "yes",
-    heardUrbanSaintsMailing: values.heardUrbanSaintsMailing,
-    heardUrbanSaintsWebsite: values.heardUrbanSaintsWebsite,
+    heardSocialMedia: values.heardSocialMedia,
+    heardMMWebsite: values.heardMMWebsite,
     heardBeenBefore: values.heardBeenBefore,
     heardFamilyMember: values.heardFamilyMember,
     heardChurch: values.heardChurch,
@@ -717,14 +717,14 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <h2>How did you hear about M+M?</h2>
               <br />
               <FieldCheckbox
-                fieldName="heardUrbanSaintsMailing"
-                checked={values.heardUrbanSaintsMailing}
-                label="Urban Saints mailing"
+                fieldName="heardMMWebsite"
+                checked={values.heardMMWebsite}
+                label="M+M website"
               />
               <FieldCheckbox
-                fieldName="heardUrbanSaintsWebsite"
-                checked={values.heardUrbanSaintsWebsite}
-                label="Urban Saints website"
+                fieldName="heardSocialMedia"
+                checked={values.heardSocialMedia}
+                label="Social media"
               />
               <FieldCheckbox
                 fieldName="heardBeenBefore"
