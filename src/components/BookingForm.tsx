@@ -589,7 +589,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 ]}
               />
               <TextField
-                label="Urban Saints/Energize/Church group attended (if any)"
+                label="Church group attended (if any)"
                 name="youthGroup"
               />
               <TextField label="Friends with" name="friendsWith" />
@@ -639,10 +639,11 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <h2>Contact permission</h2>
               <p>
                 We would like to stay in touch and keep you up to date with
-                future Camps and Urban Saints activities. We will respect how
-                often we contact you, and you can change this at any time by
-                emailing{" "}
-                <a href="mailto:email@urbansaints.org">email@urbansaints.org</a>
+                future M+M holidays. We will respect how often we contact you,
+                and you can change this at any time by emailing{" "}
+                <a href="mailto:info@madnessandmayhem.org.uk">
+                  info@madnessandmayhem.org.uk
+                </a>
                 .
               </p>
               <FieldCheckbox
@@ -665,15 +666,15 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 and will store your details securely, respecting your trust and
                 privacy. For our full privacy policy, see{" "}
                 <a
-                  href="https://www.urbansaints.org/privacypolicy"
+                  href="https://www.madnessandmayhem.org.uk/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  www.urbansaints.org/privacypolicy
+                  https://www.madnessandmayhem.org.uk/privacy
                 </a>
               </Copy>
               <p>
-                I understand that Urban Saints will keep a record of my child’s
+                I understand that M+M will keep a record of my child&apos;s
                 name, address, medical records and attendance at this event to
                 comply with safeguarding requirements
               </p>
@@ -688,21 +689,21 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <p>
                 During the course of the Camp, we plan to be taking videos and
                 photographs for creating memories of Camp activities, for use in
-                our publicity and or other material produced by Urban Saints.
-                This may include publishing on websites and social media (see
-                T&Cs section 12). Due to recent legislation changes, it is
-                important that we seek permission from yourself and your child
-                (over the age of 13) to take and use these images for these
-                stated purposes. Please could you discuss with your child
-                whether they are happy to give Urban Saints permission to
-                include them in any photographs or videos taken and complete the
-                consent box below as appropriate.
+                our publicity and or other material produced by M+M. This may
+                include publishing on websites and social media (see T&Cs
+                section 12). Due to recent legislation changes, it is important
+                that we seek permission from yourself and your child (over the
+                age of 13) to take and use these images for these stated
+                purposes. Please could you discuss with your child whether they
+                are happy to give M+M permission to include them in any
+                photographs or videos taken and complete the consent box below
+                as appropriate.
               </p>
               <p>
-                I am happy for Urban Saints to include my child in group videos
-                and photographs of M+M Holiday activities and these may be used
-                in future publicity, or other material produced by Urban Saints.
-                I have consulted with my child who also gives permission.
+                I am happy for M+M to include my child in group videos and
+                photographs of M+M Holiday activities and these may be used in
+                future publicity, or other material produced by M+M. I have
+                consulted with my child who also gives permission.
               </p>
               <RadioChoices
                 fieldName="photoPermission"
