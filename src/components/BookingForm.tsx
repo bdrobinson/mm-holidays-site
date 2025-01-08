@@ -958,16 +958,11 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               />
             </section>
             <section>
-              <h2>
-                Parent/guardian declaration (or by young person if over 18)
-              </h2>
+              <h2>Parent/carer declaration (or by young person if over 18)</h2>
               <p>
                 I agree to the Booking Terms &amp; Conditions. I support and
-                approve my son/daughter/ward taking part in this holiday. By
-                submitting this, I apply for my child/ward to become a temporary
-                member of Urban Saints and acknowledge that this will happen on
-                acceptance of this application. I agree to pay any outstanding
-                balance by 31st May 2025.
+                approve my son/daughter/ward taking part in this holiday. I
+                agree to pay any outstanding balance by 31st May 2025.
               </p>
               <FieldCheckbox
                 fieldName="parentConfirmation"
