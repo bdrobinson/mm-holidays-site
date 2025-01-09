@@ -18,6 +18,7 @@ import FieldErrorMessage from "./FieldErrorMessage"
 import FieldCheckbox from "./FieldCheckbox"
 import Button from "./Button"
 import FieldTitle from "./FieldTitle"
+import { Link } from "gatsby"
 
 export type FormState = {
   // section 1
@@ -769,13 +770,18 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <RadioChoices
                 title="Payment amount"
                 options={[
-                  { label: "Full (£250)", value: "Full" },
+                  { label: "Full (£299/£234*)", value: "Full" },
                   { label: "Deposit (£40)", value: "Deposit" },
                 ]}
                 fieldName="paymentAmount"
                 value={values.paymentAmount}
               />
               <Copy>
+                *£234 price is only for <strong>Mayhem (15-18) boys</strong>.
+                See the <Link to="/mayhem">Mayhem</Link> page for more
+                information.
+                <br />
+                <br />
                 <strong>Bank name:</strong> Natwest, M&M Holidays fees account
                 <br />
                 <strong>Sort code:</strong> 60-13-23
