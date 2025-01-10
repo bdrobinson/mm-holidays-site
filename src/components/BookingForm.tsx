@@ -581,7 +581,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <FieldErrorMessage name="childDobMonth" />
               <FieldErrorMessage name="childDobYear" />
               <RadioChoices
-                title="Gender"
+                title="Sex"
                 fieldName="gender"
                 value={values.gender}
                 options={[
