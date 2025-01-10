@@ -2,7 +2,7 @@
 order: 0
 title: Our holidays
 subtitle: Three holidays for all ages
-image: "../../../images/lads.jpg"
+image: "../../../images/max_tug_of_war.jpg"
 imageAltText: M+M campers and leaders enjoying the last night party.
 ---
 

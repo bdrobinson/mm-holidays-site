@@ -6,7 +6,7 @@ template: CAMP_PROFILE
 ages: 15-18
 price: £299/£234
 sections: []
-hero: ../images/lads.jpg
+hero: ../images/_DSC4103.JPG
 heroAltText: Mayhem campers and leaders at the last night party.
 ---
 <p></p>

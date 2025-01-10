@@ -2,7 +2,7 @@
 order: 2
 title: Time to think
 subtitle: Explore big ideas and find out what the Bible has to say
-image: ../../../images/meeting.jpg
+image: ../../../images/boys_bridge.jpg
 imageAltText: A room of campers at the day's main meeting.
 ---
 
