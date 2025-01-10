@@ -27,7 +27,7 @@ interface Props {}
 const FooterBookingPrompt: FC<Props> = () => {
   const data = useStaticQuery(graphql`
     {
-      bg: file(relativePath: { eq: "_DSC2148-186.jpg" }) {
+      bg: file(relativePath: { eq: "DSC00218.JPG" }) {
         childImageSharp {
           gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
         }
