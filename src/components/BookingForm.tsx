@@ -18,6 +18,7 @@ import FieldErrorMessage from "./FieldErrorMessage"
 import FieldCheckbox from "./FieldCheckbox"
 import Button from "./Button"
 import FieldTitle from "./FieldTitle"
+import { Link } from "gatsby"
 
 export type FormState = {
   // section 1
@@ -60,8 +61,8 @@ export type FormState = {
   // section 5
   photoPermission: ("yes" | "no") | null
   // section 6
-  heardUrbanSaintsMailing: boolean
-  heardUrbanSaintsWebsite: boolean
+  heardSocialMedia: boolean
+  heardMMWebsite: boolean
   heardBeenBefore: boolean
   heardFamilyMember: boolean
   heardChurch: boolean
@@ -155,8 +156,8 @@ const getInitialState = (): FormState => ({
   // section 5
   photoPermission: null,
   // section 6
-  heardUrbanSaintsMailing: false,
-  heardUrbanSaintsWebsite: false,
+  heardSocialMedia: false,
+  heardMMWebsite: false,
   heardBeenBefore: false,
   heardFamilyMember: false,
   heardChurch: false,
@@ -327,8 +328,8 @@ const createRequestParams = (values: FormState): Params => {
     contactByPost: values.contactByPost,
     acceptRecordKeeping: values.acceptRecordKeeping,
     photoPermission: values.photoPermission === "yes",
-    heardUrbanSaintsMailing: values.heardUrbanSaintsMailing,
-    heardUrbanSaintsWebsite: values.heardUrbanSaintsWebsite,
+    heardSocialMedia: values.heardSocialMedia,
+    heardMMWebsite: values.heardMMWebsite,
     heardBeenBefore: values.heardBeenBefore,
     heardFamilyMember: values.heardFamilyMember,
     heardChurch: values.heardChurch,
@@ -515,13 +516,13 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                   {
                     value: "1",
                     label: "Week 1",
-                    subtitle: "Sat 27th July – Sat 3rd August 2024",
+                    subtitle: "Sat 26th July – Sat 2nd August 2025",
                     disabled: false,
                   },
                   {
                     value: "2",
                     label: "Week 2",
-                    subtitle: "Sat 3rd August – Sat 10th August 2024",
+                    subtitle: "Sat 2nd August – Sat 9th August 2025",
                     disabled: false,
                   },
                 ]}
@@ -589,7 +590,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 ]}
               />
               <TextField
-                label="Urban Saints/Energize/Church group attended (if any)"
+                label="Church group attended (if any)"
                 name="youthGroup"
               />
               <TextField label="Friends with" name="friendsWith" />
@@ -639,10 +640,11 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <h2>Contact permission</h2>
               <p>
                 We would like to stay in touch and keep you up to date with
-                future Camps and Urban Saints activities. We will respect how
-                often we contact you, and you can change this at any time by
-                emailing{" "}
-                <a href="mailto:email@urbansaints.org">email@urbansaints.org</a>
+                future M+M holidays. We will respect how often we contact you,
+                and you can change this at any time by emailing{" "}
+                <a href="mailto:info@madnessandmayhem.org.uk">
+                  info@madnessandmayhem.org.uk
+                </a>
                 .
               </p>
               <FieldCheckbox
@@ -665,15 +667,15 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 and will store your details securely, respecting your trust and
                 privacy. For our full privacy policy, see{" "}
                 <a
-                  href="https://www.urbansaints.org/privacypolicy"
+                  href="https://www.madnessandmayhem.org.uk/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  www.urbansaints.org/privacypolicy
+                  https://www.madnessandmayhem.org.uk/privacy
                 </a>
               </Copy>
               <p>
-                I understand that Urban Saints will keep a record of my child’s
+                I understand that M+M will keep a record of my child&apos;s
                 name, address, medical records and attendance at this event to
                 comply with safeguarding requirements
               </p>
@@ -688,21 +690,21 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <p>
                 During the course of the Camp, we plan to be taking videos and
                 photographs for creating memories of Camp activities, for use in
-                our publicity and or other material produced by Urban Saints.
-                This may include publishing on websites and social media (see
-                T&Cs section 12). Due to recent legislation changes, it is
-                important that we seek permission from yourself and your child
-                (over the age of 13) to take and use these images for these
-                stated purposes. Please could you discuss with your child
-                whether they are happy to give Urban Saints permission to
-                include them in any photographs or videos taken and complete the
-                consent box below as appropriate.
+                our publicity and or other material produced by M+M. This may
+                include publishing on websites and social media (see T&Cs
+                section 12). Due to recent legislation changes, it is important
+                that we seek permission from yourself and your child (over the
+                age of 13) to take and use these images for these stated
+                purposes. Please could you discuss with your child whether they
+                are happy to give M+M permission to include them in any
+                photographs or videos taken and complete the consent box below
+                as appropriate.
               </p>
               <p>
-                I am happy for Urban Saints to include my child in group videos
-                and photographs of M+M Holiday activities and these may be used
-                in future publicity, or other material produced by Urban Saints.
-                I have consulted with my child who also gives permission.
+                I am happy for M+M to include my child in group videos and
+                photographs of M+M Holiday activities and these may be used in
+                future publicity, or other material produced by M+M. I have
+                consulted with my child who also gives permission.
               </p>
               <RadioChoices
                 fieldName="photoPermission"
@@ -717,14 +719,14 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <h2>How did you hear about M+M?</h2>
               <br />
               <FieldCheckbox
-                fieldName="heardUrbanSaintsMailing"
-                checked={values.heardUrbanSaintsMailing}
-                label="Urban Saints mailing"
+                fieldName="heardMMWebsite"
+                checked={values.heardMMWebsite}
+                label="M+M website"
               />
               <FieldCheckbox
-                fieldName="heardUrbanSaintsWebsite"
-                checked={values.heardUrbanSaintsWebsite}
-                label="Urban Saints website"
+                fieldName="heardSocialMedia"
+                checked={values.heardSocialMedia}
+                label="Social media"
               />
               <FieldCheckbox
                 fieldName="heardBeenBefore"
@@ -768,13 +770,18 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <RadioChoices
                 title="Payment amount"
                 options={[
-                  { label: "Full (£250)", value: "Full" },
+                  { label: "Full (£299/£234*)", value: "Full" },
                   { label: "Deposit (£40)", value: "Deposit" },
                 ]}
                 fieldName="paymentAmount"
                 value={values.paymentAmount}
               />
               <Copy>
+                *£234 price is only for <strong>Mayhem (15-18) boys</strong>.
+                See the <Link to="/mayhem">Mayhem</Link> page for more
+                information.
+                <br />
+                <br />
                 <strong>Bank name:</strong> Natwest, M&M Holidays fees account
                 <br />
                 <strong>Sort code:</strong> 60-13-23
@@ -958,16 +965,11 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               />
             </section>
             <section>
-              <h2>
-                Parent/guardian declaration (or by young person if over 18)
-              </h2>
+              <h2>Parent/carer declaration (or by young person if over 18)</h2>
               <p>
                 I agree to the Booking Terms &amp; Conditions. I support and
-                approve my son/daughter/ward taking part in this holiday. By
-                submitting this, I apply for my child/ward to become a temporary
-                member of Urban Saints and acknowledge that this will happen on
-                acceptance of this application. I agree to pay any outstanding
-                balance by 31st May 2024.
+                approve my son/daughter/ward taking part in this holiday. I
+                agree to pay any outstanding balance by 31st May 2025.
               </p>
               <FieldCheckbox
                 fieldName="parentConfirmation"

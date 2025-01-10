@@ -56,8 +56,8 @@ export interface Params {
   // section 5
   photoPermission: boolean
   // section 6
-  heardUrbanSaintsMailing: boolean
-  heardUrbanSaintsWebsite: boolean
+  heardSocialMedia: boolean
+  heardMMWebsite: boolean
   heardBeenBefore: boolean
   heardFamilyMember: boolean
   heardChurch: boolean

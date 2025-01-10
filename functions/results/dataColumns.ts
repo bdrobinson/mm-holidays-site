@@ -192,14 +192,14 @@ export const createColumns = (params: Params): Array<Column> => {
       value: stringifyBoolean(params.photoPermission),
     },
     {
-      id: "heardUrbanSaintsMailing",
-      name: "Urban Saints mailing?",
-      value: stringifyBoolean(params.heardUrbanSaintsMailing),
+      id: "heardSocialMedia",
+      name: "Social media?",
+      value: stringifyBoolean(params.heardSocialMedia),
     },
     {
-      id: "heardUrbanSaintsWebsite",
-      name: "Urban Saints website?",
-      value: stringifyBoolean(params.heardUrbanSaintsWebsite),
+      id: "heardMMWebsite",
+      name: "M+M website?",
+      value: stringifyBoolean(params.heardMMWebsite),
     },
     {
       id: "heardBeenBefore",
