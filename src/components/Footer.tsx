@@ -20,6 +20,7 @@ const links: Array<{ name: string; path: string }> = [
   { name: "Mayhem", path: "/mayhem" },
   { name: "Get Involved", path: "/get-involved" },
   { name: "Bursaries", path: "/bursary" },
+  { name: "Safeguarding", path: "/safeguarding" },
   ...(ENABLE_BOOKING ? [{ name: "Book", path: "/booking" }] : []),
 ]
 
