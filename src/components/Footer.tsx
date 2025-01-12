@@ -129,7 +129,13 @@ const Footer: FC<Props> = () => {
           </div>
         </div>
         <div css="text-align: center; margin-top: 2em;">
-          &copy; M+M Holidays {new Date(data.site.buildTime).getFullYear()}
+          <div>
+            &copy; M+M Holidays {new Date(data.site.buildTime).getFullYear()}
+          </div>
+          <div css="font-size: 0.8em; margin-top: 0.5em;">
+            The Madness and Mayhem Trust CIO is a registered charity no. 1211419
+            (England and Wales)
+          </div>
         </div>
       </PageGutter>
     </footer>
