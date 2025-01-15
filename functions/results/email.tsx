@@ -9,26 +9,16 @@ const CamperEmail: FC<CamperEmailProps> = () => {
   return (
     <body>
       <p>We&apos;re delighted you have applied to come to M+M Holidays 2025.</p>
-      <p>Your application will now be processed.</p>
-      <p>To pay by bank transfer, use the following details:</p>
       <p>
-        <strong>Who are you paying?</strong> M&amp;M Holidays fees
+        Your application will now be processed and you will receive confirmation
+        of a place(s) (via email) from the Booking Secretary.
       </p>
       <p>
-        <strong>Your reference:</strong> Child&apos;s surname and then first
-        name (as much as you can fit in - or initials if you are paying for more
-        than one child) For example - Webster James or Webster J, F & B
-      </p>
-      <p>
-        <strong>Sort code:</strong> 60-13-23
-      </p>
-      <p>
-        <strong>Account number:</strong> 47430702
-      </p>
-      <p>
-        Confirmation of a place/s will only be sent (via email) from the Booking
-        Secretary{" "}
-        <strong>once we have received your deposit for the holiday</strong>.
+        We are currently setting up a new bank account and will send you the
+        payment details in the next couple of months. Once you have the details,
+        you will need to pay the deposit of £40 (or the full fee if you prefer)
+        within 2 weeks in order to keep your place(s). The full balance is due
+        by 31st May 2025.
       </p>
       <p>
         We will continue to send important information via email, particularly
