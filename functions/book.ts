@@ -186,7 +186,7 @@ export const handleAsync = async (
       row,
       tabName: "Raw Bookings",
       startColumn: "A",
-      endColumn: "BD",
+      endColumn: "BE",
       startRow: 2,
     })
     await appendRow({
@@ -195,7 +195,7 @@ export const handleAsync = async (
       row,
       tabName: "Bookings",
       startColumn: "B",
-      endColumn: "BE",
+      endColumn: "BF",
       startRow: 2,
     })
   } catch (err) {
