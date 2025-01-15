@@ -66,8 +66,8 @@ export interface Params {
   heardFriend: boolean
   heardOther: string
   // section 7
-  paymentMethod: "Bank transfer" | "Cheque" | "Cash"
-  paymentAmount: "Full" | "Deposit"
+  paymentMethod: null | "Bank transfer" | "Cheque" | "Cash"
+  paymentAmount: null | "Full" | "Deposit"
   // section 8
   dietaryNeeds: string
   medicalIssues: string

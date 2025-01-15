@@ -18,7 +18,6 @@ import FieldErrorMessage from "./FieldErrorMessage"
 import FieldCheckbox from "./FieldCheckbox"
 import Button from "./Button"
 import FieldTitle from "./FieldTitle"
-import { Link } from "gatsby"
 
 export type FormState = {
   // section 1
@@ -71,8 +70,8 @@ export type FormState = {
   heardFriend: boolean
   heardOther: string
   // section 7
-  paymentMethod: "Bank transfer" | "Cheque" | "Cash"
-  paymentAmount: "Full" | "Deposit"
+  paymentMethod: null | "Bank transfer" | "Cheque" | "Cash"
+  paymentAmount: null | "Full" | "Deposit"
   // section 8
   dietaryNeeds: string
   medicalIssues: string
@@ -167,8 +166,8 @@ const getInitialState = (): FormState => ({
   heardFriend: false,
   heardOther: "",
   // section 7
-  paymentMethod: "Bank transfer",
-  paymentAmount: "Full",
+  paymentMethod: null, // "Bank transfer",
+  paymentAmount: null, // "Full",
   // section 8
   dietaryNeeds: "",
   medicalIssues: "",
@@ -794,7 +793,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <h2>Payment information</h2>
-              <RadioChoices
+              {/* <RadioChoices
                 title="Payment method"
                 options={[
                   { label: "Bank transfer", value: "Bank transfer" },
@@ -812,18 +811,18 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 ]}
                 fieldName="paymentAmount"
                 value={values.paymentAmount}
-              />
-              <Copy>
-                *£234 price is only for <strong>Mayhem (15-18) boys</strong>.
+              /> */}
+              <p>
+                {/* *£234 price is only for <strong>Mayhem (15-18) boys</strong>.
                 See the <Link to="/mayhem">Mayhem</Link> page for more
                 information.
                 <br />
-                <br />
+                <br /> */}
                 We are currently setting up a new bank account. We will be in
                 touch with the account details in the next couple of months.
                 Once we have shared bank details with you, we will require a
                 deposit of £40 within two weeks or your place will be cancelled.
-              </Copy>
+              </p>
             </section>
             <section>
               <h2>Sibling discount</h2>

@@ -239,12 +239,12 @@ export const createColumns = (params: Params): Array<Column> => {
     {
       id: "paymentMethod",
       name: "Payment method",
-      value: params.paymentMethod,
+      value: params.paymentMethod ?? "",
     },
     {
       id: "paymentAmount",
       name: "Payment amount",
-      value: params.paymentAmount,
+      value: params.paymentAmount ?? "",
     },
     {
       id: "dietaryNeeds",
