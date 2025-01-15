@@ -43,7 +43,7 @@ export type FormState = {
   title: string
   parentFirstName: string
   parentLastName: string
-  parentRelationshipToChild: "Parent" | "Guardian" | "Leader"
+  parentRelationshipToChild: "Parent" | "Carer" | "Leader"
   parentAddressSameAsChild: "yes" | "no"
   parentAddressLine1: string
   parentAddressLine2: string
@@ -59,14 +59,15 @@ export type FormState = {
   contactByPost: boolean
   acceptRecordKeeping: boolean
   // section 5
-  photoPermission: ("yes" | "no") | null
+  generalPhotoPermission: ("yes" | "no") | null
+  groupPhotoPermission: ("yes" | "no") | null
+  idPhotoPermission: ("yes" | "no") | null
   // section 6
   heardSocialMedia: boolean
   heardMMWebsite: boolean
   heardBeenBefore: boolean
   heardFamilyMember: boolean
   heardChurch: boolean
-  heardScriptureUnion: boolean
   heardFriend: boolean
   heardOther: string
   // section 7
@@ -154,14 +155,15 @@ const getInitialState = (): FormState => ({
   contactByPost: false,
   acceptRecordKeeping: false,
   // section 5
-  photoPermission: null,
+  generalPhotoPermission: null,
+  groupPhotoPermission: null,
+  idPhotoPermission: null,
   // section 6
   heardSocialMedia: false,
   heardMMWebsite: false,
   heardBeenBefore: false,
   heardFamilyMember: false,
   heardChurch: false,
-  heardScriptureUnion: false,
   heardFriend: false,
   heardOther: "",
   // section 7
@@ -262,8 +264,14 @@ const validateForm = (formState: FormState): FormikErrors<FormState> => {
     }
   })
 
-  if (formState.photoPermission === null) {
-    errors.photoPermission = "Required"
+  if (formState.generalPhotoPermission === null) {
+    errors.generalPhotoPermission = "Required"
+  }
+  if (formState.groupPhotoPermission === null) {
+    errors.groupPhotoPermission = "Required"
+  }
+  if (formState.idPhotoPermission === null) {
+    errors.idPhotoPermission = "Required"
   }
 
   if (dayRegex.test(formState.childDobDay) === false) {
@@ -327,13 +335,14 @@ const createRequestParams = (values: FormState): Params => {
     contactByPhone: values.contactByPhone,
     contactByPost: values.contactByPost,
     acceptRecordKeeping: values.acceptRecordKeeping,
-    photoPermission: values.photoPermission === "yes",
+    generalPhotoPermission: values.generalPhotoPermission === "yes",
+    groupPhotoPermission: values.groupPhotoPermission === "yes",
+    idPhotoPermission: values.idPhotoPermission === "yes",
     heardSocialMedia: values.heardSocialMedia,
     heardMMWebsite: values.heardMMWebsite,
     heardBeenBefore: values.heardBeenBefore,
     heardFamilyMember: values.heardFamilyMember,
     heardChurch: values.heardChurch,
-    heardScriptureUnion: values.heardScriptureUnion,
     heardFriend: values.heardFriend,
     heardOther: values.heardOther,
     paymentMethod: values.paymentMethod,
@@ -594,11 +603,15 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 name="youthGroup"
               />
               <TextField label="Friends with" name="friendsWith" />
+              <Copy css="margin-top: 0">
+                We will do our best to ensure your child is with at least one
+                friend listed.
+              </Copy>
             </section>
             {displayParentSection && (
               <section>
                 <h2>
-                  Parent/guardian details (required if applicant is under 18)
+                  Parent/carer details (required if applicant is under 18)
                 </h2>
                 <TextField label="Title" name="title" />
                 <TextField label="First name" name="parentFirstName" />
@@ -607,7 +620,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                   title="Relationship to child"
                   options={[
                     { label: "Parent", value: "Parent" },
-                    { label: "Guardian", value: "Guardian" },
+                    { label: "Carer", value: "Carer" },
                     { label: "Leader", value: "Leader" },
                   ]}
                   value={values.parentRelationshipToChild}
@@ -675,9 +688,9 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 </a>
               </Copy>
               <p>
-                I understand that M+M will keep a record of my child&apos;s
-                name, address, medical records and attendance at this event to
-                comply with safeguarding requirements
+                I understand that M+M Holidays will keep a record of my
+                child&apos;s name, address, medical records and attendance at
+                this event to comply with safeguarding requirements
               </p>
               <FieldCheckbox
                 fieldName="acceptRecordKeeping"
@@ -687,28 +700,57 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section>
               <h2>Photo (etc) permission</h2>
+              <Copy>
+                During the course of the camp, we plan to be taking videos and
+                photographs for creating memories of camp activities, for use in
+                our publicity and or other material produced by M+M Holidays.
+                This may include publishing on websites and social media (see
+                T&Cs section 16). It is important that we seek permission from
+                yourself and your child (over the age of 13) to take and use
+                these images for these stated purposes. Please could you discuss
+                with your child whether they are happy to give M+M Holidays
+                permission to include them in any photographs or videos as
+                described below and complete the consent box below as
+                appropriate:
+              </Copy>
               <p>
-                During the course of the Camp, we plan to be taking videos and
-                photographs for creating memories of Camp activities, for use in
-                our publicity and or other material produced by M+M. This may
-                include publishing on websites and social media (see T&Cs
-                section 12). Due to recent legislation changes, it is important
-                that we seek permission from yourself and your child (over the
-                age of 13) to take and use these images for these stated
-                purposes. Please could you discuss with your child whether they
-                are happy to give M+M permission to include them in any
-                photographs or videos taken and complete the consent box below
-                as appropriate.
-              </p>
-              <p>
-                I am happy for M+M to include my child in group videos and
+                I am happy for M+M Holidays to include my child in videos and
                 photographs of M+M Holiday activities and these may be used in
-                future publicity, or other material produced by M+M. I have
-                consulted with my child who also gives permission.
+                future publicity, or other material produced by M+M Holidays. I
+                have consulted with my child who also gives permission.
               </p>
               <RadioChoices
-                fieldName="photoPermission"
-                value={values.photoPermission}
+                fieldName="generalPhotoPermission"
+                value={values.generalPhotoPermission}
+                options={[
+                  { label: "Yes", value: "yes" },
+                  { label: "No", value: "no" },
+                ]}
+              />
+              <p css="margin-top: 3em;">
+                I am happy for M+M Holidays to include my child in a group
+                photograph of their camp (either Max/Madness/Mayhem). This is
+                not shared for publicity purposes. A printed copy is provided to
+                each person in the photograph. I have consulted with my child
+                who also gives permission.
+              </p>
+              <RadioChoices
+                fieldName="groupPhotoPermission"
+                value={values.groupPhotoPermission}
+                options={[
+                  { label: "Yes", value: "yes" },
+                  { label: "No", value: "no" },
+                ]}
+              />
+              <p css="margin-top: 3em;">
+                I am happy for M+M Holidays to store a photograph of my child
+                for the purpose of identification. This will be destroyed at the
+                end of the holiday. I have consulted with my child who also
+                gives permission.
+              </p>
+              <RadioChoices
+                fieldName="idPhotoPermission"
+                value={values.idPhotoPermission}
                 options={[
                   { label: "Yes", value: "yes" },
                   { label: "No", value: "no" },
@@ -716,7 +758,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               />
             </section>
             <section>
-              <h2>How did you hear about M+M?</h2>
+              <h2>How did you hear about M+M Holidays?</h2>
               <br />
               <FieldCheckbox
                 fieldName="heardMMWebsite"
@@ -742,11 +784,6 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 fieldName="heardChurch"
                 checked={values.heardChurch}
                 label="Church"
-              />
-              <FieldCheckbox
-                fieldName="heardScriptureUnion"
-                checked={values.heardScriptureUnion}
-                label="Scripture Union"
               />
               <FieldCheckbox
                 fieldName="heardFriend"
@@ -782,21 +819,18 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                 information.
                 <br />
                 <br />
-                <strong>Bank name:</strong> Natwest, M&M Holidays fees account
-                <br />
-                <strong>Sort code:</strong> 60-13-23
-                <br />
-                <strong>Account number:</strong> 47430702
-                <br />
-                <strong>Ref:</strong> Your child&apos;s name
+                We are currently setting up a new bank account. We will be in
+                touch with the account details in the next couple of months.
+                Once we have shared bank details with you, we will require a
+                deposit of £40 within two weeks or your place will be cancelled.
               </Copy>
             </section>
             <section>
               <h2>Sibling discount</h2>
               <p>
-                If you would like to apply for the sibling discount (£30),
-                please tick the box and write the names of the camper&apos;s
-                siblings below.
+                If you have need to apply for the sibling discount (£30), please
+                tick the box and write the names of the camper&apos;s siblings
+                below.
               </p>
               <FieldCheckbox
                 fieldName="wantSiblingDiscount"
@@ -832,7 +866,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <p>
                 A medical form will be sent separately before the holiday
                 commences and it is essential that it is completed and returned
-                by a parent/guardian immediately.
+                by a parent/carer immediately.
               </p>
               <label>
                 <FieldTitle>Dietary needs</FieldTitle>
@@ -903,7 +937,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
               <p>
                 I understand that there will be Christian teaching on the
                 holiday. I agree to give my full support and co-operation to the
-                Holiday Leader. I will behave appropriately at all times.
+                Holiday Leaders. I will behave appropriately at all times.
               </p>
               <FieldCheckbox
                 fieldName="childConfirmation"
@@ -914,42 +948,21 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             <section>
               <h2>Mobile phone declaration</h2>
               <p>
-                One of the great benefits of camp is being on holiday and taking
-                a break from our normal lives. Since none of us needs to be
-                contacted 24/7, we have the following mobile phone policy:
+                Max (9-11s) and Madness (12-14s) are mobile phone free holidays.
+                We are keen to protect the young people attending our holidays
+                from the pressures and distractions that mobile phones can
+                bring, whilst fully embracing all that a week away together
+                offers. Should you need to contact your child in an emergency,
+                you will have a leader&apos;s number that you can call.
+                Similarly, we are able to arrange for your child to call you
+                using a leader&apos;s phone.
               </p>
               <p>
-                <em>
-                  All camper mobile phones will be looked after overnight by a
-                  designated Holiday Team Leader and returned the following day.
-                </em>
-              </p>
-              <p>
-                <em>
-                  On Max (9-11s), mobile phones will only be returned for a
-                  limited time in the middle of the day.
-                </em>
-              </p>
-              <p>
-                <em>
-                  On Madness (11-14s) and Mayhem (15-18s) our expectation is
-                  that mobile phones will only be used at appropriate times and
-                  in communal areas.
-                </em>
-              </p>
-              <p>
-                <em>
-                  Inappropriate use may mean that we will have to remove your
-                  phone for a short while.
-                </em>
-              </p>
-              <p>
-                <em>
-                  If contact with home is required, we insist that the young
-                  person or parent/guardian communicate through the overall week
-                  leaders of the camp (Rupert and El Webster/Will and Anna
-                  Eley).
-                </em>
+                Mayhem (15-18s) may use their phones at designated times, but
+                are expected to switch off and store their phones for the rest
+                of the time. Phones are taken in overnight and returned the
+                following day. Leaders have permission to remove phones if
+                needed.
               </p>
               <p>
                 If you have any concerns about this, please{" "}

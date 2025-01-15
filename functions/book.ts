@@ -54,14 +54,15 @@ export interface Params {
   contactByPost: boolean
   acceptRecordKeeping: boolean
   // section 5
-  photoPermission: boolean
+  generalPhotoPermission: boolean
+  groupPhotoPermission: boolean
+  idPhotoPermission: boolean
   // section 6
   heardSocialMedia: boolean
   heardMMWebsite: boolean
   heardBeenBefore: boolean
   heardFamilyMember: boolean
   heardChurch: boolean
-  heardScriptureUnion: boolean
   heardFriend: boolean
   heardOther: string
   // section 7

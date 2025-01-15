@@ -188,8 +188,18 @@ export const createColumns = (params: Params): Array<Column> => {
     },
     {
       id: "photoPermission",
-      name: "Photo permission",
-      value: stringifyBoolean(params.photoPermission),
+      name: "General photo permission",
+      value: stringifyBoolean(params.generalPhotoPermission),
+    },
+    {
+      id: "groupPhotoPermission",
+      name: "Group photo permission",
+      value: stringifyBoolean(params.groupPhotoPermission),
+    },
+    {
+      id: "idPermission",
+      name: "ID photo permission",
+      value: stringifyBoolean(params.idPhotoPermission),
     },
     {
       id: "heardSocialMedia",
@@ -215,11 +225,6 @@ export const createColumns = (params: Params): Array<Column> => {
       id: "heardChurch",
       name: "Church",
       value: stringifyBoolean(params.heardChurch),
-    },
-    {
-      id: "heardScriptureUnion",
-      name: "Scripture union",
-      value: stringifyBoolean(params.heardScriptureUnion),
     },
     {
       id: "heardFriend",

@@ -2,6 +2,8 @@
 description: You can book onto M+M either with our online form.
 ---
 
+## Full cost of holiday: £299
+
 Fill out this form to book your place on M+M. You can read our Terms and Conditions [here](/terms-and-conditions).
 
 > **⛺ Reduced cost for Mayhem boys**
