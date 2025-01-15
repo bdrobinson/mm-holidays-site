@@ -991,7 +991,9 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
             </section>
             <section css="margin-top: 3em;">
               <div>
-                <SubmitButton disabled={isSubmitting}>Submit</SubmitButton>
+                <SubmitButton disabled={isSubmitting}>
+                  {isSubmitting ? "Loading..." : "Submit"}
+                </SubmitButton>
               </div>
               {Object.keys(errors).length > 0 && submitCount > 0 && (
                 <p style={{ color: RED }}>
