@@ -117,7 +117,7 @@ export const pageQuery = graphql`
     hero: file(relativePath: { eq: "bungee_run_2022.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
-        ogImage: fixed(width: 1200) {
+        ogImage: fixed(width: 1200, height: 630) {
           src
         }
       }

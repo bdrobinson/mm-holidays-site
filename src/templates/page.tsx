@@ -67,7 +67,7 @@ export const pageQuery = graphql`
               quality: 90
               placeholder: BLURRED
             )
-            ogImage: fixed(width: 1200) {
+            ogImage: fixed(width: 1200, height: 630) {
               src
             }
           }

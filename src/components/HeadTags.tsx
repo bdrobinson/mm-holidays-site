@@ -27,7 +27,7 @@ const HeadTags: React.FC<Props> = ({
           }
           defaultImage: file(relativePath: { eq: "lasertag_walking.jpg" }) {
             childImageSharp {
-              fixed(width: 1200) {
+              fixed(width: 1200, height: 630) {
                 src
               }
             }

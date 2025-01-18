@@ -390,7 +390,7 @@ export const pageQuery = graphql`
     }
     ogImage: file(absolutePath: { regex: "/max_tug_of_war.jpg$/" }) {
       childImageSharp {
-        fixed(width: 1200) {
+        fixed(width: 1200, height: 630) {
           src
         }
       }
