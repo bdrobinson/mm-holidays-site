@@ -41,7 +41,7 @@ const FooterBookingPrompt: FC<Props> = () => {
         <Img
           // @ts-ignore
           image={getImage(data.bg)}
-          alt="Campers smiling and holding laser tag gear"
+          alt="Campers smiling on a swing"
         />
       </ImageContainer>
       <div
