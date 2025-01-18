@@ -30,8 +30,7 @@ const Booking: FC<Props> = ({ data }: Props) => {
   const [showBookings, setShowBookings] = useState(false)
   useLayoutEffect(() => {
     setShowBookings(
-      new URLSearchParams(window.location.search).get("previewBookings") !==
-        null,
+      new URLSearchParams(window.location.search).get("preview") !== null,
     )
   }, [])
 
