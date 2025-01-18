@@ -1,4 +1,4 @@
 ---
-header: "Save the dates for 2025!"
+header: "Bookings for 2025 are now live!"
 ---
-Put the dates for M+M 2025 into your diary and we'll see you there! Bookings will open on 19th January.
+We can't wait to see you at M+M. Don't miss out, book your place today!
