@@ -5,7 +5,7 @@ type Props = {
   title: string | null
   seoDescription: string | null
   path: string | null
-  ogImageRelativeUrl: string | null
+  ogImageRelativeUrl: string | null | undefined
 }
 
 const HeadTags: React.FC<Props> = ({

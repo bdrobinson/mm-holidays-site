@@ -19,7 +19,7 @@ export const Head = ({ data }: Props) => {
       title={title}
       seoDescription={description}
       path={frontmatter.path}
-      ogImageRelativeUrl={frontmatter.hero.childImageSharp.ogImage.src}
+      ogImageRelativeUrl={frontmatter.hero?.childImageSharp?.ogImage?.src}
     ></HeadTags>
   )
 }
