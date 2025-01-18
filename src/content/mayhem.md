@@ -26,7 +26,7 @@ Mayhem is a chance to hang out with friends, meet new people and try a whole ran
 
 It’s also an opportunity to take some time out and think about life’s big questions. We’ll be exploring the claims of the Bible together and discussing whether Jesus is relevant to life today.
 
-Mayhem books up fast, so invite all your friends and start reserving your spaces. The cost is £299 for girls (in dorms) and £234 for boys (in tents), with bursaries/extra funding available if required.
+Mayhem books up fast, so invite all your friends and start reserving your spaces. The cost is £299 for girls (in dorms) and £234 for boys (in tents), with [bursaries/extra funding](/bursary) available if required.
 
 We’re looking forward to seeing you there.
 
