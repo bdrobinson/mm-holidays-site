@@ -18,8 +18,10 @@ const links: Array<{ name: string; path: string }> = [
   { name: "Max", path: "/max" },
   { name: "Madness", path: "/madness" },
   { name: "Mayhem", path: "/mayhem" },
-  { name: "Get Involved", path: "/get-involved" },
+  { name: "Get involved", path: "/get-involved" },
   { name: "Bursaries", path: "/bursary" },
+  { name: "Privacy policy", path: "/privacy" },
+  { name: "Safeguarding", path: "/safeguarding" },
   ...(ENABLE_BOOKING ? [{ name: "Book", path: "/booking" }] : []),
 ]
 

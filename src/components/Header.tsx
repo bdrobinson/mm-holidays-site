@@ -23,6 +23,7 @@ const LINKS: Array<{
   { link: "/madness", label: "Madness", sublabel: "12-14" },
   { link: "/mayhem", label: "Mayhem", sublabel: "15-18" },
   { link: "/get-involved", label: "Get involved" },
+  { link: "/safeguarding", label: "Safeguarding" },
   { link: "/contact", label: "Contact" },
   ...(ENABLE_BOOKING
     ? [{ link: "/booking", label: "Book", accent: true }]
