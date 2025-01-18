@@ -41,6 +41,7 @@ export const Head = ({ data }: Props) => {
   const meta = data.markdownRemark.frontmatter
   return (
     <HeadTags
+      ogImageRelativeUrl={meta.hero.childImageSharp.ogImage.src}
       path={meta.path}
       title={meta.title}
       seoDescription={meta.description}
@@ -103,6 +104,9 @@ export const pageQuery = graphql`
               quality: 90
               placeholder: BLURRED
             )
+            ogImage: fixed(width: 1200) {
+              src
+            }
           }
         }
         heroAltText

@@ -19,6 +19,7 @@ export const Head = ({ data }: Props) => {
       title={title}
       seoDescription={description}
       path={frontmatter.path}
+      ogImageRelativeUrl={frontmatter.hero.childImageSharp.ogImage.src}
     ></HeadTags>
   )
 }
@@ -66,6 +67,9 @@ export const pageQuery = graphql`
               quality: 90
               placeholder: BLURRED
             )
+            ogImage: fixed(width: 1200) {
+              src
+            }
           }
         }
         heroAltText

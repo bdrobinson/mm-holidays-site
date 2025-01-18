@@ -138,6 +138,7 @@ export const Head = ({ data }: Props) => {
       title={null}
       path="/"
       seoDescription={data.site.siteMetadata.seoDescription}
+      ogImageRelativeUrl={data.ogImage.childImageSharp.fixed.src}
     />
   )
 }
@@ -383,6 +384,13 @@ export const pageQuery = graphql`
     textboxHeader: file(absolutePath: { regex: "/online_textbox.png$/" }) {
       childImageSharp {
         fixed(width: 800) {
+          src
+        }
+      }
+    }
+    ogImage: file(absolutePath: { regex: "/max_tug_of_war.jpg$/" }) {
+      childImageSharp {
+        fixed(width: 1200) {
           src
         }
       }

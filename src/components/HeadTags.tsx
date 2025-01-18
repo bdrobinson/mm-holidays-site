@@ -5,9 +5,15 @@ type Props = {
   title: string | null
   seoDescription: string | null
   path: string | null
+  ogImageRelativeUrl: string | null
 }
 
-const HeadTags: React.FC<Props> = ({ title, seoDescription, path }: Props) => {
+const HeadTags: React.FC<Props> = ({
+  title,
+  seoDescription,
+  path,
+  ogImageRelativeUrl,
+}: Props) => {
   return (
     <StaticQuery
       query={graphql`
@@ -19,7 +25,7 @@ const HeadTags: React.FC<Props> = ({ title, seoDescription, path }: Props) => {
               baseUrl
             }
           }
-          defaultImage: file(relativePath: { eq: "hero0.jpg" }) {
+          defaultImage: file(relativePath: { eq: "lasertag_walking.jpg" }) {
             childImageSharp {
               fixed(width: 1200) {
                 src
@@ -38,7 +44,9 @@ const HeadTags: React.FC<Props> = ({ title, seoDescription, path }: Props) => {
             ? seoDescription
             : data.site.siteMetadata.seoDescription
 
-        const pageImage = `${data.site.siteMetadata.baseUrl}${data.defaultImage.childImageSharp.fixed.src}`
+        const pageImage = `${data.site.siteMetadata.baseUrl}${
+          ogImageRelativeUrl ?? data.defaultImage.childImageSharp.fixed.src
+        }`
         const imageAlt = "The M+M Online Logo"
         const pageUrl =
           path !== null ? `${data.site.siteMetadata.baseUrl}${path}` : null

@@ -11,9 +11,10 @@ interface Props {
   data: any
 }
 
-export const Head = () => {
+export const Head = ({ data }: Props) => {
   return (
     <HeadTags
+      ogImageRelativeUrl={data.hero.childImageSharp.ogImage.src}
       path="/about"
       title="About"
       seoDescription="The history of M+M and general information about camp."
@@ -63,6 +64,9 @@ export const pageQuery = graphql`
     hero: file(relativePath: { eq: "lasertag_walking.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, quality: 90, placeholder: BLURRED)
+        ogImage: fixed(width: 1200) {
+          src
+        }
       }
     }
   }

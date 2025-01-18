@@ -12,7 +12,14 @@ const NotFoundPage: FC<Props> = () => (
 )
 
 export const Head = () => {
-  return <HeadTags title={null} seoDescription="404 page" path={null} />
+  return (
+    <HeadTags
+      title={null}
+      seoDescription="404 page"
+      path={null}
+      ogImageRelativeUrl={null}
+    />
+  )
 }
 
 export default NotFoundPage
