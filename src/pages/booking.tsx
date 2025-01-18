@@ -5,7 +5,7 @@ import BookingForm, { FormState } from "../components/BookingForm"
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
 import Button from "../components/Button"
-import { MOBILE_WIDTH } from "../constants"
+import { ENABLE_BOOKING, MOBILE_WIDTH } from "../constants"
 import HeadTags from "../components/HeadTags"
 import { getImage } from "gatsby-plugin-image"
 import RemarkText from "../components/RemarkText"
@@ -27,12 +27,14 @@ export const Head = ({ data }: Props) => {
 const Booking: FC<Props> = ({ data }: Props) => {
   const [booked, setBooked] = useState(false)
   const [previousState, setPreviousState] = useState<FormState | null>(null)
-  const [showBookings, setShowBookings] = useState(false)
+  const [previewEnabled, setPreviewEnabled] = useState(false)
   useLayoutEffect(() => {
-    setShowBookings(
+    setPreviewEnabled(
       new URLSearchParams(window.location.search).get("preview") !== null,
     )
   }, [])
+
+  const showBookings = ENABLE_BOOKING || previewEnabled
 
   return (
     <Layout
