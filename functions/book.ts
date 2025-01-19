@@ -90,18 +90,27 @@ export const handler = (
   context: Context,
   callback: Callback,
 ) => {
-  const dsn = getEnv("SENTRY_DSN_BACKEND")
-  Sentry.AWSLambda.init({ dsn })
-  console.log(new Date().toISOString())
-  console.log("handling event", event.body)
-  handleAsync(event, context, callback).catch(err => {
-    console.log("got error", err)
+  try {
+    const dsn = getEnv("SENTRY_DSN_BACKEND")
+    Sentry.AWSLambda.init({ dsn })
+    console.log(new Date().toISOString())
+    console.log("handling event", event.body)
+    handleAsync(event, context, callback).catch(err => {
+      console.log("got async error", err)
+      Sentry.captureException(err)
+      callback(null, {
+        statusCode: 500,
+        body: "Error submitting. Please try again.",
+      })
+    })
+  } catch (err) {
+    console.log("got top-level error", err)
     Sentry.captureException(err)
     callback(null, {
       statusCode: 500,
-      body: "Error",
+      body: "Error submitting. Please try again.",
     })
-  })
+  }
 }
 
 export const handleAsync = async (
