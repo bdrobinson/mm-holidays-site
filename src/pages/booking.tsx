@@ -55,7 +55,7 @@ const Booking: FC<Props> = ({ data }: Props) => {
             We&apos;ve received your application. Please check your inbox for a
             confirmation email and{" "}
             <a href="mailto:bookings@madnessandmayhem.org.uk">contact us</a> if
-            you do not receive one.
+            you do not receive one with the next 24 hours.
           </p>
           <p>
             <Button
