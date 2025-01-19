@@ -1,7 +1,7 @@
 import { google } from "googleapis"
 import sendgrid from "@sendgrid/mail"
 import dotenv from "dotenv"
-import { init as initSentry, captureException } from "@sentry/node"
+import * as Sentry from "@sentry/serverless"
 import { renderCamperEmail, renderCampLeaderEmail } from "./results/email"
 import { createColumns } from "./results/dataColumns"
 import { appendRow } from "./results/sheets"
@@ -90,12 +90,13 @@ export const handler = (
   context: Context,
   callback: Callback,
 ) => {
-  initSentry({ dsn: getEnv("SENTRY_DSN_BACKEND") })
+  const dsn = getEnv("SENTRY_DSN_BACKEND")
+  Sentry.AWSLambda.init({ dsn })
   console.log(new Date().toISOString())
   console.log("handling event", event.body)
   handleAsync(event, context, callback).catch(err => {
     console.log("got error", err)
-    captureException(err)
+    Sentry.captureException(err)
     callback(null, {
       statusCode: 500,
       body: "Error",
@@ -201,7 +202,7 @@ export const handleAsync = async (
   } catch (err) {
     console.log("failed to append row to google sheet")
     console.log(err)
-    captureException(err)
+    Sentry.captureException(err)
     callback(null, {
       statusCode: 500,
       body: "Could not store booking. Please contact bookings@madnessandmayhem.org.uk",
@@ -228,7 +229,7 @@ export const handleAsync = async (
     console.log(err.response.body)
     // @ts-ignore
     console.log("failed to send camper confirmation email", err.message)
-    captureException(err)
+    Sentry.captureException(err)
   }
 
   try {
@@ -245,7 +246,7 @@ export const handleAsync = async (
   } catch (err) {
     console.log(err)
     console.log("failed to send camp leader notification email")
-    captureException(err)
+    Sentry.captureException(err)
   }
   console.log("emails sent successfully!")
   callback(null, {
