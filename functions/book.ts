@@ -2,7 +2,7 @@ import { google } from "googleapis"
 import sendgrid from "@sendgrid/mail"
 import dotenv from "dotenv"
 import * as Sentry from "@sentry/serverless"
-import { renderCamperEmail, renderCampLeaderEmail } from "./results/email"
+import { renderCamperEmail } from "./results/email"
 import { createColumns } from "./results/dataColumns"
 import { appendRow } from "./results/sheets"
 import { APIGatewayEvent, Context, Callback } from "aws-lambda"
@@ -111,7 +111,7 @@ export const handleAsync = async (
   callback: Callback,
 ) => {
   const SENDGRID_API_KEY = getEnv("SENDGRID_API_KEY")
-  const CONFIRMATION_EMAIL_RECIPIENT = getEnv("CONFIRMATION_EMAIL_RECIPIENT")
+  // const CONFIRMATION_EMAIL_RECIPIENT = getEnv("CONFIRMATION_EMAIL_RECIPIENT")
   const GOOGLE_SPREADSHEET_ID = getEnv("GOOGLE_SPREADSHEET_ID")
   const GOOGLE_CLIENT_EMAIL = getEnv("GOOGLE_CLIENT_EMAIL")
   const GOOGLE_PRIVATE_KEY = JSON.parse(getEnv("GOOGLE_PRIVATE_KEY"))
@@ -232,22 +232,22 @@ export const handleAsync = async (
     Sentry.captureException(err)
   }
 
-  try {
-    console.log("sending camp leader notification email")
-    const html = renderCampLeaderEmail(columns)
-    const leaderEmail = {
-      to: CONFIRMATION_EMAIL_RECIPIENT.split(","),
-      from: { name: "M+M Bookings", email: "bookings@madnessandmayhem.org.uk" },
-      subject: "New submission from booking form",
-      text: html,
-      html,
-    }
-    await sendgrid.send(leaderEmail)
-  } catch (err) {
-    console.log(err)
-    console.log("failed to send camp leader notification email")
-    Sentry.captureException(err)
-  }
+  // try {
+  //   console.log("sending camp leader notification email")
+  //   const html = renderCampLeaderEmail(columns)
+  //   const leaderEmail = {
+  //     to: CONFIRMATION_EMAIL_RECIPIENT.split(","),
+  //     from: { name: "M+M Bookings", email: "bookings@madnessandmayhem.org.uk" },
+  //     subject: "New submission from booking form",
+  //     text: html,
+  //     html,
+  //   }
+  //   await sendgrid.send(leaderEmail)
+  // } catch (err) {
+  //   console.log(err)
+  //   console.log("failed to send camp leader notification email")
+  //   Sentry.captureException(err)
+  // }
   console.log("emails sent successfully!")
   callback(null, {
     statusCode: 200,
