@@ -221,7 +221,7 @@ export const handleAsync = async (
 
   try {
     console.log("sending camper confirmation email")
-    const html = renderCamperEmail()
+    const html = renderCamperEmail(params.campChoice)
     const camperEmail = {
       to: {
         name: `${params.parentFirstName} ${params.parentLastName}`,

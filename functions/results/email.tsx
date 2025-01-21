@@ -3,15 +3,21 @@ import { renderToStaticMarkup } from "react-dom/server"
 
 import { Column } from "./dataColumns"
 
-interface CamperEmailProps {}
+interface CamperEmailProps {
+  week: "1" | "2"
+}
 
-const CamperEmail: FC<CamperEmailProps> = () => {
+const CamperEmail: FC<CamperEmailProps> = ({ week }) => {
   return (
     <body>
-      <p>We&apos;re delighted you have applied to come to M+M Holidays 2025.</p>
       <p>
-        Your application will now be processed and you will receive confirmation
-        of a place(s) (via email) from the Booking Secretary.
+        We&apos;re delighted you have applied to come to M+M Week 2025 (week{" "}
+        {week}).
+      </p>
+      <p>
+        {week === "2"
+          ? "M+M 2 now has limited spaces available. We will keep your application on our waiting list and be in touch to confirm whether we can accommodate you."
+          : "Your application will now be processed and you will receive confirmation of a place (via email) from the Booking Secretary."}
       </p>
       <p>
         We are currently setting up a new bank account and will send you the
@@ -51,6 +57,7 @@ const CampLeaderEmail: FC<CampLeaderEmailProps> = ({
   )
 }
 
-export const renderCamperEmail = () => renderToStaticMarkup(<CamperEmail />)
+export const renderCamperEmail = (week: "1" | "2") =>
+  renderToStaticMarkup(<CamperEmail week={week} />)
 export const renderCampLeaderEmail = (columns: Array<Column>) =>
   renderToStaticMarkup(<CampLeaderEmail columns={columns} />)
