@@ -529,7 +529,7 @@ const BookingForm: FC<Props> = ({ onComplete, initialState }: Props) => {
                   },
                   {
                     value: "2",
-                    label: "Week 2",
+                    label: "Week 2 (spaces limited)",
                     subtitle: "Sat 2nd August – Sat 9th August 2025",
                     disabled: false,
                   },
