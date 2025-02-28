@@ -11,4 +11,6 @@ The safety and well-being of every individual on our holidays is of the utmost i
 
 Our safeguarding consultants are Christian Safeguarding Services (CSS). Our safeguarding policy is regularly reviewed and kept in line with the latest best practice. All those leading on our holidays undergo an Enhanced Disclosure from the Disclosure and Barring Service (DBS) (and/or equivalent for those who have lived overseas), and provide two referees from whom we take up references. All of our leaders receive regular training on safeguarding children and young people.
 
+Our safeguarding policy can be found [here](/files/MMSafeguardingPolicyAndHandbookDec24.pdf).
+
 If you have a safeguarding enquiry related to M+M Holidays, please email <safeguarding@madnessandmayhem.org.uk>.
